@@ -12,7 +12,7 @@ const routes: Routes = [
     },
     {
         path: '',
-        redirectTo: 'preview',
+        redirectTo: 'tabs',
         pathMatch: 'full'
     },
 ];
