@@ -1,0 +1,109 @@
+@import "src/theme/functions/resizer";
+* {
+    box-sizing: border-box;
+}
+.header {
+    height: 24vh;
+    background-color: #0059f7;
+    color: #ffffff;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 5vh;
+    font-weight: 500;
+
+    &__title {
+        font-size: sizeHeight(30);
+    }
+    &__percent {
+        font-size: sizeHeight(32);
+    }
+    &__step {
+        font-size: sizeHeight(24);
+    }
+}
+.progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 24vh;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.content {
+    background-color: #f8fafb;
+    height: 100%;
+    padding: sizeHeight(24) sizeWidth(24);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    color: #404763;
+    font-size: sizeHeight(18);
+    font-weight: 500;
+
+    overflow-y: scroll;
+
+    .item {
+        width: 100%;
+        height: sizeHeight(38);
+        gap: sizeHeight(10);
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &__header {
+            flex-grow: 1;
+
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        &__stage {
+            height: 100%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .total {
+                height: 100%;
+                width: sizeWidth(60);
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &__done {
+                    color: #0059F7;
+                }
+            }
+        }
+        .arrow {
+            transform: rotate(-90deg);
+        }
+        .active {
+            transform: none;
+        }
+    }
+
+    .stage {
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: sizeHeight(16) sizeWidth(30);
+        border-radius: sizeHeight(22);
+        background-color: #FFFFFF;
+        font-size: sizeHeight(18);
+        margin: sizeHeight(4) 0;
+
+        &-active {
+            background-color: #0059f7;
+            color: #ffffff;
+        }
+    }
+}

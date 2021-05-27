@@ -1,7 +1,8 @@
 @function sizeHeight($value) {
-  @return $value / 1280 * 100vh;
+  @return $value / 812 * 100vh;
 }
 
 @function sizeWidth($value) {
-  @return $value / 720 * 100vw;
+  @return $value / 375 * 100vw;
 }
+

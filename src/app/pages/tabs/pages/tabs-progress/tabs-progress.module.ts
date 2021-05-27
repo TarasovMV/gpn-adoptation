@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { TabsProgressPageRoutingModule } from './tabs-progress-routing.module';
 
 import { TabsProgressPage } from './tabs-progress.page';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TabsProgressPageRoutingModule
+    TabsProgressPageRoutingModule,
+    AngularSvgIconModule
   ],
   declarations: [TabsProgressPage]
 })

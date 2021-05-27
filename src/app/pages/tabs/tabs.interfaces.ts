@@ -4,3 +4,19 @@ export interface IPageTab {
 }
 
 export type PageTabType = 'news' | 'chat' | 'tests' | 'about' | 'progress' | 'offline';
+
+export interface IProgress {
+    id: number,
+    header: string,
+    subStages: IStage[]
+    isActive?: boolean;
+}
+
+export interface IStage {
+    id: number,
+    status: number,
+    header: string,
+    imagePath: string,
+    body: string,
+    adaptationStageId: number
+}
