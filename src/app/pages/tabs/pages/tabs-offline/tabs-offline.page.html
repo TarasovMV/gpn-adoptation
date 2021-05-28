@@ -1,9 +1,21 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>tabs-offline</ion-title>
-  </ion-toolbar>
+  <div class="header">
+    <div class="title">Off-line помощник</div>
+    <div class="cities">
+      <ng-container *ngFor="let item of cities">
+        <div (click)="changeCity(item)" [ngClass]="{'active': item === (city$ | async)}">{{item}}</div>
+      </ng-container>
+    </div>
+  </div>
 </ion-header>
 
 <ion-content>
-
+  <div class="content">
+    <div class="card" *ngFor="let card of [1, 1, 1, 1, 1]">
+      <div class="card__icon">
+        <svg-icon></svg-icon>
+      </div>
+      <div class="card__name"></div>
+    </div>
+  </div>
 </ion-content>

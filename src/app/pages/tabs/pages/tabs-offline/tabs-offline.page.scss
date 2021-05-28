@@ -1,0 +1,73 @@
+@import "src/theme/functions/resizer";
+
+* {
+    box-sizing: border-box;
+}
+.card {
+    height: 100%;
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+}
+.header {
+    height: sizeHeight(161);
+    background-color: #0059f7;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: sizeHeight(18);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: sizeHeight(60) sizeWidth(30) sizeHeight(23);
+    .title {
+        display: flex;
+        align-items: center;
+        font-size: sizeHeight(30);
+    }
+    .cities {
+        display: flex;
+        gap: sizeWidth(27);
+        opacity: 0.5;
+    }
+    .active {
+        opacity: 1;
+    }
+}
+.content {
+    height: 100%;
+    background-color: #f8fafb;
+    padding: sizeHeight(22) sizeWidth(12);
+    display: flex;
+    flex-wrap: wrap;
+    gap: sizeHeight(15);
+
+    color: #404763;
+    font-size: sizeHeight(16);
+
+    overflow-y: scroll;
+
+    .card {
+        height: sizeHeight(157);
+        width: sizeWidth(168);
+        border-radius: sizeHeight(22);
+        background-color: #FFFFFF;
+        padding: sizeHeight(14) sizeWidth(15);
+
+        display: flex;
+        flex-direction: column;
+
+        &__icon {
+            height: sizeHeight(47);
+            width: sizeWidth(47);
+            border-radius: sizeHeight(12);
+            background-color: #0059F7;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}

@@ -3,13 +3,6 @@
 * {
     box-sizing: border-box;
 }
-.card {
-    height: 100%;
-    width: 100%;
-    
-    display: flex;
-    flex-direction: column;
-}
 .header {
     height: sizeHeight(126);
     background-color: #0059f7;
