@@ -31,7 +31,7 @@ const routes: Routes = [
             },
             {
                 path: 'tabs-progress',
-                loadChildren: () => import('./pages/tabs-progress/tabs-progress.module').then( m => m.TabsProgressPageModule)
+                loadChildren: () => import('./pages/tabs-progress/tabs-progress.module').then( m => m.TabsProgressPageModule),
             },
             {
                 path: 'tabs-offline',

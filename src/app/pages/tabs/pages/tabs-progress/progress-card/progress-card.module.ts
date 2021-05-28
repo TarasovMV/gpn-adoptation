@@ -1,22 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ProgressCardComponent } from './progress-card.component';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
-import { TabsProgressPageRoutingModule } from './tabs-progress-routing.module';
-
-import { TabsProgressPage } from './tabs-progress.page';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 
 @NgModule({
+  declarations: [ProgressCardComponent],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TabsProgressPageRoutingModule,
-    AngularSvgIconModule,
+    AngularSvgIconModule
   ],
-  declarations: [TabsProgressPage],
 })
-export class TabsProgressPageModule {}
+export class ProgressCardModule { }

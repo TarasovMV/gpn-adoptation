@@ -16,14 +16,14 @@
       <div class="item" (click)="switchStage(item)">
         <div class="item__header">{{item.header}}</div>
         <div class="item__stage">
-          <div class="total"><div class="total__done">{{performedInSection(item.subStages)}}</div> <div>из</div>
-            <div>{{item.subStages.length}}</div></div>
+          <div class="total"><span class="total__done">{{performedInSection(item.subStages)}}</span> из
+            {{item.subStages.length}}</div>
           <svg-icon class="arrow" src="assets/icon/arrow.svg" [ngClass]="{'active': item.isActive}"></svg-icon>
         </div>
       </div>
       <ng-container *ngIf="item.isActive">
         <ng-container *ngFor="let element of item.subStages">
-          <div class="stage" [ngClass]="{'stage-active': element.status !== 0}">
+          <div class="stage" [ngClass]="{'stage-active': element.status !== 0}" (click)="toProgressCard(element)">
             <span>{{element.header}}</span>
             <span>{{element.status}}</span>
           </div>

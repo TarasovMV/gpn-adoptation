@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TabsService } from 'src/app/core/services/tabs/tabs.service';
 import { IPageTab, IProgress, IStage, PageTabType } from "../../tabs.interfaces";
+import { ProgressCardComponent } from './progress-card/progress-card.component';
 
 @Component({
     selector: 'app-tabs-progress',
@@ -9,7 +11,6 @@ import { IPageTab, IProgress, IStage, PageTabType } from "../../tabs.interfaces"
 })
 export class TabsProgressPage implements OnInit, IPageTab {
     public route: PageTabType = 'progress';
-
     public data: IProgress[] = [
         {
             id: 7,
@@ -109,15 +110,20 @@ export class TabsProgressPage implements OnInit, IPageTab {
     public doneStages: number = 0;
     public allStagesLength: number = 0;
 
-    constructor(public tabsService: TabsService) {
+    public progressCard = ProgressCardComponent;
+    constructor(
+        public tabsService: TabsService,
+        public router: Router
+        ) {
     }
 
     ngOnInit(): void {
-        this.progressValue();
+        this.getData();
     }
 
     public async getData(): Promise<void> {
         this.data = await this.tabsService.getAdaptation();
+        this.progressValue();
     }
 
     public performedInSection(subStages: IStage[]): number {
@@ -139,5 +145,9 @@ export class TabsProgressPage implements OnInit, IPageTab {
             })
         });        
         this.doneStages = count;
+    }
+
+    public toProgressCard(element: IStage): void {
+        this.router.navigate(['tabs/tabs-progress/' + element.id])
     }
 }

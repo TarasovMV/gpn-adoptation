@@ -1,0 +1,19 @@
+<ion-header>
+  <div class="header">
+    <svg-icon class="arrow" src="assets/icon/arrow.svg"
+    (click)="backToProgress()"
+    ></svg-icon>
+   <div class="title">Подробная информация</div>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="content">
+    <div class="content__title">{{data?.header}}</div>
+    <img src="http://admin.corporateservice.gnkdev.space/{{data?.imagePath}}"/>
+    <div class="content__description">
+      {{data?.body}}
+    </div>
+    <div class="content__button">Выполнено</div>
+  </div>
+</ion-content>

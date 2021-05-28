@@ -44,12 +44,12 @@
     font-size: sizeHeight(18);
     font-weight: 500;
 
-    overflow-y: scroll;
+    overflow-y: auto;
 
     .item {
         width: 100%;
         height: sizeHeight(38);
-        gap: sizeHeight(10);
+        padding: sizeHeight(10) 0;
 
         display: flex;
         align-items: center;
@@ -69,12 +69,7 @@
             justify-content: space-between;
             align-items: center;
             .total {
-                height: 100%;
                 width: sizeWidth(60);
-
-                display: flex;
-                justify-content: center;
-                align-items: center;
 
                 &__done {
                     color: #0059F7;

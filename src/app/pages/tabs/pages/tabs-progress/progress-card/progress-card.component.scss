@@ -1,0 +1,74 @@
+@import "src/theme/functions/resizer";
+
+* {
+    box-sizing: border-box;
+}
+.card {
+    height: 100%;
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+}
+.header {
+    height: sizeHeight(126);
+    background-color: #0059f7;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: sizeHeight(18);
+
+    display: flex;
+
+    padding: sizeHeight(34) sizeWidth(30);
+    .arrow {
+        transform: rotate(90deg);
+    }
+    .title {
+        display: flex;
+        align-items: center;
+        margin-left: sizeWidth(30);
+    }
+}
+.content {
+    height: 100%;
+    background-color: #f8fafb;
+    padding: sizeHeight(22) sizeWidth(30);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: sizeHeight(15);
+
+    color: #404763;
+    font-size: sizeHeight(18);
+
+    overflow-y: scroll;
+
+    &__title {
+        width: 100%;
+        color: #333333;
+        font-size: sizeHeight(20);
+        font-weight: 700;
+        font-style: bold;
+        display: flex;
+    }
+    &__description {
+        width: 100%;
+        color: #98A9BC;
+        font-size: sizeHeight(14);
+        display: flex;
+    }
+    &__button {
+        height: sizeHeight(57);
+        min-height: sizeHeight(57);
+        width: 100%;
+        border-radius: sizeHeight(22);
+        background-color: #08BDBA;
+        color: #FFFFFF;
+        font-size: sizeHeight(18);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
