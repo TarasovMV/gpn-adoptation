@@ -14,4 +14,7 @@ export class TabsService {
     public async getAdaptation(): Promise<IProgress[]> {
         return await this.http.get<IProgress[]>(`http://${this.restUrl}/api/adaptationstages`).toPromise();
     }
+    public async getNews(): Promise<any> {
+        return await this.http.get<any>(`http://${this.restUrl}/api/news`).toPromise();
+    }
 }

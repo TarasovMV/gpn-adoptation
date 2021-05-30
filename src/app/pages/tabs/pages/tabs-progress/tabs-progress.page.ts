@@ -109,6 +109,7 @@ export class TabsProgressPage implements OnInit, IPageTab {
     ];
     public doneStages: number = 0;
     public allStagesLength: number = 0;
+    public percentProgress: number = 0;
 
     public progressCard = ProgressCardComponent;
     constructor(
@@ -119,11 +120,11 @@ export class TabsProgressPage implements OnInit, IPageTab {
 
     ngOnInit(): void {
         this.getData();
+        this.progressValue();
     }
 
     public async getData(): Promise<void> {
         this.data = await this.tabsService.getAdaptation();
-        this.progressValue();
     }
 
     public performedInSection(subStages: IStage[]): number {
@@ -145,6 +146,7 @@ export class TabsProgressPage implements OnInit, IPageTab {
             })
         });        
         this.doneStages = count;
+        this.percentProgress = count/this.allStagesLength;
     }
 
     public toProgressCard(element: IStage): void {

@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import { TabsService } from 'src/app/core/services/tabs/tabs.service';
 import {IPageTab, PageTabType} from "../../tabs.interfaces";
 
 export interface IMenuItem {
@@ -28,12 +29,20 @@ export class TabsNewsPage implements OnInit, IPageTab {
         }
     ];
     public readonly shareIcon: string = 'assets/icon/news/share.svg';
-    public readonly saveIcon: string = 'assets/icon/news/favored.svg'
+    public readonly saveIcon: string = 'assets/icon/news/favored.svg';
+    public data;
 
-    constructor() {
+    constructor(
+        public tabsService: TabsService
+    ) {
     }
 
     ngOnInit(): void {
+        this.getNews();        
+    }
+
+    public async getNews(): Promise<void> {
+        this.data = await this.tabsService.getNews();
     }
 
 }

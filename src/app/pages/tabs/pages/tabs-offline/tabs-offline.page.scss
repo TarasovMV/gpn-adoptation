@@ -6,36 +6,45 @@
 .card {
     height: 100%;
     width: 100%;
-    
+
     display: flex;
     flex-direction: column;
 }
 .header {
-    height: sizeHeight(161);
+    height: sizeHeight(126);
     background-color: #0059f7;
     color: #ffffff;
     font-weight: 500;
-    font-size: sizeHeight(18);
+    font-size: sizeHeight(30);
 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-end;
 
-    padding: sizeHeight(60) sizeWidth(30) sizeHeight(23);
+    padding: 0 sizeWidth(30);
+
     .title {
         display: flex;
         align-items: center;
-        font-size: sizeHeight(30);
-    }
-    .cities {
-        display: flex;
-        gap: sizeWidth(27);
-        opacity: 0.5;
-    }
-    .active {
-        opacity: 1;
+        width: 100%;
+        height: sizeHeight(84);
     }
 }
+.menu {
+    height: sizeHeight(42);
+    width: 100%;
+    padding: 0 sizeWidth(30);
+    background-color: #0059f7;
+    color: #ffffff;
+
+    display: flex;
+    display: flex;
+    gap: sizeWidth(27);
+    .active {
+        opacity: 0.5;
+    }
+}
+
 .content {
     height: 100%;
     background-color: #f8fafb;
@@ -53,7 +62,7 @@
         height: sizeHeight(157);
         width: sizeWidth(168);
         border-radius: sizeHeight(22);
-        background-color: #FFFFFF;
+        background-color: #ffffff;
         padding: sizeHeight(14) sizeWidth(15);
 
         display: flex;
@@ -63,7 +72,7 @@
             height: sizeHeight(47);
             width: sizeWidth(47);
             border-radius: sizeHeight(12);
-            background-color: #0059F7;
+            background-color: #0059f7;
 
             display: flex;
             justify-content: center;

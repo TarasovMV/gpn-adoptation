@@ -19,8 +19,6 @@ export class TabsOfflinePage implements OnInit, IPageTab {
     }
 
     public changeCity(city: string): void {
-        console.log(city);
-        
         this.city$.next(city)
     }
 }

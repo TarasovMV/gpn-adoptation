@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import {IPageTab, PageTabType} from "../../tabs.interfaces";
 
 @Component({
@@ -8,10 +9,16 @@ import {IPageTab, PageTabType} from "../../tabs.interfaces";
 })
 export class TabsAboutPage implements OnInit, IPageTab {
     public route: PageTabType = 'about';
+    public readonly sections: string[] = ['География', 'История', 'Руководство'];
+    public section$: BehaviorSubject<string> = new BehaviorSubject<string>('География')
 
     constructor() {
     }
 
     ngOnInit(): void {
+    }
+
+    public changeCity(section: string): void {
+        this.section$.next(section)
     }
 }
