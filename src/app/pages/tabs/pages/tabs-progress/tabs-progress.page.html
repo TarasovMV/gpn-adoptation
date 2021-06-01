@@ -23,9 +23,9 @@
       </div>
       <ng-container *ngIf="item.isActive">
         <ng-container *ngFor="let element of item.subStages">
-          <div class="stage" [ngClass]="{'stage-active': element.status !== 0}" (click)="toProgressCard(element)">
+          <div class="stage" [ngClass]="{'stage-active': element.status}" (click)="toProgressCard(element)">
             <span>{{element.header}}</span>
-            <span>{{element.status}}</span>
+            <span *ngIf="element.status" class="done">Выполнено</span>
           </div>
         </ng-container>
       </ng-container>

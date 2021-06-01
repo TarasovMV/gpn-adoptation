@@ -22,6 +22,7 @@ export class ProgressCardComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
+    this.tabsService.showMenu$.next(null);
     this.getData();
   }
 
@@ -37,6 +38,7 @@ export class ProgressCardComponent implements OnInit {
 }
 
   public backToProgress(): void {
-    this.nav.navigate(['tabs/tabs-progress/'])
+    this.nav.navigate(['tabs/tabs-progress/']);
+    this.tabsService.showMenu$.next('on');
   }
 }

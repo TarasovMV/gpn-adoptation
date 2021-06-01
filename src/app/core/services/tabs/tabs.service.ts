@@ -1,5 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
+import { IColleague } from "src/app/pages/tabs/pages/tabs-chat/tabs-chat.page";
 import { IProgress } from "src/app/pages/tabs/tabs.interfaces";
 
 @Injectable({
@@ -7,7 +9,9 @@ import { IProgress } from "src/app/pages/tabs/tabs.interfaces";
 })
 
 export class TabsService {
-    public restUrl = 'admin.corporateservice.gnkdev.space'
+    public restUrl = 'admin.corporateservice.gnkdev.space';
+    public showMenu$: BehaviorSubject<string> = new BehaviorSubject<string>('on');
+    public tabsChat$: BehaviorSubject<IColleague> = new BehaviorSubject<IColleague>(null);
 
     constructor(private http: HttpClient) {}
 

@@ -4,7 +4,7 @@
   </div>
   <div class="menu">
     <ng-container *ngFor="let item of sections">
-      <div (click)="changeCity(item)" [ngClass]="{'active': item !== (section$ | async)}">{{item}}</div>
+      <div (click)="changeSection(item)" [ngClass]="{'active': item !== (section$ | async)}">{{item}}</div>
     </ng-container>
   </div>
 </ion-header>

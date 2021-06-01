@@ -58,6 +58,10 @@
             width: 100%;
             font-size: sizeHeight(12);
         }
+        .active {
+            background-color: #0059f7;
+            color: white;
+        }
     }
 }
 .content {
@@ -97,6 +101,10 @@
                 justify-content: center;
                 color: #0059f7;
             }
+            .saved {
+                background-color: #0059f7;
+                color: #ffffff;
+            }
             .share {
                 position: absolute;
                 right: sizeWidth(10);
@@ -120,6 +128,7 @@
             font-size: sizeHeight(14);
         }
         &__description {
+            width: 100%;
             font-size: sizeHeight(18);
             color: #98A9BC;
         }

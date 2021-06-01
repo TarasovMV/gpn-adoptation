@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
+import { TabsService } from 'src/app/core/services/tabs/tabs.service';
 import { PageTabType } from './tabs.interfaces';
 
 export interface IPageTab {
@@ -45,7 +46,10 @@ export class TabsPage implements OnInit {
         offline: 'tabs/tabs-offline'
     };
 
-    constructor(private navCtrl: NavController) { }
+    constructor(
+        private navCtrl: NavController,
+        public TabsService: TabsService
+        ) { }
 
     ngOnInit(): void {
     }

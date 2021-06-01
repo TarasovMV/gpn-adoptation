@@ -18,7 +18,7 @@ export class TabsAboutPage implements OnInit, IPageTab {
     ngOnInit(): void {
     }
 
-    public changeCity(section: string): void {
+    public changeSection(section: string): void {
         this.section$.next(section)
     }
 }

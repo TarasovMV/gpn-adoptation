@@ -4,7 +4,7 @@
   </div>
   <div class="menu">
     <div class="menu__item" *ngFor="let item of menuItems">
-      <div class="logo">
+      <div class="logo" (click)="changeSection(item)" [ngClass]="{'active': item.logo === (section$ | async)}">
         <svg-icon [src]="'assets/icon/news/' + item.logo + '.svg'"></svg-icon>
       </div>
       <div class="name">{{item.name}}</div>
@@ -14,25 +14,24 @@
 
 <ion-content>
   <div class="content">
-    <div class="post">
-      <div class="post__image">
-        <img src="http://cdnimg.rg.ru/img/content/198/28/66/1000_d_850.jpeg" />
-        <div class="share">
-          <svg-icon src="{{shareIcon}}"></svg-icon>
+    <ng-container *ngFor="let post of dataToView">
+      <div class="post">
+        <div class="post__image">
+          <img src="{{post.img}}" />
+          <div class="share">
+            <svg-icon src="{{shareIcon}}"></svg-icon>
+          </div>
+          <div class="save" [ngClass]="{'saved': post.isSaved}" (click)="savePost(post)">
+            <svg-icon src="{{saveIcon}}"></svg-icon>
+          </div>
         </div>
-        <div class="save">
-          <svg-icon src="{{saveIcon}}"></svg-icon>
+        <div class="post__title">
+          {{post.title}}
+        </div>
+        <div class="post__description">
+          {{post.description}}
         </div>
       </div>
-      <div class="post__title">
-        НОВАЯ РАЗРАБОТКА ТЕХНОПАРКА «ГАЗПРОМ НЕФТИ» И ОМГТУ СНИЖАЕТ РАСХОДЫ НА ДИАГНОСТИКУ ОБОРУДОВАНИЯ
-      </div>
-      <div class="content__description">
-        Специалисты Технопарка «Газпром нефти» и ОмГТУ создали мобильный комплекс
-        для мониторинга состояния промышленного оборудования. Новая система уже прошла серию успешных
-        промышленных испытаний и внедряется в производство. По расчетам специалистов, экономический эффект от ее
-        использования составит несколько десятков миллионов рублей в год.
-      </div>
-    </div>
+    </ng-container>
   </div>
 </ion-content>

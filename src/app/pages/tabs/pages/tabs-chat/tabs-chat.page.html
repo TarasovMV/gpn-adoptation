@@ -5,5 +5,14 @@
 </ion-header>
 
 <ion-content>
-  <div class="content"></div>
+  <div class="content">
+    <ng-container *ngFor="let item of dialogs">
+      <div class="item" (click)="openChat(item)">
+        <app-tabs-chat-interlocutor
+        [data]="item"
+        >
+        </app-tabs-chat-interlocutor>
+      </div>
+    </ng-container>
+  </div>
 </ion-content>

@@ -11,15 +11,16 @@
     font-size: sizeHeight(18);
 
     display: flex;
+    align-items: center;
+    gap: sizeWidth(25);
 
-    padding: sizeHeight(34) sizeWidth(30);
+    padding: sizeHeight(44) sizeWidth(30) 0;
     .arrow {
         transform: rotate(90deg);
     }
     .title {
         display: flex;
         align-items: center;
-        margin-left: sizeWidth(30);
     }
 }
 .content {

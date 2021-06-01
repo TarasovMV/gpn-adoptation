@@ -1,10 +1,20 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { TabsService } from 'src/app/core/services/tabs/tabs.service';
-import {IPageTab, PageTabType} from "../../tabs.interfaces";
+import { IPageTab, PageTabType } from "../../tabs.interfaces";
 
 export interface IMenuItem {
     name: string,
-    logo: string
+    logo: string,
+};
+export interface IPost {
+    id: number,
+    img: string,
+    title: string,
+    description: string,
+    isSaved?: boolean,
+    isImportant?: boolean
 }
 
 @Component({
@@ -28,21 +38,69 @@ export class TabsNewsPage implements OnInit, IPageTab {
             logo: 'saved'
         }
     ];
+    public section$: BehaviorSubject<string> = new BehaviorSubject<string>('publications')
     public readonly shareIcon: string = 'assets/icon/news/share.svg';
     public readonly saveIcon: string = 'assets/icon/news/favored.svg';
-    public data;
+    public data: IPost[] = [
+        {
+            id: 0,
+            img: 'http://cdnimg.rg.ru/img/content/198/28/66/1000_d_850.jpeg',
+            title: 'НОВАЯ РАЗРАБОТКА ТЕХНОПАРКА «ГАЗПРОМ НЕФТИ» И ОМГТУ СНИЖАЕТ РАСХОДЫ НА ДИАГНОСТИКУ ОБОРУДОВАНИЯ',
+            description: `Специалисты Технопарка «Газпром нефти» и ОмГТУ создали мобильный комплекс
+            для мониторинга состояния промышленного оборудования. Новая система уже прошла серию успешных
+            промышленных испытаний и внедряется в производство. По расчетам специалистов, экономический эффект от ее
+            использования составит несколько десятков миллионов рублей в год.`,
+            isSaved: true,
+            isImportant: true,
+        },
+        {
+            id: 1,
+            img: 'http://cdnimg.rg.ru/img/content/198/28/66/1000_d_850.jpeg',
+            title: 'DEFAULT',
+            description: `Test`,
+        },
+        {
+            id: 2,
+            img: 'http://cdnimg.rg.ru/img/content/198/28/66/1000_d_850.jpeg',
+            title: 'IMPORTANT',
+            description: `Test`,
+            isImportant: true,
+        }
+    ];
+    public dataToView: IPost[] = [];
+    public id: string = '';
 
     constructor(
-        public tabsService: TabsService
+        public tabsService: TabsService,
     ) {
     }
 
     ngOnInit(): void {
-        this.getNews();        
+        this.dataToView = this.data;
+        this.getNews();
     }
 
     public async getNews(): Promise<void> {
         this.data = await this.tabsService.getNews();
     }
-
+    public changeSection(section: IMenuItem): void {
+        this.section$.next(section.logo);
+        switch (section.logo) {
+            case 'saved': {
+                this.dataToView = this.data.filter(x => x.isSaved);                
+                break;
+            }
+            case 'important': {
+                this.dataToView = this.data.filter(x => x.isImportant);
+                break;
+            }
+            default: {
+                this.dataToView = this.data;
+                break;
+            }
+        };
+    }
+    public savePost(post: IPost): void {
+        post.isSaved = !post.isSaved;
+    }
 }

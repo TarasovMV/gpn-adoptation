@@ -11,11 +11,13 @@
 
 <ion-content>
   <div class="content">
-    <div class="card" *ngFor="let card of [1, 1, 1, 1, 1]">
+    <ng-container *ngFor="let card of cards">
+    <div class="card" (click)="openCard(card)">
       <div class="card__icon">
-        <svg-icon></svg-icon>
+        <svg-icon src="assets/icon/offline/{{card.logo}}.svg"></svg-icon>
       </div>
-      <div class="card__name"></div>
+      <div class="card__name">{{card.title}}</div>
     </div>
+  </ng-container>
   </div>
 </ion-content>
