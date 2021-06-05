@@ -10,9 +10,12 @@ export interface IMenuItem {
 };
 export interface IPost {
     id: number,
-    img: string,
+    image: string
+    imagePath: string,
+    content: string,
     title: string,
-    description: string,
+    newsCategory: number,
+    newsCategoryId: number,
     isSaved?: boolean,
     isImportant?: boolean
 }
@@ -44,28 +47,18 @@ export class TabsNewsPage implements OnInit, IPageTab {
     public data: IPost[] = [
         {
             id: 0,
-            img: 'http://cdnimg.rg.ru/img/content/198/28/66/1000_d_850.jpeg',
+            image: '',
+            imagePath: 'http://cdnimg.rg.ru/img/content/198/28/66/1000_d_850.jpeg',
             title: 'НОВАЯ РАЗРАБОТКА ТЕХНОПАРКА «ГАЗПРОМ НЕФТИ» И ОМГТУ СНИЖАЕТ РАСХОДЫ НА ДИАГНОСТИКУ ОБОРУДОВАНИЯ',
-            description: `Специалисты Технопарка «Газпром нефти» и ОмГТУ создали мобильный комплекс
+            content: `Специалисты Технопарка «Газпром нефти» и ОмГТУ создали мобильный комплекс
             для мониторинга состояния промышленного оборудования. Новая система уже прошла серию успешных
             промышленных испытаний и внедряется в производство. По расчетам специалистов, экономический эффект от ее
             использования составит несколько десятков миллионов рублей в год.`,
+            newsCategory: null,
+            newsCategoryId: 2,
             isSaved: true,
             isImportant: true,
         },
-        {
-            id: 1,
-            img: 'http://cdnimg.rg.ru/img/content/198/28/66/1000_d_850.jpeg',
-            title: 'DEFAULT',
-            description: `Test`,
-        },
-        {
-            id: 2,
-            img: 'http://cdnimg.rg.ru/img/content/198/28/66/1000_d_850.jpeg',
-            title: 'IMPORTANT',
-            description: `Test`,
-            isImportant: true,
-        }
     ];
     public dataToView: IPost[] = [];
     public id: string = '';
@@ -76,12 +69,12 @@ export class TabsNewsPage implements OnInit, IPageTab {
     }
 
     ngOnInit(): void {
-        this.dataToView = this.data;
         this.getNews();
     }
 
     public async getNews(): Promise<void> {
         this.data = await this.tabsService.getNews();
+        console.log(this.data);
     }
     public changeSection(section: IMenuItem): void {
         this.section$.next(section.logo);

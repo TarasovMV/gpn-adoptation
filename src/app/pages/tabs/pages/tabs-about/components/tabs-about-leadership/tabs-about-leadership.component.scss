@@ -1,0 +1,42 @@
+@import "src/theme/functions/resizer";
+
+* {
+    box-sizing: border-box;
+}
+.item {
+    width: 100%;
+    height: sizeHeight(38);
+    padding: sizeHeight(10) 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__header {
+        flex-grow: 1;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    &__stage {
+        height: 100%;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .total {
+            width: sizeWidth(60);
+
+            &__done {
+                color: #0059F7;
+            }
+        }
+    }
+    .arrow {
+        transform: rotate(-90deg);
+    }
+    .active {
+        transform: none;
+    }
+}

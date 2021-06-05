@@ -1,0 +1,51 @@
+@import "src/theme/functions/resizer";
+
+* {
+    box-sizing: border-box;
+}
+.header {
+    height: sizeHeight(126);
+    background-color: #0059f7;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: sizeHeight(18);
+
+    display: flex;
+    align-items: center;
+    gap: sizeWidth(25);
+
+    padding: sizeHeight(44) sizeWidth(30) 0;
+    .arrow {
+        transform: rotate(90deg);
+    }
+    .title {
+        display: flex;
+        align-items: center;
+    }
+}
+.content {
+    height: 100%;
+    background-color: #f8fafb;
+    padding: sizeHeight(25) sizeWidth(16) 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: sizeHeight(15);
+
+    color: #404763;
+    font-size: sizeHeight(18);
+
+    overflow-y: scroll;
+
+    .experience {
+        width: 100%;
+
+        &__period {
+            color: #0059f7;
+            font-size: sizeHeight(18);
+        }
+        &__content {
+            font-size: sizeHeight(14);
+        }
+    }
+}

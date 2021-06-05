@@ -80,7 +80,7 @@
         gap: sizeHeight(7);
 
         .stage {
-            height: sizeHeight(185);
+            min-height: sizeHeight(185);
             width: 100%;
             background-color: #ffffff;
             border-radius: sizeHeight(22);

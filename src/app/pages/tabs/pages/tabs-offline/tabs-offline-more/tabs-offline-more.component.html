@@ -10,27 +10,19 @@
 <ion-content>
   <div class="content">
     <div class="content__title">
-      Оформление трудовых отношений
+      {{data?.title}}
     </div>
     <div class="content__description">
-      Последовательность процедуры оформления трудовых
-      отношений (перечень документов, заключение
-      трудового договора, знакомство с подразделением,
-      учетная запись и регистрация в системе)
+      {{data?.description}}
     </div>
     <div class="content__stages">
-      <div class="stage" *ngFor="let stage of stages, index as idx">
+      <div class="stage" *ngFor="let stage of data?.stages">
         <div class="head">
-          <div class="name">Первый этап</div>
-          <div class="index">{{idx+1}}</div>
+          <div class="name">{{stage?.title}}</div>
+          <div class="index">{{stage?.stageNumberString}}</div>
         </div>
         <div class="task">
-          За 1 - 2 дня до даты трудоустройства Вам
-          придет электронное письмо письмо от
-          Рекрутера с инструкцией по прохождению
-          внутризаводского инструктажа по ОТ и ПБ,
-          который необходим в том числе для
-          получения временного пропуска
+          {{stage?.description}}
         </div>
       </div>
     </div>

@@ -11,10 +11,10 @@
 
 <ion-content>
   <div class="content">
-    <ng-container *ngFor="let card of cards">
+    <ng-container *ngFor="let card of data">
     <div class="card" (click)="openCard(card)">
       <div class="card__icon">
-        <svg-icon src="assets/icon/offline/{{card.logo}}.svg"></svg-icon>
+        <img src="http://admin.corporateservice.gnkdev.space/{{card?.iconPath}}"/>
       </div>
       <div class="card__name">{{card.title}}</div>
     </div>

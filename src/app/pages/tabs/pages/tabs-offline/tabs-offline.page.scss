@@ -67,10 +67,12 @@
 
         display: flex;
         flex-direction: column;
-        gap: sizeHeight(20);
         color: #404763;
+        overflow: hidden;
+
 
         &__icon {
+            min-height: sizeHeight(47);
             height: sizeHeight(47);
             width: sizeWidth(47);
             border-radius: sizeHeight(12);
@@ -79,6 +81,18 @@
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+        &__name {
+            width: 100%;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        img {
+            max-width: sizeWidth(20);
+            max-height: sizeHeight(20);
         }
     }
 }

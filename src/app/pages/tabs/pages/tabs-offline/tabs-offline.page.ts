@@ -1,19 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { TabsService } from 'src/app/core/services/tabs/tabs.service';
 import { IPageTab, PageTabType } from "../../tabs.interfaces";
 
-export interface IOffline {
-    id: number,
-    logo: string
-    title: string,
-    description?: string
-    stages?: IStage[]
-}
 export interface IStage {
     id: number,
-    stage: string,
-    task: string,
+    description: string,
+    helpTaskLinkId: number,
+    stageNumberString: string,
+    taskId: number,
+    title: string,
+}
+export interface IBusiness {
+    description: string,
+    iconPath: string,
+    id: number,
+    regionId?: number,
+    stages: IStage[],
+    title: string
 }
 @Component({
     selector: 'app-tabs-offline',
@@ -24,61 +29,29 @@ export class TabsOfflinePage implements OnInit, IPageTab {
     public route: PageTabType = 'offline';
     public readonly cities: string[] = ['Москва', 'Омск', 'Санкт-Петербург'];
     public city$: BehaviorSubject<string> = new BehaviorSubject<string>('Москва');
-    public cards: IOffline[] = [
-        {
-            id: 0,
-            logo: 'home',
-            title: `Оформление трудовых отношений`,
-        },
-        {
-            id: 1,
-            logo: 'work',
-            title: `Приём на работу (Оформление)`,
-        },
-        {
-            id: 2,
-            logo: 'wallet',
-            title: `Оформление банковской карты`,
-        },
-        {
-            id: 3,
-            logo: 'profile',
-            title: `Спецодежда и СИЗ`,
-        },
-        {
-            id: 4,
-            logo: 'heart',
-            title: `Информация о ДМС`,
-        },
-        {
-            id: 5,
-            logo: 'shield',
-            title: `ОСтрахование от несчастных случаев`,
-        },
-        {
-            id: 6,
-            logo: 'star',
-            title: `Внешний вид`,
-        },
-        {
-            id: 7,
-            logo: 'calling',
-            title: `ИТ-поддержка`,
-        },
-    ];
+    public data: IBusiness[];
 
     constructor(
-        public router: Router
+        public router: Router,
+        public tabsService: TabsService
     ) {
     }
 
     ngOnInit(): void {
+        this.getBusiness();
+    }
+
+    public async getBusiness(): Promise<void> {
+        const data = await this.tabsService.getBusinessProcesses();
+        this.data = data;
+        console.log(data);
     }
 
     public changeCity(city: string): void {
         this.city$.next(city)
     }
-    public openCard(card: IOffline): void {
+    public openCard(card: IBusiness): void {
         this.router.navigate(['tabs/tabs-offline/' + card.id]);
+        this.tabsService.BusinessStages$.next(card);    
     }
 }

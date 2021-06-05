@@ -120,11 +120,18 @@ export class TabsProgressPage implements OnInit, IPageTab {
 
     ngOnInit(): void {
         this.getData();
-        this.progressValue();
     }
 
     public async getData(): Promise<void> {
-        this.data = await this.tabsService.getAdaptation();
+        try {
+            this.data = await this.tabsService.getAdaptation();
+        }
+        catch(error) {
+            console.error(error);
+        }
+        finally {
+            this.progressValue();
+        }
     }
 
     public performedInSection(subStages: IStage[]): number {
