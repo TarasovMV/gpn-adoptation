@@ -6,30 +6,33 @@ import { IColleague } from "src/app/pages/tabs/pages/tabs-chat/tabs-chat.page";
 import { IPost } from "src/app/pages/tabs/pages/tabs-news/tabs-news.page";
 import { IBusiness } from "src/app/pages/tabs/pages/tabs-offline/tabs-offline.page";
 import { IProgress } from "src/app/pages/tabs/tabs.interfaces";
+import {AppConfigService} from "../platform/app-config.service";
 
 @Injectable({
     providedIn: 'root'
 })
 
 export class TabsService {
-    public restUrl = 'admin.corporateservice.gnkdev.space';
+    private readonly restUrl;
     public showMenu$: BehaviorSubject<string> = new BehaviorSubject<string>('on');
     public tabsChat$: BehaviorSubject<IColleague> = new BehaviorSubject<IColleague>(null);
     public BusinessStages$: BehaviorSubject<IBusiness> = new BehaviorSubject<IBusiness>(null);
     public person$: BehaviorSubject<IMasterMind> = new BehaviorSubject<IMasterMind>(null);
 
-    constructor(private http: HttpClient) {}
+    constructor(appConfigService: AppConfigService, private http: HttpClient) {
+        this.restUrl = appConfigService.getAttribute('restUrl');
+    }
 
     public async getAdaptation(): Promise<IProgress[]> {
-        return await this.http.get<IProgress[]>(`http://${this.restUrl}/api/adaptationstages`).toPromise();
+        return await this.http.get<IProgress[]>(`${this.restUrl}/api/adaptationstages`).toPromise();
     }
     public async getNews(): Promise<IPost[]> {
-        return await this.http.get<IPost[]>(`http://${this.restUrl}/api/news`).toPromise();
+        return await this.http.get<IPost[]>(`${this.restUrl}/api/news`).toPromise();
     }
     public async getBusinessProcesses(): Promise<IBusiness[]> {
-        return await this.http.get<IBusiness[]>(`http://${this.restUrl}/api/businessprocesses`).toPromise();
+        return await this.http.get<IBusiness[]>(`${this.restUrl}/api/businessprocesses`).toPromise();
     }
     public async getMasterMindCategories(): Promise<IMasterMindCategory[]> {
-        return await this.http.get<IMasterMindCategory[]>(`http://${this.restUrl}/api/MasterMindCategories`).toPromise();
+        return await this.http.get<IMasterMindCategory[]>(`${this.restUrl}/api/MasterMindCategories`).toPromise();
     }
 }
