@@ -151,9 +151,9 @@ export class TabsProgressPage implements OnInit, IPageTab {
                 count += x.status;
                 this.allStagesLength++;
             })
-        });        
+        });
         this.doneStages = count;
-        this.percentProgress = count/this.allStagesLength;
+        this.percentProgress = count / this.allStagesLength;
     }
 
     public toProgressCard(element: IStage): void {
