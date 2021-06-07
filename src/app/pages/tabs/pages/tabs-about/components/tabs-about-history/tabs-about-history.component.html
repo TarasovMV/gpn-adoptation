@@ -1,3 +1,5 @@
-<p>
-  tabs-about-history works!
-</p>
+<div class="history-page">
+  <ng-container *ngFor="let period of data">
+    <div class="period" (click)="selectPeriod(period)">{{period.id}}</div>
+  </ng-container>
+</div>

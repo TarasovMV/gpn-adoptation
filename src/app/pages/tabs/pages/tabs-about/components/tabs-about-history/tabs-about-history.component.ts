@@ -1,4 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { TabsService } from 'src/app/core/services/tabs/tabs.service';
+
+export interface IHistory {
+  id: number,
+  text: string,
+  historyPeriodId: number,
+  historyPeriod: string
+}
 
 @Component({
   selector: 'app-tabs-about-history',
@@ -6,9 +14,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tabs-about-history.component.scss'],
 })
 export class TabsAboutHistoryComponent implements OnInit {
+  @Input() data: IHistory[];
+  constructor(
+    public tabsService: TabsService,
+  ) { }
 
-  constructor() { }
+  ngOnInit() {
+    console.log(this.data);
+  }
 
-  ngOnInit() {}
-
+  public selectPeriod(period: IHistory): void {
+    this.tabsService.historyPeriod$.next(period)
+}
 }

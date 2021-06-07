@@ -11,6 +11,7 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 import { TabsAboutLeadershipComponent } from './components/tabs-about-leadership/tabs-about-leadership.component';
 import { TabsAboutLeadershipCardComponent } from './components/tabs-about-leadership-card/tabs-about-leadership-card.component';
 import { TabsAboutPersonModule } from './components/tabs-about-person/tabs-about-person.module';
+import { TabsAboutHistoryComponent } from './components/tabs-about-history/tabs-about-history.component';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { TabsAboutPersonModule } from './components/tabs-about-person/tabs-about
   declarations: [
     TabsAboutPage,
     TabsAboutLeadershipComponent,
+    TabsAboutHistoryComponent
   ],
   exports: [
     TabsAboutLeadershipCardComponent

@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
+import { IHistory } from "src/app/pages/tabs/pages/tabs-about/components/tabs-about-history/tabs-about-history.component";
 import { IMasterMind, IMasterMindCategory } from "src/app/pages/tabs/pages/tabs-about/tabs-about.page";
 import { IColleague } from "src/app/pages/tabs/pages/tabs-chat/tabs-chat.page";
 import { IPost } from "src/app/pages/tabs/pages/tabs-news/tabs-news.page";
@@ -18,6 +19,7 @@ export class TabsService {
     public tabsChat$: BehaviorSubject<IColleague> = new BehaviorSubject<IColleague>(null);
     public BusinessStages$: BehaviorSubject<IBusiness> = new BehaviorSubject<IBusiness>(null);
     public person$: BehaviorSubject<IMasterMind> = new BehaviorSubject<IMasterMind>(null);
+    public historyPeriod$: BehaviorSubject<IHistory> = new BehaviorSubject<IHistory>(null);
 
     constructor(appConfigService: AppConfigService, private http: HttpClient) {
         this.restUrl = appConfigService.getAttribute('restUrl');
@@ -34,5 +36,8 @@ export class TabsService {
     }
     public async getMasterMindCategories(): Promise<IMasterMindCategory[]> {
         return await this.http.get<IMasterMindCategory[]>(`${this.restUrl}/api/MasterMindCategories`).toPromise();
+    }
+    public async getHistory(): Promise<IHistory[]> {
+        return await this.http.get<IHistory[]>(`${this.restUrl}/api/HistoryBullets`).toPromise();
     }
 }

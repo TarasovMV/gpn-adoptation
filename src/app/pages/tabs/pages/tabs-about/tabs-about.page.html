@@ -12,26 +12,16 @@
 <ion-content>
   <div class="content">
     <ng-container [ngSwitch]="section$ | async">
-      <div class="geography" *ngSwitchCase="'География'">
-        <div class="card">
-          <div class="card__city">Московская дирекция</div>
-          <div class="card__departament">Департамент системных производственных решений</div>
-          <div class="card__services"></div>
-          <div class="card__address">109429, Москва г, Капотня 2-й кв-л, дом № 1, корпус 11</div>
-        </div>
-      </div>
       <div class="history" *ngSwitchCase="'История'">
-        <div class="history__page">
-
+        <div class="history__content">
+          {{showHistory?.text}}
         </div>
         <div class="history__periods">
-          <div class="period"></div>
+          <app-tabs-about-history [data]="history"></app-tabs-about-history>
         </div>
       </div>
       <div class="leadership" *ngSwitchCase="'Руководство'">
-        <app-tabs-about-leadership
-        [data]="leadership"
-        ></app-tabs-about-leadership>
+        <app-tabs-about-leadership [data]="leadership"></app-tabs-about-leadership>
       </div>
     </ng-container>
   </div>

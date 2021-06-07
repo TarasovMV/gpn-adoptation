@@ -23,7 +23,6 @@ export class TabsAboutLeadershipComponent implements OnInit {
   }
 
   public openPerson(person: IMasterMind): void {
-    console.log(person);
     this.router.navigate(['tabs/tabs-about/' + person.id]);
     this.tabsService.person$.next(person);    
   }
