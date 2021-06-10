@@ -1,9 +1,18 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>tabs-chat</ion-title>
-  </ion-toolbar>
+  <div class="header">
+    <div class="title">Сообщения</div>
+  </div>
 </ion-header>
 
 <ion-content>
-
+  <div class="content">
+    <ng-container *ngFor="let item of dialogs">
+      <div class="item" (click)="openChat(item)">
+        <app-tabs-chat-interlocutor
+        [data]="item"
+        >
+        </app-tabs-chat-interlocutor>
+      </div>
+    </ng-container>
+  </div>
 </ion-content>

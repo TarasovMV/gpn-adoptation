@@ -1,0 +1,30 @@
+<ion-header>
+  <div class="header">
+    <svg-icon class="arrow" src="assets/icon/arrow.svg"
+    (click)="backToOffline()"
+    ></svg-icon>
+   <div class="title">Подробная информация</div>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="content">
+    <div class="content__title">
+      {{data?.title}}
+    </div>
+    <div class="content__description">
+      {{data?.description}}
+    </div>
+    <div class="content__stages">
+      <div class="stage" *ngFor="let stage of data?.stages">
+        <div class="head">
+          <div class="name">{{stage?.title}}</div>
+          <div class="index">{{stage?.stageNumberString}}</div>
+        </div>
+        <div class="task">
+          {{stage?.description}}
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

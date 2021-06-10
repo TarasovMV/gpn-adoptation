@@ -1,0 +1,21 @@
+<ion-header>
+  <div class="header">
+    <svg-icon class="arrow" src="assets/icon/arrow.svg"
+    (click)="backToPersonal()"
+    ></svg-icon>
+   <div class="title">Подробная информация</div>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="content">
+    <app-tabs-about-leadership-card
+    [element] = "tabsService.person$ | async"
+    ></app-tabs-about-leadership-card>
+
+    <div class="experience" *ngFor="let exp of data">
+      <div class="experience__period">{{exp.title}}</div>
+      <div class="experience__content">{{exp.content}}</div>
+    </div>
+  </div>
+</ion-content>

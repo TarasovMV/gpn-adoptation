@@ -1,0 +1,62 @@
+@import "src/theme/functions/resizer";
+
+* {
+    box-sizing: border-box;
+}
+.container {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    .header {
+        height: sizeHeight(126);
+        background-color: #0059f7;
+        color: #ffffff;
+        font-weight: 500;
+        font-size: sizeHeight(30);
+    
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    
+        padding: 0 sizeWidth(30);
+    
+        .title {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: sizeHeight(84);
+        }
+    }
+    
+    .content {
+        width: 100%;
+        flex-grow: 1;
+        background-color: #0059f7;
+        position: relative;
+        padding-top: sizeHeight(93);
+
+        display: flex;
+        justify-content: center;
+    
+        .logo {
+            position: absolute;
+            bottom: 0;
+        }
+
+        .enter {
+            height: sizeHeight(276);
+            width: sizeWidth(276);
+
+            position: relative;
+
+            .button {
+                position: absolute;
+                top: sizeHeight(110);
+                left: sizeWidth(110);
+            }
+        }
+    }
+}

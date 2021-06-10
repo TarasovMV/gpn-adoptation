@@ -1,0 +1,62 @@
+@import "src/theme/functions/resizer";
+
+* {
+    box-sizing: border-box;
+}
+
+.stage {
+    width: 100%;
+    height: sizeHeight(165);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: sizeHeight(15) sizeWidth(30);
+    border-radius: sizeHeight(22);
+    background-color: #FFFFFF;
+    font-size: sizeHeight(18);
+    margin: sizeHeight(4) 0;
+
+    &-active {
+        background-color: #0059f7;
+        color: #ffffff;
+    }
+    &__personal {
+        height: 100%;
+        width: 50%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: sizeHeight(12);
+
+        .name {
+            color: #404763;
+            font-size: sizeHeight(13);
+            line-height: sizeHeight(21);
+            
+            display: flex;
+            flex-direction: column;
+        }
+        .position {
+            color: #98A9BC;
+            font-size: sizeHeight(10);
+        }
+        .surname {
+            color: #0059f7;
+            font-size: sizeHeight(18);
+        }
+    }
+    &__photo {
+        width: sizeWidth(135);
+        height: sizeHeight(135);
+        border-radius: sizeHeight(22);
+
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

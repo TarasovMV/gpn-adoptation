@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { TabsOfflinePageRoutingModule } from './tabs-offline-routing.module';
 
 import { TabsOfflinePage } from './tabs-offline.page';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TabsOfflinePageRoutingModule
+    TabsOfflinePageRoutingModule,
+    AngularSvgIconModule
   ],
   declarations: [TabsOfflinePage]
 })

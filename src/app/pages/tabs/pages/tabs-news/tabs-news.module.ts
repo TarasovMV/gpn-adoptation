@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { TabsNewsPageRoutingModule } from './tabs-news-routing.module';
 
 import { TabsNewsPage } from './tabs-news.page';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TabsNewsPageRoutingModule
+    TabsNewsPageRoutingModule,
+    AngularSvgIconModule
   ],
   declarations: [TabsNewsPage]
 })

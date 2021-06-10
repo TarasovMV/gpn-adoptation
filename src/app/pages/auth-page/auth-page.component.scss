@@ -1,0 +1,78 @@
+@import "src/theme/functions/resizer";
+
+* {
+    box-sizing: border-box;
+}
+.container {
+    height: 100%;
+    width: 100%;
+    font-weight: 500;
+
+    display: flex;
+    flex-direction: column;
+
+    .header {
+        height: sizeHeight(126);
+        background-color: #ffffff;
+        font-size: sizeHeight(30);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+
+        padding: 0 sizeWidth(30);
+
+        .title {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: sizeHeight(84);
+            color: #404763;
+        }
+    }
+
+    .content {
+        width: 100%;
+        flex-grow: 1;
+        background-color: #0059f7;
+        position: relative;
+        padding-top: sizeHeight(201);
+
+        display: flex;
+        justify-content: center;
+        color: #ffffff;
+        font-size: sizeHeight(18);
+
+        .logo {
+            position: absolute;
+            bottom: 0;
+        }
+
+        .enter {
+            height: sizeHeight(222);
+            width: 100%;
+
+            position: relative;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: sizeHeight(12);
+
+            input {
+                height: sizeHeight(79);
+                width: sizeWidth(272);
+                border-radius: sizeHeight(9);
+                font-size: sizeHeight(36);
+                color: #0059f7;
+                padding: sizeWidth(40);
+                letter-spacing: sizeWidth(22);
+                background-color: #ffffff;
+                outline: none;
+                border: none;
+                margin-bottom: sizeHeight(42);
+            }
+        }
+    }
+}

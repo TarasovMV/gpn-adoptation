@@ -8,6 +8,7 @@ import {IPageTab, PageTabType} from "../../tabs.interfaces";
 })
 export class TabsTestsPage implements OnInit, IPageTab {
     public route: PageTabType = 'tests';
+    public tests: number[] = new Array(3);
 
     constructor() {
     }

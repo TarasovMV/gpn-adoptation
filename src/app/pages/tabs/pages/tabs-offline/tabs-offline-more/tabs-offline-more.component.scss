@@ -1,0 +1,90 @@
+@import "src/theme/functions/resizer";
+
+* {
+    box-sizing: border-box;
+}
+.header {
+    height: sizeHeight(126);
+    background-color: #0059f7;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: sizeHeight(18);
+
+    display: flex;
+    align-items: center;
+    gap: sizeWidth(25);
+
+    padding: sizeHeight(44) sizeWidth(30) 0;
+    .arrow {
+        transform: rotate(90deg);
+    }
+    .title {
+        display: flex;
+        align-items: center;
+    }
+}
+.content {
+    height: 100%;
+    background-color: #f8fafb;
+    padding: sizeHeight(25) sizeWidth(16) 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: sizeHeight(15);
+
+    color: #404763;
+    font-size: sizeHeight(18);
+
+    overflow-y: scroll;
+
+    &__title {
+        font-size: sizeHeight(24);
+        padding: 0 sizeWidth(17);
+    }
+    &__description {
+        color: #0059f7;
+        font-size: sizeHeight(12);
+        padding: 0 sizeWidth(17);
+    }
+
+    .head {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .name {
+            color: #0059f7;
+            font-size: sizeHeight(14);
+        }
+        .index {
+            height: sizeHeight(32);
+            width: sizeWidth(32);
+            background-color: #0059f7;
+            color: #ffffff;
+            border-radius: sizeHeight(12);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .task {
+        font-size: sizeHeight(14);
+    }
+
+    &__stages {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: sizeHeight(7);
+
+        .stage {
+            min-height: sizeHeight(185);
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: sizeHeight(22);
+            padding: sizeHeight(13) sizeWidth(17);
+        }
+    }
+}

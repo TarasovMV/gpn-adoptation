@@ -1,0 +1,26 @@
+<ion-header>
+  <div class="header">
+    <svg-icon class="arrow" src="assets/icon/arrow.svg" (click)="backToDialogues()"></svg-icon>
+    <div class="photo">
+      <svg-icon *ngIf="headerInfo?.photo else initials">
+      </svg-icon>
+      <ng-template #initials>
+        {{headerInfo?.surname[0] + headerInfo?.name[0]}}
+      </ng-template>
+    </div>
+    <div class="title">
+      <span>{{headerInfo?.surname}} {{headerInfo?.name}}</span>
+      <span class="status">Online</span>
+    </div>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="content">
+    <div class="content__messages"></div>
+    <div class="content__input">
+      <textarea placeholder="Введите Ваше сообщение..."></textarea>
+      <svg-icon src="assets/icon/chat/plane.svg"></svg-icon>
+    </div>
+  </div>
+</ion-content>

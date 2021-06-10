@@ -1,9 +1,37 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>tabs-news</ion-title>
-  </ion-toolbar>
+  <div class="header">
+    <div class="title">Новости</div>
+  </div>
+  <div class="menu">
+    <div class="menu__item" *ngFor="let item of menuItems">
+      <div class="logo" (click)="changeSection(item)" [ngClass]="{'active': item.logo === (section$ | async)}">
+        <svg-icon [src]="'assets/icon/news/' + item.logo + '.svg'"></svg-icon>
+      </div>
+      <div class="name">{{item.name}}</div>
+    </div>
+  </div>
 </ion-header>
 
 <ion-content>
-
+  <div class="content">
+    <ng-container *ngFor="let post of data">
+      <div class="post">
+        <div class="post__image">
+          <img src="http://admin.corporateservice.gnkdev.space/{{post.imagePath}}" />
+          <div class="share">
+            <svg-icon src="{{shareIcon}}"></svg-icon>
+          </div>
+          <div class="save" [ngClass]="{'saved': post.isSaved}" (click)="savePost(post)">
+            <svg-icon src="{{saveIcon}}"></svg-icon>
+          </div>
+        </div>
+        <div class="post__title">
+          {{post.title}}
+        </div>
+        <div class="post__description">
+          {{post.content}}
+        </div>
+      </div>
+    </ng-container>
+  </div>
 </ion-content>

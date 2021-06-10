@@ -1,9 +1,28 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>tabs-about</ion-title>
-  </ion-toolbar>
+  <div class="header">
+    <div class="title">О компании</div>
+  </div>
+  <div class="menu">
+    <ng-container *ngFor="let item of sections">
+      <div (click)="changeSection(item)" [ngClass]="{'active': item !== (section$ | async)}">{{item}}</div>
+    </ng-container>
+  </div>
 </ion-header>
 
 <ion-content>
-
+  <div class="content">
+    <ng-container [ngSwitch]="section$ | async">
+      <div class="history" *ngSwitchCase="'История'">
+        <div class="history__content">
+          {{showHistory?.text}}
+        </div>
+        <div class="history__periods">
+          <app-tabs-about-history [data]="history"></app-tabs-about-history>
+        </div>
+      </div>
+      <div class="leadership" *ngSwitchCase="'Руководство'">
+        <app-tabs-about-leadership [data]="leadership"></app-tabs-about-leadership>
+      </div>
+    </ng-container>
+  </div>
 </ion-content>

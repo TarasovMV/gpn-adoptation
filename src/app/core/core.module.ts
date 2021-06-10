@@ -5,6 +5,7 @@ import {appConfigInit, AppConfigService} from "./services/platform/app-config.se
 import {AuthenticationInterceptor} from "./interceptors/authentication.interceptor";
 import {ErrorInterceptor} from "./interceptors/error.interceptor";
 import {AngularSvgIconModule} from "angular-svg-icon";
+import {CacheInterceptor} from "./interceptors/cache.interceptor";
 
 @NgModule({
     declarations: [],
@@ -15,6 +16,7 @@ import {AngularSvgIconModule} from "angular-svg-icon";
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor,  multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor,  multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
         { provide: APP_INITIALIZER, useFactory: appConfigInit, deps: [AppConfigService], multi: true },
     ]

@@ -1,0 +1,16 @@
+<div class="dialog">
+  <div class="dialog__photo">
+    <svg-icon *ngIf="data.photo else initials">
+    </svg-icon>
+    <ng-template #initials>
+      {{data.surname[0] + data.name[0]}}
+    </ng-template>
+  </div>
+  <div class="dialog__user">
+    <div class="name">{{data.surname}} {{data.name}}</div>
+    <div class="position">{{data.position}}</div>
+  </div>
+  <div class="dialog__new-message">
+    {{data.unreadMessage}}
+  </div>
+</div>
