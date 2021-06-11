@@ -18,23 +18,20 @@ export class TabsPage implements OnInit {
 
     public readonly tabs: IPageTab[] = [
         {
-            route: 'news',
-        },
-        {
-            route: 'chat',
-        },
-        {
-            route: 'tests',
-        },
-        {
             route: 'about',
+        },
+        {
+            route: 'offline',
         },
         {
             route: 'progress',
         },
         {
-            route: 'offline',
-        }
+            route: 'tests',
+        },
+        {
+            route: 'notifications',
+        },
     ];
 
     private readonly tabsRouting: { [key in PageTabType]: string } = {
@@ -43,7 +40,8 @@ export class TabsPage implements OnInit {
         tests: 'tabs/tabs-tests',
         about: 'tabs/tabs-about',
         progress: 'tabs/tabs-progress',
-        offline: 'tabs/tabs-offline'
+        offline: 'tabs/tabs-offline',
+        notifications: 'tabs/tabs-notifications'
     };
 
     constructor(

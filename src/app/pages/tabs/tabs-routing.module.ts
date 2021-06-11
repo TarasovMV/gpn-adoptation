@@ -6,7 +6,7 @@ import {TabsPage} from './tabs.page';
 const routes: Routes = [
     {
         path: '',
-        redirectTo: 'tabs-news',
+        redirectTo: 'tabs-about',
         pathMatch: 'full',
     },
     {
@@ -37,13 +37,17 @@ const routes: Routes = [
                 path: 'tabs-offline',
                 loadChildren: () => import('./pages/tabs-offline/tabs-offline.module').then( m => m.TabsOfflinePageModule)
             },
+            {
+                path: 'tabs-notifications',
+                loadChildren: () => import('./pages/tabs-notifications/tabs-notifications.module').then( m => m.TabsNotificationsPageModule)
+            }
         ],
     },
     {
         path: '**',
         redirectTo: 'tabs-news',
         pathMatch: 'full',
-    }
+    },
 ];
 
 @NgModule({

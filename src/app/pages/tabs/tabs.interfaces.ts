@@ -3,7 +3,7 @@ export interface IPageTab {
     readonly icon?: string;
 }
 
-export type PageTabType = 'news' | 'chat' | 'tests' | 'about' | 'progress' | 'offline';
+export type PageTabType = 'news' | 'chat' | 'tests' | 'about' | 'progress' | 'offline' | 'notifications';
 
 export interface IProgress {
     id: number,
