@@ -1,14 +1,22 @@
 @font-face {
   font-family: "Magistral";
-  src: url("fonts/6f415d87a4b5031d623f64b0e4c0235b.eot");
-  src: url("fonts/6f415d87a4b5031d623f64b0e4c0235b.woff2") format("woff2"),
-    url("fonts/6f415d87a4b5031d623f64b0e4c0235b.woff") format("woff"),
-    url("fonts/6f415d87a4b5031d623f64b0e4c0235b.ttf") format("truetype")
+  src: url("fonts/magistral/6f415d87a4b5031d623f64b0e4c0235b.eot");
+  src: url("fonts/magistral/6f415d87a4b5031d623f64b0e4c0235b.woff2") format("woff2"),
+    url("fonts/magistral/6f415d87a4b5031d623f64b0e4c0235b.woff") format("woff"),
+    url("fonts/magistral/6f415d87a4b5031d623f64b0e4c0235b.ttf") format("truetype")
+}
+
+@font-face {
+  font-family: "SegoeUI";
+  src: url("fonts/segoe/SegoeUI.eot");
+  src: url("fonts/segoe/SegoeUI.woff2") format("woff2"),
+  url("fonts/segoe/SegoeUI.woff") format("woff"),
+  url("fonts/segoe/SegoeUI.ttf") format("truetype")
 }
 
 html {
-  font-family: "Magistral";
-  --ion-font-family: "Magistral";
-  --ion-default-font: "Magistral";
+  font-family: "SegoeUI";
+  --ion-font-family: "SegoeUI";
+  --ion-default-font: "SegoeUI";
 }
 
