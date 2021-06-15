@@ -16,7 +16,7 @@
           <div class="footer">{{item.footer}}</div>
         </div>
         <div *ngSwitchCase="2" class="usualText">
-          <span style="text-align: justify">{{item.body}}</span>
+          <span style="text-align: justify" [innerHTML]="item.body | textLines"></span>
           <div class="footer">{{item.footer}}</div>
         </div>
         <div *ngSwitchCase="12" class="button" (click)="clickButton(item)">{{item.header}}</div>

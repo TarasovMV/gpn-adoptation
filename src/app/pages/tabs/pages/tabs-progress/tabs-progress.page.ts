@@ -33,7 +33,10 @@ export class TabsProgressPage implements OnInit, IPageTab {
         try {
             this.data = await this.tabsService.getAdaptation(id);
             this.allStagesLength = this.data.adaptationStages.flatMap(x => x.adaptationSubStages).length;
-
+            this.data.adaptationStages.flatMap(x => x.adaptationSubStages).forEach(x =>
+                x.adaptationComponents = x.adaptationComponents.sort((a, b) => a.order - b.order)
+            );
+            this.data.adaptationStages.forEach(x => x.adaptationSubStages = x.adaptationSubStages.sort((a, b) => a.order - b.order))
             console.log(this.data);
         }
         catch(error) {
