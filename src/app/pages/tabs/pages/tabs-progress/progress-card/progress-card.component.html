@@ -16,7 +16,7 @@
           <div class="footer">{{item.footer}}</div>
         </div>
         <div *ngSwitchCase="2" class="usualText">
-          <span>{{item.body}}</span>
+          <span style="text-align: justify">{{item.body}}</span>
           <div class="footer">{{item.footer}}</div>
         </div>
         <div *ngSwitchCase="12" class="button" (click)="clickButton(item)">{{item.header}}</div>
@@ -43,7 +43,7 @@
             <div class="attention__title__logo-attention">
               <svg-icon src="assets/icon/progress/attention.svg"></svg-icon>
             </div>
-            <span>{{item.header}}</span>
+            <span style="font-weight: bold">{{item.header}}</span>
           </div>
           <div class="attention__description">{{item.body}}</div>
           <div class="footer">{{item.footer}}</div>

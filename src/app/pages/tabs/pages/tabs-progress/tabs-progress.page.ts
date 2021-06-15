@@ -32,6 +32,7 @@ export class TabsProgressPage implements OnInit, IPageTab {
     public async getData(id: number): Promise<void> {
         try {
             this.data = await this.tabsService.getAdaptation(id);
+            this.allStagesLength = this.data.adaptationStages.flatMap(x => x.adaptationSubStages).length;
 
             console.log(this.data);
         }
