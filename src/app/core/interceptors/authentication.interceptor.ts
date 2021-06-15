@@ -12,7 +12,7 @@ export class AuthenticationInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const cloned = req.clone({
             headers: req.headers.append(
-                'Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTE3MzU1MTIsImlzcyI6Imh0dHBzOi8vYWRtaW4uY29ycG9yYXRlc2VydmljZS5nbmtkZXYuc3BhY2UiLCJhdWQiOiJodHRwczovL2FkbWluLmNvcnBvcmF0ZXNlcnZpY2UuZ25rZGV2LnNwYWNlIn0.5t5xp8h_-yzWgMGObOUL9pNDkX7oLbrSw7DrzEpbQfo'
+                'Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwianRpIjoiOGRmMDQ1YTQtOWNhNS00ODYyLThlZWItZjA2MWFlNTNkNzA2IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6IkFkbWluaXN0cmF0b3IiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOlsiQWRtaW5pc3RyYXRvciIsIkFkb3B0YXRpb25SZWFkIl0sImV4cCI6MTYyMzc4MDQ3M30.kqxqujaO2QoZqujIeyUARircTgF19L8zKV-3iZyKeig'
             )
         });
         return next.handle(cloned);

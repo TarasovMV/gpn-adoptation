@@ -9,11 +9,57 @@
 
 <ion-content>
   <div class="content">
-    <div class="content__title">{{data?.header}}</div>
-    <img src="http://admin.corporateservice.gnkdev.space/{{data?.imagePath}}"/>
-    <div class="content__description">
-      {{data?.body}}
-    </div>
-    <div class="content__button">Выполнено</div>
+    <ng-container *ngFor="let item of data">
+      <ng-container [ngSwitch]="item.componentType">
+        <img *ngSwitchCase="1" src='http://185.165.161.23/{{item.imagePath}}'/>
+        <div *ngSwitchCase="2" class="usualText">{{item.body}}</div>
+        <div *ngSwitchCase="3" class="button">{{item.header}}</div>
+        <video *ngSwitchCase="4" src='http://185.165.161.23/{{item.videoPath}}' controls></video> 
+        <div *ngSwitchCase="5" class="accentText">{{item?.header}}</div>
+        <div class="termin" *ngSwitchCase="11">
+          <div class="termin__title">
+            <div class="termin__title__logo">
+              <svg-icon src="assets/icon/progress/termin.svg"></svg-icon>
+            </div>
+            <span>{{item.header}}</span>
+          </div>
+          <div class="termin__description">{{item.body}}</div>
+        </div>
+        <div class="attention" *ngSwitchCase="7">
+          <div class="attention__title">
+            <div class="attention__title__logo-attention">
+              <svg-icon src="assets/icon/progress/attention.svg"></svg-icon>
+            </div>
+            <span>{{item.header}}</span>
+          </div>
+          <div class="attention__description">{{item.body}}</div>
+        </div>
+        <div class="block" *ngSwitchCase="8">
+          {{item.body}}
+        </div>
+        <div class="points" *ngSwitchCase="9">
+          <div class="points__title">
+            <div class="point">
+              <svg-icon src="assets/icon/progress/point.svg"></svg-icon>
+            </div>
+            <span>{{item.header}}</span>
+          </div>
+          <div class="points__description">{{item.body}}</div>
+        </div>
+        <div class="file" *ngSwitchCase="10" (click)="openFile()">
+          <svg-icon src="assets/icon/progress/file.svg"></svg-icon>
+          <span>{{item.filePath}}</span>
+        </div>
+        <div class="more" *ngSwitchCase="6">
+          <div class="more__title" (click)="openMore(item)">
+            <span>Подробнее</span>
+            <svg-icon class="arrow" src="assets/icon/arrow.svg" [ngClass]="{'active': item.isActive}"></svg-icon>
+          </div>
+          <div class="more__description" *ngIf="item.isActive">
+            {{item.body}}
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
   </div>
 </ion-content>

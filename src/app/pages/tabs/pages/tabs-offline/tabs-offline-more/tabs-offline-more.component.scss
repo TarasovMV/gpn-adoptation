@@ -5,7 +5,7 @@
 }
 .header {
     height: sizeHeight(126);
-    background-color: #0059f7;
+    background-color: #006FBA;
     color: #ffffff;
     font-weight: 500;
     font-size: sizeHeight(18);
@@ -42,7 +42,7 @@
         padding: 0 sizeWidth(17);
     }
     &__description {
-        color: #0059f7;
+        color: #006FBA;
         font-size: sizeHeight(12);
         padding: 0 sizeWidth(17);
     }
@@ -53,13 +53,13 @@
         align-items: center;
         justify-content: space-between;
         .name {
-            color: #0059f7;
+            color: #006FBA;
             font-size: sizeHeight(14);
         }
         .index {
             height: sizeHeight(32);
             width: sizeWidth(32);
-            background-color: #0059f7;
+            background-color: #006FBA;
             color: #ffffff;
             border-radius: sizeHeight(12);
 

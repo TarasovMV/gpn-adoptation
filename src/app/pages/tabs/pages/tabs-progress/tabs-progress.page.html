@@ -12,20 +12,20 @@
 
 <ion-content>
   <div class="content">
-    <ng-container *ngFor="let item of data">
+    <ng-container *ngFor="let item of data?.adaptationStages">
       <div class="item" (click)="switchStage(item)">
-        <div class="item__header">{{item.header}}</div>
+        <div class="item__header">{{item.name}}</div>
         <div class="item__stage">
-          <div class="total"><span class="total__done">{{performedInSection(item.subStages)}}</span> из
-            {{item.subStages.length}}</div>
+          <div class="total"><span class="total__done">1</span> из
+            {{item.adaptationSubStages?.length}}</div>
           <svg-icon class="arrow" src="assets/icon/arrow.svg" [ngClass]="{'active': item.isActive}"></svg-icon>
         </div>
       </div>
       <ng-container *ngIf="item.isActive">
-        <ng-container *ngFor="let element of item.subStages">
-          <div class="stage" [ngClass]="{'stage-active': element.status}" (click)="toProgressCard(element)">
-            <span>{{element.header}}</span>
-            <span *ngIf="element.status" class="done">Выполнено</span>
+        <ng-container *ngFor="let element of item.adaptationSubStages">
+          <div class="stage" [ngClass]="{'stage-active': element.isDone}" (click)="toProgressCard(element)">
+            <span>{{element.name}}</span>
+            <span *ngIf="element.isDone" class="done">Выполнено</span>
           </div>
         </ng-container>
       </ng-container>

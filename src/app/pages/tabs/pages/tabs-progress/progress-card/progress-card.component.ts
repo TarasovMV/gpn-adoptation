@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TabsService } from 'src/app/core/services/tabs/tabs.service';
-import { IStage } from '../../../tabs.interfaces';
+import { IAdaptationComponents, IStage } from '../../../tabs.interfaces';
 
 @Component({
   selector: 'app-progress-card',
@@ -10,9 +10,9 @@ import { IStage } from '../../../tabs.interfaces';
 })
 export class ProgressCardComponent implements OnInit {
   public id: string;
-  public cardData: IStage
+  public cardData: IStage;
 
-  public data: IStage
+  public data: IAdaptationComponents[];
 
   constructor(
     private route: ActivatedRoute,
@@ -23,22 +23,18 @@ export class ProgressCardComponent implements OnInit {
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
     this.tabsService.showMenu$.next(null);
-    this.getData();
-  }
-
-  public async getData(): Promise<void> {
-    const data = await this.tabsService.getAdaptation();
-    data.forEach(v =>  {
-      v.subStages.forEach(x => {
-        if (+this.id === x.id) {
-          this.data = x;
-        }
-      })
+    this.tabsService.adaptationComponents$.subscribe(value => {
+      this.data = value;
     });
-}
+  }
 
   public backToProgress(): void {
     this.nav.navigate(['tabs/tabs-progress/']);
     this.tabsService.showMenu$.next('on');
+  }
+
+  public openFile(): void {}
+  public openMore(item: IAdaptationComponents): void {
+    item.isActive = !item.isActive;
   }
 }

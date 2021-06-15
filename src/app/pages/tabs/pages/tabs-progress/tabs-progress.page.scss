@@ -4,7 +4,7 @@
 }
 .header {
     height: 24vh;
-    background-color: #0059f7;
+    background-color: #006FBA;
     color: #ffffff;
 
     display: flex;
@@ -72,7 +72,7 @@
                 width: sizeWidth(60);
 
                 &__done {
-                    color: #0059F7;
+                    color: #0BA4A4;
                 }
             }
         }
@@ -91,18 +91,19 @@
         flex-direction: column;
         justify-content: space-between;
         padding: sizeHeight(16) sizeWidth(30);
-        border-radius: sizeHeight(22);
+        border-radius: sizeHeight(4);
         background-color: #FFFFFF;
         font-size: sizeHeight(18);
         margin: sizeHeight(4) 0;
 
         &-active {
-            background-color: #0059f7;
+            background-color: #006FBA;
             color: #ffffff;
         }
 
         .done {
             font-size: sizeHeight(12);
+            color: #0BA4A4;
         }
     }
 }

@@ -5,7 +5,7 @@
 }
 .header {
     height: sizeHeight(126);
-    background-color: #0059f7;
+    background-color: #006FBA;
     color: #ffffff;
     font-weight: 500;
     font-size: sizeHeight(30);
@@ -61,7 +61,7 @@
             min-width: sizeHeight(36);
             height: sizeHeight(36);
             width: sizeHeight(36);
-            background-color: #0059f7;
+            background-color: #006FBA;
             border-radius: sizeHeight(12);
 
             display: flex;
@@ -81,7 +81,7 @@
             }
             .deadline {
                 font-size: sizeHeight(14);
-                color: #0059f7
+                color: #006FBA
             }
         }
     }

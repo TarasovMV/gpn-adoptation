@@ -20,7 +20,7 @@ export class TabsOfflineMoreComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
-    this.tabsService.BusinessStages$.subscribe(value => {
+    this.tabsService.businessStages$.subscribe(value => {
       this.data = value;
     })
   }
