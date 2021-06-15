@@ -3,6 +3,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TabsService } from 'src/app/core/services/tabs/tabs.service';
 import { IAdaptationComponents, IStage } from '../../../tabs.interfaces';
 
+export enum AdaptationComponentsType {
+  none, imageWithText, textWithText, headerWithText,
+  term, note, textBlock, blitz, file, moreDetails,
+  points, video, buttons, squareImage
+}
+
 @Component({
   selector: 'app-progress-card',
   templateUrl: './progress-card.component.html',
@@ -36,5 +42,8 @@ export class ProgressCardComponent implements OnInit {
   public openFile(): void {}
   public openMore(item: IAdaptationComponents): void {
     item.isActive = !item.isActive;
+  }
+  public clickButton(item: IAdaptationComponents): void {
+    console.log(item.body);
   }
 }

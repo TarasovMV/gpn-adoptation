@@ -4,9 +4,7 @@ import { TabsService } from 'src/app/core/services/tabs/tabs.service';
 import { IAdaptationStages, IAdaptationSubStages, IPageTab, IProgress, PageTabType } from '../../tabs.interfaces';
 import { ProgressCardComponent } from './progress-card/progress-card.component';
 
-export enum AdaptationComponentsType {
-    image, video, usualText, accentText, termin, attention, blockText, quiz, file, more, points
-}
+
 
 @Component({
     selector: 'app-tabs-progress',
