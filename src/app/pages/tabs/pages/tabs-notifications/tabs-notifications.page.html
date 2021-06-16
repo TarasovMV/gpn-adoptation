@@ -6,8 +6,14 @@
 
 <ion-content>
   <div class="content">
-    <div class="empty">
-      <svg-icon src="assets/icon/empty.svg"></svg-icon>
-    </div>
+    <ng-container *ngFor="let item of notifications">
+      <div class="date">{{item.date | date: 'mediumDate'}}</div>
+      <div class="notifications" *ngFor="let element of item.notification">
+        <div class="calendar">
+          <svg-icon src="assets/icon/calendar.svg"></svg-icon>
+        </div>
+        <div class="text">{{element}}</div>
+      </div>
+    </ng-container>
   </div>
 </ion-content>

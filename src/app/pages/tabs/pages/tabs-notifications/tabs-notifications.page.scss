@@ -26,7 +26,7 @@
 .content {
     height: 100%;
     background-color: #f8fafb;
-    padding: sizeHeight(22) 0;
+    padding: sizeHeight(22) sizeWidth(24);
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -44,5 +44,46 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .date {
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #606580;
+        font-size: sizeHeight(12);
+        margin: sizeHeight(14) 0;
+    }
+
+    .notifications {
+        width: 100%;
+        min-height: sizeHeight(55);
+        padding: sizeHeight(10) sizeWidth(14);
+        border-radius: sizeHeight(4);
+        background-color: #ffffff;
+        margin: sizeHeight(5) 0;
+
+        display: flex;
+        align-items: center;
+        gap: sizeWidth(10);
+    }
+
+    .calendar {
+        min-width: sizeWidth(35);
+        min-height: sizeHeight(35);
+        width: sizeWidth(35);
+        height: sizeHeight(35);
+        border-radius: 50%;
+        background-color: #EB5757;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .text {
+        flex-grow: 1;
     }
 }

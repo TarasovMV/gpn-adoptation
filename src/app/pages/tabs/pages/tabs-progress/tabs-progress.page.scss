@@ -96,10 +96,11 @@
 
   .stage {
     width: 100%;
-
+    min-height: sizeHeight(61);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    gap: sizeHeight(5);
     padding: sizeHeight(16) sizeWidth(30);
     border-radius: sizeHeight(4);
     background-color: #FFFFFF;
