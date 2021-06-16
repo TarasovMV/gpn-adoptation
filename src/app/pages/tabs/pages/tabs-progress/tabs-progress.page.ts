@@ -15,7 +15,7 @@ export class TabsProgressPage implements OnInit, IPageTab {
     public route: PageTabType = 'progress';
     public data: IProgress = null;
     public doneStages = 0;
-    public allStagesLength = 0;
+    public allStagesLength: number;
     public percentProgress = 0;
 
     public progressCard = ProgressCardComponent;
@@ -37,6 +37,7 @@ export class TabsProgressPage implements OnInit, IPageTab {
                 x.adaptationComponents = x.adaptationComponents.sort((a, b) => a.order - b.order)
             );
             this.data.adaptationStages.forEach(x => x.adaptationSubStages = x.adaptationSubStages.sort((a, b) => a.order - b.order))
+            this.data.adaptationStages[0].isActive = true;
             console.log(this.data);
         }
         catch(error) {
@@ -72,5 +73,12 @@ export class TabsProgressPage implements OnInit, IPageTab {
         this.router.navigate(['tabs/tabs-progress/' + element.id]);
         this.tabsService.adaptationComponents$.next(element.adaptationComponents);
         console.log(element.adaptationComponents);
+    }
+
+    public async doRefresh(event): Promise<void> {
+        await this.getData(1);
+        setTimeout(() => {
+            event.srcElement.complete();
+        }, 300);
     }
 }

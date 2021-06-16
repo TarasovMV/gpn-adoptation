@@ -3,9 +3,10 @@
 * {
     box-sizing: border-box;
 }
+
 .header {
     height: sizeHeight(126);
-    background-color: #006FBA;
+    background-color: #006fba;
     color: #ffffff;
     font-weight: 500;
     font-size: sizeHeight(30);
@@ -23,10 +24,11 @@
         height: sizeHeight(84);
     }
 }
+
 .content {
     height: 100%;
     background-color: #f8fafb;
-    padding: sizeHeight(22) sizeWidth(24);
+    padding: sizeHeight(22) 0;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -37,7 +39,7 @@
 
     overflow-y: scroll;
 
-    .empty{
+    .empty {
         width: 100%;
         height: 100%;
 
@@ -76,7 +78,7 @@
         width: sizeWidth(35);
         height: sizeHeight(35);
         border-radius: 50%;
-        background-color: #EB5757;
+        background-color: #eb5757;
 
         display: flex;
         align-items: center;
@@ -85,5 +87,8 @@
 
     .text {
         flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }

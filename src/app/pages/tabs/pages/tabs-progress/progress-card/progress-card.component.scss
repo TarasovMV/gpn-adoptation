@@ -35,7 +35,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: sizeHeight(15);
+  gap: sizeHeight(25);
 
   color: #404763;
   font-size: sizeHeight(18);
@@ -44,10 +44,10 @@
 
   .footer {
     color: #98A9BC;
-    font-size: sizeHeight(12);
+    font-size: sizeHeight(14);
   }
 
-  .video, .image {
+  .video, .image .image-squad {
     display: flex;
     flex-direction: column;
     gap: sizeHeight(5);
@@ -73,13 +73,15 @@
 
   .usualText {
     color: #303549;
-    font-size: sizeHeight(14);
+    font-size: sizeHeight(16);
     text-align: justify;
   }
 
   .accentText {
     color: #303549;
     font-size: sizeHeight(18);
+    font-weight: bold;
+    width: 100%;
   }
 
   .block {
@@ -87,7 +89,7 @@
     padding: sizeWidth(16);
     background-color: #ffffff;
     border-radius: sizeWidth(22);
-    font-size: sizeHeight(14);
+    font-size: sizeHeight(16);
 
     display: flex;
     flex-direction: column;
@@ -132,7 +134,7 @@
       justify-content: space-between;
       align-items: center;
       font-family: bold;
-      font-size: sizeHeight(14);
+      font-size: sizeHeight(16);
     }
 
     .active {
@@ -153,7 +155,7 @@
     &__title {
       width: 100%;
       font-style: bold;
-      font-size: sizeHeight(14);
+      font-size: sizeHeight(16);
 
       display: flex;
       align-items: center;
@@ -161,7 +163,7 @@
 
       &__logo {
         width: sizeWidth(40);
-        height: sizeHeight(40);
+        height: sizeWidth(40);
         border-radius: 50%;
         background-color: #00A99D;
 
@@ -181,7 +183,7 @@
     }
 
     &__description {
-      font-size: sizeHeight(14);
+      font-size: sizeHeight(16);
       text-align: justify;
     }
   }
