@@ -39,7 +39,7 @@ export class TabsAboutPage implements OnInit, IPageTab {
     public route: PageTabType = 'about';
 
     public readonly restUrl: string;
-    public readonly sections: string[] = ['История', 'Руководство'];
+    public readonly sections: string[] = ['Руководство', 'История'];
     public section$: BehaviorSubject<string> = new BehaviorSubject<string>('Руководство');
     public leadership: IMasterMindCategory[] = [];
     public history: IHistory[] =[];
