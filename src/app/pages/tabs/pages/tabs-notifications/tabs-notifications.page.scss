@@ -73,9 +73,9 @@
 
     .calendar {
         min-width: sizeWidth(35);
-        min-height: sizeHeight(35);
+        min-height: sizeWidth(35);
         width: sizeWidth(35);
-        height: sizeHeight(35);
+        height: sizeWidth(35);
         border-radius: 50%;
         background-color: #eb5757;
 
@@ -85,9 +85,9 @@
     }
 
     .text {
-        flex-grow: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        //flex-grow: 1;
+        //display: flex;
+        //justify-content: center;
+        //align-items: center;
     }
 }

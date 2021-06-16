@@ -11,7 +11,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-refresher #refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+  <ion-refresher #refresher slot="fixed" style="z-index: 999" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <div class="content">
