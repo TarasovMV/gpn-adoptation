@@ -40,6 +40,6 @@ export class TabsService {
         return await this.http.get<IMasterMindCategory[]>(`${this.restUrl}/api/MasterMindCategories`).toPromise();
     }
     public async getHistory(): Promise<IHistory[]> {
-        return await this.http.get<IHistory[]>(`${this.restUrl}/api/HistoryBullets`).toPromise();
+        return await this.http.get<IHistory[]>(`${this.restUrl}/api/HistoryPeriods`).toPromise();
     }
 }

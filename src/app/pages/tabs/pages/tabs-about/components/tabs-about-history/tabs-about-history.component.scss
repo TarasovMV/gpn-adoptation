@@ -1,28 +1,33 @@
 @import "src/theme/functions/resizer";
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .history-page {
-    height: sizeHeight(38);
-    width: 100%;
+  height: sizeHeight(38);
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  gap: sizeWidth(15);
+
+  .period {
+    min-width: sizeWidth(106);
+    width: sizeWidth(106);
+    height: 100%;
+    border-radius: sizeHeight(27);
+    background-color: #ffffff;
+    color: #98a9bc;
+    font-size: sizeHeight(14);
 
     display: flex;
     align-items: center;
-    gap: sizeWidth(15);
+    justify-content: center;
 
-    .period {
-        min-width: sizeWidth(106);
-        width: sizeWidth(106);
-        height: 100%;
-        border-radius: sizeHeight(27);
-        background-color: #ffffff;
-        color: #98a9bc;
-        font-size: sizeHeight(14);
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    &__active {
+      background: #006FBA;
+      color: white;
     }
+  }
 }

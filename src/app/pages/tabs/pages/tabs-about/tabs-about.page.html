@@ -14,7 +14,8 @@
     <ng-container [ngSwitch]="section$ | async">
       <div class="history" *ngSwitchCase="'История'">
         <div class="history__content">
-          {{showHistory?.text}}
+          <p *ngFor="let bullet of showHistory?.historyBullets">{{ bullet.text }}</p>
+          <img *ngIf="showHistory?.imagePath" src="{{restUrl}}/{{showHistory?.imagePath}}"/>
         </div>
         <div class="history__periods">
           <app-tabs-about-history [data]="history"></app-tabs-about-history>

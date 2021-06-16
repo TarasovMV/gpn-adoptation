@@ -3,6 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { TabsService } from 'src/app/core/services/tabs/tabs.service';
 import {IPageTab, PageTabType} from "../../tabs.interfaces";
 import { IHistory } from './components/tabs-about-history/tabs-about-history.component';
+import {AppConfigService} from "../../../../core/services/platform/app-config.service";
 
 export interface IMasterMindCategory {
     id: number,
@@ -36,6 +37,8 @@ export interface IBullet {
 })
 export class TabsAboutPage implements OnInit, IPageTab {
     public route: PageTabType = 'about';
+
+    public readonly restUrl: string;
     public readonly sections: string[] = ['История', 'Руководство'];
     public section$: BehaviorSubject<string> = new BehaviorSubject<string>('Руководство');
     public leadership: IMasterMindCategory[] = [];
@@ -43,8 +46,10 @@ export class TabsAboutPage implements OnInit, IPageTab {
     public showHistory: IHistory;
 
     constructor(
-        public tabsService: TabsService
+        public tabsService: TabsService,
+        appConfigService: AppConfigService,
     ) {
+        this.restUrl = appConfigService.getAttribute('restUrl');
     }
 
     ngOnInit(): void {
@@ -62,8 +67,8 @@ export class TabsAboutPage implements OnInit, IPageTab {
     }
 
     public async getHistoryBullets(): Promise<void> {
-        const data = await this.tabsService.getHistory();
-        this.history = data;
+        this.history = await this.tabsService.getHistory();
+        this.tabsService.historyPeriod$.next(this.history?.[0]);
     }
 
     public changeSection(section: string): void {
