@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {TabsService} from 'src/app/core/services/tabs/tabs.service';
 import {IAdaptationComponents, IStage} from '../../../tabs.interfaces';
 import { Browser } from "@capacitor/browser";
+import {TabsProgressService} from "../services/tabs-progress.service";
 
 export enum AdaptationComponentsType {
     none, imageWithText, textWithText, headerWithText,
@@ -16,7 +17,7 @@ export enum AdaptationComponentsType {
     styleUrls: ['./progress-card.component.scss'],
 })
 export class ProgressCardComponent implements OnInit {
-    public id: string;
+    public id: number;
     public cardData: IStage;
 
     public data: IAdaptationComponents[];
@@ -24,12 +25,13 @@ export class ProgressCardComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         public nav: Router,
-        public tabsService: TabsService
+        public tabsService: TabsService,
+        private tabsProgressService: TabsProgressService,
     ) {
     }
 
     ngOnInit() {
-        this.id = this.route.snapshot.paramMap.get('id');
+        this.id = +this.route.snapshot.paramMap.get('id');
         this.tabsService.showMenu$.next(null);
         this.tabsService.adaptationComponents$.subscribe(value => {
             this.data = value;
@@ -52,5 +54,10 @@ export class ProgressCardComponent implements OnInit {
     public clickButton(item: IAdaptationComponents): void {
         console.log(item.body);
         Browser.open({url: item.body});
+    }
+
+    public setDone(): void {
+        console.log(this.id);
+        this.tabsProgressService.setDoneId(this.id);
     }
 }

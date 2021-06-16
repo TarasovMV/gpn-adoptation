@@ -18,6 +18,7 @@ export interface IAdaptationStages {
     order: number;
     adaptationSubStages: IAdaptationSubStages[];
     isActive?: boolean;
+    doneCount?: number;
 }
 
 export interface IAdaptationSubStages {
@@ -26,6 +27,7 @@ export interface IAdaptationSubStages {
     order: number;
     adaptationComponents: IAdaptationComponents[];
     isDone?: boolean;
+    disabled?: boolean;
 }
 
 export interface IAdaptationComponents {
