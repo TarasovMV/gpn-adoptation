@@ -41,7 +41,8 @@ export class ProgressCardComponent implements OnInit {
         this.tabsService.showMenu$.next('on');
     }
 
-    public openFile(): void {
+    public openFile(path: string): void {
+        Browser.open({url: `http://185.165.161.23/${path}`});
     }
 
     public openMore(item: IAdaptationComponents): void {

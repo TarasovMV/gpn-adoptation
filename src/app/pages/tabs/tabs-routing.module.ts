@@ -6,7 +6,7 @@ import {TabsPage} from './tabs.page';
 const routes: Routes = [
     {
         path: '',
-        redirectTo: 'tabs-about',
+        redirectTo: 'tabs-progress',
         pathMatch: 'full',
     },
     {

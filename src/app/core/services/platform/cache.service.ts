@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import { Storage } from '@capacitor/storage';
 import {HttpEvent, HttpRequest, HttpResponse} from "@angular/common/http";
+import {Network} from "@capacitor/network";
 
 interface ICache {
     url: string;
@@ -15,6 +16,10 @@ export class CacheService {
         {
             url: '/api/news',
             method: 'GET'
+        },
+        {
+            url: '/api/Adapt',
+            method: 'GET'
         }
     ]
 
@@ -22,6 +27,11 @@ export class CacheService {
     }
 
     public async getCache(url: string, method: string): Promise<HttpResponse<any>> {
+        const connection = await Network.getStatus();
+        console.log('network', connection)
+        if (!!connection.connected) {
+            return null;
+        }
         const data = await Storage.get({key: url});
         if (!!data?.value) {
             const obj = JSON.parse(data.value);

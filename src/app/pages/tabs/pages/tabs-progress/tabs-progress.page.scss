@@ -40,7 +40,8 @@
 .content {
   background-color: #f8fafb;
   height: 100%;
-  padding: sizeHeight(24) sizeWidth(24);
+  padding: sizeHeight(24) 5vh;
+  gap: .5vh;
 
   display: flex;
   flex-direction: column;
@@ -100,10 +101,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: sizeHeight(16) sizeWidth(30);
+    padding: sizeHeight(20) sizeWidth(20);
     border-radius: sizeHeight(4);
     background-color: #FFFFFF;
-    font-size: sizeHeight(14);
+    font-size: sizeHeight(16);
     font-weight: 600;
     margin: sizeHeight(4) 0;
 
