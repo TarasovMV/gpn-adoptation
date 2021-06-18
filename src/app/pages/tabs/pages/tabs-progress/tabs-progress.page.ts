@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TabsService } from 'src/app/core/services/tabs/tabs.service';
-import { IAdaptationStages, IAdaptationSubStages, IPageTab, IProgress, PageTabType } from '../../tabs.interfaces';
+import { IAdaptationStages, IAdaptationSubStage, IPageTab, IProgress, PageTabType } from '../../tabs.interfaces';
 import { ProgressCardComponent } from './progress-card/progress-card.component';
 import {TabsProgressService} from "./services/tabs-progress.service";
-
 
 
 @Component({
@@ -75,9 +74,9 @@ export class TabsProgressPage implements OnInit, IPageTab {
         this.percentProgress = doneCount / this.allStagesLength;
     }
 
-    public toProgressCard(element: IAdaptationSubStages): void {
+    public toProgressCard(element: IAdaptationSubStage): void {
         this.router.navigate(['tabs/tabs-progress/' + element.id]);
-        this.tabsService.adaptationComponents$.next(element.adaptationComponents);
+        this.tabsService.adaptationComponents$.next(element);
     }
 
     public async doRefresh(event): Promise<void> {

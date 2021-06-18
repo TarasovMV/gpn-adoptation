@@ -21,8 +21,7 @@ export class TabsNotificationsPage implements OnInit, IPageTab {
         },
         {
             date: new Date(),
-            notification: ['Вы выполнили не все назначенные на сегодня мероприятия',
-                'У вас непрочитанное сообщение']
+            notification: ['Вы выполнили не все назначенные на сегодня мероприятия']
         },
     ];
     constructor() {

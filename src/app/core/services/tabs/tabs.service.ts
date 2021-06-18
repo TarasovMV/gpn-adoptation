@@ -6,7 +6,7 @@ import { IMasterMind, IMasterMindCategory } from 'src/app/pages/tabs/pages/tabs-
 import { IColleague } from 'src/app/pages/tabs/pages/tabs-chat/tabs-chat.page';
 import { IPost } from 'src/app/pages/tabs/pages/tabs-news/tabs-news.page';
 import { IBusiness } from 'src/app/pages/tabs/pages/tabs-offline/tabs-offline.page';
-import { IAdaptationComponents, IProgress } from 'src/app/pages/tabs/tabs.interfaces';
+import {IAdaptationComponent, IAdaptationSubStage, IProgress} from 'src/app/pages/tabs/tabs.interfaces';
 import {AppConfigService} from '../platform/app-config.service';
 
 @Injectable({
@@ -19,7 +19,7 @@ export class TabsService {
     public businessStages$: BehaviorSubject<IBusiness> = new BehaviorSubject<IBusiness>(null);
     public person$: BehaviorSubject<IMasterMind> = new BehaviorSubject<IMasterMind>(null);
     public historyPeriod$: BehaviorSubject<IHistory> = new BehaviorSubject<IHistory>(null);
-    public adaptationComponents$: BehaviorSubject<IAdaptationComponents[]> = new BehaviorSubject<IAdaptationComponents[]>(null);
+    public adaptationComponents$: BehaviorSubject<IAdaptationSubStage> = new BehaviorSubject<IAdaptationSubStage>(null);
 
     private readonly restUrl;
 

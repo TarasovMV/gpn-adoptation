@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "696155454613",
+    "project_id": "gpnadaptation",
+    "storage_bucket": "gpnadaptation.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:696155454613:android:0aaf20dee93b76bb5def9c",
+        "android_client_info": {
+          "package_name": "io.gpn.adoptation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "696155454613-4ja6iie4gn86raj0q60u72tv49i44irk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQUauM_7tMsZf5AMJDpw1ZAo7azr3qosc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "696155454613-4ja6iie4gn86raj0q60u72tv49i44irk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

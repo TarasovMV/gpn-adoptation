@@ -54,10 +54,10 @@
   }
 
   .button {
-    height: sizeHeight(57);
-    min-height: sizeHeight(57);
+    height: sizeHeight(56);
+    min-height: sizeHeight(56);
     width: 100%;
-    border-radius: sizeHeight(22);
+    border-radius: sizeHeight(28);
     background-color: #006FBA;
     color: #FFFFFF;
     font-size: sizeHeight(18);
@@ -65,6 +65,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: .5s;
+
+    &__done {
+      background: #0BA4A4;
+      font-weight: bold;
+    }
+
+    &__disabled {
+      opacity: .5;
+      pointer-events: none;
+      transition: .5s;
+    }
   }
 
   img, video {
