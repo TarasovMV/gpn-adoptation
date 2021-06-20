@@ -28,7 +28,6 @@ export class CacheService {
 
     public async getCache(url: string, method: string): Promise<HttpResponse<any>> {
         const connection = await Network.getStatus();
-        console.log('network', connection)
         if (!!connection.connected) {
             return null;
         }

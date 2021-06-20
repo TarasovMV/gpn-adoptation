@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TabsService} from 'src/app/core/services/tabs/tabs.service';
-import {IAdaptationComponents, IStage} from '../../../tabs.interfaces';
+import {IAdaptationComponent, IStage} from '../../../tabs.interfaces';
 import { Browser } from "@capacitor/browser";
+import {TabsProgressService} from "../services/tabs-progress.service";
 
 export enum AdaptationComponentsType {
     none, imageWithText, textWithText, headerWithText,
@@ -16,23 +17,26 @@ export enum AdaptationComponentsType {
     styleUrls: ['./progress-card.component.scss'],
 })
 export class ProgressCardComponent implements OnInit {
-    public id: string;
+    public id: number;
     public cardData: IStage;
+    public isDone: boolean = false;
 
-    public data: IAdaptationComponents[];
+    public data: IAdaptationComponent[];
 
     constructor(
         private route: ActivatedRoute,
         public nav: Router,
-        public tabsService: TabsService
+        public tabsService: TabsService,
+        private tabsProgressService: TabsProgressService,
     ) {
     }
 
-    ngOnInit() {
-        this.id = this.route.snapshot.paramMap.get('id');
+    ngOnInit(): void {
+        this.id = +this.route.snapshot.paramMap.get('id');
         this.tabsService.showMenu$.next(null);
         this.tabsService.adaptationComponents$.subscribe(value => {
-            this.data = value;
+            this.data = value?.adaptationComponents;
+            this.isDone = value.isDone;
         });
     }
 
@@ -45,12 +49,17 @@ export class ProgressCardComponent implements OnInit {
         Browser.open({url: `http://185.165.161.23/${path}`});
     }
 
-    public openMore(item: IAdaptationComponents): void {
+    public openMore(item: IAdaptationComponent): void {
         item.isActive = !item.isActive;
     }
 
-    public clickButton(item: IAdaptationComponents): void {
+    public clickButton(item: IAdaptationComponent): void {
         console.log(item.body);
         Browser.open({url: item.body});
+    }
+
+    public setDone(): void {
+        this.tabsProgressService.setDoneId(this.id);
+        this.isDone = true;
     }
 }

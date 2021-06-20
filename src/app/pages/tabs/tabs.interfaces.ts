@@ -16,19 +16,21 @@ export interface IAdaptationStages {
     id: number;
     name: string;
     order: number;
-    adaptationSubStages: IAdaptationSubStages[];
+    adaptationSubStages: IAdaptationSubStage[];
     isActive?: boolean;
+    doneCount?: number;
 }
 
-export interface IAdaptationSubStages {
+export interface IAdaptationSubStage {
     id: number;
     name: string;
     order: number;
-    adaptationComponents: IAdaptationComponents[];
+    adaptationComponents: IAdaptationComponent[];
     isDone?: boolean;
+    disabled?: boolean;
 }
 
-export interface IAdaptationComponents {
+export interface IAdaptationComponent {
     id: number;
     order: number;
     componentType: number;

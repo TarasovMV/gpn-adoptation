@@ -55,6 +55,10 @@
   background-color: rgba(255, 255, 255, 0.2);
 }
 
+ion-content {
+  --background: #f8fafb;
+}
+
 .content {
   background-color: #f8fafb;
   height: 100%;
@@ -96,7 +100,8 @@
       align-items: center;
 
       .total {
-        width: sizeWidth(60);
+        width: max-content;
+        min-width: max-content;
 
         &__done {
           color: #0BA4A4;
@@ -126,9 +131,14 @@
     font-weight: 600;
     margin: sizeHeight(4) 0;
 
+    &-disabled {
+      opacity: .5;
+      pointer-events: none;
+    }
+
     &-active {
-      background-color: #006FBA;
-      color: #ffffff;
+      //background-color: #006FBA;
+      //color: #ffffff;
     }
 
     .done {

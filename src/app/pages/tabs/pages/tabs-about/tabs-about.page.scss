@@ -39,6 +39,7 @@
   padding: 0 sizeWidth(30);
   background-color: #006FBA;
   color: #ffffff;
+  font-weight: bold;
 
   display: flex;
   display: flex;
@@ -54,8 +55,7 @@
 
 .content {
   height: 100%;
-  background-color: #f8fafb;
-  padding: sizeHeight(22) sizeWidth(12);
+  padding: sizeHeight(22) 8vw;
   display: flex;
   flex-wrap: wrap;
   background-color: #f8fafb;
