@@ -13,6 +13,8 @@
   flex-direction: column;
   justify-content: space-between;
 
+  position: relative;
+
   padding: 5vh;
   font-weight: 600;
 
@@ -27,6 +29,22 @@
   &__step {
     font-size: sizeHeight(24);
   }
+
+  .logout {
+    width: sizeHeight(48);
+    height: sizeHeight(48);
+    background-color: #ffffff;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    right: sizeWidth(40);
+    top: sizeHeight(50);
+    z-index: 1;
+  }
 }
 
 .progress {
@@ -40,8 +58,7 @@
 .content {
   background-color: #f8fafb;
   height: 100%;
-  padding: sizeHeight(24) 5vh;
-  gap: .5vh;
+  padding: sizeHeight(24) sizeWidth(40);
 
   display: flex;
   flex-direction: column;
@@ -57,6 +74,7 @@
     width: 100%;
     height: sizeHeight(38);
     padding: sizeHeight(10) 0;
+    margin-bottom: sizeHeight(10);
 
     display: flex;
     align-items: center;
@@ -101,7 +119,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: sizeHeight(5);
     padding: sizeHeight(16) sizeWidth(30);
     border-radius: sizeHeight(4);
     background-color: #FFFFFF;
@@ -115,6 +132,7 @@
     }
 
     .done {
+      margin-top: sizeHeight(5);
       font-size: sizeHeight(12);
       color: #0BA4A4;
     }

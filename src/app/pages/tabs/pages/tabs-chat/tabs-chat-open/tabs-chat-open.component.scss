@@ -13,7 +13,6 @@
 
   display: flex;
   align-items: center;
-  gap: sizeWidth(15);
 
   padding: sizeHeight(44) sizeWidth(30) 0;
 
@@ -25,6 +24,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-left: sizeHeight(15);
 
     .status {
       font-size: sizeHeight(14);
@@ -54,7 +54,6 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  gap: sizeHeight(5);
 
   color: #404763;
   font-size: sizeHeight(16);
@@ -62,6 +61,7 @@
   &__messages {
     width: 100%;
     flex-grow: 1;
+    margin-bottom: sizeHeight(5);
   }
 
   &__input {

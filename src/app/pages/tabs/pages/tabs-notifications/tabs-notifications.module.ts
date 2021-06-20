@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -9,6 +9,12 @@ import { TabsNotificationsPageRoutingModule } from './tabs-notifications-routing
 import { TabsNotificationsPage } from './tabs-notifications.page';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 
+import { registerLocaleData } from '@angular/common';
+import localeRu from '@angular/common/locales/ru';
+
+registerLocaleData(localeRu, 'ru');
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -16,6 +22,9 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
     IonicModule,
     TabsNotificationsPageRoutingModule,
     AngularSvgIconModule
+  ],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'ru' }
   ],
   declarations: [TabsNotificationsPage]
 })

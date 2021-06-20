@@ -34,11 +34,11 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: sizeHeight(23);
         color: #404763;
 
         .title {
             font-size: sizeHeight(24);
+            margin-bottom: sizeHeight(23);
         }
 
         .description {
@@ -51,13 +51,13 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: sizeWidth(10);
 
         .dot {
             height: sizeHeight(6);
             width: sizeWidth(6);
             border-radius: 50%;
             background-color: #E0E0E0;
+            margin: 0 sizeWidth(5);
         }
     }
 
@@ -66,13 +66,9 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: sizeHeight(12);
         padding: 0 sizeWidth(18);
         margin: sizeHeight(50) 0;
 
-        .support {
-            color: #006FBA;
-        }
     
         .start {
             height: sizeHeight(57);

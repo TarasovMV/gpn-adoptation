@@ -29,12 +29,13 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: sizeHeight(12);
+    margin-left: sizeWidth(15);
 
     .name {
       color: #404763;
       font-size: sizeHeight(13);
       line-height: sizeHeight(21);
+      margin-bottom: sizeHeight(12);
 
       display: flex;
       flex-direction: column;

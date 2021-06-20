@@ -30,7 +30,6 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    gap: sizeHeight(5);
 
     color: #404763;
     font-size: sizeHeight(16);
@@ -40,5 +39,6 @@
     .item{
         width: 100%;
         height: sizeHeight(63);
+        margin-bottom: sizeHeight(5);
     }
 }

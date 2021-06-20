@@ -12,7 +12,6 @@
 
     display: flex;
     align-items: center;
-    gap: sizeWidth(25);
 
     padding: sizeHeight(44) sizeWidth(30) 0;
     .arrow {
@@ -21,6 +20,7 @@
     .title {
         display: flex;
         align-items: center;
+        margin-left: sizeWidth(25);
     }
 }
 .content {
@@ -30,7 +30,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: sizeHeight(15);
+    margin-bottom: sizeHeight(15);
 
     color: #404763;
     font-size: sizeHeight(18);
@@ -74,7 +74,7 @@
                 background-color: #ffffff;
                 color: #98a9bc;
                 font-size: sizeHeight(14);
-                gap: sizeWidth(27);
+                margin-bottom: sizeHeight(5);
 
                 display: flex;
                 align-items: center;

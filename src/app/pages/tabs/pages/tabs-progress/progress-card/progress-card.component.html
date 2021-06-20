@@ -11,28 +11,28 @@
   <div class="content">
     <ng-container *ngFor="let item of data">
       <ng-container [ngSwitch]="item.componentType">
-        <div *ngSwitchCase="1" class="image">
+        <div *ngSwitchCase="1" class="image mb">
           <img  src='http://185.165.161.23/{{item.imagePath}}'/>
           <div class="footer">{{item.footer}}</div>
         </div>
-        <div *ngSwitchCase="13" class="image-squad">
+        <div *ngSwitchCase="13" class="image-squad mb">
           <img  src='http://185.165.161.23/{{item.imagePath}}'/>
           <div class="footer">{{item.footer}}</div>
         </div>
-        <div *ngSwitchCase="2" class="usualText">
+        <div *ngSwitchCase="2" class="usualText mb">
           <span style="text-align: justify" [innerHTML]="item.body | textLines"></span>
           <div class="footer">{{item.footer}}</div>
         </div>
-        <div *ngSwitchCase="12" class="button" (click)="clickButton(item)">{{item.header}}</div>
-        <div *ngSwitchCase="11" class="video">
+        <div *ngSwitchCase="12" class="button mb" (click)="clickButton(item)">{{item.header}}</div>
+        <div *ngSwitchCase="11" class="video mb">
           <video src='http://185.165.161.23/{{item.videoPath}}' controls></video>
           <div class="footer">{{item.footer}}</div>
         </div>
-        <div *ngSwitchCase="3" class="accentText">
+        <div *ngSwitchCase="3" class="accentText mb">
           <span>{{item?.body}}</span>
           <div class="footer">{{item.footer}}</div>
         </div>
-        <div class="termin" *ngSwitchCase="4">
+        <div class="termin mb" *ngSwitchCase="4">
           <div class="termin__title">
             <div class="termin__title__logo">
               <svg-icon src="assets/icon/progress/termin.svg"></svg-icon>
@@ -42,7 +42,7 @@
           <div class="termin__description">{{item.body}}</div>
           <div class="footer">{{item.footer}}</div>
         </div>
-        <div class="attention" *ngSwitchCase="5">
+        <div class="attention mb" *ngSwitchCase="5">
           <div class="attention__title">
             <div class="attention__title__logo-attention">
               <svg-icon src="assets/icon/progress/attention.svg"></svg-icon>
@@ -52,11 +52,11 @@
           <div class="attention__description">{{item.body}}</div>
           <div class="footer">{{item.footer}}</div>
         </div>
-        <div class="block" *ngSwitchCase="6">
+        <div class="block mb" *ngSwitchCase="6">
           <span style="text-align: justify" [innerHTML]="item.body | textLines"></span>
           <div class="footer">{{item.footer}}</div>
         </div>
-        <div class="points" *ngSwitchCase="10">
+        <div class="points mb" *ngSwitchCase="10">
           <div class="points__title">
             <div class="point">
               <svg-icon src="assets/icon/progress/point.svg"></svg-icon>
@@ -65,13 +65,13 @@
           </div>
           <div class="points__description">{{item.body}}</div>
         </div>
-        <div class="file" *ngSwitchCase="8" (click)="openFile(item.filePath)">
+        <div class="file mb" *ngSwitchCase="8" (click)="openFile(item.filePath)">
           <svg-icon src="assets/icon/progress/file.svg"></svg-icon>
-          <span>{{item.filePath | routeFile}}</span>
+          <span class="file__path">{{item.filePath | routeFile}}</span>
         </div>
-        <div class="more" *ngSwitchCase="9">
+        <div class="more mb" *ngSwitchCase="9">
           <div class="more__title" (click)="openMore(item)">
-            <span>Подробнее</span>
+            <span>{{item.header}}</span>
             <svg-icon class="arrow" src="assets/icon/arrow.svg" [ngClass]="{'active': item.isActive}"></svg-icon>
           </div>
           <div class="more__description" *ngIf="item.isActive">
@@ -79,7 +79,7 @@
             <div class="footer">{{item.footer}}</div>
           </div>
         </div>
-        <div class="blitz" *ngSwitchCase="7">
+        <div class="blitz mb" *ngSwitchCase="7">
           <div class="blitz__header">{{item.header}}</div>
           <div class="blitz__rate"></div>
           <div class="footer">{{item.footer}}</div>
