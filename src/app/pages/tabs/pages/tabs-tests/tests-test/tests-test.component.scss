@@ -1,0 +1,107 @@
+@import "src/theme/functions/resizer";
+
+* {
+    box-sizing: border-box;
+}
+
+.header {
+    height: sizeHeight(126);
+    background-color: #006fba;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: sizeHeight(18);
+
+    display: flex;
+    align-items: center;
+
+    padding: sizeHeight(44) sizeWidth(30) 0;
+
+    .arrow {
+        transform: rotate(90deg);
+    }
+
+    .title {
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        margin-left: sizeWidth(25);
+    }
+}
+
+.content {
+    height: 100%;
+    background-color: #f8fafb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    font-size: sizeHeight(18);
+
+    overflow-y: scroll;
+
+    &__body {
+        width: 100%;
+        flex-grow: 1;
+        background-color: #006fba;
+        padding: 0 sizeWidth(37);
+
+        display: flex;
+        flex-direction: column;
+
+        .title {
+            width: 100%;
+            height: sizeHeight(147);
+            font-size: sizeHeight(22);
+            font-weight: 700;
+            font-style: Bold;
+            color: #ffffff;
+            margin-bottom: sizeHeight(24);
+        }
+
+        .text {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            margin-bottom: sizeHeight(24);
+
+            color: #ffffff;
+
+            .logo {
+                width: sizeHeight(45);
+                height: sizeHeight(45);
+                border-radius: sizeHeight(14);
+                background-color: #ffffff;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                margin-right: sizeWidth(24);
+            }
+        }
+    }
+
+    &__footer {
+        width: 100%;
+        height: sizeHeight(161);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+
+        .button {
+            width: sizeWidth(311);
+            height: sizeHeight(56);
+            background-color: #006fba;
+            color: #f8fafb;
+            font-size: sizeHeight(18);
+            font-weight: 600;
+            border-radius: sizeHeight(28);
+            margin-bottom: sizeHeight(41);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}

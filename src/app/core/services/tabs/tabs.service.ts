@@ -6,6 +6,7 @@ import { IMasterMind, IMasterMindCategory } from 'src/app/pages/tabs/pages/tabs-
 import { IColleague } from 'src/app/pages/tabs/pages/tabs-chat/tabs-chat.page';
 import { IPost } from 'src/app/pages/tabs/pages/tabs-news/tabs-news.page';
 import { IBusiness } from 'src/app/pages/tabs/pages/tabs-offline/tabs-offline.page';
+import { ITests } from 'src/app/pages/tabs/pages/tabs-tests/tabs-tests.page';
 import {IAdaptationComponent, IAdaptationSubStage, IProgress} from 'src/app/pages/tabs/tabs.interfaces';
 import {AppConfigService} from '../platform/app-config.service';
 
@@ -20,6 +21,7 @@ export class TabsService {
     public person$: BehaviorSubject<IMasterMind> = new BehaviorSubject<IMasterMind>(null);
     public historyPeriod$: BehaviorSubject<IHistory> = new BehaviorSubject<IHistory>(null);
     public adaptationComponents$: BehaviorSubject<IAdaptationSubStage> = new BehaviorSubject<IAdaptationSubStage>(null);
+    public test$: BehaviorSubject<ITests> = new BehaviorSubject<ITests>(null);
 
     private readonly restUrl;
 
@@ -41,5 +43,8 @@ export class TabsService {
     }
     public async getHistory(): Promise<IHistory[]> {
         return await this.http.get<IHistory[]>(`${this.restUrl}/api/HistoryPeriods`).toPromise();
+    }
+    public async getTests(): Promise<ITests[]> {
+        return await this.http.get<ITests[]>(`${this.restUrl}/api/Testing/GetAllTests`).toPromise();
     }
 }

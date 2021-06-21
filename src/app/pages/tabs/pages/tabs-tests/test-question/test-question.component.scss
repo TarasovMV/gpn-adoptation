@@ -1,0 +1,41 @@
+@import "src/theme/functions/resizer";
+
+* {
+    box-sizing: border-box;
+}
+
+.header {
+    height: sizeHeight(126);
+    background-color: #006fba;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: sizeHeight(18);
+
+    display: flex;
+    align-items: center;
+
+    padding: sizeHeight(44) sizeWidth(30) 0;
+
+    .arrow {
+        transform: rotate(90deg);
+    }
+
+    .title {
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        margin-left: sizeWidth(25);
+    }
+}
+
+.content {
+    height: 100%;
+    background-color: #f8fafb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    font-size: sizeHeight(18);
+
+    overflow-y: scroll;
+}

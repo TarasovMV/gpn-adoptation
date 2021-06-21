@@ -1,0 +1,29 @@
+<ion-header>
+  <div class="header">
+    <svg-icon class="arrow" src="assets/icon/arrow.svg" (click)="backToTests()"></svg-icon>
+  </div>
+</ion-header>
+<ion-content>
+  <div class="content">
+    <div class="content__body">
+      <div class="title">{{test.testName}}</div>
+      <div class="text">
+        <div class="logo">
+          <svg-icon src="assets/icon/tests/question.svg"></svg-icon>
+        </div>
+        <span>{{test.questions.length}} вопросов</span>
+      </div>
+      <div class="text">
+        <div class="logo">
+          <svg-icon src="assets/icon/tests/deadline.svg"></svg-icon>
+        </div>
+        <span>Опрос доступен до {{test.endDate | date: 'MMM dd'}}</span>
+      </div>
+    </div>
+    <div class="content__footer">
+      <div class="button">
+        <span>Приступить к прохождению</span>
+      </div>
+    </div>
+  </div>
+</ion-content>

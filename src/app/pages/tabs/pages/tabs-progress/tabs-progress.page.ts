@@ -42,7 +42,7 @@ export class TabsProgressPage implements OnInit, IPageTab {
             this.data.adaptationStages.flatMap(x => x.adaptationSubStages).forEach(x =>
                 x.adaptationComponents = x.adaptationComponents.sort((a, b) => a.order - b.order)
             );
-            this.data.adaptationStages.forEach(x => x.adaptationSubStages = x.adaptationSubStages.sort((a, b) => a.order - b.order))
+            this.data.adaptationStages.forEach(x => x.adaptationSubStages = x.adaptationSubStages.sort((a, b) => a.order - b.order));
             this.data.adaptationStages[0].isActive = true;
             const doneArr = this.tabsProgressService.adaptationDone$.getValue();
             this.doneHandler(doneArr, this.data);

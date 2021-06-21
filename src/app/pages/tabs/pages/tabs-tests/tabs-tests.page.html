@@ -1,19 +1,19 @@
 <ion-header>
   <div class="header">
-    <div class="title">Тестирования</div>
+    <div class="title">Опросы</div>
   </div>
 </ion-header>
 
 <ion-content>
   <div class="content">
-    <ng-container *ngFor="let test of tests">
-      <div class="test">
+    <ng-container *ngFor="let test of data">
+      <div class="test" (click)="openTest(test)">
         <div class="test__logo">
           <svg-icon src="assets/icon/tests/list.svg"></svg-icon>
         </div>
         <div class="test__name">
-          <div class="title">Тестирование по корпоративным коммуникациям</div>
-          <div class="deadline">Доступно до 18 ноября</div>
+          <div class="title">{{test.testName}}</div>
+          <div class="deadline">Доступно до {{test.endDate | date: 'MMM d'}}</div>
         </div>
       </div>
     </ng-container>
