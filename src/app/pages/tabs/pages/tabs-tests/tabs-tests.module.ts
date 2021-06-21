@@ -11,6 +11,7 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 
 import { registerLocaleData } from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
+import { TestQuestionComponent } from './test-question/test-question.component';
 
 registerLocaleData(localeRu, 'ru');
 

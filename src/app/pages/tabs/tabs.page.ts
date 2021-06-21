@@ -46,7 +46,7 @@ export class TabsPage implements OnInit {
 
     constructor(
         private navCtrl: NavController,
-        public TabsService: TabsService
+        public tabsService: TabsService
         ) { }
 
     ngOnInit(): void {

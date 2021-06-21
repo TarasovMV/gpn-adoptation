@@ -38,6 +38,7 @@ export interface IAnswers {
     isValidInt: number;
     score: number;
     scoreString: string;
+    isActive?: boolean;
 }
 
 @Component({
@@ -63,6 +64,7 @@ export class TabsTestsPage implements OnInit, IPageTab {
     public openTest(test: ITests) {
         this.router.navigate(['tabs/tabs-tests/' + test.id]);
         this.tabsService.test$.next(test);
+        this.tabsService.showMenu$.next(null);
     }
 
     public async getTests(): Promise<void> {

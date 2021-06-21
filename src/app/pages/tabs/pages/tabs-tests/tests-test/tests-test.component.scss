@@ -5,7 +5,7 @@
 }
 
 .header {
-    height: sizeHeight(126);
+    height: sizeHeight(63);
     background-color: #006fba;
     color: #ffffff;
     font-weight: 500;
@@ -30,6 +30,7 @@
 
 .content {
     height: 100%;
+    width: 100%;
     background-color: #f8fafb;
     display: flex;
     flex-direction: column;
@@ -39,11 +40,16 @@
 
     overflow-y: scroll;
 
+    .question {
+        width: 100%;
+        height: 100%;
+    }
+
     &__body {
         width: 100%;
         flex-grow: 1;
         background-color: #006fba;
-        padding: 0 sizeWidth(37);
+        padding: sizeHeight(63) sizeWidth(37) 0;
 
         display: flex;
         flex-direction: column;
@@ -102,6 +108,35 @@
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+    }
+
+    .end-test {
+        width: 100%;
+        height: 100%;
+        padding: sizeHeight(70) sizeWidth(37) sizeHeight(41);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        &__title {
+            color: #404763;
+            font-weight: 700;
+            font-size: sizeHeight(30);
+            margin-bottom: sizeHeight(75);
+        }
+
+        &__button {
+            width: sizeWidth(311);
+            height: sizeHeight(57);
+            border-radius: sizeHeight(28);
+            background-color: #006fba;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #FFFFFF;
         }
     }
 }

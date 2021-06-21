@@ -4,38 +4,109 @@
     box-sizing: border-box;
 }
 
-.header {
-    height: sizeHeight(126);
-    background-color: #006fba;
-    color: #ffffff;
-    font-weight: 500;
-    font-size: sizeHeight(18);
-
-    display: flex;
-    align-items: center;
-
-    padding: sizeHeight(44) sizeWidth(30) 0;
-
-    .arrow {
-        transform: rotate(90deg);
-    }
-
-    .title {
-        display: flex;
-        align-items: center;
-        font-weight: bold;
-        margin-left: sizeWidth(25);
-    }
-}
-
-.content {
+.questions {
     height: 100%;
+    width: 100%;
     background-color: #f8fafb;
     display: flex;
     flex-direction: column;
-    align-items: center;
 
     font-size: sizeHeight(18);
 
     overflow-y: scroll;
+
+    &__header {
+        height: sizeHeight(63);
+        width: 100%;
+        background-color: #006fba;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: #ffffff;
+        font-weight: 700;
+        font-style: sizeHeight(14);
+    }
+
+    &__body {
+        flex-grow: 1;
+        width: 100%;
+        background-color: #f8fafb;
+        padding: sizeHeight(23) sizeWidth(32);
+        font-size: sizeHeight(14);
+        color: #404763;
+
+        position: relative;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .title {
+            width: 100%;
+            font-weight: 600;
+            margin-bottom: sizeHeight(17);
+        }
+
+        .answer {
+            width: 100%;
+            min-height: sizeHeight(57);
+            border-radius: sizeHeight(4);
+            background-color: #ffffff;
+            font-weight: 400;
+            padding: sizeHeight(12) sizeWidth(16);
+            margin-bottom: sizeHeight(8);
+
+            &-active {
+                background-color: #006fba;
+                color: #ffffff;
+                font-weight: 500;
+            }
+        }
+    }
+
+    .buttons {
+        width: 100%;
+        height: sizeHeight(57);
+        position: absolute;
+        bottom: sizeHeight(41);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &__end {
+            width: sizeWidth(178);
+            height: sizeHeight(57);
+            border-radius: sizeHeight(28);
+            background-color: #006fba;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #FFFFFF;
+        }
+
+        &__arrow {
+            width: sizeHeight(57);
+            height: sizeHeight(57);
+            border-radius: 50%;
+            background-color: #006fba;
+            margin: 0 sizeWidth(12);
+            color: #FFFFFF;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .prev {
+            transform: rotate(90deg);
+        }
+
+        .next {
+            transform: rotate(-90deg);
+        }
+    }
 }

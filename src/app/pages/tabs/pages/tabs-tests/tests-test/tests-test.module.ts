@@ -5,11 +5,12 @@ import { IonicModule } from '@ionic/angular';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { TestsTestComponent } from './tests-test.component';
+import { TestQuestionComponent } from '../test-question/test-question.component';
 
 
 
 @NgModule({
-  declarations: [TestsTestComponent],
+  declarations: [TestsTestComponent,  TestQuestionComponent],
   imports: [
     CommonModule,
     FormsModule,

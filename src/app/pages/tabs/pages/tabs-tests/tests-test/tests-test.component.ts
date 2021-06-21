@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { TabsService } from 'src/app/core/services/tabs/tabs.service';
 import { ITests } from '../tabs-tests.page';
 
@@ -29,5 +30,9 @@ export class TestsTestComponent implements OnInit {
   public backToTests(): void {
     this.nav.navigate(['tabs/tabs-tests/']);
     this.tabsService.showMenu$.next('on');
-}
+  }
+
+  public startTest(element: ITests): void {
+    this.tabsService.startTest$.next(element.id);
+  }
 }
