@@ -4,6 +4,7 @@ import { TabsService } from 'src/app/core/services/tabs/tabs.service';
 import { IAdaptationStages, IAdaptationSubStage, IPageTab, IProgress, PageTabType } from '../../tabs.interfaces';
 import { ProgressCardComponent } from './progress-card/progress-card.component';
 import {TabsProgressService} from "./services/tabs-progress.service";
+import {UserService} from "../../../../core/services/data/user.service";
 
 
 @Component({
@@ -24,6 +25,7 @@ export class TabsProgressPage implements OnInit, IPageTab {
         public tabsService: TabsService,
         private tabsProgressService: TabsProgressService,
         private router: Router,
+        private userService: UserService,
     ) {
     }
 
@@ -58,6 +60,10 @@ export class TabsProgressPage implements OnInit, IPageTab {
 
     public switchStage(item: IAdaptationStages): void {
         item.isActive = !item.isActive;
+    }
+
+    public logout(): void {
+        this.userService.logout().then();
     }
 
     public countProgress(): void {

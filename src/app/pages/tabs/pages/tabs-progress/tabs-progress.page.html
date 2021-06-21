@@ -1,7 +1,7 @@
 <ion-header>
   <div class="header">
     <div class="progress" [ngStyle]="{'width.%': percentProgress * 100}"></div>
-    <div class="logout">
+    <div (click)="logout()" class="logout">
       <svg-icon src="assets/icon/logout.svg"></svg-icon>
     </div>
     <div class="header__title">Моя адаптация</div>

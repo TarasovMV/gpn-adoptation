@@ -7,12 +7,16 @@ const routes: Routes = [
         loadChildren: () => import('./pages/preview/preview.module').then(m => m.PreviewPageModule)
     },
     {
+        path: 'auth',
+        loadChildren: () => import('./pages/auth/auth.module').then( m => m.AuthPageModule)
+    },
+    {
         path: 'tabs',
         loadChildren: () => import('./pages/tabs/tabs.module').then(m => m.TabsPageModule)
     },
     {
         path: '',
-        redirectTo: 'tabs',
+        redirectTo: 'auth',
         pathMatch: 'full',
     },
 ];

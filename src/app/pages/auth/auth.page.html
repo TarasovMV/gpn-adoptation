@@ -10,7 +10,7 @@
         Введите пароль доступа
       </div>
       <div class="enter__code">
-        <input type="text" class="input" maxlength="5">
+        <input [formControl]="codeControl" type="text" class="input" maxlength="5">
       </div>
       <div class="enter__title">
         Служба поддержки
