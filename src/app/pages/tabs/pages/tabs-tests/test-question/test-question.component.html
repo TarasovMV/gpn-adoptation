@@ -17,7 +17,7 @@
     <div class="buttons__arrow next" (click)="nextQuestion()" *ngIf="questionCount !== test.questions.length - 1">
       <svg-icon src="assets/icon/arrow.svg"></svg-icon>
     </div>
-    <div class="buttons__end" (click)="endTest()" *ngIf="questionCount === test.questions.length - 1">
+    <div class="buttons__end" (click)="endTest()" *ngIf="questionCount === test?.questions?.length - 1">
       Завершить
     </div>
   </div>

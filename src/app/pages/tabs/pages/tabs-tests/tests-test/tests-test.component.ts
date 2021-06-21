@@ -30,6 +30,7 @@ export class TestsTestComponent implements OnInit {
   public backToTests(): void {
     this.nav.navigate(['tabs/tabs-tests/']);
     this.tabsService.showMenu$.next('on');
+    this.tabsService.startTest$.next(null);
   }
 
   public startTest(element: ITests): void {

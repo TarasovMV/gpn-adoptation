@@ -32,6 +32,14 @@ export class TestQuestionComponent implements OnInit {
 
   public selectAnswer(answer: IAnswers): void {
     answer.isActive = !answer.isActive;
+    if (answer.isActive) {
+      this.tabsService.answers.push(answer);
+    } else if (!answer.isActive) {
+      const index = this.tabsService.answers.indexOf(answer);
+      this.tabsService.answers.splice(index, 1);
+    }
+    this.tabsService.answers.filter(value => value.isActive);
+    console.log(this.tabsService.answers);
   }
 
   public nextQuestion(): void {
@@ -50,6 +58,8 @@ export class TestQuestionComponent implements OnInit {
   }
 
   public endTest(): void {
+    console.log(this.tabsService.answers);
+    this.tabsService.answers = [];
     this.tabsService.startTest$.next(-1);
   }
 }
