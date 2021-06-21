@@ -57,9 +57,16 @@ export class TestQuestionComponent implements OnInit {
     }
   }
 
+  public async postAnswers(answers: IAnswers[]): Promise<void> {
+    const data = await this.tabsService.postAnswers(answers);
+  }
+
   public endTest(): void {
     console.log(this.tabsService.answers);
     this.tabsService.answers = [];
+
+    // this.postAnswers(this.tabsService.answers);
+
     this.tabsService.startTest$.next(-1);
   }
 }

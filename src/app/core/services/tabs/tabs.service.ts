@@ -7,7 +7,7 @@ import { IColleague } from 'src/app/pages/tabs/pages/tabs-chat/tabs-chat.page';
 import { IPost } from 'src/app/pages/tabs/pages/tabs-news/tabs-news.page';
 import { IBusiness } from 'src/app/pages/tabs/pages/tabs-offline/tabs-offline.page';
 import { IAnswers, IQuestions, ITests } from 'src/app/pages/tabs/pages/tabs-tests/tabs-tests.page';
-import {IAdaptationComponent, IAdaptationSubStage, IProgress} from 'src/app/pages/tabs/tabs.interfaces';
+import { IAdaptationSubStage, IProgress } from 'src/app/pages/tabs/tabs.interfaces';
 import {AppConfigService} from '../platform/app-config.service';
 
 @Injectable({
@@ -49,5 +49,8 @@ export class TabsService {
     }
     public async getTests(): Promise<ITests[]> {
         return await this.http.get<ITests[]>(`${this.restUrl}/api/Testing/GetAllTests`).toPromise();
+    }
+    public async postAnswers(answers: IAnswers[]): Promise<IAnswers[]> {
+        return await this.http.post<IAnswers[]>(`${this.restUrl}/api/TestResults`, answers).toPromise();
     }
 }
