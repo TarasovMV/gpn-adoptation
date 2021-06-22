@@ -1,72 +1,92 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
-import { TabsService } from 'src/app/core/services/tabs/tabs.service';
-import { IAnswers, IQuestions, ITests } from '../tabs-tests.page';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {BehaviorSubject, of} from 'rxjs';
+import {TabsService} from 'src/app/core/services/tabs/tabs.service';
+import {IAnswers, IQuestions, ITests} from '../tabs-tests.page';
+import {mergeMap} from "rxjs/operators";
+
+export interface ITestResult {
+    testRoomId: number;
+    testingQuestionId: number;
+    testingAnswerId: number;
+    dateTime: Date;
+}
 
 @Component({
-  selector: 'app-test-question',
-  templateUrl: './test-question.component.html',
-  styleUrls: ['./test-question.component.scss'],
+    selector: 'app-test-question',
+    templateUrl: './test-question.component.html',
+    styleUrls: ['./test-question.component.scss'],
 })
 export class TestQuestionComponent implements OnInit {
 
-  public test: ITests;
-  public question: IQuestions;
-  public questionCount = 0;
+    public test: ITests;
+    public question: IQuestions;
+    public questionCount = 0;
 
-  constructor(
-    public tabsService: TabsService,
-  ) { }
-
-  ngOnInit() {
-    this.tabsService.test$.subscribe(value => {
-      this.test = value;
-      this.tabsService.question$.next(value.questions[this.questionCount]);
-      console.log(this.test);
-    });
-    this.tabsService.question$.subscribe(value => {
-      this.question = value;
-    });
-  }
-
-  public selectAnswer(answer: IAnswers): void {
-    answer.isActive = !answer.isActive;
-    if (answer.isActive) {
-      this.tabsService.answers.push(answer);
-    } else if (!answer.isActive) {
-      const index = this.tabsService.answers.indexOf(answer);
-      this.tabsService.answers.splice(index, 1);
+    constructor(
+        public tabsService: TabsService,
+    ) {
     }
-    this.tabsService.answers.filter(value => value.isActive);
-    console.log(this.tabsService.answers);
-  }
 
-  public nextQuestion(): void {
-    if (true) {
-      this.questionCount++;
-      this.tabsService.question$.next(this.tabsService.test$.getValue()?.questions[this.questionCount]);
-      console.log(this.tabsService.test$.getValue().questions[this.questionCount]);
+    ngOnInit() {
+        this.tabsService.test$.subscribe(value => {
+            this.test = value;
+            this.tabsService.question$.next(value.questions[this.questionCount]);
+            console.log(this.test);
+        });
+        this.tabsService.question$.subscribe(value => {
+            this.question = value;
+        });
     }
-  }
 
-  public previousQuestion(): void {
-    if (this.questionCount > 0) {
-      this.questionCount--;
-      this.tabsService.question$.next(this.tabsService.test$.getValue()?.questions[this.questionCount]);
+    public selectAnswer(answer: IAnswers): void {
+        answer.isActive = !answer.isActive;
+        if (answer.isActive) {
+            this.tabsService.answers.push(answer);
+        } else if (!answer.isActive) {
+            const index = this.tabsService.answers.indexOf(answer);
+            this.tabsService.answers.splice(index, 1);
+        }
+        this.tabsService.answers.filter(value => value.isActive);
+        console.log(this.tabsService.answers);
     }
-  }
 
-  public async postAnswers(answers: IAnswers[]): Promise<void> {
-    const data = await this.tabsService.postAnswers(answers);
-  }
+    public nextQuestion(): void {
+        if (true) {
+            this.questionCount++;
+            this.tabsService.question$.next(this.tabsService.test$.getValue()?.questions[this.questionCount]);
+            console.log(this.tabsService.test$.getValue().questions[this.questionCount]);
+        }
+    }
 
-  public endTest(): void {
-    console.log(this.tabsService.answers);
-    this.tabsService.answers = [];
+    public previousQuestion(): void {
+        if (this.questionCount > 0) {
+            this.questionCount--;
+            this.tabsService.question$.next(this.tabsService.test$.getValue()?.questions[this.questionCount]);
+        }
+    }
 
-    // this.postAnswers(this.tabsService.answers);
+    public async postAnswers(results: ITestResult[]): Promise<void> {
+        await this.tabsService.postTestResult(results);
+    }
 
-    this.tabsService.startTest$.next(-1);
-  }
+    public endTest(): void {
+        console.log(this.tabsService.answers);
+        const res = this.createRequest();
+        this.postAnswers(res).then();
+
+        this.tabsService.answers = [];
+        this.tabsService.startTest$.next(-1);
+    }
+
+    createRequest(): ITestResult[] {
+        const answers = this.tabsService.answers;
+        const results = answers.map<ITestResult>(x => ({
+            testRoomId: this.test.id,
+            testingQuestionId: x.testingQuestionId,
+            testingAnswerId: x.id,
+            dateTime: new Date(),
+        }));
+        return results;
+    }
 }

@@ -9,6 +9,7 @@ import { IBusiness } from 'src/app/pages/tabs/pages/tabs-offline/tabs-offline.pa
 import { IAnswers, IQuestions, ITests } from 'src/app/pages/tabs/pages/tabs-tests/tabs-tests.page';
 import { IAdaptationSubStage, IProgress } from 'src/app/pages/tabs/tabs.interfaces';
 import {AppConfigService} from '../platform/app-config.service';
+import {ITestResult} from "../../../pages/tabs/pages/tabs-tests/test-question/test-question.component";
 
 @Injectable({
     providedIn: 'root'
@@ -48,9 +49,9 @@ export class TabsService {
         return await this.http.get<IHistory[]>(`${this.restUrl}/api/HistoryPeriods`).toPromise();
     }
     public async getTests(): Promise<ITests[]> {
-        return await this.http.get<ITests[]>(`${this.restUrl}/api/Testing/GetAllTests`).toPromise();
+        return await this.http.get<ITests[]>(`${this.restUrl}/api/Testing/active`).toPromise();
     }
-    public async postAnswers(answers: IAnswers[]): Promise<IAnswers[]> {
-        return await this.http.post<IAnswers[]>(`${this.restUrl}/api/TestResults`, answers).toPromise();
+    public async postTestResult(result: ITestResult[]): Promise<ITestResult[]> {
+        return await this.http.post<ITestResult[]>(`${this.restUrl}/api/TestResults/result`, result).toPromise();
     }
 }

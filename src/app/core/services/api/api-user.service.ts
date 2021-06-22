@@ -15,14 +15,14 @@ export class ApiUserService {
     }
 
     public async authorize(code: string): Promise<IUser> {
-        const body = {
-            userName: "Administrator",
-            password: "CorporateService"
-        }
         // const body = {
-        //     userName: code,
-        //     password: code,
+        //     userName: "Administrator",
+        //     password: "CorporateService"
         // }
+        const body = {
+            userName: code,
+            password: code,
+        }
         return await this.http.post<IUser>(`${this.restUrl}/account/login`, body).toPromise();
     }
 }
