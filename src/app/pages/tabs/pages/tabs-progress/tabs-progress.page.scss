@@ -20,6 +20,10 @@
 
   &__title {
     font-size: sizeHeight(30);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   &__percent {
@@ -40,9 +44,13 @@
     align-items: center;
     justify-content: center;
 
+    position: relative;
+    z-index: 1;
+  }
+  .logout-logo {
     position: absolute;
-    right: sizeWidth(40);
-    top: sizeHeight(50);
+    right: sizeWidth(14);
+    top: sizeHeight(4);
     z-index: 1;
   }
 }
@@ -62,7 +70,7 @@ ion-content {
 .content {
   background-color: #f8fafb;
   height: 100%;
-  padding: sizeHeight(24) sizeWidth(40);
+  padding: sizeHeight(24) sizeWidth(24);
 
   display: flex;
   flex-direction: column;
@@ -100,6 +108,7 @@ ion-content {
       align-items: center;
 
       .total {
+        margin-right: sizeWidth(5);
         width: max-content;
         min-width: max-content;
 

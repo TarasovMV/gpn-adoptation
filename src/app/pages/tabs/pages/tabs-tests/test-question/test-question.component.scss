@@ -34,7 +34,7 @@
         width: 100%;
         background-color: #f8fafb;
         padding: sizeHeight(23) sizeWidth(32);
-        font-size: sizeHeight(14);
+        font-size: sizeHeight(18);
         color: #404763;
 
         position: relative;
@@ -57,6 +57,10 @@
             font-weight: 400;
             padding: sizeHeight(12) sizeWidth(16);
             margin-bottom: sizeHeight(8);
+
+            display: flex;
+            align-items: center;
+            line-height: sizeHeight(18);
 
             &-active {
                 background-color: #006fba;

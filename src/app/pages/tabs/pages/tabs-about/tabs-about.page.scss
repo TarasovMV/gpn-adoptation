@@ -55,15 +55,13 @@
 
 .content {
   height: 100%;
-  padding: sizeHeight(22) 8vw;
+  padding: sizeHeight(24) sizeWidth(24);
   display: flex;
   flex-wrap: wrap;
   background-color: #f8fafb;
 
   color: #404763;
   font-size: sizeHeight(16);
-
-  overflow-y: scroll;
 
   .history {
     width: 100%;
@@ -87,7 +85,7 @@
     p {
       position: relative;
       z-index: 999;
-      text-align: justify;
+      text-align: start;
     }
 
     &__content {
@@ -95,11 +93,14 @@
       position: relative;
       flex-grow: 1;
       width: 100%;
-      padding: sizeHeight(35);
+      padding: sizeHeight(32);
       color: #ffffff;
       background-color: #006FBA;
       border-radius: sizeHeight(22);
       overflow: hidden;
+
+      font-size: sizeHeight(14);
+      line-height: sizeHeight(24);
     }
 
     &__periods {

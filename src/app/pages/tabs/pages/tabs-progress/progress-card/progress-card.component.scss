@@ -143,17 +143,22 @@
     border-radius: sizeHeight(22);
     display: flex;
     flex-direction: column;
+    justify-content: center;
     font-size: sizeHeight(12);
 
     &__title {
       width: 100%;
-      min-height: sizeHeight(30);
-      margin-bottom: sizeHeight(18);
+      min-height: sizeHeight(20);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-family: bold;
+      font-style: bold;
       font-size: sizeHeight(16);
+    }
+
+    &__description {
+      font-size: sizeHeight(14);
+      margin-top: sizeHeight(18);
     }
 
     .active {
@@ -181,13 +186,16 @@
       align-items: center;
       margin-bottom: sizeHeight(18);
 
+      .text {
+        padding-left: sizeWidth(13);
+        max-width: sizeWidth(200);
+      }
 
       &__logo {
-        width: sizeWidth(40);
-        height: sizeWidth(40);
+        width: sizeHeight(40);
+        height: sizeHeight(40);
         border-radius: 50%;
         background-color: #00a99d;
-        margin-right: sizeWidth(13);
 
         display: flex;
         justify-content: center;
@@ -197,10 +205,9 @@
           background-color: #0059f7;
           height: sizeHeight(40);
           width: sizeHeight(40);
-          padding: sizeHeight(8);
           border-radius: 50%;
-          margin-right: sizeWidth(13);
           box-sizing: border-box;
+          padding: sizeHeight(8);
         }
       }
     }

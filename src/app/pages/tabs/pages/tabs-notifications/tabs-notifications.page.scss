@@ -28,7 +28,7 @@
 .content {
     height: 100%;
     background-color: #f8fafb;
-    padding: sizeHeight(22) sizeWidth(24);
+    padding: sizeHeight(24) sizeWidth(24);
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -50,12 +50,12 @@
 
     .date {
         width: 100%;
-
         display: flex;
         justify-content: center;
         align-items: center;
         color: #606580;
         font-size: sizeHeight(12);
+        margin-bottom: sizeHeight(5);
     }
 
     .notifications {
