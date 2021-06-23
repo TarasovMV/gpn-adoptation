@@ -6,16 +6,24 @@
 
 <ion-content>
   <div class="content">
-    <ng-container *ngFor="let test of data">
-      <div class="test" (click)="openTest(test)">
-        <div class="test__logo">
-          <svg-icon src="assets/icon/tests/list.svg"></svg-icon>
+    <ng-container *ngIf="data; else empty">
+      <ng-container *ngFor="let test of data">
+        <div class="test" (click)="openTest(test)">
+          <div class="test__logo">
+            <svg-icon src="assets/icon/tests/list.svg"></svg-icon>
+          </div>
+          <div class="test__name">
+            <div class="title">{{test.testName}}</div>
+            <!--          <div class="deadline">Доступно до {{test.endDate | date: 'MMM d'}}</div>-->
+          </div>
         </div>
-        <div class="test__name">
-          <div class="title">{{test.testName}}</div>
-<!--          <div class="deadline">Доступно до {{test.endDate | date: 'MMM d'}}</div>-->
-        </div>
-      </div>
+      </ng-container>
     </ng-container>
+    <ng-template #empty>
+      <div class="empty">
+        <svg-icon src="assets/icon/empty.svg"></svg-icon>
+        <div class="text">На вас пока не назначено тестов</div>
+      </div>
+    </ng-template>
   </div>
 </ion-content>
