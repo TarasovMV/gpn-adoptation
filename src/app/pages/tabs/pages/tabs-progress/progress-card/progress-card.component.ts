@@ -34,7 +34,7 @@ export class ProgressCardComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.id = +this.route.snapshot.paramMap.get('id');
+        this.id = +this.route.snapshot.queryParamMap.get('id');
         this.tabsService.showMenu$.next(null);
         this.tabsService.adaptationComponents$.subscribe(value => {
             this.data = value?.adaptationComponents;

@@ -9,10 +9,10 @@ export interface IProgress {
     id: number;
     name: string;
     order: number;
-    adaptationStages: IAdaptationStages[];
+    adaptationStages: IAdaptationStage[];
 }
 
-export interface IAdaptationStages {
+export interface IAdaptationStage {
     id: number;
     name: string;
     order: number;

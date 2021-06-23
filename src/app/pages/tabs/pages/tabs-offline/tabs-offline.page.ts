@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
-import { TabsService } from 'src/app/core/services/tabs/tabs.service';
-import { IPageTab, PageTabType } from '../../tabs.interfaces';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {BehaviorSubject} from 'rxjs';
+import {TabsService} from 'src/app/core/services/tabs/tabs.service';
+import {IAdaptationStage, IPageTab, IProgress, PageTabType} from '../../tabs.interfaces';
 
 export interface IStage {
     id: number;
@@ -12,6 +12,7 @@ export interface IStage {
     taskId: number;
     title: string;
 }
+
 export interface IBusiness {
     description: string;
     iconPath: string;
@@ -20,6 +21,7 @@ export interface IBusiness {
     stages: IStage[];
     title: string;
 }
+
 @Component({
     selector: 'app-tabs-offline',
     templateUrl: './tabs-offline.page.html',
@@ -27,9 +29,7 @@ export interface IBusiness {
 })
 export class TabsOfflinePage implements OnInit, IPageTab {
     public route: PageTabType = 'offline';
-    public readonly cities: string[] = ['Москва', 'Омск', 'Санкт-Петербург'];
-    public city$: BehaviorSubject<string> = new BehaviorSubject<string>('Москва');
-    public data: IBusiness[];
+    public data: IProgress;
 
     constructor(
         public router: Router,
@@ -47,10 +47,7 @@ export class TabsOfflinePage implements OnInit, IPageTab {
         console.log(data);
     }
 
-    public changeCity(city: string): void {
-        this.city$.next(city);
-    }
-    public openCard(card: IBusiness): void {
+    public openCard(card: IAdaptationStage): void {
         this.router.navigate(['tabs/tabs-offline/' + card.id]);
         this.tabsService.businessStages$.next(card);
     }

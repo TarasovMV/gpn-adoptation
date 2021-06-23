@@ -6,19 +6,21 @@
 
 <ion-content>
   <div class="content">
-    <ng-container *ngFor="let card of data">
-    <div class="card" (click)="openCard(card)">
-      <div class="card__icon">
-        <img src="http://admin.corporateservice.gnkdev.space/{{card?.iconPath}}"/>
-      </div>
-      <div class="card__name">{{card.title}}</div>
+    <div class="scroll-container">
+      <ng-container *ngFor="let card of data?.adaptationStages || []">
+        <div class="card" (click)="openCard(card)">
+          <div class="card__icon">
+            <!--        <img src="http://admin.corporateservice.gnkdev.space/{{card?.iconPath}}"/>-->
+          </div>
+          <div class="card__name">{{card.name}}</div>
+        </div>
+      </ng-container>
     </div>
-  </ng-container>
   </div>
-<!--  <div class="content">-->
-<!--    <div class="empty">-->
-<!--      <svg-icon src="assets/icon/empty.svg"></svg-icon>-->
-<!--      <div class="text">Для Вас пока не сформирован справочник</div>-->
-<!--    </div>-->
-<!--  </div>-->
+  <!--  <div class="content">-->
+  <!--    <div class="empty">-->
+  <!--      <svg-icon src="assets/icon/empty.svg"></svg-icon>-->
+  <!--      <div class="text">Для Вас пока не сформирован справочник</div>-->
+  <!--    </div>-->
+  <!--  </div>-->
 </ion-content>

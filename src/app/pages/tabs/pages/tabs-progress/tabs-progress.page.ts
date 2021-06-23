@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TabsService } from 'src/app/core/services/tabs/tabs.service';
-import { IAdaptationStages, IAdaptationSubStage, IPageTab, IProgress, PageTabType } from '../../tabs.interfaces';
+import { IAdaptationStage, IAdaptationSubStage, IPageTab, IProgress, PageTabType } from '../../tabs.interfaces';
 import { ProgressCardComponent } from './progress-card/progress-card.component';
 import {TabsProgressService} from "./services/tabs-progress.service";
 import {UserService} from "../../../../core/services/data/user.service";
+import {NavController} from "@ionic/angular";
 
 
 @Component({
@@ -24,7 +25,7 @@ export class TabsProgressPage implements OnInit, IPageTab {
     constructor(
         public tabsService: TabsService,
         private tabsProgressService: TabsProgressService,
-        private router: Router,
+        private navCtr: NavController,
         private userService: UserService,
     ) {
     }
@@ -58,7 +59,7 @@ export class TabsProgressPage implements OnInit, IPageTab {
         }
     }
 
-    public switchStage(item: IAdaptationStages): void {
+    public switchStage(item: IAdaptationStage): void {
         item.isActive = !item.isActive;
     }
 
@@ -81,7 +82,7 @@ export class TabsProgressPage implements OnInit, IPageTab {
     }
 
     public toProgressCard(element: IAdaptationSubStage): void {
-        this.router.navigate(['tabs/tabs-progress/' + element.id]);
+        this.navCtr.navigateForward('tabs/tabs-progress/', { queryParams: {id: element.id, type: 'progress'}});
         this.tabsService.adaptationComponents$.next(element);
     }
 
