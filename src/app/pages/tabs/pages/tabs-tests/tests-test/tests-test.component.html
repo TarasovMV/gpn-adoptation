@@ -1,45 +1,35 @@
-<ion-header *ngIf="tabsService.startTest$.getValue() !== -1">
-  <div class="header">
-    <svg-icon class="arrow" src="assets/icon/arrow.svg" (click)="backToTests()"></svg-icon>
-  </div>
-</ion-header>
-<ion-content>
-  <div class="content">
-    <ng-container [ngSwitch]="tabsService.startTest$ | async">
-      <ng-container *ngSwitchDefault>
-        <div class="content__body">
-          <div class="title">{{test?.testName}}</div>
-          <div class="text">
-            <div class="logo">
-              <svg-icon src="assets/icon/tests/question.svg"></svg-icon>
-            </div>
-            <span>{{test?.questions.length}} вопросов</span>
+<div class="header" *ngIf="tabsService.startTest$.getValue() !== -1">
+  <svg-icon class="arrow" src="assets/icon/arrow.svg" (click)="backToTests()"></svg-icon>
+</div>
+<div class="content">
+  <ng-container [ngSwitch]="tabsService.startTest$ | async">
+    <ng-container *ngSwitchDefault>
+      <div class="content__body">
+        <div class="title">{{test?.testName}}</div>
+        <div class="text">
+          <div class="logo">
+            <svg-icon class="logo__question" src="assets/icon/tests/question.svg"></svg-icon>
           </div>
-          <div class="text">
-            <div class="logo">
-              <svg-icon src="assets/icon/tests/deadline.svg"></svg-icon>
-            </div>
-            <span>Опрос доступен до {{test?.endDate | date: 'MMM dd'}}</span>
-          </div>
+          <span>{{test?.questions.length}} вопросов</span>
         </div>
-        <div class="content__footer">
-          <div class="button" (click)="startTest(test)">
-            <span>Приступить к прохождению</span>
-          </div>
-        </div>
-      </ng-container>
-      <div class="question" *ngSwitchCase="test?.id">
-        <app-test-question></app-test-question>
       </div>
-      <div class="end-test" *ngSwitchCase="-1">
-        <div class="end-test__title">СПАСИБО ЗА ПРОХОЖДЕНИЕ ОПРОСА!</div>
-        <div class="end-test__image">
-          <svg-icon src="assets/icon/tests/end.svg"></svg-icon>
-        </div>
-        <div class="end-test__button" (click)="backToTests()">
-          Вернуться к списку
+      <div class="content__footer">
+        <div class="button" (click)="startTest(test)">
+          <span>Приступить к прохождению</span>
         </div>
       </div>
     </ng-container>
-  </div>
-</ion-content>
+    <div class="question" *ngSwitchCase="test?.id">
+      <app-test-question></app-test-question>
+    </div>
+    <div class="end-test" *ngSwitchCase="-1">
+      <div class="end-test__title">СПАСИБО ЗА ПРОХОЖДЕНИЕ ОПРОСА!</div>
+      <div class="end-test__image">
+        <svg-icon src="assets/icon/tests/end.svg"></svg-icon>
+      </div>
+      <div class="end-test__button" (click)="backToTests()">
+        Вернуться к списку
+      </div>
+    </div>
+  </ng-container>
+</div>

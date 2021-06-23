@@ -1,10 +1,13 @@
 <ion-header>
   <div class="header">
     <div class="progress" [ngStyle]="{'width.%': percentProgress * 100}"></div>
-    <div (click)="logout()" class="logout">
-      <svg-icon src="assets/icon/logout.svg"></svg-icon>
+
+    <div class="header__title">
+      <span>Моя адаптация</span>
+      <div (click)="logout()" class="logout">
+        <svg-icon class="logout-logo" src="assets/icon/logout.svg"></svg-icon>
+      </div>
     </div>
-    <div class="header__title">Моя адаптация</div>
     <div class="header__percent">
       <span>{{(percentProgress * 100).toFixed(0)}}%</span>
       <div class="header__step">{{doneStages}} из {{allStagesLength}}</div>

@@ -61,6 +61,11 @@
       align-items: center;
       margin-bottom: sizeHeight(12);
 
+      &__title {
+        margin-bottom: sizeHeight(16);
+        font-weight: 600;
+      }
+
       input {
         height: sizeHeight(79);
         width: 75vw;

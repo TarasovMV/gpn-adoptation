@@ -1,9 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {BehaviorSubject, of} from 'rxjs';
 import {TabsService} from 'src/app/core/services/tabs/tabs.service';
 import {IAnswers, IQuestions, ITests} from '../tabs-tests.page';
-import {mergeMap} from "rxjs/operators";
 
 export interface ITestResult {
     testRoomId: number;
