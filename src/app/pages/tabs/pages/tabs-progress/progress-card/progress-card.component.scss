@@ -127,16 +127,49 @@
 
   .blitz {
     width: 100%;
-    padding: sizeHeight(16);
+    padding: sizeHeight(16) sizeWidth(16);
     background-color: #ffffff;
     border-radius: sizeHeight(22);
 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+
+    &__header {
+      width: 100%;
+      font-style: bold;
+      font-size: sizeHeight(16);
+
+      display: flex;
+      align-items: center;
+      margin-bottom: sizeHeight(14);
+    }
+
+    &__rate {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      margin-bottom: sizeHeight(14);
+
+      .star {
+        height: sizeHeight(43);
+        width: sizeHeight(43);
+        border-radius: 50%;
+        padding: sizeHeight(8);
+
+        background-color: #E8ECEF;
+        color: #F2F2F2;
+
+        &-active {
+          background-color: #F2994A;
+          color: #FFFFFF;
+        }
+      }
+    }
   }
 
-  .more {
+
+  .more, .manual-input {
     width: 100%;
     padding: sizeHeight(16);
     background-color: #ffffff;
@@ -145,6 +178,8 @@
     flex-direction: column;
     justify-content: center;
     font-size: sizeHeight(12);
+
+    position: relative;
 
     &__title {
       width: 100%;
@@ -159,6 +194,28 @@
     &__description {
       font-size: sizeHeight(14);
       margin-top: sizeHeight(18);
+    }
+
+    &__text {
+      margin-bottom: sizeHeight(40);
+      outline: none;
+      border: none;
+    }
+
+    &__send {
+      width: sizeHeight(40);
+      height: sizeHeight(40);
+      background-color: #0089FF;
+      border-radius: sizeHeight(11);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: sizeHeight(10) sizeWidth(10);
+
+      position: absolute;
+      bottom: sizeHeight(5);
+      right: sizeWidth(5);
     }
 
     .active {

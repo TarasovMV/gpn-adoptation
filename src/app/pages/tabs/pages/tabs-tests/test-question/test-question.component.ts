@@ -48,6 +48,18 @@ export class TestQuestionComponent implements OnInit {
         console.log(this.tabsService.answers);
     }
 
+    public selectOneAnswer(answer: IAnswers, question: IQuestions): void {
+        question.answers.forEach(x => x.isActive = false);
+        answer.isActive = !answer.isActive;
+        if (answer.isActive) {
+            this.tabsService.answers.push(answer);
+        } else if (!answer.isActive) {
+            const index = this.tabsService.answers.indexOf(answer);
+            this.tabsService.answers.splice(index, 1);
+        }
+        this.tabsService.answers.filter(value => value.isActive);
+    }
+
     public nextQuestion(): void {
         if (true) {
             this.questionCount++;

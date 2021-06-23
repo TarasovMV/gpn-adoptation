@@ -81,11 +81,23 @@
         </div>
         <div class="blitz mb" *ngSwitchCase="7">
           <div class="blitz__header">{{item.header}}</div>
-          <div class="blitz__rate"></div>
+          <div class="blitz__rate">
+            <div class="star" *ngFor="let rate of rates" (click)="rateIt(rate)" [ngClass]="{'star-active': rate.isActive}">
+              <svg-icon src="assets/icon/progress/star.svg"></svg-icon>
+            </div>
+          </div>
           <div class="footer">{{item.footer}}</div>
+        </div>
+        <div class="manual-input mb" *ngSwitchCase="14">
+          <span class="manual-input__title">{{item.header}}</span>
+          <textarea class="manual-input__text" placeholder="Введите текст..."></textarea>
+          <div class="manual-input__send" (click)="sendIt()">
+            <svg-icon src="assets/icon/progress/plane.svg"></svg-icon>
+          </div>
         </div>
       </ng-container>
     </ng-container>
+    
     <div class="button button__done" [class.button__disabled]="isDone" style="margin-top: auto" (click)="setDone()">Выполнено</div>
   </div>
 </ion-content>

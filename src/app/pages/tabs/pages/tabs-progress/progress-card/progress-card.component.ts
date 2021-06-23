@@ -20,6 +20,8 @@ export class ProgressCardComponent implements OnInit {
     public id: number;
     public cardData: IStage;
     public isDone: boolean = false;
+    public rates: Array<{id: number; isActive: boolean}> = [{id: 1, isActive: false},
+        {id: 2, isActive: false} , {id: 3, isActive: false}, {id: 4, isActive: false}, {id: 5, isActive: false}];
 
     public data: IAdaptationComponent[];
 
@@ -62,4 +64,15 @@ export class ProgressCardComponent implements OnInit {
         this.tabsProgressService.setDoneId(this.id);
         this.isDone = true;
     }
+
+    public rateIt(rate: {id: number; isActive: boolean}): void {
+        this.rates.forEach(x => x.isActive = false);
+        this.rates.forEach(value => {
+            if (value.id <= rate.id) {
+                value.isActive = true;
+            }
+        });
+    }
+
+    public sendIt(): void {}
 }

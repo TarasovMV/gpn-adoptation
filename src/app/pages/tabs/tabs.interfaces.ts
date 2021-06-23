@@ -42,6 +42,7 @@ export interface IAdaptationComponent {
     filePath?: string;
     videoPath?: string;
     isActive?: boolean;
+    rate?: {id: number; isActive: boolean}[];
 }
 
 export interface IStage {
