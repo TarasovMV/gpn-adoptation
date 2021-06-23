@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TabsService} from 'src/app/core/services/tabs/tabs.service';
 import {IBusiness} from '../tabs-offline.page';
+import {IAdaptationStage} from "../../../tabs.interfaces";
 
 @Component({
     selector: 'app-tabs-offline-more',
@@ -9,21 +10,17 @@ import {IBusiness} from '../tabs-offline.page';
     styleUrls: ['./tabs-offline-more.component.scss'],
 })
 export class TabsOfflineMoreComponent implements OnInit {
-    public id: string;
-    public stages: number[] = new Array(2);
-    public data: IBusiness = null;
+    public data: IAdaptationStage = null;
 
     constructor(
-        private route: ActivatedRoute,
         public nav: Router,
         public tabsService: TabsService
     ) {
     }
 
-    ngOnInit() {
-        this.id = this.route.snapshot.paramMap.get('id');
+    ngOnInit(): void {
         this.tabsService.businessStages$.subscribe(value => {
-            // this.data = value;
+            this.data = value;
         })
     }
 

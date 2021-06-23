@@ -1,91 +1,51 @@
 @import "src/theme/functions/resizer";
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
+
 .header {
-    height: sizeHeight(126);
-    background-color: #006FBA;
-    color: #ffffff;
-    font-weight: 500;
-    font-size: sizeHeight(18);
+  height: sizeHeight(126);
+  background-color: #006FBA;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: sizeHeight(18);
 
+  display: flex;
+  align-items: center;
+
+
+  padding: sizeHeight(44) sizeWidth(30) 0;
+
+  .arrow {
+    transform: rotate(90deg);
+  }
+
+  .title {
     display: flex;
     align-items: center;
-    
-
-    padding: sizeHeight(44) sizeWidth(30) 0;
-    .arrow {
-        transform: rotate(90deg);
-    }
-    .title {
-        display: flex;
-        align-items: center;
-        margin-left: sizeWidth(25);
-    }
+    margin-left: sizeWidth(25);
+  }
 }
+
 .content {
-    height: 100%;
-    background-color: #f8fafb;
-    padding: sizeHeight(25) sizeWidth(16) 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  height: 100%;
+  background-color: #f8fafb;
+  padding: sizeHeight(25) sizeWidth(16) 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #404763;
+  font-size: sizeHeight(18);
+  overflow-y: scroll;
 
-    color: #404763;
-    font-size: sizeHeight(18);
-
-    overflow-y: scroll;
-
-    &__title {
-        font-size: sizeHeight(24);
-        padding: 0 sizeWidth(17);
-    }
-    &__description {
-        color: #006FBA;
-        font-size: sizeHeight(12);
-        padding: 0 sizeWidth(17);
-        margin: sizeHeight(15) 0;
-    }
-
-    .head {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        .name {
-            color: #006FBA;
-            font-size: sizeHeight(14);
-        }
-        .index {
-            height: sizeHeight(32);
-            width: sizeWidth(32);
-            background-color: #006FBA;
-            color: #ffffff;
-            border-radius: sizeHeight(12);
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-    }
-
-    .task {
-        font-size: sizeHeight(14);
-    }
-
-    &__stages {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-
-        .stage {
-            min-height: sizeHeight(185);
-            width: 100%;
-            background-color: #ffffff;
-            border-radius: sizeHeight(22);
-            padding: sizeHeight(13) sizeWidth(17);
-            margin-bottom: sizeHeight(7);
-        }
-    }
+  .card {
+    width: 100%;
+    padding: sizeHeight(14) sizeWidth(17);
+    font-size: sizeHeight(16);
+    box-sizing: border-box;
+    background: white;
+    border-radius: sizeHeight(20);
+    margin-bottom: sizeHeight(8);
+  }
 }
