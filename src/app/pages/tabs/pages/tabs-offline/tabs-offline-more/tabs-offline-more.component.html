@@ -9,7 +9,7 @@
 
 <ion-content>
   <div class="content">
-    <div *ngFor="let stage of data?.adaptationSubStages || []" class="card">
+    <div (click)="openSubStage(stage)" *ngFor="let stage of data?.adaptationSubStages || []" class="card">
       {{ stage.name }}
     </div>
   </div>

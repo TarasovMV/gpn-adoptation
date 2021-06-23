@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TabsService} from 'src/app/core/services/tabs/tabs.service';
 import {IBusiness} from '../tabs-offline.page';
-import {IAdaptationStage} from "../../../tabs.interfaces";
+import {IAdaptationStage, IAdaptationSubStage} from "../../../tabs.interfaces";
+import {NavController} from "@ionic/angular";
 
 @Component({
     selector: 'app-tabs-offline-more',
@@ -14,17 +15,22 @@ export class TabsOfflineMoreComponent implements OnInit {
 
     constructor(
         public nav: Router,
-        public tabsService: TabsService
-    ) {
-    }
+        public tabsService: TabsService,
+        private navCtrl: NavController,
+    ) {}
 
     ngOnInit(): void {
         this.tabsService.businessStages$.subscribe(value => {
             this.data = value;
-        })
+        });
     }
 
     public backToOffline(): void {
         this.nav.navigate(['tabs/tabs-offline/'])
+    }
+
+    public openSubStage(subStage: IAdaptationSubStage): void {
+        this.tabsService.adaptationComponents$.next(subStage);
+        this.navCtrl.navigateForward('tabs/tabs-progress/', { queryParams: {id: subStage.id, type: 'reference'}});
     }
 }

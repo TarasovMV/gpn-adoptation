@@ -98,6 +98,6 @@
       </ng-container>
     </ng-container>
 
-    <div class="button button__done" [class.button__disabled]="isDone" style="margin-top: auto" (click)="setDone()">Выполнено</div>
+    <div *ngIf="isProgress" class="button button__done" [class.button__disabled]="isDone" style="margin-top: auto" (click)="setDone()">Выполнено</div>
   </div>
 </ion-content>

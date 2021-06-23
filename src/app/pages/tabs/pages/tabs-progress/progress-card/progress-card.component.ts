@@ -4,6 +4,7 @@ import {TabsService} from 'src/app/core/services/tabs/tabs.service';
 import {IAdaptationComponent, IStage} from '../../../tabs.interfaces';
 import { Browser } from "@capacitor/browser";
 import {TabsProgressService} from "../services/tabs-progress.service";
+import {NavController} from "@ionic/angular";
 
 export enum AdaptationComponentsType {
     none, imageWithText, textWithText, headerWithText,
@@ -20,6 +21,7 @@ export class ProgressCardComponent implements OnInit {
     public id: number;
     public cardData: IStage;
     public isDone: boolean = false;
+    public isProgress: boolean = true;
     public rates: Array<{id: number; isActive: boolean}> = [{id: 1, isActive: false},
         {id: 2, isActive: false} , {id: 3, isActive: false}, {id: 4, isActive: false}, {id: 5, isActive: false}];
 
@@ -28,6 +30,7 @@ export class ProgressCardComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         public nav: Router,
+        private navCtrl: NavController,
         public tabsService: TabsService,
         private tabsProgressService: TabsProgressService,
     ) {
@@ -35,6 +38,7 @@ export class ProgressCardComponent implements OnInit {
 
     ngOnInit(): void {
         this.id = +this.route.snapshot.queryParamMap.get('id');
+        this.isProgress = this.route.snapshot.queryParamMap.get('type') === 'progress';
         this.tabsService.showMenu$.next(null);
         this.tabsService.adaptationComponents$.subscribe(value => {
             this.data = value?.adaptationComponents;
@@ -43,7 +47,7 @@ export class ProgressCardComponent implements OnInit {
     }
 
     public backToProgress(): void {
-        this.nav.navigate(['tabs/tabs-progress/']);
+        this.navCtrl.back();
         this.tabsService.showMenu$.next('on');
     }
 

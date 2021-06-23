@@ -33,7 +33,7 @@ export class TabsOfflinePage implements OnInit, IPageTab {
 
     constructor(
         public router: Router,
-        public tabsService: TabsService
+        public tabsService: TabsService,
     ) {
     }
 
