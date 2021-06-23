@@ -88,7 +88,7 @@
           </div>
           <div class="footer">{{item.footer}}</div>
         </div>
-        <div class="manual-input mb">
+        <div class="manual-input mb" *ngSwitchCase="14">
           <span class="manual-input__title">{{item.header}}</span>
           <ion-textarea auto-grow class="manual-input__text" placeholder="Введите текст..."></ion-textarea>
           <div class="manual-input__send" (click)="sendIt()">

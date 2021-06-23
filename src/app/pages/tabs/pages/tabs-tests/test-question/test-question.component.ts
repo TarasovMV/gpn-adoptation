@@ -1,12 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {TabsService} from 'src/app/core/services/tabs/tabs.service';
-import {IAnswers, IQuestions, ITests} from '../tabs-tests.page';
+import {IAnswer, IQuestion, ITests} from '../tabs-tests.page';
 
 export interface ITestResult {
     testRoomId: number;
     testingQuestionId: number;
     testingAnswerId: number;
     dateTime: Date;
+    text: string;
 }
 
 @Component({
@@ -17,7 +18,7 @@ export interface ITestResult {
 export class TestQuestionComponent implements OnInit {
 
     public test: ITests;
-    public question: IQuestions;
+    public question: IQuestion;
     public questionCount = 0;
 
     constructor(
@@ -36,7 +37,7 @@ export class TestQuestionComponent implements OnInit {
         });
     }
 
-    public selectAnswer(answer: IAnswers): void {
+    public selectAnswer(answer: IAnswer): void {
         answer.isActive = !answer.isActive;
         if (answer.isActive) {
             this.tabsService.answers.push(answer);
@@ -48,7 +49,12 @@ export class TestQuestionComponent implements OnInit {
         console.log(this.tabsService.answers);
     }
 
-    public selectOneAnswer(answer: IAnswers, question: IQuestions): void {
+    // TODO: костыль
+    public inputTextAnswer(event: CustomEvent, question: IQuestion): void {
+        question.answers = [{text: event.detail.value, testingQuestionId: question.id, isActive: true} as any];
+    }
+
+    public selectOneAnswer(answer: IAnswer, question: IQuestion): void {
         question.answers.forEach(x => x.isActive = false);
         answer.isActive = !answer.isActive;
         if (answer.isActive) {
@@ -89,12 +95,13 @@ export class TestQuestionComponent implements OnInit {
     }
 
     createRequest(): ITestResult[] {
-        const answers = this.tabsService.answers;
+        const answers = this.test.questions.flatMap(x => x.answers).filter(x => !!x.isActive);
         const results = answers.map<ITestResult>(x => ({
             testRoomId: this.test.id,
             testingQuestionId: x.testingQuestionId,
-            testingAnswerId: x.id,
+            testingAnswerId: x.id ?? null,
             dateTime: new Date(),
+            text: x.text,
         }));
         return results;
     }

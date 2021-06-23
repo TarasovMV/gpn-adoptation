@@ -8,7 +8,7 @@ export interface ITests {
     testName: string;
     isShuffleQuestionsInt: number;
     questionsCount: number;
-    questions: IQuestions[];
+    questions: IQuestion[];
     time: number;
     endDate: Date;
     startDate: Date;
@@ -22,16 +22,16 @@ export interface ITests {
     divisions: string;
 }
 
-export interface IQuestions {
+export interface IQuestion {
     id: number;
     testRoomId: number;
     title: string;
     type: number;
-    answers: IAnswers[];
+    answers: IAnswer[];
     result: string;
 }
 
-export interface IAnswers {
+export interface IAnswer {
     id: 5;
     testingQuestionId: 6;
     title: string;
@@ -39,6 +39,7 @@ export interface IAnswers {
     score: number;
     scoreString: string;
     isActive?: boolean;
+    text?: string;
 }
 
 @Component({

@@ -6,7 +6,7 @@ import { IMasterMind, IMasterMindCategory } from 'src/app/pages/tabs/pages/tabs-
 import { IColleague } from 'src/app/pages/tabs/pages/tabs-chat/tabs-chat.page';
 import { IPost } from 'src/app/pages/tabs/pages/tabs-news/tabs-news.page';
 import { IBusiness } from 'src/app/pages/tabs/pages/tabs-offline/tabs-offline.page';
-import { IAnswers, IQuestions, ITests } from 'src/app/pages/tabs/pages/tabs-tests/tabs-tests.page';
+import { IAnswer, IQuestion, ITests } from 'src/app/pages/tabs/pages/tabs-tests/tabs-tests.page';
 import { IAdaptationSubStage, IProgress } from 'src/app/pages/tabs/tabs.interfaces';
 import {AppConfigService} from '../platform/app-config.service';
 import {ITestResult} from "../../../pages/tabs/pages/tabs-tests/test-question/test-question.component";
@@ -24,8 +24,8 @@ export class TabsService {
     public adaptationComponents$: BehaviorSubject<IAdaptationSubStage> = new BehaviorSubject<IAdaptationSubStage>(null);
     public test$: BehaviorSubject<ITests> = new BehaviorSubject<ITests>(null);
     public startTest$: BehaviorSubject<number> = new BehaviorSubject<number>(null);
-    public question$: BehaviorSubject<IQuestions> = new BehaviorSubject<IQuestions>(null);
-    public answers: IAnswers[] = [];
+    public question$: BehaviorSubject<IQuestion> = new BehaviorSubject<IQuestion>(null);
+    public answers: IAnswer[] = [];
 
     private readonly restUrl;
 

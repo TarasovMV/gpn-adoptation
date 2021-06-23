@@ -17,9 +17,9 @@
           {{item.title}}
         </div>
       </ng-container>
-      <ng-container *ngSwitch="3">
+      <ng-container *ngSwitchCase="3">
         <div class="input">
-          <textarea></textarea>
+          <ion-textarea [ngModel]="question.answers[0]?.text" (ionChange)="inputTextAnswer($event, question)" auto-grow></ion-textarea>
         </div>
       </ng-container>
     </ng-container>
