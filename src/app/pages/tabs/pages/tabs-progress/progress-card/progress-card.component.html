@@ -88,16 +88,16 @@
           </div>
           <div class="footer">{{item.footer}}</div>
         </div>
-        <div class="manual-input mb" *ngSwitchCase="14">
+        <div class="manual-input mb">
           <span class="manual-input__title">{{item.header}}</span>
-          <textarea class="manual-input__text" placeholder="Введите текст..."></textarea>
+          <ion-textarea auto-grow class="manual-input__text" placeholder="Введите текст..."></ion-textarea>
           <div class="manual-input__send" (click)="sendIt()">
             <svg-icon src="assets/icon/progress/plane.svg"></svg-icon>
           </div>
         </div>
       </ng-container>
     </ng-container>
-    
+
     <div class="button button__done" [class.button__disabled]="isDone" style="margin-top: auto" (click)="setDone()">Выполнено</div>
   </div>
 </ion-content>
