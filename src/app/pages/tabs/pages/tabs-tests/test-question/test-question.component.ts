@@ -50,7 +50,7 @@ export class TestQuestionComponent implements OnInit {
     }
 
     // TODO: костыль
-    public inputTextAnswer(event: CustomEvent, question: IQuestion): void {
+    public inputTextAnswer(event: any, question: IQuestion): void {
         question.answers = [{text: event.detail.value, testingQuestionId: question.id, isActive: true} as any];
     }
 

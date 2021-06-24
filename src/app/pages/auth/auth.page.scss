@@ -37,20 +37,15 @@
     flex-grow: 1;
     background-color: #006FBA;
     position: relative;
-    padding-top: sizeHeight(201);
-
     display: flex;
+    flex-flow: column;
     justify-content: center;
+    align-items: center;
     color: #ffffff;
     font-size: sizeHeight(18);
 
-    .logo {
-      position: absolute;
-      bottom: sizeHeight(100);
-    }
-
     .enter {
-      height: sizeHeight(222);
+      height: sizeHeight(200);
       width: 100%;
 
       position: relative;
