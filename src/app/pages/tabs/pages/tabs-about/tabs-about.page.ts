@@ -64,6 +64,9 @@ export class TabsAboutPage implements OnInit, IPageTab {
     public async getMasterMindCategories(): Promise<void> {
         const data = await this.tabsService.getMasterMindCategories();
         this.leadership = data;
+        if (this.leadership?.[0]) {
+            this.leadership[0].isActive = true;
+        }
     }
 
     public async getHistoryBullets(): Promise<void> {
