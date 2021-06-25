@@ -5,7 +5,6 @@ import { IHistory } from 'src/app/pages/tabs/pages/tabs-about/components/tabs-ab
 import { IMasterMind, IMasterMindCategory } from 'src/app/pages/tabs/pages/tabs-about/tabs-about.page';
 import { IColleague } from 'src/app/pages/tabs/pages/tabs-chat/tabs-chat.page';
 import { IPost } from 'src/app/pages/tabs/pages/tabs-news/tabs-news.page';
-import { IBusiness } from 'src/app/pages/tabs/pages/tabs-offline/tabs-offline.page';
 import { IAnswer, IQuestion, ITests } from 'src/app/pages/tabs/pages/tabs-tests/tabs-tests.page';
 import {IAdaptationStage, IAdaptationSubStage, IProgress} from 'src/app/pages/tabs/tabs.interfaces';
 import {AppConfigService} from '../platform/app-config.service';

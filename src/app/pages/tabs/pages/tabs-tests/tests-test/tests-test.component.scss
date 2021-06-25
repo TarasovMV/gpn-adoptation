@@ -82,11 +82,10 @@
                 margin-right: sizeWidth(24);
                 position: relative;
 
-                &__question {
-                    position: absolute;
-                    top: sizeHeight(9);
-                    left: sizeWidth(9);
-                }
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: sizeHeight(8);
             }
         }
     }
