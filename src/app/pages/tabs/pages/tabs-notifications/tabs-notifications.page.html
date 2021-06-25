@@ -6,14 +6,22 @@
 
 <ion-content>
   <div class="content">
-    <ng-container *ngFor="let item of notifications">
-      <div class="date">{{item.date | date: 'mediumDate'}}</div>
-      <div class="notifications" *ngFor="let element of item.notification">
-        <div class="calendar">
-          <svg-icon class="logo" src="assets/icon/calendar.svg"></svg-icon>
+    <ng-container *ngIf="!!notifications?.length; else empty">
+      <ng-container *ngFor="let item of notifications">
+        <div class="date">{{item.date | date: 'mediumDate'}}</div>
+        <div class="notifications" *ngFor="let element of item.notification">
+          <div class="calendar">
+            <svg-icon class="logo" src="assets/icon/calendar.svg"></svg-icon>
+          </div>
+          <div class="text">{{element}}</div>
         </div>
-        <div class="text">{{element}}</div>
-      </div>
+      </ng-container>
     </ng-container>
+    <ng-template #empty>
+      <div class="empty">
+        <svg-icon src="assets/icon/empty.svg"></svg-icon>
+        <div class="text">У вас пока нет уведомлений</div>
+      </div>
+    </ng-template>
   </div>
 </ion-content>

@@ -6,13 +6,16 @@ import {
     Token,
 } from '@capacitor/push-notifications';
 import {Capacitor} from "@capacitor/core";
+import { Storage } from '@capacitor/storage';
+import {ApiUserService} from "../api/api-user.service";
 
 @Injectable({
     providedIn: 'root'
 })
 export class FcmService {
+    private readonly fcmTokenRoute: string = 'fcm-token';
 
-    constructor() {
+    constructor(private apiUserService: ApiUserService) {
     }
 
     public initPush(): void {
@@ -21,6 +24,13 @@ export class FcmService {
             return;
         }
         this.registerPush();
+    }
+
+    public async sendFcmToken(): Promise<void> {
+        const res = await Storage.get({key: this.fcmTokenRoute});
+        const token = res.value;
+        if (!token) { return; }
+        await this.apiUserService.fcmTokenRegister(token);
     }
 
     private registerPush(): void {
@@ -40,6 +50,9 @@ export class FcmService {
         PushNotifications.addListener('registration',
             (token: Token) => {
                 console.log('Push registration success, token: ' + token.value);
+                if (token.value) {
+                    Storage.set({key: this.fcmTokenRoute, value: token.value,}).then();
+                }
             }
         );
 

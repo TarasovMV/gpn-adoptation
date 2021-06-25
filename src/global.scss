@@ -31,4 +31,8 @@
 .para {
   margin: 0;
   text-indent: 7vw;
+
+  &__left {
+    text-align: left;
+  }
 }

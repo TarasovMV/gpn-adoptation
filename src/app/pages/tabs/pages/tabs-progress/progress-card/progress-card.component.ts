@@ -22,8 +22,16 @@ export class ProgressCardComponent implements OnInit {
     public cardData: IStage;
     public isDone: boolean = false;
     public isProgress: boolean = true;
-    public rates: Array<{id: number; isActive: boolean}> = [{id: 1, isActive: false},
-        {id: 2, isActive: false} , {id: 3, isActive: false}, {id: 4, isActive: false}, {id: 5, isActive: false}];
+    private readonly ratesDefault: {id: number; isActive: boolean}[] = [
+        {id: 1, isActive: false},
+        {id: 2, isActive: false} ,
+        {id: 3, isActive: false},
+        {id: 4, isActive: false},
+        {id: 5, isActive: false}
+    ];
+
+    public rates: { [key: number]: {id: number; isActive: boolean}[] } = {};
+    public text: { [key: number]: string } = {};
 
     public data: IAdaptationComponent[];
 
@@ -42,6 +50,7 @@ export class ProgressCardComponent implements OnInit {
         this.tabsService.showMenu$.next(null);
         this.tabsService.adaptationComponents$.subscribe(value => {
             this.data = value?.adaptationComponents;
+            this.data.forEach(x => { this.rates[x.id] = [...this.ratesDefault.map(r => ({...r}))] });
             this.isDone = value.isDone;
         });
     }
@@ -69,14 +78,16 @@ export class ProgressCardComponent implements OnInit {
         this.isDone = true;
     }
 
-    public rateIt(rate: {id: number; isActive: boolean}): void {
-        this.rates.forEach(x => x.isActive = false);
-        this.rates.forEach(value => {
+    public rateIt(rate: {id: number; isActive: boolean}, id: number): void {
+        this.rates[id].forEach(x => x.isActive = false);
+        this.rates[id].forEach(value => {
             if (value.id <= rate.id) {
                 value.isActive = true;
             }
         });
     }
 
-    public sendIt(): void {}
+    public sendIt(id: number): void {
+        this.text[id] = '';
+    }
 }

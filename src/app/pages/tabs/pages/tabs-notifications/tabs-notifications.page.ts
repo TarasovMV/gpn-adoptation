@@ -14,16 +14,18 @@ export interface INotifications {
 export class TabsNotificationsPage implements OnInit, IPageTab {
     public route: PageTabType = 'notifications';
 
-    public notifications: INotifications[] = [
-        {
-            date: new Date('Jun 14, 2015'),
-            notification: ['Вы выполнили не все назначенные на сегодня мероприятия']
-        },
-        {
-            date: new Date(),
-            notification: ['Вы выполнили не все назначенные на сегодня мероприятия']
-        },
-    ];
+    public notifications: INotifications[] = [];
+
+    // public notifications: INotifications[] = [
+    //     {
+    //         date: new Date('Jun 14, 2015'),
+    //         notification: ['Вы выполнили не все назначенные на сегодня мероприятия']
+    //     },
+    //     {
+    //         date: new Date(),
+    //         notification: ['Вы выполнили не все назначенные на сегодня мероприятия']
+    //     },
+    // ];
     constructor() {
     }
 

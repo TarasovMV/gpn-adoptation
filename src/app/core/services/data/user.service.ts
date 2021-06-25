@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {ApiUserService} from "../api/api-user.service";
 import {TokenService} from "./token.service";
 import {NavController} from "@ionic/angular";
+import {FcmService} from "../platform/fcm.service";
 
 @Injectable({
     providedIn: 'root'
@@ -12,6 +13,7 @@ export class UserService {
         private apiUserService: ApiUserService,
         private tokenService: TokenService,
         private navCtrl: NavController,
+        private fcmService: FcmService,
     ) {}
 
     public async authorize(): Promise<void> {
@@ -27,6 +29,7 @@ export class UserService {
         const user = await this.apiUserService.authorize(code);
         await this.tokenService.saveToken(user.token);
         await this.navCtrl.navigateRoot('tabs');
+        this.fcmService.sendFcmToken().then();
     }
 
     public async logout(): Promise<void> {
