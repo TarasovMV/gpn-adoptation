@@ -114,6 +114,6 @@ export class TabsProgressPage implements OnInit, IPageTab {
             if (!!stage) {
                 stage.isDone = true;
             }
-        })
+        });
     }
 }

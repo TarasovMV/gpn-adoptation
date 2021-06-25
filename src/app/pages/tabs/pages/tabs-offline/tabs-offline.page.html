@@ -2,10 +2,14 @@
   <div class="header">
     <div class="title">Справочник</div>
   </div>
+  <div class="search-field">
+    <app-tabs-offline-search></app-tabs-offline-search>
+  </div>
 </ion-header>
 
 <ion-content>
   <div class="content">
+
     <div class="scroll-container">
       <ng-container *ngFor="let card of data?.adaptationStages || []">
         <div class="card" (click)="openCard(card)">
