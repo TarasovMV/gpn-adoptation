@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {BehaviorSubject} from 'rxjs';
 import {TabsService} from 'src/app/core/services/tabs/tabs.service';
 import {IAdaptationStage, IPageTab, IProgress, PageTabType} from '../../tabs.interfaces';
+import {AppConfigService} from "../../../../core/services/platform/app-config.service";
 
 export interface IStage {
     id: number;
@@ -30,11 +31,14 @@ export interface IBusiness {
 export class TabsOfflinePage implements OnInit, IPageTab {
     public route: PageTabType = 'offline';
     public data: IProgress;
+    public readonly restUrl: string;
 
     constructor(
         public router: Router,
         public tabsService: TabsService,
+        appConfig: AppConfigService,
     ) {
+        this.restUrl = appConfig.getAttribute("restUrl");
     }
 
     ngOnInit(): void {
@@ -43,6 +47,11 @@ export class TabsOfflinePage implements OnInit, IPageTab {
 
     public async getBusiness(): Promise<void> {
         const data = await this.tabsService.getBusinessProcesses();
+        data.adaptationStages = (data as any).referenceSections;
+        data.adaptationStages.forEach(x => x.adaptationSubStages = (x as any).referenceSubSections);
+        data.adaptationStages
+            .flatMap(x => x.adaptationSubStages)
+            .forEach(x => x.adaptationComponents = (x as any).referenceComponents);
         this.data = data;
         console.log(data);
     }

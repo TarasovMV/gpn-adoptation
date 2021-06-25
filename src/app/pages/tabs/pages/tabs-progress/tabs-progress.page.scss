@@ -47,7 +47,14 @@
     position: relative;
     z-index: 1;
 
-    padding: sizeHeight(10);
+    padding: 1.5vh;
+
+    svg-icon {
+      height: fit-content;
+      width: 100%;
+      margin-left: -.5vh;
+      margin-top: -.3vh;
+    }
   }
 }
 
@@ -73,7 +80,7 @@ ion-content {
   align-items: center;
 
   color: #404763;
-  font-size: sizeHeight(18);
+  font-size: sizeHeight(16);
   font-weight: 600;
 
   overflow-y: auto;

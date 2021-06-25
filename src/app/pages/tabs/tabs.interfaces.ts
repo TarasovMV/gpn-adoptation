@@ -19,6 +19,7 @@ export interface IAdaptationStage {
     adaptationSubStages: IAdaptationSubStage[];
     isActive?: boolean;
     doneCount?: number;
+    iconPath?: string;
 }
 
 export interface IAdaptationSubStage {

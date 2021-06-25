@@ -42,8 +42,7 @@
   font-weight: bold;
 
   display: flex;
-  display: flex;
-  
+
   .item {
     margin-right: sizeWidth(27);
   }
@@ -62,6 +61,7 @@
 
   color: #404763;
   font-size: sizeHeight(16);
+  overflow: scroll;
 
   .history {
     width: 100%;
@@ -85,7 +85,7 @@
     p {
       position: relative;
       z-index: 999;
-      text-align: start;
+      text-align: left;
     }
 
     &__content {
