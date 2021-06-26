@@ -25,6 +25,7 @@ export class TabsService {
     public startTest$: BehaviorSubject<number> = new BehaviorSubject<number>(null);
     public question$: BehaviorSubject<IQuestion> = new BehaviorSubject<IQuestion>(null);
     public answers: IAnswer[] = [];
+    public references$: BehaviorSubject<IProgress> = new BehaviorSubject<IProgress>(null);
 
     private readonly restUrl;
 

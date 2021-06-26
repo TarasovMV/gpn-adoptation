@@ -43,6 +43,10 @@ export class TabsOfflinePage implements OnInit, IPageTab {
 
     ngOnInit(): void {
         this.getBusiness();
+        this.tabsService.references$.subscribe(x => {
+            this.data = x;
+            console.log(x);
+        });
     }
 
     public async getBusiness(): Promise<void> {
@@ -52,7 +56,7 @@ export class TabsOfflinePage implements OnInit, IPageTab {
         data.adaptationStages
             .flatMap(x => x.adaptationSubStages)
             .forEach(x => x.adaptationComponents = (x as any).referenceComponents);
-        this.data = data;
+        this.tabsService.references$.next(data);
         console.log(data);
     }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, filter, switchMap } from 'rxjs/operators';
+import { TabsService } from 'src/app/core/services/tabs/tabs.service';
 
 @Component({
   selector: 'app-tabs-offline-search',
@@ -11,15 +12,26 @@ export class TabsOfflineSearchComponent implements OnInit {
 
   public readonly search: FormControl = new FormControl('');
 
-  constructor() { }
+  constructor(
+    public tabsService: TabsService
+  ) { }
 
   ngOnInit() {
     this.search.valueChanges.pipe(
+      filter(value => value.length > 1),
       debounceTime(500),
       distinctUntilChanged()
     ).subscribe(
-      value => console.log(value)
+      value => {
+        let data = this.tabsService.references$.getValue();
+        data = {
+          id: data.id,
+          name: data.name,
+          order: data.order,
+          adaptationStages: data.adaptationStages.filter(x => x.name.toLowerCase().indexOf(value) > -1),
+        };
+        this.tabsService.references$.next(data);
+      }
     );
   }
-
 }
