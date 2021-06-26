@@ -59,6 +59,7 @@ export class TabsTestsPage implements OnInit, IPageTab {
     }
 
     ngOnInit(): void {
+        this.tabsService.showMenu$.next('on');
         this.getTests();
     }
 

@@ -19,7 +19,7 @@ export class AuthPage implements OnInit {
                 return;
             }
             this.auth(x).then();
-        })
+        });
     }
 
     private async auth(code: string): Promise<void> {

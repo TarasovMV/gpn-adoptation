@@ -31,6 +31,7 @@ export class TabsProgressPage implements OnInit, IPageTab {
     }
 
     ngOnInit(): void {
+        this.tabsService.showMenu$.next('on');
         this.tabsProgressService.adaptationDone$.subscribe(x => {
             this.doneHandler(x, this.data);
             this.countProgress();

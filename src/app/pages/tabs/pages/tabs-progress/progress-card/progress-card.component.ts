@@ -76,6 +76,8 @@ export class ProgressCardComponent implements OnInit {
     public setDone(): void {
         this.tabsProgressService.setDoneId(this.id);
         this.isDone = true;
+        this.navCtrl.back();
+        this.tabsService.showMenu$.next('on');
     }
 
     public rateIt(rate: {id: number; isActive: boolean}, id: number): void {

@@ -1,21 +1,22 @@
-<div class="container">
-  <div class="container__picture">
-    <svg-icon class="logo" src="assets/icon/info.svg"></svg-icon>
-    <img src="">
-  </div>
-  <div class="container__text">
-    <div class="title">Доступность информации</div>
-    <div class="description">
-      Получите доступ к информации об основных бизнес-процессах,
-      процедурах и локальных нормативных актах с Вашего мобильного устройства.
-      Ознакомьтесь с историей организации, особенностями бизнеса, географией и предоставляемыми
-      Вашим работодателям возможностями.
-    </div>
-  </div>
-  <div class="container__dots">
-    <div *ngFor="let dot of dots" class="dot"></div>
-  </div>
-  <div class="container__buttons">
-    <div class="start">Начать пользоваться</div>
-  </div>
-</div>
+  
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide *ngFor="let item of startPageInfo">
+      <div class="container">
+        <div class="container__picture">
+          <div class="logo">
+            <svg-icon src="{{item.icon}}"></svg-icon>
+          </div>
+          <img src="{{item.image}}">
+        </div>
+        <div class="container__text">
+          <div class="title">{{item.title}}</div>
+          <div class="description">
+            {{item.description}}
+          </div>
+        </div>
+        <div class="container__buttons">
+          <div class="start" *ngIf="item.id === startPageInfo.length" (click)="start()">Начать пользоваться</div>
+        </div>
+      </div>
+    </ion-slide>
+  </ion-slides>

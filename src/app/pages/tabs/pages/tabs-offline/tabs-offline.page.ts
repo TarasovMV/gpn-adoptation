@@ -42,6 +42,7 @@ export class TabsOfflinePage implements OnInit, IPageTab {
     }
 
     ngOnInit(): void {
+        this.tabsService.showMenu$.next('on');
         this.getBusiness();
         this.tabsService.references$.subscribe(x => {
             this.data = x;
