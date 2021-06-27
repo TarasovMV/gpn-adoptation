@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Router} from '@angular/router';
 import {TabsService} from 'src/app/core/services/tabs/tabs.service';
-import {IBusiness} from '../tabs-offline.page';
 import {IAdaptationStage, IAdaptationSubStage} from "../../../tabs.interfaces";
 import {NavController} from "@ionic/angular";
 

@@ -2,23 +2,22 @@
   <div class="header">
     <div class="title">Справочник</div>
   </div>
-  <div class="search-field">
-    <app-tabs-offline-search></app-tabs-offline-search>
-  </div>
 </ion-header>
 
 <ion-content>
   <div class="content">
-
+    <app-tabs-offline-search (search)="filterSections($event)" style="margin-bottom: 2vh"></app-tabs-offline-search>
     <div class="scroll-container">
-      <ng-container *ngFor="let card of data?.adaptationStages || []">
-        <div class="card" (click)="openCard(card)">
-          <div class="card__icon">
-            <img src="{{restUrl}}/{{card?.iconPath}}"/>
+      <div class="card-wrapper">
+        <ng-container *ngFor="let card of sections || []">
+          <div class="card" (click)="openCard(card)">
+            <div class="card__icon">
+              <img src="{{restUrl}}/{{card?.iconPath}}"/>
+            </div>
+            <div class="card__name">{{card.name}}</div>
           </div>
-          <div class="card__name">{{card.name}}</div>
-        </div>
-      </ng-container>
+        </ng-container>
+      </div>
     </div>
   </div>
   <!--  <div class="content">-->

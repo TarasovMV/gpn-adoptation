@@ -1,27 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {BehaviorSubject} from 'rxjs';
 import {TabsService} from 'src/app/core/services/tabs/tabs.service';
 import {IAdaptationStage, IPageTab, IProgress, PageTabType} from '../../tabs.interfaces';
 import {AppConfigService} from "../../../../core/services/platform/app-config.service";
-
-export interface IStage {
-    id: number;
-    description: string;
-    helpTaskLinkId: number;
-    stageNumberString: string;
-    taskId: number;
-    title: string;
-}
-
-export interface IBusiness {
-    description: string;
-    iconPath: string;
-    id: number;
-    regionId?: number;
-    stages: IStage[];
-    title: string;
-}
 
 @Component({
     selector: 'app-tabs-offline',
@@ -31,6 +12,7 @@ export interface IBusiness {
 export class TabsOfflinePage implements OnInit, IPageTab {
     public route: PageTabType = 'offline';
     public data: IProgress;
+    public sections: IAdaptationStage[] = [];
     public readonly restUrl: string;
 
     constructor(
@@ -44,10 +26,6 @@ export class TabsOfflinePage implements OnInit, IPageTab {
     ngOnInit(): void {
         this.tabsService.showMenu$.next('on');
         this.getBusiness();
-        this.tabsService.references$.subscribe(x => {
-            this.data = x;
-            console.log(x);
-        });
     }
 
     public async getBusiness(): Promise<void> {
@@ -57,12 +35,16 @@ export class TabsOfflinePage implements OnInit, IPageTab {
         data.adaptationStages
             .flatMap(x => x.adaptationSubStages)
             .forEach(x => x.adaptationComponents = (x as any).referenceComponents);
-        this.tabsService.references$.next(data);
-        console.log(data);
+        this.data = data;
+        this.sections = data.adaptationStages;
     }
 
     public openCard(card: IAdaptationStage): void {
         this.router.navigate(['tabs/tabs-offline/' + card.id]);
         this.tabsService.businessStages$.next(card);
+    }
+
+    public filterSections(search: string): void {
+        this.sections = this.data.adaptationStages.filter(x => x.name?.toLowerCase().search(search) !== -1);
     }
 }

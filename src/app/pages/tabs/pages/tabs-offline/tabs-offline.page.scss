@@ -33,10 +33,6 @@
   }
 }
 
-.search-field {
-  margin: sizeHeight(22) sizeWidth(12) 0;
-}
-
 .menu {
   height: sizeHeight(42);
   width: 100%;
@@ -58,46 +54,49 @@
 
 .content {
   height: 100%;
-  background-color: #f8fafb;
-  padding: sizeHeight(22) sizeWidth(12);
-  color: #404763;
+  display: flex;
+  flex-flow: column;
+  padding: sizeHeight(22) sizeWidth(30);
   font-size: sizeHeight(16);
-
-  overflow-y: scroll;
+  overflow-y: hidden;
+  color: #404763;
+  background-color: #f8fafb;
 
   .scroll-container {
+    flex-grow: 1;
     width: 100%;
-    overflow-y: auto;
+    overflow-y: scroll;
     overflow-x: hidden;
-    display: flex;
-    flex-wrap: wrap;
+
+    .card-wrapper {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+    }
   }
 
   .card {
     height: sizeHeight(140);
-    width: sizeWidth(168);
+    width: 40vw;
     border-radius: sizeHeight(22);
     background-color: #ffffff;
     padding: sizeHeight(14) sizeWidth(15);
     margin-bottom: sizeHeight(15);
-
     display: flex;
     flex-direction: column;
     color: #404763;
     overflow: hidden;
-    margin-right: 3vw;
-
+    margin-right: 2vw;
     font-weight: bold;
 
     &:nth-child(2) {
       margin-right: 0;
     }
 
-
     &__icon {
-      min-height: sizeWidth(47);
-      height: sizeWidth(47);
-      width: sizeWidth(47);
+      min-height: sizeWidth(40);
+      height: sizeWidth(40);
+      width: sizeWidth(40);
       border-radius: sizeHeight(12);
       background-color: #006FBA;
 

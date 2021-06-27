@@ -20,15 +20,13 @@ export class UserService {
         const token = await this.tokenService.loadToken();
         if (!token) {
             await this.navCtrl.navigateRoot('auth');
-        } else {
-            await this.navCtrl.navigateRoot('start');
         }
     }
 
     public async login(code: string): Promise<void> {
         const user = await this.apiUserService.authorize(code);
         await this.tokenService.saveToken(user.token);
-        await this.navCtrl.navigateRoot('start');
+        await this.navCtrl.navigateRoot('tabs');
         this.fcmService.sendFcmToken().then();
     }
 

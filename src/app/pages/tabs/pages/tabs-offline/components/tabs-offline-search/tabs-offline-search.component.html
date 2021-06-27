@@ -2,9 +2,5 @@
   <div class="search__logo">
     <svg-icon src="assets/icon/search.svg"></svg-icon>
   </div>
-  <input type="text"
-  placeholder="Поиск..."
-  class="input"
-  [formControl]="search"
-  >
+  <input [disabled]="disabled" type="text" placeholder="Поиск..." [formControl]="searchControl">
 </div>
