@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AngularSvgIconModule } from 'angular-svg-icon';
-import { StartPageComponent } from './start-page.component';
+import { StartComponent } from './start.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { StartPageRoutingModule } from './start-page-routing.module';
+import { StartRoutingModule } from './start-routing.module';
 
 
 @NgModule({
@@ -12,10 +12,10 @@ import { StartPageRoutingModule } from './start-page-routing.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    StartPageRoutingModule,
+    StartRoutingModule,
     AngularSvgIconModule,
     ReactiveFormsModule,
 ],
-declarations: [StartPageComponent]
+declarations: [StartComponent]
 })
-export class StartPageModule { }
+export class StartModule { }
