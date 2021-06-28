@@ -32,8 +32,13 @@
       <ng-container *ngIf="item.isActive">
         <ng-container *ngFor="let element of item.adaptationSubStages">
           <div class="stage" [ngClass]="{'stage-active': element.isDone, 'stage-disabled': element.disabled}" (click)="toProgressCard(element)">
-            <span>{{element.name}}</span>
-            <span *ngIf="element.isDone" class="done">Выполнено</span>
+            <div class="stage__icon" [ngClass]="{'stage__icon-done': element.isDone}">
+              <svg-icon  src="assets/icon/progress/{{element.subStageType}}.svg"></svg-icon>
+            </div>
+            <div class="stage__text">
+              <span>{{element.name}}</span>
+              <span *ngIf="element.isDone" class="done">Выполнено</span>
+            </div>
           </div>
         </ng-container>
       </ng-container>
