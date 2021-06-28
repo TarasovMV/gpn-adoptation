@@ -4,6 +4,7 @@ import { TabsOfflineMoreComponent } from './tabs-offline-more.component';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { AngularSvgIconModule } from 'angular-svg-icon';
+import { TabsOfflinePageModule } from '../tabs-offline.module';
 
 
 
@@ -13,7 +14,8 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
     CommonModule,
     FormsModule,
     IonicModule,
-    AngularSvgIconModule
+    AngularSvgIconModule,
+    TabsOfflinePageModule
   ]
 })
 export class TabsOfflineMoreModule { }

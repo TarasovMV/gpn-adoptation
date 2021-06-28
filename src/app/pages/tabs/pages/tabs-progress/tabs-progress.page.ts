@@ -32,7 +32,7 @@ export class TabsProgressPage implements OnInit, IPageTab {
 
     ngOnInit(): void {
         this.tabsService.showMenu$.next('on');
-        this.tabsProgressService.adaptationDone$.subscribe(x => {
+        this.tabsProgressService?.adaptationDone$.subscribe(x => {
             this.doneHandler(x, this.data);
             this.countProgress();
         });
@@ -42,11 +42,11 @@ export class TabsProgressPage implements OnInit, IPageTab {
     public async getData(id: number): Promise<void> {
         try {
             this.data = await this.tabsService.getAdaptation(id);
-            this.allStagesLength = this.data.adaptationStages.flatMap(x => x.adaptationSubStages).length;
-            this.data.adaptationStages.flatMap(x => x.adaptationSubStages).forEach(x =>
+            this.allStagesLength = this.data?.adaptationStages.flatMap(x => x.adaptationSubStages).length;
+            this.data?.adaptationStages.flatMap(x => x.adaptationSubStages).forEach(x =>
                 x.adaptationComponents = x.adaptationComponents.sort((a, b) => a.order - b.order)
             );
-            this.data.adaptationStages.forEach(x => x.adaptationSubStages = x.adaptationSubStages.sort((a, b) => a.order - b.order));
+            this.data?.adaptationStages.forEach(x => x.adaptationSubStages = x.adaptationSubStages.sort((a, b) => a.order - b.order));
             this.data.adaptationStages[0].isActive = true;
             const doneArr = this.tabsProgressService.adaptationDone$.getValue();
             this.doneHandler(doneArr, this.data);
@@ -72,12 +72,12 @@ export class TabsProgressPage implements OnInit, IPageTab {
         if  (!this.data) {
             return;
         }
-        const doneCount = this.data.adaptationStages
+        const doneCount = this.data?.adaptationStages
             .flatMap(x => x.adaptationSubStages)
             .filter(x => x.isDone)
             .length;
 
-        this.data.adaptationStages.forEach(x => x.doneCount = x.adaptationSubStages.filter(s => s.isDone).length)
+        this.data?.adaptationStages.forEach(x => x.doneCount = x.adaptationSubStages.filter(s => s.isDone).length)
         this.doneStages = doneCount;
         this.percentProgress = doneCount / this.allStagesLength;
     }
@@ -98,7 +98,7 @@ export class TabsProgressPage implements OnInit, IPageTab {
         if (!data) {
             return;
         }
-        const stagesArr = data.adaptationStages.flatMap(x => x.adaptationSubStages);
+        const stagesArr = data?.adaptationStages.flatMap(x => x.adaptationSubStages);
         for (const stage of [...stagesArr].reverse()) {
             if (doneArr.find(x => x === stage.id)) {
                 const idx = stagesArr.findIndex(s => s.id === stage.id);

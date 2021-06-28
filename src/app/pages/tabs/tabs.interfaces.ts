@@ -29,6 +29,7 @@ export interface IAdaptationSubStage {
     adaptationComponents: IAdaptationComponent[];
     isDone?: boolean;
     disabled?: boolean;
+    subStageType?: number;
 }
 
 export interface IAdaptationComponent {

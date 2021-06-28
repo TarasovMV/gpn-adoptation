@@ -29,14 +29,19 @@ export class TabsOfflinePage implements OnInit, IPageTab {
     }
 
     public async getBusiness(): Promise<void> {
-        const data = await this.tabsService.getBusinessProcesses();
-        data.adaptationStages = (data as any).referenceSections;
-        data.adaptationStages.forEach(x => x.adaptationSubStages = (x as any).referenceSubSections);
-        data.adaptationStages
-            .flatMap(x => x.adaptationSubStages)
-            .forEach(x => x.adaptationComponents = (x as any).referenceComponents);
-        this.data = data;
-        this.sections = data.adaptationStages;
+        try{
+            const data = await this.tabsService.getBusinessProcesses();
+            data.adaptationStages = (data as any).referenceSections;
+            data.adaptationStages.forEach(x => x.adaptationSubStages = (x as any).referenceSubSections);
+            data.adaptationStages
+                .flatMap(x => x.adaptationSubStages)
+                .forEach(x => x.adaptationComponents = (x as any).referenceComponents);
+            this.data = data;
+            this.sections = data.adaptationStages;
+        }
+        catch (error) {
+            console.error(error);
+        }
     }
 
     public openCard(card: IAdaptationStage): void {

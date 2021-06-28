@@ -6,7 +6,7 @@
 
 <ion-content>
   <div class="content">
-    <ng-container *ngIf="data; else empty">
+    <ng-container *ngIf="!!data.length; else empty">
       <ng-container *ngFor="let test of data">
         <div class="test" (click)="openTest(test)">
           <div class="test__logo">
