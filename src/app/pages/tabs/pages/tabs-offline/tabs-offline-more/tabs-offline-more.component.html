@@ -1,16 +1,19 @@
 <ion-header>
   <div class="header">
-    <svg-icon class="arrow" src="assets/icon/arrow.svg"
-    (click)="backToOffline()"
-    ></svg-icon>
-   <div class="title">Подробная информация</div>
+    <svg-icon class="arrow" src="assets/icon/arrow.svg" (click)="backToOffline()"></svg-icon>
+    <div class="title">Подробная информация</div>
   </div>
 </ion-header>
 
 <ion-content>
   <div class="content">
-    <div (click)="openSubStage(stage)" *ngFor="let stage of data?.adaptationSubStages || []" class="card">
-      {{ stage.name }}
+    <div class="search">
+      <app-tabs-offline-search (search)="filterSections($event)" style="margin-bottom: 2vh"></app-tabs-offline-search>
+    </div>
+    <div class="scroll-container">
+      <div (click)="openSubStage(stage)" *ngFor="let stage of sections || []" class="card">
+        {{ stage?.name }}
+      </div>
     </div>
   </div>
 </ion-content>

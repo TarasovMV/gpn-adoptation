@@ -11,6 +11,7 @@ import {NavController} from "@ionic/angular";
 })
 export class TabsOfflineMoreComponent implements OnInit {
     public data: IAdaptationStage = null;
+    public sections: IAdaptationSubStage[] = [];
 
     constructor(
         public nav: Router,
@@ -22,14 +23,19 @@ export class TabsOfflineMoreComponent implements OnInit {
         this.tabsService.businessStages$.subscribe(value => {
             this.data = value;
         });
+        this.sections = this.data?.adaptationSubStages;
     }
 
     public backToOffline(): void {
-        this.nav.navigate(['tabs/tabs-offline/'])
+        this.nav.navigate(['tabs/tabs-offline/']);
     }
 
     public openSubStage(subStage: IAdaptationSubStage): void {
         this.tabsService.adaptationComponents$.next(subStage);
         this.navCtrl.navigateForward('tabs/tabs-progress/', { queryParams: {id: subStage.id, type: 'reference'}});
+    }
+
+    public filterSections(search: string): void {
+        this.sections = this.data.adaptationSubStages.filter(x => x.name?.toLowerCase().search(search) !== -1);
     }
 }

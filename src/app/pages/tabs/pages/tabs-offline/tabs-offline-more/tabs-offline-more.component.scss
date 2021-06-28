@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+ion-content {
+  height: 100%;
+}
+
 .header {
   height: sizeHeight(126);
   background-color: #006FBA;
@@ -37,7 +41,19 @@
   align-items: center;
   color: #404763;
   font-size: sizeHeight(18);
-  overflow-y: scroll;
+
+
+  .scroll-container {
+    flex-grow: 1;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  .search {
+    height: sizeHeight(48);
+    width: 100%;
+    margin-bottom: 2vh;
+  }
 
   .card {
     width: 100%;
