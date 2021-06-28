@@ -15,7 +15,7 @@
       <div class="history" *ngSwitchCase="'История'">
         <div class="history__content">
           <p *ngFor="let bullet of showHistory?.historyBullets">{{ bullet.text }}</p>
-          <img *ngIf="showHistory?.imagePath" src="{{restUrl}}/{{showHistory?.imagePath}}"/>
+          <cashed-img *ngIf="showHistory?.imagePath" [src]="restUrl+'/'+showHistory?.imagePath"></cashed-img>
         </div>
         <div class="history__periods">
           <app-tabs-about-history [data]="history"></app-tabs-about-history>

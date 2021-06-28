@@ -12,16 +12,18 @@ import { TabsAboutLeadershipComponent } from './components/tabs-about-leadership
 import { TabsAboutLeadershipCardComponent } from './components/tabs-about-leadership-card/tabs-about-leadership-card.component';
 import { TabsAboutPersonModule } from './components/tabs-about-person/tabs-about-person.module';
 import { TabsAboutHistoryComponent } from './components/tabs-about-history/tabs-about-history.component';
+import {SharedModule} from "../../../../shared/shared.module";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    AngularSvgIconModule,
-    TabsAboutPersonModule,
-    TabsAboutPageRoutingModule
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        AngularSvgIconModule,
+        TabsAboutPersonModule,
+        TabsAboutPageRoutingModule,
+        SharedModule
+    ],
   declarations: [
     TabsAboutPage,
     TabsAboutLeadershipComponent,

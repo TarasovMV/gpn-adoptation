@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import { Storage } from '@capacitor/storage';
-import {HttpEvent, HttpRequest, HttpResponse} from "@angular/common/http";
+import {HttpEvent, HttpResponse} from "@angular/common/http";
 import {Network} from "@capacitor/network";
 
 interface ICache {
@@ -19,6 +19,18 @@ export class CacheService {
         },
         {
             url: '/api/Adapt',
+            method: 'GET'
+        },
+        {
+            url: '/api/MasterMindCategories',
+            method: 'GET'
+        },
+        {
+            url: '/api/HistoryPeriods',
+            method: 'GET'
+        },
+        {
+            url: '/api/ReferenceBook',
             method: 'GET'
         }
     ]
