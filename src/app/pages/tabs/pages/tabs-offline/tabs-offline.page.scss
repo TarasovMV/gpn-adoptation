@@ -14,7 +14,7 @@
 
 .header {
   height: sizeHeight(126);
-  background-color: #006FBA;
+  background-color: #006fba;
   color: #ffffff;
   font-weight: 600;
   font-size: sizeHeight(30);
@@ -37,7 +37,7 @@
   height: sizeHeight(42);
   width: 100%;
   padding: 0 sizeWidth(30);
-  background-color: #006FBA;
+  background-color: #006fba;
   color: #ffffff;
 
   display: flex;
@@ -51,7 +51,10 @@
     opacity: 0.5;
   }
 }
-
+#background-content {
+  height: 100%;
+  background-color: #f8fafb;
+}
 .content {
   height: 100%;
   display: flex;
@@ -98,7 +101,7 @@
       height: sizeWidth(40);
       width: sizeWidth(40);
       border-radius: sizeHeight(12);
-      background-color: #006FBA;
+      background-color: #006fba;
 
       display: flex;
       justify-content: center;
