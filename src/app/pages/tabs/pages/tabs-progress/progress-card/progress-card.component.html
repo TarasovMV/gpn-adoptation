@@ -12,11 +12,11 @@
     <ng-container *ngFor="let item of data">
       <ng-container [ngSwitch]="item.componentType">
         <div *ngSwitchCase="1" class="image mb">
-          <img  src='http://185.165.161.23/{{item.imagePath}}'/>
+          <cashed-img src='{{restUrl}}/{{item.imagePath}}'></cashed-img>
           <div class="footer">{{item.footer}}</div>
         </div>
         <div *ngSwitchCase="13" class="image-squad mb">
-          <img  src='http://185.165.161.23/{{item.imagePath}}'/>
+          <img  src='{{restUrl}}/{{item.imagePath}}'/>
           <div class="footer">{{item.footer}}</div>
         </div>
         <div *ngSwitchCase="2" class="usualText mb">
@@ -25,7 +25,7 @@
         </div>
         <div *ngSwitchCase="12" class="button mb" (click)="clickButton(item)">{{item.header}}</div>
         <div *ngSwitchCase="11" class="video mb">
-          <video src='http://185.165.161.23/{{item.videoPath}}' controls></video>
+          <video src='{{restUrl}}/{{item.body}}' controls></video>
           <div class="footer">{{item.footer}}</div>
         </div>
         <div *ngSwitchCase="3" class="accentText mb">
@@ -49,7 +49,7 @@
             </div>
             <div class="text" style="font-weight: bold">{{item.header}}</div>
           </div>
-          <div class="attention__description">{{item.body}}</div>
+          <div class="attention__description">{{ item.body }}</div>
           <div class="footer">{{item.footer}}</div>
         </div>
         <div class="block mb" *ngSwitchCase="6">

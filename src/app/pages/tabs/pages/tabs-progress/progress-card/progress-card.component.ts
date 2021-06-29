@@ -5,6 +5,7 @@ import {IAdaptationComponent, IStage} from '../../../tabs.interfaces';
 import { Browser } from "@capacitor/browser";
 import {TabsProgressService} from "../services/tabs-progress.service";
 import {NavController} from "@ionic/angular";
+import {AppConfigService} from "../../../../../core/services/platform/app-config.service";
 
 export enum AdaptationComponentsType {
     none, imageWithText, textWithText, headerWithText,
@@ -35,13 +36,17 @@ export class ProgressCardComponent implements OnInit {
 
     public data: IAdaptationComponent[];
 
+    public readonly restUrl: string;
+
     constructor(
         private route: ActivatedRoute,
         public nav: Router,
         private navCtrl: NavController,
         public tabsService: TabsService,
         private tabsProgressService: TabsProgressService,
+        appConfigService: AppConfigService,
     ) {
+        this.restUrl = appConfigService.getAttribute('restUrl');
     }
 
     ngOnInit(): void {
@@ -61,7 +66,7 @@ export class ProgressCardComponent implements OnInit {
     }
 
     public openFile(path: string): void {
-        Browser.open({url: `http://185.165.161.23/${path}`});
+        Browser.open({url: `${this.restUrl}/${path}`});
     }
 
     public openMore(item: IAdaptationComponent): void {
@@ -76,8 +81,10 @@ export class ProgressCardComponent implements OnInit {
     public setDone(): void {
         this.tabsProgressService.setDoneId(this.id);
         this.isDone = true;
-        this.navCtrl.back();
-        this.tabsService.showMenu$.next('on');
+        setTimeout(() => {
+            this.navCtrl.back();
+            this.tabsService.showMenu$.next('on');
+        }, 300);
     }
 
     public rateIt(rate: {id: number; isActive: boolean}, id: number): void {

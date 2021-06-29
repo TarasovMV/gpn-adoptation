@@ -83,6 +83,7 @@
     }
   }
 
+  cashed-img,
   img,
   video {
     border-radius: sizeHeight(22);
@@ -274,7 +275,7 @@
 
     &__description {
       font-size: sizeHeight(16);
-      text-align: justify;
+      text-align: left;
     }
   }
 }

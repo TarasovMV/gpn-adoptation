@@ -21,10 +21,10 @@ export class TabsPage implements OnInit {
             route: 'about',
         },
         {
-            route: 'offline',
+            route: 'progress',
         },
         {
-            route: 'progress',
+            route: 'offline',
         },
         {
             route: 'tests',
