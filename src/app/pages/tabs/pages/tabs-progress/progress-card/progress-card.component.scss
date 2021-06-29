@@ -124,6 +124,10 @@
 
     &__path {
       margin-left: sizeWidth(15);
+      font-size: sizeHeight(14);
+
+      display: flex;
+      align-items: center;
     }
   }
 
@@ -245,9 +249,9 @@
 
       display: flex;
       align-items: center;
-      margin-bottom: sizeHeight(18);
 
       .text {
+        margin-top: sizeHeight(18);
         padding-left: sizeWidth(13);
         max-width: sizeWidth(200);
       }
