@@ -6,12 +6,14 @@ import {AngularSvgIconModule} from 'angular-svg-icon';
 import {TextLinesPipe} from './pipes/text-lines.pipe';
 import {RouteFilePipe} from "./pipes/route-file.pipe";
 import {CashedImgComponent} from "./components/cashed-img/cashed-img.component";
+import {SafeUrlPipe} from "./pipes/safe-url.pipe";
 
 @NgModule({
     declarations: [
         LoginComponent,
         TextLinesPipe,
         RouteFilePipe,
+        SafeUrlPipe,
         CashedImgComponent,
     ],
     imports: [
@@ -23,6 +25,7 @@ import {CashedImgComponent} from "./components/cashed-img/cashed-img.component";
         LoginComponent,
         TextLinesPipe,
         RouteFilePipe,
+        SafeUrlPipe,
         CashedImgComponent,
     ]
 })

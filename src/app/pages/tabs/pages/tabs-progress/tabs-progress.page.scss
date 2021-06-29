@@ -146,11 +146,12 @@ ion-content {
 
     &__icon {
       width: sizeHeight(28);
+      min-width: sizeHeight(28);
       height: sizeHeight(28);
       border-radius: 50%;
       border: sizeHeight(1) solid #404763;
 
-      padding: sizeHeight(5);
+      padding: 0.55vh;
       margin-right: sizeWidth(15);
       color: #404763;
 

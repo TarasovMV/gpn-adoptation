@@ -55,6 +55,7 @@
     display: flex;
     flex-direction: column;
     margin-bottom: sizeHeight(5);
+    width: 100%;
   }
 
   .button {
@@ -83,8 +84,16 @@
     }
   }
 
+  iframe {
+    outline: none;
+    width: 100%;
+    height: 27vh;
+    border: none;
+  }
+
   cashed-img,
   img,
+  iframe,
   video {
     border-radius: sizeHeight(22);
   }
