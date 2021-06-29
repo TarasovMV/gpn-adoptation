@@ -18,13 +18,14 @@ export class TabsPage implements OnInit {
 
     public readonly tabs: IPageTab[] = [
         {
-            route: 'about',
+            route: 'progress',
         },
+
         {
             route: 'offline',
         },
         {
-            route: 'progress',
+            route: 'about',
         },
         {
             route: 'tests',
