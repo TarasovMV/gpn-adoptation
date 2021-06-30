@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
     ) {}
 
     public ngOnInit(): void {
-        this.userService.authorize().then();
+        // this.userService.authorize().then();
         this.platform.ready().then(() => {
             this.keyboardService.setInitSettings(this.platform, this.appWindow).then();
             this.fcmService.initPush();

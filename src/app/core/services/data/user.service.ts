@@ -16,11 +16,12 @@ export class UserService {
         private fcmService: FcmService,
     ) {}
 
-    public async authorize(): Promise<void> {
+    public async authorize(): Promise<boolean> {
         const token = await this.tokenService.loadToken();
-        if (!token) {
-            await this.navCtrl.navigateRoot('auth');
-        }
+        return !!token;
+        // if (!token) {
+        //     await this.navCtrl.navigateRoot('auth');
+        // }
     }
 
     public async login(code: string): Promise<void> {

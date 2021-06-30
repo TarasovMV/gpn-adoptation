@@ -1,96 +1,106 @@
 @import "src/theme/functions/resizer";
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .header {
-    height: sizeHeight(126);
-    background-color: #006FBA;
-    color: #ffffff;
-    font-weight: 600;
-    font-size: sizeHeight(30);
+  height: sizeHeight(126);
+  background-color: #006FBA;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: sizeHeight(30);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  padding: 0 sizeWidth(24);
+
+  .title {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: sizeHeight(84);
+  }
+}
+
+.content {
+  height: 100%;
+  background-color: #f8fafb;
+  padding: sizeHeight(24) sizeWidth(24);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-bottom: sizeHeight(5);
+
+  color: #404763;
+  font-size: sizeHeight(16);
+
+  overflow-y: scroll;
+
+  .empty {
+    width: 100%;
+    height: 100%;
 
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
+    align-items: center;
+  }
 
-    padding: 0 sizeWidth(24);
+  .date {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #606580;
+    font-size: sizeHeight(12);
+    margin-bottom: sizeHeight(5);
+  }
 
-    .title {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      height: sizeHeight(84);
+  .notifications {
+    width: 100%;
+    min-height: sizeHeight(55);
+    padding: sizeHeight(10) sizeWidth(14);
+    border-radius: sizeHeight(4);
+    background-color: #ffffff;
+    margin: sizeHeight(5) 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .icon {
+    min-width: sizeWidth(35);
+    min-height: sizeWidth(35);
+    width: sizeWidth(35);
+    height: sizeWidth(35);
+    border-radius: 50%;
+    margin-right: sizeWidth(10);
+    padding: 1vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+
+    &__daily {
+      background-color: #eb5757;
+    }
+
+    &__test {
+      background-color: #08BDBA;
+    }
+
+    svg-icon {
+      margin-top: 0.5vh;
     }
   }
 
-.content {
-    height: 100%;
-    background-color: #f8fafb;
-    padding: sizeHeight(24) sizeWidth(24);
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    margin-bottom: sizeHeight(5);
-
-    color: #404763;
-    font-size: sizeHeight(16);
-
-    overflow-y: scroll;
-
-    .empty {
-        width: 100%;
-        height: 100%;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .date {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #606580;
-        font-size: sizeHeight(12);
-        margin-bottom: sizeHeight(5);
-    }
-
-    .notifications {
-        width: 100%;
-        min-height: sizeHeight(55);
-        padding: sizeHeight(10) sizeWidth(14);
-        border-radius: sizeHeight(4);
-        background-color: #ffffff;
-        margin: sizeHeight(5) 0;
-
-        display: flex;
-        align-items: center;
-    }
-
-    .calendar {
-        min-width: sizeWidth(35);
-        min-height: sizeWidth(35);
-        width: sizeWidth(35);
-        height: sizeWidth(35);
-        border-radius: 50%;
-        background-color: #eb5757;
-        margin-right: sizeWidth(10);
-        padding: sizeHeight(9);
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .text {
-        //flex-grow: 1;
-        //display: flex;
-        //justify-content: center;
-        //align-items: center;
-    }
+  .text {
+    //flex-grow: 1;
+    //display: flex;
+    //justify-content: center;
+    //align-items: center;
+  }
 }
 
 .empty {

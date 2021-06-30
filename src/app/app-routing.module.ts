@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {NoPreloading, RouterModule, Routes} from '@angular/router';
 import {StartScreenGuard} from "./core/guards/start-screen.guard";
+import {AuthorizeGuard} from "./core/guards/authorize.guard";
 
 const routes: Routes = [
     {
@@ -13,7 +14,8 @@ const routes: Routes = [
     },
     {
         path: 'tabs',
-        loadChildren: () => import('./pages/tabs/tabs.module').then(m => m.TabsPageModule)
+        loadChildren: () => import('./pages/tabs/tabs.module').then(m => m.TabsPageModule),
+        canActivate: [AuthorizeGuard],
     },
     {
         path: 'start',
@@ -22,7 +24,7 @@ const routes: Routes = [
     },
     {
         path: '',
-        redirectTo: 'tabs',
+        redirectTo: 'start',
         pathMatch: 'full',
     },
 ];
