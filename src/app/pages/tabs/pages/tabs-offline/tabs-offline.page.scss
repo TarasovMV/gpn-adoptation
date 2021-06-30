@@ -23,7 +23,7 @@
   flex-direction: column;
   justify-content: flex-end;
 
-  padding: 0 sizeWidth(30);
+  padding: 0 sizeWidth(24);
 
   .title {
     display: flex;
@@ -36,7 +36,7 @@
 .menu {
   height: sizeHeight(42);
   width: 100%;
-  padding: 0 sizeWidth(30);
+  padding: 0 sizeWidth(24);
   background-color: #006fba;
   color: #ffffff;
 
@@ -59,7 +59,7 @@
   height: 100%;
   display: flex;
   flex-flow: column;
-  padding: sizeHeight(22) sizeWidth(30);
+  padding: sizeHeight(22) sizeWidth(24);
   font-size: sizeHeight(16);
   overflow-y: hidden;
   color: #404763;
@@ -84,12 +84,12 @@
     border-radius: sizeHeight(22);
     background-color: #ffffff;
     padding: sizeHeight(14) sizeWidth(15);
-    margin-bottom: sizeHeight(15);
+    margin-bottom: 7vw;
     display: flex;
     flex-direction: column;
     color: #404763;
     overflow: hidden;
-    margin-right: 2vw;
+    margin-right: 7vw;
     font-weight: bold;
 
     &:nth-child(2) {

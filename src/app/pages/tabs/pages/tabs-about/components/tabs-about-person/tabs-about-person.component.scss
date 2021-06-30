@@ -14,7 +14,7 @@
   display: flex;
   align-items: center;
 
-  padding: sizeHeight(44) sizeWidth(30) 0;
+  padding: sizeHeight(44) sizeWidth(24) 0;
 
   .arrow {
     transform: rotate(90deg);
@@ -30,7 +30,7 @@
 .content {
   height: 100%;
   background-color: #f8fafb;
-  padding: sizeHeight(25) sizeWidth(30) 0;
+  padding: sizeHeight(25) sizeWidth(24) 0;
   display: flex;
   flex-direction: column;
   margin-bottom: sizeHeight(15);
