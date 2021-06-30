@@ -31,10 +31,6 @@ export class TabsService {
     constructor(appConfigService: AppConfigService, private http: HttpClient) {
         this.restUrl = appConfigService.getAttribute('restUrl');
     }
-
-    public async getAdaptation(id: number): Promise<IProgress> {
-        return await this.http.get<IProgress>(`${this.restUrl}/api/Adaptation/mobile`).toPromise();
-    }
     public async getNews(): Promise<IPost[]> {
         return await this.http.get<IPost[]>(`${this.restUrl}/api/news`).toPromise();
     }

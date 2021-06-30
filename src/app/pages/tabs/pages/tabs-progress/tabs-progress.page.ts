@@ -6,6 +6,7 @@ import { ProgressCardComponent } from './progress-card/progress-card.component';
 import {TabsProgressService} from "./services/tabs-progress.service";
 import {UserService} from "../../../../core/services/data/user.service";
 import {NavController} from "@ionic/angular";
+import {ApiAdaptationService} from "../../../../core/services/api/api-adaptation.service";
 
 
 @Component({
@@ -24,6 +25,7 @@ export class TabsProgressPage implements OnInit, IPageTab {
     public progressCard = ProgressCardComponent;
     constructor(
         public tabsService: TabsService,
+        private apiAdaptationService: ApiAdaptationService,
         private tabsProgressService: TabsProgressService,
         private navCtr: NavController,
         private userService: UserService,
@@ -36,19 +38,27 @@ export class TabsProgressPage implements OnInit, IPageTab {
             this.doneHandler(x, this.data);
             this.countProgress();
         });
-        this.getData(1);
+        this.getData();
     }
 
-    public async getData(id: number): Promise<void> {
+    public async getData(): Promise<void> {
         try {
-            this.data = await this.tabsService.getAdaptation(id);
+            //  TODO: add caching for user
+            // if (!this.tabsProgressService.adaptationDone$.getValue()?.length) {
+            //     await this.tabsProgressService.loadDone();
+            // }
+            this.data = await this.apiAdaptationService.getAdaptation();
             this.allStagesLength = this.data?.adaptationStages.flatMap(x => x.adaptationSubStages).length;
             this.data?.adaptationStages.flatMap(x => x.adaptationSubStages).forEach(x =>
                 x.adaptationComponents = x.adaptationComponents.sort((a, b) => a.order - b.order)
             );
             this.data?.adaptationStages.forEach(x => x.adaptationSubStages = x.adaptationSubStages.sort((a, b) => a.order - b.order));
             this.data.adaptationStages[0].isActive = true;
-            const doneArr = this.tabsProgressService.adaptationDone$.getValue();
+            // const doneArr = this.tabsProgressService.adaptationDone$.getValue();
+            const doneArr = this.data?.adaptationStages
+                ?.flatMap(x => x.adaptationSubStages)
+                ?.filter(x => x.isDone)
+                ?.map(x => x.id);
             this.doneHandler(doneArr, this.data);
             console.log(this.data);
         }
@@ -88,7 +98,7 @@ export class TabsProgressPage implements OnInit, IPageTab {
     }
 
     public async doRefresh(event): Promise<void> {
-        await this.getData(1);
+        await this.getData();
         setTimeout(() => {
             event.srcElement.complete();
         }, 300);

@@ -11,6 +11,7 @@ export class TokenService {
         return this.token$.getValue();
     }
     private readonly tokenUrl: string = 'user-token';
+    private readonly tokenSystemUrl: string = 'system-token';
 
     constructor() {
     }
@@ -33,5 +34,18 @@ export class TokenService {
     public async deleteToken(): Promise<void> {
         const res = await Storage.set({key: this.tokenUrl, value: 'null'});
         this.token$.next(null);
+    }
+
+    public async loadSystemToken(): Promise<boolean> {
+        const res = await Storage.get({key: this.tokenSystemUrl});
+        console.log('token', res);
+        return (!!res.value && res.value !== 'null' && res.value !== 'undefined');
+    }
+
+    public async setSystemToken(): Promise<void> {
+        await Storage.set({
+            key: this.tokenSystemUrl,
+            value: 'set',
+        });
     }
 }

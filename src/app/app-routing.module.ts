@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {NoPreloading, RouterModule, Routes} from '@angular/router';
+import {StartScreenGuard} from "./core/guards/start-screen.guard";
 
 const routes: Routes = [
     {
@@ -16,7 +17,8 @@ const routes: Routes = [
     },
     {
         path: 'start',
-        loadChildren: () => import('./pages/start/start.module').then(m => m.StartModule)
+        loadChildren: () => import('./pages/start/start.module').then(m => m.StartModule),
+        canActivate: [StartScreenGuard],
     },
     {
         path: '',

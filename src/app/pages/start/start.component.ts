@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NavController} from '@ionic/angular';
 import {BehaviorSubject} from 'rxjs';
+import {TokenService} from "../../core/services/data/token.service";
 
 export interface IStartPage {
     id: number;
@@ -55,14 +56,16 @@ export class StartComponent implements OnInit {
 
     constructor(
         private navCtrl: NavController,
+        private tokenService: TokenService,
     ) {
     }
 
     ngOnInit() {
     }
 
-    public start() {
-        this.navCtrl.navigateRoot('tabs');
+    public async start(): Promise<void> {
+        await this.tokenService.setSystemToken();
+        await this.navCtrl.navigateRoot('tabs');
     }
 
 }
