@@ -3,6 +3,7 @@ import {Platform} from "@ionic/angular";
 import {KeyboardService} from "./core/services/platform/keyboard.service";
 import {UserService} from "./core/services/data/user.service";
 import {FcmService} from "./core/services/platform/fcm.service";
+import {StatusBarService} from "./core/services/platform/status-bar.service";
 
 @Component({
     selector: 'app-root',
@@ -17,13 +18,14 @@ export class AppComponent implements OnInit {
         private keyboardService: KeyboardService,
         private userService: UserService,
         private fcmService: FcmService,
+        private statusBarService: StatusBarService,
     ) {}
 
     public ngOnInit(): void {
-        // this.userService.authorize().then();
         this.platform.ready().then(() => {
             this.keyboardService.setInitSettings(this.platform, this.appWindow).then();
             this.fcmService.initPush();
+            this.statusBarService.init();
         });
     }
 }
