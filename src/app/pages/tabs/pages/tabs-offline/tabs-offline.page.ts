@@ -50,6 +50,7 @@ export class TabsOfflinePage implements OnInit, IPageTab {
     }
 
     public filterSections(search: string): void {
+        search = search.toLowerCase();
         this.sections = this.data.adaptationStages.filter(x => x.name?.toLowerCase().search(search) !== -1);
     }
 }
