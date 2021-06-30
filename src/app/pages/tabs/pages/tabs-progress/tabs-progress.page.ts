@@ -60,6 +60,7 @@ export class TabsProgressPage implements OnInit, IPageTab {
                 ?.filter(x => x.isDone)
                 ?.map(x => x.id);
             this.doneHandler(doneArr, this.data);
+            this.tabsProgressService.adaptationDone$.next(doneArr);
             console.log(this.data);
         }
         catch(error) {
