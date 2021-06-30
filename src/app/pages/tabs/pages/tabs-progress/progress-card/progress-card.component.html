@@ -26,7 +26,7 @@
         <div *ngSwitchCase="12" class="button mb" (click)="clickButton(item)">{{item.header}}</div>
         <div *ngSwitchCase="11" class="video mb">
           <video *ngIf="!!item.filePath" src='{{restUrl}}/{{item.filePath}}' preload="metadata" controls></video>
-          <iframe *ngIf="!!item.body" [src]="item.body | safeUrl"></iframe>
+          <iframe *ngIf="!!item.body" [src]="item.body | safeUrl" allowfullscreen></iframe>
           <div class="footer">{{item.footer}}</div>
         </div>
         <div *ngSwitchCase="3" class="accentText mb">
