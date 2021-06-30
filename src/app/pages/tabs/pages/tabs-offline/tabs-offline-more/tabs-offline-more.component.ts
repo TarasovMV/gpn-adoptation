@@ -36,6 +36,7 @@ export class TabsOfflineMoreComponent implements OnInit {
     }
 
     public filterSections(search: string): void {
+        search = search.toLowerCase();
         this.sections = this.data.adaptationSubStages.filter(x => x.name?.toLowerCase().search(search) !== -1);
     }
 }

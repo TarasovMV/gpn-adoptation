@@ -255,12 +255,11 @@
       width: 100%;
       font-style: bold;
       font-size: sizeHeight(16);
-
+      margin-bottom: 1vh;
       display: flex;
       align-items: center;
 
       .text {
-        margin-top: sizeHeight(18);
         padding-left: sizeWidth(13);
         max-width: sizeWidth(200);
       }
