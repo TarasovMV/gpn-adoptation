@@ -35,12 +35,11 @@ ion-slides {
     height: 100%;
     width: 100%;
     object-fit: cover;
-    opacity: 0.6;
   }
 
   &__picture {
     width: 100%;
-    height: sizeHeight(300);
+    height: sizeHeight(330);
     border-radius: 0 0 sizeHeight(22) sizeHeight(22);
     overflow: hidden;
     position: relative;
@@ -57,7 +56,7 @@ ion-slides {
       justify-content: center;
 
       position: absolute;
-      top: sizeHeight(30);
+      top: sizeHeight(45);
       left: sizeWidth(30);
     }
   }
