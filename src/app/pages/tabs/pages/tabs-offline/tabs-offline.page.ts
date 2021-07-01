@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TabsService} from 'src/app/core/services/tabs/tabs.service';
-import {IAdaptationStage, IPageTab, IProgress, PageTabType} from '../../tabs.interfaces';
+import {IAdaptationStage, IPageTab, IProgress, PageTabType} from '../../tabs.model';
 import {AppConfigService} from "../../../../core/services/platform/app-config.service";
 import {NavController} from "@ionic/angular";
 

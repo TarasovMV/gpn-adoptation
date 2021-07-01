@@ -6,7 +6,7 @@ import { IMasterMind, IMasterMindCategory } from 'src/app/pages/tabs/pages/tabs-
 import { IColleague } from 'src/app/pages/tabs/pages/tabs-chat/tabs-chat.page';
 import { IPost } from 'src/app/pages/tabs/pages/tabs-news/tabs-news.page';
 import { IAnswer, IQuestion, ITests } from 'src/app/pages/tabs/pages/tabs-tests/tabs-tests.page';
-import {IAdaptationStage, IAdaptationSubStage, IProgress} from 'src/app/pages/tabs/tabs.interfaces';
+import {IAdaptationStage, IAdaptationSubStage, IProgress} from 'src/app/pages/tabs/tabs.model';
 import {AppConfigService} from '../platform/app-config.service';
 import {ITestResult} from "../../../pages/tabs/pages/tabs-tests/test-question/test-question.component";
 

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TabsService} from 'src/app/core/services/tabs/tabs.service';
-import {IAdaptationComponent, IStage} from '../../../tabs.interfaces';
+import {IAdaptationComponent, IStage} from '../../../tabs.model';
 import { Browser } from "@capacitor/browser";
 import {TabsProgressService} from "../services/tabs-progress.service";
 import {NavController} from "@ionic/angular";

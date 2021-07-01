@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {TabsService} from 'src/app/core/services/tabs/tabs.service';
-import {IAdaptationStage, IAdaptationSubStage} from "../../../tabs.interfaces";
+import {IAdaptationStage, IAdaptationSubStage} from "../../../tabs.model";
 import {NavController} from "@ionic/angular";
 
 @Component({

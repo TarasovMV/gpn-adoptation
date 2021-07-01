@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { TabsService } from 'src/app/core/services/tabs/tabs.service';
-import { IPageTab, PageTabType } from "../../tabs.interfaces";
+import { IPageTab, PageTabType } from "../../tabs.model";
 
 export interface IMenuItem {
     name: string,
@@ -80,7 +80,7 @@ export class TabsNewsPage implements OnInit, IPageTab {
         this.section$.next(section.logo);
         switch (section.logo) {
             case 'saved': {
-                this.dataToView = this.data.filter(x => x.isSaved);                
+                this.dataToView = this.data.filter(x => x.isSaved);
                 break;
             }
             case 'important': {

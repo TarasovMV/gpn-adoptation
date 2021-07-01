@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TabsService } from 'src/app/core/services/tabs/tabs.service';
-import { IAdaptationStage, IAdaptationSubStage, IPageTab, IProgress, PageTabType } from '../../tabs.interfaces';
+import { IAdaptationStage, IAdaptationSubStage, IPageTab, IProgress, PageTabType } from '../../tabs.model';
 import { ProgressCardComponent } from './progress-card/progress-card.component';
 import {TabsProgressService} from "./services/tabs-progress.service";
 import {UserService} from "../../../../core/services/data/user.service";

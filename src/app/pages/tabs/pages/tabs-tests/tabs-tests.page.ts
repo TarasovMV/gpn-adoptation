@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { TabsService } from 'src/app/core/services/tabs/tabs.service';
-import {IPageTab, PageTabType} from '../../tabs.interfaces';
+import {IPageTab, PageTabType} from '../../tabs.model';
 
 export interface ITests {
     id: number;

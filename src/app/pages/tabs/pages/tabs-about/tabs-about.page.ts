@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { TabsService } from 'src/app/core/services/tabs/tabs.service';
-import {IPageTab, PageTabType} from "../../tabs.interfaces";
+import {IPageTab, PageTabType} from "../../tabs.model";
 import { IHistory } from './components/tabs-about-history/tabs-about-history.component';
 import {AppConfigService} from "../../../../core/services/platform/app-config.service";
 

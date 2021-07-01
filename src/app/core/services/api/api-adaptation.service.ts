@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {AppConfigService} from "../platform/app-config.service";
-import {IProgress} from "../../../pages/tabs/tabs.interfaces";
+import {IProgress} from "../../../pages/tabs/tabs.model";
 
 @Injectable({
     providedIn: 'root'

@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {IPageTab, PageTabType} from "../../tabs.interfaces";
+import {IPageTab, PageTabType} from "../../tabs.model";
 import {INotifications} from "../../../../core/models/notification.model";
 import {ApiNotificationService} from "../../../../core/services/api/api-notification.service";
 import {BehaviorSubject} from "rxjs";

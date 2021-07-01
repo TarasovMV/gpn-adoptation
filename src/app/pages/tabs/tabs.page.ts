@@ -2,11 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
 import { TabsService } from 'src/app/core/services/tabs/tabs.service';
-import { PageTabType } from './tabs.interfaces';
-
-export interface IPageTab {
-    readonly route: PageTabType;
-}
+import {IPageTab, PageTabType} from './tabs.model';
 
 @Component({
     selector: 'app-tabs',
@@ -47,10 +43,9 @@ export class TabsPage implements OnInit {
     constructor(
         private navCtrl: NavController,
         public tabsService: TabsService
-        ) { }
+    ) { }
 
-    ngOnInit(): void {
-    }
+    public ngOnInit(): void {}
 
     public selectTab(tab: IPageTab): void {
         this.navCtrl.navigateRoot(this.tabsRouting[tab.route] ?? this.tabsRouting[this.currentTab$.value]).then();

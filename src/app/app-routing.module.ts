@@ -21,7 +21,6 @@ const routes: Routes = [
     {
         path: 'info',
         loadChildren: () => import('./pages/start/start.module').then(m => m.StartModule),
-        canActivate: [StartScreenGuard],
     },
     {
         path: '',

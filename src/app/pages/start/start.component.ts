@@ -1,22 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
-import { BehaviorSubject } from 'rxjs';
-import { TokenService } from "../../core/services/data/token.service";
-
-export interface IStartPage {
-    id: number;
-    icon: string;
-    image: string;
-    title: string;
-    description: string;
-}
+import {Component} from '@angular/core';
+import {NavController} from '@ionic/angular';
+import {TokenService} from "../../core/services/data/token.service"
+import {IStartPageItem} from "./start.model";
+import {StartPageInfo} from "./start.mock";
 
 @Component({
     selector: 'app-start-page',
     templateUrl: './start.component.html',
     styleUrls: ['./start.component.scss'],
 })
-export class StartComponent implements OnInit {
+export class StartComponent {
 
     public slideOpts = {
         on: {
@@ -36,7 +29,7 @@ export class StartComponent implements OnInit {
             },
             setTranslate() {
                 const swiper = this;
-                const { slides } = swiper;
+                const {slides} = swiper;
                 for (let i = 0; i < slides.length; i += 1) {
                     const $slideEl = swiper.slides.eq(i);
                     const offset$$1 = $slideEl[0].swiperSlideOffset;
@@ -59,70 +52,40 @@ export class StartComponent implements OnInit {
             },
             setTransition(duration) {
                 const swiper = this;
-                const { slides, $wrapperEl } = swiper;
+                const {slides, $wrapperEl} = swiper;
                 slides.transition(duration);
                 if (swiper.params.virtualTranslate && duration !== 0) {
                     let eventTriggered = false;
                     slides.transitionEnd(() => {
                         if (eventTriggered) {
                             return;
-                        };
+                        }
+
                         if (!swiper || swiper.destroyed) {
                             return;
-                        };
+                        }
+
                         eventTriggered = true;
                         swiper.animating = false;
                         const triggerEvents = ['webkitTransitionEnd', 'transitionend'];
                         triggerEvents.forEach(x => $wrapperEl.trigger(x));
-                });
-            }
-        },
+                    });
+                }
+            },
+        }
+    };
+
+    public startPageInfo: IStartPageItem[] = StartPageInfo;
+
+    constructor(
+        private navCtrl: NavController,
+        private tokenService: TokenService,
+    ) {
     }
-};
 
-    public startPageInfo: IStartPage[] = [
-    {
-        id: 1,
-        icon: 'assets/icon/info.svg',
-        image: 'assets/icon/info.png',
-        title: 'Доступность информации',
-        description: `Приложение позволит Вам самостоятельно получить доступ к информации с мобильного устройства,
-            ознакомиться с историей организации, руководством, особенностями бизнеса, предоставляемыми работодателем
-            возможностями и находить ответы на свои вопросы`
-    },
-    {
-        id: 2,
-        icon: 'assets/icon/support.svg',
-        image: 'assets/icon/support.png',
-        title: 'Адаптация персонала',
-        description: `Приложение предоставляет возможность быстрее изучить корпоративные стандарты организации,
-            пошагово рассмотреть различные процессы, давать обратную связь по интересующим Вас вопросам и проходить адаптационный трек.
-             Это поможет Вам быстрее влиться в работу!`
-    },
-    {
-        id: 3,
-        icon: 'assets/icon/monitoring.svg',
-        image: 'assets/icon/monitoring.png',
-        title: 'Окно мониторинга',
-        description: `Администраторы приложения получают канал коммуникации, который
-            позволяет быть в курсе потребностей и проблем сотрудников. Дает возможность
-            отследить прогресс по адаптации персонала, в режиме реального времени организовать
-            опрос для сотрудников и внести изменения в адаптационный трек.`
+    public async start(): Promise<void> {
+        await this.tokenService.setSystemToken();
+        await this.navCtrl.navigateRoot('tabs');
     }
-];
-
-constructor(
-    private navCtrl: NavController,
-    private tokenService: TokenService,
-) {
-}
-
-ngOnInit() {
-}
-
-    public async start(): Promise < void> {
-    await this.tokenService.setSystemToken();
-    await this.navCtrl.navigateRoot('tabs');
-}
 
 }
