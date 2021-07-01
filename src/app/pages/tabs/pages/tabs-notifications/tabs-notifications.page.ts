@@ -1,35 +1,44 @@
-import { Component, OnInit } from '@angular/core';
-import { IPageTab, PageTabType } from "../../tabs.interfaces";
-
-export interface INotifications {
-    date: Date;
-    notification: string[];
-}
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {IPageTab, PageTabType} from "../../tabs.interfaces";
+import {INotifications} from "../../../../core/models/notification.model";
+import {ApiNotificationService} from "../../../../core/services/api/api-notification.service";
+import {BehaviorSubject} from "rxjs";
 
 @Component({
     selector: 'app-tabs-notifications',
     templateUrl: './tabs-notifications.page.html',
     styleUrls: ['./tabs-notifications.page.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TabsNotificationsPage implements OnInit, IPageTab {
     public route: PageTabType = 'notifications';
 
-    public notifications: INotifications[] = [];
+    public notifications$: BehaviorSubject<INotifications[]> = new BehaviorSubject<INotifications[]>([]);
 
-    // public notifications: INotifications[] = [
-    //     {
-    //         date: new Date('Jun 14, 2015'),
-    //         notification: ['Вы выполнили не все назначенные на сегодня мероприятия']
-    //     },
-    //     {
-    //         date: new Date(),
-    //         notification: ['Вы выполнили не все назначенные на сегодня мероприятия']
-    //     },
-    // ];
-    constructor() {
+    constructor(private apiNotificationService: ApiNotificationService) {}
+
+    public ngOnInit(): void {
+        this.getNotifications().then();
     }
 
-    ngOnInit(): void {
+    private async getNotifications(): Promise<void> {
+        const getOnlyDate = (date: Date): Date => new Date(date.getFullYear(), date.getMonth(), date.getDate());
+        const notifications = await this.apiNotificationService.getNotifications();
+        notifications.forEach(x => x.createdAt = new Date(x.createdAt));
+        const mapNotifications: INotifications[] = [];
+        notifications.forEach(x => {
+            const date = getOnlyDate(x.createdAt);
+            const arr = mapNotifications.find(n => n.date = date);
+            if (!arr) {
+                mapNotifications.push({date, notifications: [x]});
+            } else {
+                arr.notifications.push(x);
+            }
+        });
+        mapNotifications.forEach(x => {
+            x.notifications.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+        });
+        mapNotifications.sort((a, b) => b.date.getTime() - a.date.getTime());
+        this.notifications$.next(mapNotifications);
     }
-
 }

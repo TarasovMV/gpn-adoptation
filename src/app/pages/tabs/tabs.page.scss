@@ -22,6 +22,8 @@
 
     display: flex;
     background: #FFFFFF;
+    box-shadow: 0 0 20px 0 rgba(#000000, .1);
+    z-index: 999;
 
     .tab-icon {
       flex: 1;
