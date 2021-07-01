@@ -5,12 +5,12 @@
     </div>
   </div>
   <div class="content">
-    <div class="enter">
+    <div class="enter" [class.swing]="isSwingAnimation$ | async">
       <div class="enter__title">
         Введите пароль доступа
       </div>
       <div class="enter__code">
-        <input [formControl]="codeControl" type="tel" class="input" maxlength="5">
+        <input #input [formControl]="codeControl" type="tel" maxlength="5">
       </div>
     </div>
     <svg-icon class="logo" src="assets/icon/gpn-logo.svg"></svg-icon>
