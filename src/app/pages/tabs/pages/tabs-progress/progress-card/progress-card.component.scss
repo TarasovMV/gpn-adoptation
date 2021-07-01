@@ -101,13 +101,13 @@
   .usualText {
     width: 100%;
     color: #303549;
-    font-size: sizeHeight(16);
+    font-size: sizeHeight(17);
     text-align: justify;
   }
 
   .accentText {
     color: #303549;
-    font-size: sizeHeight(18);
+    font-size: sizeHeight(19);
     font-weight: bold;
     width: 100%;
   }
@@ -117,7 +117,7 @@
     padding: sizeWidth(16);
     background-color: #ffffff;
     border-radius: sizeWidth(22);
-    font-size: sizeHeight(16);
+    font-size: sizeHeight(17);
 
     display: flex;
     flex-direction: column;
@@ -152,7 +152,7 @@
     &__header {
       width: 100%;
       font-style: bold;
-      font-size: sizeHeight(16);
+      font-size: sizeHeight(17);
 
       display: flex;
       align-items: center;
@@ -203,7 +203,7 @@
       justify-content: space-between;
       align-items: center;
       font-style: bold;
-      font-size: sizeHeight(16);
+      font-size: sizeHeight(17);
     }
 
     &__description {
@@ -215,7 +215,7 @@
       margin-bottom: sizeHeight(40);
       outline: none;
       border: none;
-      font-size: sizeHeight(16);
+      font-size: sizeHeight(17);
       --padding-start: 0;
     }
 
@@ -254,7 +254,7 @@
     &__title {
       width: 100%;
       font-style: bold;
-      font-size: sizeHeight(16);
+      font-size: sizeHeight(17);
       display: flex;
       align-items: center;
 
@@ -286,7 +286,7 @@
 
     &__description {
       margin-top: sizeHeight(18);
-      font-size: sizeHeight(16);
+      font-size: sizeHeight(17);
       text-align: left;
     }
   }
