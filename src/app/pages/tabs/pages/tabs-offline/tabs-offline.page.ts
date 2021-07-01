@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
 import {TabsService} from 'src/app/core/services/tabs/tabs.service';
 import {IAdaptationStage, IPageTab, IProgress, PageTabType} from '../../tabs.interfaces';
 import {AppConfigService} from "../../../../core/services/platform/app-config.service";
+import {NavController} from "@ionic/angular";
 
 @Component({
     selector: 'app-tabs-offline',
@@ -16,7 +16,7 @@ export class TabsOfflinePage implements OnInit, IPageTab {
     public readonly restUrl: string;
 
     constructor(
-        public router: Router,
+        public navCtrl: NavController,
         public tabsService: TabsService,
         appConfig: AppConfigService,
     ) {
@@ -25,7 +25,7 @@ export class TabsOfflinePage implements OnInit, IPageTab {
 
     ngOnInit(): void {
         this.tabsService.showMenu$.next('on');
-        this.getBusiness();
+        this.getBusiness().then();
     }
 
     public async getBusiness(): Promise<void> {
@@ -45,7 +45,7 @@ export class TabsOfflinePage implements OnInit, IPageTab {
     }
 
     public openCard(card: IAdaptationStage): void {
-        this.router.navigate(['tabs/tabs-offline/' + card.id]);
+        this.navCtrl.navigateForward('tabs/tabs-offline/' + card.id).then();
         this.tabsService.businessStages$.next(card);
     }
 

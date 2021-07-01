@@ -5,10 +5,6 @@ import {AuthorizeGuard} from "./core/guards/authorize.guard";
 
 const routes: Routes = [
     {
-        path: 'preview',
-        loadChildren: () => import('./pages/preview/preview.module').then(m => m.PreviewPageModule)
-    },
-    {
         path: 'auth',
         loadChildren: () => import('./pages/auth/auth.module').then( m => m.AuthPageModule)
     },
@@ -19,6 +15,11 @@ const routes: Routes = [
     },
     {
         path: 'start',
+        loadChildren: () => import('./pages/start/start.module').then(m => m.StartModule),
+        canActivate: [StartScreenGuard],
+    },
+    {
+        path: 'info',
         loadChildren: () => import('./pages/start/start.module').then(m => m.StartModule),
         canActivate: [StartScreenGuard],
     },
