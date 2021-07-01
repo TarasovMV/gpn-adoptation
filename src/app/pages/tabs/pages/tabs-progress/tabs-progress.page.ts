@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { TabsService } from 'src/app/core/services/tabs/tabs.service';
 import { IAdaptationStage, IAdaptationSubStage, IPageTab, IProgress, PageTabType } from '../../tabs.model';
 import { ProgressCardComponent } from './progress-card/progress-card.component';
@@ -22,7 +21,6 @@ export class TabsProgressPage implements OnInit, IPageTab {
     public allStagesLength: number;
     public percentProgress = 0;
 
-    public progressCard = ProgressCardComponent;
     constructor(
         public tabsService: TabsService,
         private apiAdaptationService: ApiAdaptationService,
@@ -94,7 +92,7 @@ export class TabsProgressPage implements OnInit, IPageTab {
     }
 
     public toProgressCard(element: IAdaptationSubStage): void {
-        this.navCtr.navigateForward('tabs/tabs-progress/', { queryParams: {id: element.id, type: 'progress'}});
+        this.navCtr.navigateForward('info', { queryParams: {id: element.id, type: 'progress'}});
         this.tabsService.adaptationComponents$.next(element);
     }
 

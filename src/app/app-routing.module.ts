@@ -20,7 +20,7 @@ const routes: Routes = [
     },
     {
         path: 'info',
-        loadChildren: () => import('./pages/start/start.module').then(m => m.StartModule),
+        loadChildren: () => import('./pages/info/info.module').then( m => m.InfoPageModule)
     },
     {
         path: '',

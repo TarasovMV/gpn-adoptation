@@ -1,0 +1,104 @@
+<ion-header>
+  <div class="header">
+    <svg-icon class="arrow" src="assets/icon/arrow.svg"
+              (click)="backToProgress()"
+    ></svg-icon>
+    <div class="title">Подробная информация</div>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="content">
+    <ng-container *ngFor="let item of data">
+      <ng-container [ngSwitch]="item.componentType">
+        <div *ngSwitchCase="1" class="image mb">
+          <cashed-img src='{{restUrl}}/{{item.imagePath}}'></cashed-img>
+          <div class="footer">{{item.footer}}</div>
+        </div>
+        <div *ngSwitchCase="13" class="image-squad mb">
+          <img  src='{{restUrl}}/{{item.imagePath}}'/>
+          <div class="footer">{{item.footer}}</div>
+        </div>
+        <div *ngSwitchCase="2" class="usualText mb">
+          <span style="text-align: justify" [innerHTML]="item.body | textLines"></span>
+          <div class="footer">{{item.footer}}</div>
+        </div>
+        <div *ngSwitchCase="12" class="button mb" (click)="clickButton(item)">{{item.header}}</div>
+        <div *ngSwitchCase="11" class="video mb">
+          <video *ngIf="!!item.filePath" src='{{restUrl}}/{{item.filePath}}' preload="metadata" poster="assets/images/video-preview.png" controls></video>
+          <iframe *ngIf="!!item.body" [src]="item.body | safeUrl" allowfullscreen></iframe>
+          <div class="footer">{{item.footer}}</div>
+        </div>
+        <div *ngSwitchCase="3" class="accentText mb">
+          <span>{{item?.body}}</span>
+          <div class="footer">{{item.footer}}</div>
+        </div>
+        <div class="termin mb" *ngSwitchCase="4">
+          <div class="termin__title">
+            <div class="termin__title__logo">
+              <svg-icon src="assets/icon/progress/termin.svg"></svg-icon>
+            </div>
+            <div class="text">{{item.header}}</div>
+          </div>
+          <div class="termin__description">{{item.body}}</div>
+          <div class="footer">{{item.footer}}</div>
+        </div>
+        <div class="attention mb" *ngSwitchCase="5">
+          <div class="attention__title">
+            <div class="attention__title__logo-attention">
+              <svg-icon src="assets/icon/progress/attention.svg"></svg-icon>
+            </div>
+            <div class="text" style="font-weight: bold">{{item.header}}</div>
+          </div>
+          <div class="attention__description">{{ item.body }}</div>
+          <div class="footer">{{item.footer}}</div>
+        </div>
+        <div class="block mb" *ngSwitchCase="6">
+          <span style="text-align: justify" [innerHTML]="item.body | textLines"></span>
+          <div class="footer">{{item.footer}}</div>
+        </div>
+        <div class="points mb" *ngSwitchCase="10">
+          <div class="points__title">
+            <div class="point">
+              <svg-icon src="assets/icon/progress/point.svg"></svg-icon>
+            </div>
+            <div class="text">{{item.header}}</div>
+          </div>
+          <div class="points__description">{{item.body}}</div>
+        </div>
+        <div class="file mb" *ngSwitchCase="8" (click)="openFile(item.filePath)">
+          <svg-icon src="assets/icon/progress/file.svg"></svg-icon>
+          <span class="file__path">{{item.filePath | routeFile}}</span>
+        </div>
+        <div class="more mb" *ngSwitchCase="9">
+          <div class="more__title" (click)="openMore(item)">
+            <span style="font-weight: bold">{{item.header}}</span>
+            <svg-icon class="arrow" src="assets/icon/arrow.svg" [ngClass]="{'active': item.isActive}"></svg-icon>
+          </div>
+          <div class="more__description" *ngIf="item.isActive">
+            <span>{{item.body}}</span>
+            <div class="footer">{{item.footer}}</div>
+          </div>
+        </div>
+        <div class="blitz mb" *ngSwitchCase="7">
+          <div class="blitz__header">{{item.header}}</div>
+          <div class="blitz__rate">
+            <div class="star" *ngFor="let rate of rates[item.id]" (click)="rateIt(rate, item.id)" [ngClass]="{'star-active': rate.isActive}">
+              <svg-icon src="assets/icon/progress/star.svg"></svg-icon>
+            </div>
+          </div>
+          <div class="footer">{{item.footer}}</div>
+        </div>
+        <div class="manual-input mb" *ngSwitchCase="14">
+          <span class="manual-input__title">{{item.header}}</span>
+          <ion-textarea auto-grow class="manual-input__text" placeholder="Введите текст..." [(ngModel)]="text[item.id]"></ion-textarea>
+          <div class="manual-input__send" (click)="sendIt(item.id)">
+            <svg-icon src="assets/icon/progress/plane.svg"></svg-icon>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+
+    <div *ngIf="isProgress" class="button button__done" [class.button__disabled]="isDone" style="margin-top: auto" (click)="setDone()">Выполнено</div>
+  </div>
+</ion-content>
