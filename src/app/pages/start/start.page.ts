@@ -6,10 +6,10 @@ import {StartPageInfo} from "./start.mock";
 
 @Component({
     selector: 'app-start-page',
-    templateUrl: './start.component.html',
-    styleUrls: ['./start.component.scss'],
+    templateUrl: './start.page.html',
+    styleUrls: ['./start.page.scss'],
 })
-export class StartComponent {
+export class StartPage {
 
     public slideOpts = {
         on: {

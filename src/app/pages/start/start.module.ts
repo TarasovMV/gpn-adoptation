@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AngularSvgIconModule } from 'angular-svg-icon';
-import { StartComponent } from './start.component';
+import { StartPage } from './start.page';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { StartRoutingModule } from './start-routing.module';
@@ -16,6 +16,6 @@ import { StartRoutingModule } from './start-routing.module';
     AngularSvgIconModule,
     ReactiveFormsModule,
 ],
-declarations: [StartComponent]
+declarations: [StartPage]
 })
 export class StartModule { }
