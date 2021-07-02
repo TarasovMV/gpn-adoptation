@@ -6,6 +6,7 @@ import {TextLinesPipe} from './pipes/text-lines.pipe';
 import {RouteFilePipe} from "./pipes/route-file.pipe";
 import {CashedImgComponent} from "./components/cashed-img/cashed-img.component";
 import {SafeUrlPipe} from "./pipes/safe-url.pipe";
+import { ConfirmPopupComponent } from './components/confirm-popup/confirm-popup.component';
 
 @NgModule({
     declarations: [
@@ -13,6 +14,7 @@ import {SafeUrlPipe} from "./pipes/safe-url.pipe";
         RouteFilePipe,
         SafeUrlPipe,
         CashedImgComponent,
+        ConfirmPopupComponent,
     ],
     imports: [
         CommonModule,
@@ -24,6 +26,7 @@ import {SafeUrlPipe} from "./pipes/safe-url.pipe";
         RouteFilePipe,
         SafeUrlPipe,
         CashedImgComponent,
+        ConfirmPopupComponent,
     ]
 })
 export class SharedModule {

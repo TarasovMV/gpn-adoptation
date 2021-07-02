@@ -4,7 +4,7 @@
 
     <div class="header__title">
       <span>Моя адаптация</span>
-      <div (click)="logout()" class="logout">
+      <div (click)="handleButtonClick()" class="logout">
         <svg-icon class="logout-logo" src="assets/icon/logout.svg"></svg-icon>
       </div>
     </div>
@@ -23,11 +23,16 @@
 <!--      </ion-refresher>-->
       <ng-container *ngFor="let item of data?.adaptationStages">
         <div class="item" (click)="switchStage(item)">
-          <div class="item__header">{{item.name}}</div>
-          <div class="item__stage">
-            <div class="total"><span class="total__done">{{item.doneCount || 0}}</span> из
-              {{item.adaptationSubStages?.length}}</div>
-            <svg-icon class="arrow" src="assets/icon/arrow.svg" [ngClass]="{'active': item.isActive}"></svg-icon>
+          <div class="item__title">
+            <div class="item__header">{{item.name.toUpperCase()}}</div>
+            <div class="item__stage">
+              <div class="total"><span class="total__done">{{item.doneCount || 0}}</span> из
+                {{item.adaptationSubStages?.length}}</div>
+              <svg-icon class="arrow" src="assets/icon/arrow.svg" [ngClass]="{'active': item.isActive}"></svg-icon>
+            </div>
+          </div>
+          <div class="item__description">
+            {{item?.description}}
           </div>
         </div>
         <ng-container *ngIf="item.isActive">

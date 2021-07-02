@@ -15,6 +15,7 @@ export interface IProgress {
 export interface IAdaptationStage {
     id: number;
     name: string;
+    description?: string;
     order: number;
     adaptationSubStages: IAdaptationSubStage[];
     isActive?: boolean;

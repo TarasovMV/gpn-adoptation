@@ -4,7 +4,7 @@ import { IAdaptationStage, IAdaptationSubStage, IPageTab, IProgress, PageTabType
 import { ProgressCardComponent } from './progress-card/progress-card.component';
 import {TabsProgressService} from "./services/tabs-progress.service";
 import {UserService} from "../../../../core/services/data/user.service";
-import {NavController} from "@ionic/angular";
+import {AlertController, NavController} from "@ionic/angular";
 import {ApiAdaptationService} from "../../../../core/services/api/api-adaptation.service";
 
 
@@ -27,6 +27,7 @@ export class TabsProgressPage implements OnInit, IPageTab {
         private tabsProgressService: TabsProgressService,
         private navCtr: NavController,
         private userService: UserService,
+        private alertController: AlertController
     ) {
     }
 
@@ -38,6 +39,28 @@ export class TabsProgressPage implements OnInit, IPageTab {
         });
         this.getData();
     }
+
+    async handleButtonClick() {
+        const alert = await this.alertController.create({
+          header: 'Вы действительно хотите выйти?',
+          buttons: [
+            {
+                text: 'Отмена',
+                role: 'cancel',
+                handler: () => {
+                  console.log('they hit cancel');
+                  return new Promise(resolve => setTimeout(resolve, 2000));
+                }
+              }, {
+                text: 'Выйти',
+                handler: () => {
+                  this.logout();
+                }
+              }
+          ]
+        });
+        await alert.present();
+      }
 
     public async getData(): Promise<void> {
         try {

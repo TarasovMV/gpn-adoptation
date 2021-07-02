@@ -1,0 +1,44 @@
+@import "src/theme/functions/resizer";
+
+* {
+  box-sizing: border-box;
+}
+
+.popup {
+    width: sizeWidth(232);
+    height: sizeHeight(318);
+    background-color: #ffffff;
+    border-radius: sizeHeight(22);
+    padding: sizeHeight(12) sizeWidth(12);
+    color: #404763;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+
+    position: relative;
+    
+    &__icon {
+        height: sizeHeight(116);
+        width: sizeWidth(131);
+    }
+
+    &__text {
+        width: 100%;
+        text-align: center;
+        margin: sizeHeight(18) 0 sizeHeight(32);
+        font-size: sizeHeght(18);
+    }
+
+    &__button {
+        width: 100%;
+        height: sizeHeight(43);
+        background-color: #006FBA;
+        border-radius: sizeHeight(22);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
