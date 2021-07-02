@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
 import {UserService} from "../../core/services/data/user.service";
+import {BehaviorSubject} from "rxjs";
 
 @Component({
     selector: 'app-auth',
@@ -8,8 +9,11 @@ import {UserService} from "../../core/services/data/user.service";
     styleUrls: ['./auth.page.scss'],
 })
 export class AuthPage implements OnInit {
+    @ViewChild('input') codeInput: ElementRef;
+
     public readonly codeControl: FormControl =
         new FormControl('', [Validators.required, Validators.minLength(5)]);
+    public readonly isSwingAnimation$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
     constructor(private userService: UserService) {}
 
@@ -23,7 +27,13 @@ export class AuthPage implements OnInit {
     }
 
     private async auth(code: string): Promise<void> {
-        await this.userService.login(code);
+        this.codeInput.nativeElement.blur();
+        this.isSwingAnimation$.next(false);
+        try {
+            await this.userService.login(code);
+        } catch (e) {
+            this.isSwingAnimation$.next(true);
+        }
     }
 
 }

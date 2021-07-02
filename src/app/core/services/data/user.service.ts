@@ -19,9 +19,6 @@ export class UserService {
     public async authorize(): Promise<boolean> {
         const token = await this.tokenService.loadToken();
         return !!token;
-        // if (!token) {
-        //     await this.navCtrl.navigateRoot('auth');
-        // }
     }
 
     public async login(code: string): Promise<void> {
