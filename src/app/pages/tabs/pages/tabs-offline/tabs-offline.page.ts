@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {TabsService} from 'src/app/core/services/tabs/tabs.service';
 import {IAdaptationStage, IPageTab, IProgress, PageTabType} from '../../tabs.model';
 import {AppConfigService} from "../../../../core/services/platform/app-config.service";
-import {NavController} from "@ionic/angular";
+import {NavController, Platform} from "@ionic/angular";
+import {BackButtonService} from "../../../../core/services/platform/back-button.service";
 
 @Component({
     selector: 'app-tabs-offline',
@@ -18,13 +19,15 @@ export class TabsOfflinePage implements OnInit, IPageTab {
     constructor(
         public navCtrl: NavController,
         public tabsService: TabsService,
+        private backButtonService: BackButtonService,
+        private platform: Platform,
         appConfig: AppConfigService,
     ) {
         this.restUrl = appConfig.getAttribute("restUrl");
     }
 
     ngOnInit(): void {
-        this.tabsService.showMenu$.next('on');
+        this.backButtonService.disableBackOnRoot(this.platform);
         this.getBusiness().then();
     }
 

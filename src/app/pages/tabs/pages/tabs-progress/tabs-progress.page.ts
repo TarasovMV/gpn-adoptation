@@ -3,9 +3,10 @@ import {TabsService} from 'src/app/core/services/tabs/tabs.service';
 import {IAdaptationStage, IAdaptationSubStage, IPageTab, IProgress, PageTabType} from '../../tabs.model';
 import {TabsProgressService} from "./services/tabs-progress.service";
 import {UserService} from "../../../../core/services/data/user.service";
-import {AlertController, NavController} from "@ionic/angular";
+import {AlertController, NavController, Platform} from "@ionic/angular";
 import {ApiAdaptationService} from "../../../../core/services/api/api-adaptation.service";
 import { trigger, style, animate, transition } from '@angular/animations';
+import {BackButtonService} from "../../../../core/services/platform/back-button.service";
 
 
 @Component({
@@ -50,12 +51,14 @@ export class TabsProgressPage implements OnInit, IPageTab {
         private tabsProgressService: TabsProgressService,
         private navCtr: NavController,
         private userService: UserService,
-        private alertController: AlertController
+        private alertController: AlertController,
+        private backButtonService: BackButtonService,
+        private platform: Platform,
     ) {
     }
 
     ngOnInit(): void {
-        this.tabsService.showMenu$.next('on');
+        this.backButtonService.disableBackOnRoot(this.platform);
         this.tabsProgressService?.adaptationDone$.subscribe(x => {
             this.doneHandler(x, this.data);
             this.countProgress();
@@ -98,7 +101,6 @@ export class TabsProgressPage implements OnInit, IPageTab {
                 x.adaptationComponents = x.adaptationComponents.sort((a, b) => a.order - b.order)
             );
             this.data?.adaptationStages.forEach(x => x.adaptationSubStages = x.adaptationSubStages.sort((a, b) => a.order - b.order));
-            this.data.adaptationStages[0].isActive = true;
             // const doneArr = this.tabsProgressService.adaptationDone$.getValue();
             const doneArr = this.data?.adaptationStages
                 ?.flatMap(x => x.adaptationSubStages)
@@ -106,7 +108,6 @@ export class TabsProgressPage implements OnInit, IPageTab {
                 ?.map(x => x.id);
             this.doneHandler(doneArr, this.data);
             this.tabsProgressService.adaptationDone$.next(doneArr);
-            console.log(this.data);
         } catch (error) {
             console.error(error);
         } finally {

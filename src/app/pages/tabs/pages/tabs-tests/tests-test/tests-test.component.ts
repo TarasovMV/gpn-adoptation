@@ -1,39 +1,38 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
-import { TabsService } from 'src/app/core/services/tabs/tabs.service';
-import { ITests } from '../tabs-tests.page';
+import {Component, OnInit} from '@angular/core';
+import {TabsService} from 'src/app/core/services/tabs/tabs.service';
+import {ITests} from '../tabs-tests.page';
+import {NavController, Platform} from "@ionic/angular";
 
 @Component({
-  selector: 'app-tests-test',
-  templateUrl: './tests-test.component.html',
-  styleUrls: ['./tests-test.component.scss'],
+    selector: 'app-tests-test',
+    templateUrl: './tests-test.component.html',
+    styleUrls: ['./tests-test.component.scss'],
 })
 export class TestsTestComponent implements OnInit {
+    public test: ITests;
 
-  public id: number;
-  public test: ITests;
+    constructor(
+        public navCtrl: NavController,
+        public tabsService: TabsService,
+        private platform: Platform,
+    ) {
+    }
 
-  constructor(
-    private route: ActivatedRoute,
-    public nav: Router,
-    public tabsService: TabsService,
-  ) { }
+    ngOnInit() {
+        this.platform.backButton.subscribeWithPriority(9999, () => {
+            this.backToTests();
+        })
+        this.tabsService.test$.subscribe(value => {
+            this.test = value;
+        });
+    }
 
-  ngOnInit() {
-    this.id = +this.route.snapshot.paramMap.get('id');
-    this.tabsService.test$.subscribe(value => {
-      this.test = value;
-    });
-  }
+    public backToTests(): void {
+        this.navCtrl.back();
+        this.tabsService.startTest$.next(null);
+    }
 
-  public backToTests(): void {
-    this.nav.navigate(['tabs/tabs-tests/']);
-    this.tabsService.showMenu$.next('on');
-    this.tabsService.startTest$.next(null);
-  }
-
-  public startTest(element: ITests): void {
-    this.tabsService.startTest$.next(element.id);
-  }
+    public startTest(element: ITests): void {
+        this.tabsService.startTest$.next(element.id);
+    }
 }

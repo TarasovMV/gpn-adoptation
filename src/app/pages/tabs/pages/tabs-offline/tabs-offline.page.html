@@ -6,11 +6,12 @@
 
 <ion-content>
   <div class="content">
-    <app-tabs-offline-search (search)="filterSections($event)" style="margin-bottom: 2vh"></app-tabs-offline-search>
+<!--    <app-tabs-offline-search (search)="filterSections($event)" style="margin-bottom: 2vh"></app-tabs-offline-search>-->
     <div class="scroll-container">
       <div class="card-wrapper">
         <ng-container *ngFor="let card of sections || []">
-          <div class="card" (click)="openCard(card)">
+          <div class="card ripple-parent ion-activatable" (click)="openCard(card)">
+            <ion-ripple-effect></ion-ripple-effect>
             <div class="card__icon">
               <img src="{{restUrl}}/{{card?.iconPath}}"/>
             </div>

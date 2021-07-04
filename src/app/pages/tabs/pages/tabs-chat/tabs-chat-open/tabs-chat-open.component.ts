@@ -22,7 +22,6 @@ export class TabsChatOpenComponent implements OnInit {
 
     ngOnInit() {
         this.id = this.route.snapshot.paramMap.get('id');
-        this.tabsService.showMenu$.next(null);
         this.tabsService.tabsChat$.subscribe(value => {
             this.headerInfo = value;
         });
@@ -30,6 +29,5 @@ export class TabsChatOpenComponent implements OnInit {
 
     public backToDialogues(): void {
         this.nav.navigate(['tabs/tabs-chat/']);
-        this.tabsService.showMenu$.next('on');
     }
 }

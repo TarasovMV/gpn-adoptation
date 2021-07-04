@@ -46,7 +46,6 @@ export class InfoPage implements OnInit {
     public ngOnInit(): void {
         this.id = +this.route.snapshot.queryParamMap.get('id');
         this.isProgress = this.route.snapshot.queryParamMap.get('type') === 'progress';
-        this.tabsService.showMenu$.next(null);
         this.tabsService.adaptationComponents$.subscribe(value => {
             this.data = value?.adaptationComponents;
             this.data.forEach(x => { this.rates[x.id] = [...this.ratesDefault.map(r => ({...r}))] });
@@ -54,7 +53,7 @@ export class InfoPage implements OnInit {
         });
     }
 
-    public backToProgress(): void {
+    public back(): void {
         this.navCtrl.back();
     }
 
@@ -75,7 +74,6 @@ export class InfoPage implements OnInit {
         this.isDone = true;
         setTimeout(() => {
             this.navCtrl.back();
-            this.tabsService.showMenu$.next('on');
         }, 300);
     }
 

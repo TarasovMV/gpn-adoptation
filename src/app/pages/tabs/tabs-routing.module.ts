@@ -43,11 +43,11 @@ const routes: Routes = [
             }
         ],
     },
-    {
-        path: '**',
-        redirectTo: 'tabs-news',
-        pathMatch: 'full',
-    },
+    // {
+    //     path: '**',
+    //     redirectTo: 'tabs-news',
+    //     pathMatch: 'full',
+    // },
 ];
 
 @NgModule({

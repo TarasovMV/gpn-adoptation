@@ -3,6 +3,8 @@ import {IPageTab, PageTabType} from "../../tabs.model";
 import {INotifications} from "../../../../core/models/notification.model";
 import {ApiNotificationService} from "../../../../core/services/api/api-notification.service";
 import {BehaviorSubject} from "rxjs";
+import {BackButtonService} from "../../../../core/services/platform/back-button.service";
+import {Platform} from "@ionic/angular";
 
 @Component({
     selector: 'app-tabs-notifications',
@@ -15,9 +17,14 @@ export class TabsNotificationsPage implements OnInit, IPageTab {
 
     public notifications$: BehaviorSubject<INotifications[]> = new BehaviorSubject<INotifications[]>([]);
 
-    constructor(private apiNotificationService: ApiNotificationService) {}
+    constructor(
+        private apiNotificationService: ApiNotificationService,
+        private backButtonService: BackButtonService,
+        private platform: Platform,
+    ) {}
 
     public ngOnInit(): void {
+        this.backButtonService.disableBackOnRoot(this.platform);
         this.getNotifications().then();
     }
 

@@ -9,11 +9,11 @@ const routes: Routes = [
         path: '',
         component: TabsOfflinePage
     },
-    // {
-    //     path: ':id',
-    //     component: TabsOfflineMoreComponent,
-    //     loadChildren: () => import('./tabs-offline-more/tabs-offline-more.module').then(m => m.TabsOfflineMoreModule)
-    // }
+    {
+        path: ':id',
+        component: TabsOfflineMoreComponent,
+        loadChildren: () => import('./tabs-offline-more/tabs-offline-more.module').then(m => m.TabsOfflineMoreModule)
+    }
 ];
 
 @NgModule({

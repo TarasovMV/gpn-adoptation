@@ -89,7 +89,6 @@ export class ProgressCardComponent implements OnInit {
     ngOnInit(): void {
         this.id = +this.route.snapshot.queryParamMap.get('id');
         this.isProgress = this.route.snapshot.queryParamMap.get('type') === 'progress';
-        this.tabsService.showMenu$.next(null);
         this.tabsService.adaptationComponents$.subscribe(value => {
             this.data = value?.adaptationComponents;
             this.data.forEach(x => {
@@ -101,7 +100,6 @@ export class ProgressCardComponent implements OnInit {
 
     public backToProgress(): void {
         this.navCtrl.back();
-        this.tabsService.showMenu$.next('on');
     }
 
     public openFile(path: string): void {
@@ -122,7 +120,6 @@ export class ProgressCardComponent implements OnInit {
         this.isDone = true;
         setTimeout(() => {
             this.navCtrl.back();
-            this.tabsService.showMenu$.next('on');
         }, 300);
     }
 

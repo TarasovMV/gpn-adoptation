@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {TabsService} from 'src/app/core/services/tabs/tabs.service';
-import {IAdaptationStage, IAdaptationSubStage} from "../../../tabs.model";
+import {IAdaptationStage, IAdaptationSubStage, IPageTab, PageTabType} from "../../../tabs.model";
 import {NavController} from "@ionic/angular";
 
 @Component({
@@ -9,7 +9,8 @@ import {NavController} from "@ionic/angular";
     templateUrl: './tabs-offline-more.component.html',
     styleUrls: ['./tabs-offline-more.component.scss'],
 })
-export class TabsOfflineMoreComponent implements OnInit {
+export class TabsOfflineMoreComponent implements OnInit, IPageTab {
+    public route: PageTabType = 'offline';
     public data: IAdaptationStage = null;
     public sections: IAdaptationSubStage[] = [];
 
@@ -27,12 +28,13 @@ export class TabsOfflineMoreComponent implements OnInit {
     }
 
     public backToOffline(): void {
-        this.navCtrl.navigateRoot(['tabs/tabs-offline/']);
+        // this.navCtrl.navigateRoot(['tabs/tabs-offline/']);
+        this.navCtrl.back();
     }
 
     public openSubStage(subStage: IAdaptationSubStage): void {
         this.tabsService.adaptationComponents$.next(subStage);
-        this.navCtrl.navigateForward('tabs/tabs-progress/', { queryParams: {id: subStage.id, type: 'reference'}});
+        this.navCtrl.navigateForward('info', { queryParams: {id: subStage.id, type: 'reference'}});
     }
 
     public filterSections(search: string): void {

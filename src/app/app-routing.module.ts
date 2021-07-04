@@ -24,6 +24,10 @@ const routes: Routes = [
         loadChildren: () => import('./pages/info/info.module').then( m => m.InfoPageModule)
     },
     {
+        path: 'test',
+        loadChildren: () => import('./pages/tabs/pages/tabs-tests/tests-test/tests-test.module').then( m => m.TestsTestModule)
+    },
+    {
         path: '',
         redirectTo: 'start',
         pathMatch: 'full',

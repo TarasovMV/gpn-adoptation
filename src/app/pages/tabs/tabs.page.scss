@@ -36,10 +36,12 @@
 
       color: #E0E0E0;
       font-size: sizeHeight(24);
+      transition: .3s;
 
       &_active {
         color: #006FBA;
         border-top: 0.5vh solid #006FBA;
+        transition: .3s;
       }
     }
   }

@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { TabsService } from 'src/app/core/services/tabs/tabs.service';
 import {IPageTab, PageTabType} from '../../tabs.model';
+import {NavController, Platform} from "@ionic/angular";
+import {BackButtonService} from "../../../../core/services/platform/back-button.service";
 
 export interface ITests {
     id: number;
@@ -49,30 +51,31 @@ export interface IAnswer {
 })
 export class TabsTestsPage implements OnInit, IPageTab {
     public route: PageTabType = 'tests';
-    public tests: number[] = new Array(3);
     public data: ITests[] = [];
 
     constructor(
         public tabsService: TabsService,
-        private router: Router,
+        private platform: Platform,
+        private navCtrl: NavController,
+        private backButtonService: BackButtonService,
     ) {
     }
 
     ngOnInit(): void {
-        this.tabsService.showMenu$.next('on');
-        this.getTests();
+        this.backButtonService.disableBackOnRoot(this.platform);
+        this.tabsService.startTest$.subscribe(x => {
+            this.getTests().then();
+        })
     }
 
-    public openTest(test: ITests) {
-        this.router.navigate(['tabs/tabs-tests/' + test.id]);
+    public async openTest(test: ITests): Promise<void> {
         this.tabsService.test$.next(test);
-        this.tabsService.showMenu$.next(null);
+        await this.navCtrl.navigateForward('test');
     }
 
     public async getTests(): Promise<void> {
         try {
             this.data = await this.tabsService.getTests();
-            console.log(this.data);
         }
         catch (e) {
             console.error(e);

@@ -15,7 +15,6 @@ import {ITestResult} from "../../../pages/tabs/pages/tabs-tests/test-question/te
 })
 
 export class TabsService {
-    public showMenu$: BehaviorSubject<string> = new BehaviorSubject<string>('on');
     public tabsChat$: BehaviorSubject<IColleague> = new BehaviorSubject<IColleague>(null);
     public businessStages$: BehaviorSubject<IAdaptationStage> = new BehaviorSubject<IAdaptationStage>(null);
     public person$: BehaviorSubject<IMasterMind> = new BehaviorSubject<IMasterMind>(null);

@@ -4,6 +4,8 @@ import { TabsService } from 'src/app/core/services/tabs/tabs.service';
 import {IPageTab, PageTabType} from "../../tabs.model";
 import { IHistory } from './components/tabs-about-history/tabs-about-history.component';
 import {AppConfigService} from "../../../../core/services/platform/app-config.service";
+import {BackButtonService} from "../../../../core/services/platform/back-button.service";
+import {Platform} from "@ionic/angular";
 
 export interface IMasterMindCategory {
     id: number,
@@ -47,12 +49,15 @@ export class TabsAboutPage implements OnInit, IPageTab {
 
     constructor(
         public tabsService: TabsService,
+        private backButtonService: BackButtonService,
+        private platform: Platform,
         appConfigService: AppConfigService,
     ) {
         this.restUrl = appConfigService.getAttribute('restUrl');
     }
 
     ngOnInit(): void {
+        this.backButtonService.disableBackOnRoot(this.platform);
         this.getMasterMindCategories();
         this.getHistoryBullets();
         this.tabsService.historyPeriod$.subscribe(value => {
