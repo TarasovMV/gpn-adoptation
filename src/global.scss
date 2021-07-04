@@ -40,3 +40,9 @@
 ion-content {
   --keyboard-offset: 0 !important;
 }
+
+// for mat ripple effect
+.ripple-parent {
+  position: relative;
+  //overflow: hidden;
+}

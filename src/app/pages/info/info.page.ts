@@ -56,7 +56,6 @@ export class InfoPage implements OnInit {
 
     public backToProgress(): void {
         this.navCtrl.back();
-        this.tabsService.showMenu$.next('on');
     }
 
     public openFile(path: string): void {

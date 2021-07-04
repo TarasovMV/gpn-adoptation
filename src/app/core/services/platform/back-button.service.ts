@@ -9,11 +9,11 @@ export class BackButtonService {
     constructor(private navCtrl: NavController) {}
 
     public init(platform: Platform): void {
-        if (!platform.is('android')) {
-            return;
-        }
-        platform.backButton.subscribeWithPriority(999, () => {
-            this.navCtrl.back();
-        });
+        // if (!platform.is('android')) {
+        //     return;
+        // }
+        // platform.backButton.subscribeWithPriority(999, () => {
+        //     this.navCtrl.back();
+        // });
     }
 }
