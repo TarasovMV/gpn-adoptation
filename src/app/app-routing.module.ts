@@ -20,6 +20,7 @@ const routes: Routes = [
     },
     {
         path: 'info',
+        // loadChildren: () => import('./pages/tabs/pages/tabs-progress/progress-card/progress-card.module').then( m => m.ProgressCardModule)
         loadChildren: () => import('./pages/info/info.module').then( m => m.InfoPageModule)
     },
     {

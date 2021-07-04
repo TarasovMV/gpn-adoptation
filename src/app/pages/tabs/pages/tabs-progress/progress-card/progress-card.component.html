@@ -9,7 +9,7 @@
   <div class="content">
     <ng-container *ngFor="let item of data">
       <div class="component">
-        <ng-container *ngComponentOutlet="components[item.componentType]; injector: createInjector(item, components[item.componentType])"></ng-container>
+        <ng-container *ngComponentOutlet="components[item.componentType]; injector: createInjector(item)"></ng-container>
       </div>
     </ng-container>
 

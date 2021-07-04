@@ -27,7 +27,7 @@ export class TabsOfflineMoreComponent implements OnInit {
     }
 
     public backToOffline(): void {
-        this.nav.navigate(['tabs/tabs-offline/']);
+        this.navCtrl.navigateRoot(['tabs/tabs-offline/']);
     }
 
     public openSubStage(subStage: IAdaptationSubStage): void {

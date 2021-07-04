@@ -6,6 +6,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 export class TextLinesPipe implements PipeTransform {
 
     transform(value: string): unknown {
+        if (!value) {return ''}
         let arr = value.split('\n');
         arr = arr.map(x => {
             const classes = ['para'];
