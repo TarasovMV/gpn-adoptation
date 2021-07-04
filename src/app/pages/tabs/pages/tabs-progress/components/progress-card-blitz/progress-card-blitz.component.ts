@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { IAdaptationComponent } from 'src/app/pages/tabs/tabs.model';
 
 @Component({
@@ -7,10 +7,12 @@ import { IAdaptationComponent } from 'src/app/pages/tabs/tabs.model';
   styleUrls: ['./progress-card-blitz.component.scss'],
 })
 export class ProgressCardBlitzComponent implements OnInit {
-  @Input() item: IAdaptationComponent;
+  // @Input() item: IAdaptationComponent;
   public rates: { [key: number]: {id: number; isActive: boolean}[] } = {};
 
-  constructor() { }
+  constructor(
+    @Inject('item') public item: IAdaptationComponent,
+  ) { }
 
   ngOnInit() {}
 

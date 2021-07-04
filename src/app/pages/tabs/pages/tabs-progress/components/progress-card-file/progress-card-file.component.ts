@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { IAdaptationComponent } from 'src/app/pages/tabs/tabs.model';
 import { Browser } from "@capacitor/browser";
 import { AppConfigService } from 'src/app/core/services/platform/app-config.service';
@@ -9,11 +9,12 @@ import { AppConfigService } from 'src/app/core/services/platform/app-config.serv
   styleUrls: ['./progress-card-file.component.scss'],
 })
 export class ProgressCardFileComponent implements OnInit {
-  @Input() item: IAdaptationComponent;
+  // @Input() item: IAdaptationComponent;
   public readonly restUrl: string;
 
   constructor(
     appConfigService: AppConfigService,
+    @Inject('item') public item: IAdaptationComponent,
   ) {
     this.restUrl = appConfigService.getAttribute('restUrl');
   }

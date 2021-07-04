@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { IAdaptationComponent } from 'src/app/pages/tabs/tabs.model';
 
 @Component({
@@ -7,10 +7,10 @@ import { IAdaptationComponent } from 'src/app/pages/tabs/tabs.model';
   styleUrls: ['./progress-card-points.component.scss'],
 })
 export class ProgressCardPointsComponent implements OnInit {
-  @Input() item: IAdaptationComponent;
+  // @Input() item: IAdaptationComponent;
 
-  constructor() { }
-
+  constructor(@Inject('item') public item: IAdaptationComponent) {
+  }
   ngOnInit() {}
 
 }
