@@ -1,0 +1,54 @@
+@import "src/theme/functions/resizer";
+
+* {
+  box-sizing: border-box;
+}
+
+.footer {
+    color: #98a9bc;
+    font-size: sizeHeight(14);
+    margin-top: sizeHeight(5);
+}
+
+.blitz {
+    width: 100%;
+    padding: sizeHeight(16) sizeWidth(16);
+    background-color: #ffffff;
+    border-radius: sizeHeight(22);
+
+    display: flex;
+    flex-direction: column;
+
+    &__header {
+      width: 100%;
+      font-style: bold;
+      font-size: sizeHeight(17);
+
+      display: flex;
+      align-items: center;
+      margin-bottom: sizeHeight(14);
+    }
+
+    &__rate {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      margin-bottom: sizeHeight(14);
+
+      .star {
+        height: sizeHeight(43);
+        width: sizeHeight(43);
+        border-radius: 50%;
+        padding: sizeHeight(8);
+
+        background-color: #E8ECEF;
+        color: #F2F2F2;
+
+        &-active {
+          background-color: #F2994A;
+          color: #FFFFFF;
+        }
+      }
+    }
+  }

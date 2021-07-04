@@ -1,0 +1,12 @@
+@import "src/theme/functions/resizer";
+
+* {
+  box-sizing: border-box;
+}
+
+.usualText {
+    width: 100%;
+    color: #303549;
+    font-size: sizeHeight(17);
+    text-align: justify;
+  }

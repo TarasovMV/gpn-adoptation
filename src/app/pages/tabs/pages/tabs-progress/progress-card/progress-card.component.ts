@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Injector, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TabsService} from 'src/app/core/services/tabs/tabs.service';
 import {IAdaptationComponent, IStage} from '../../../tabs.model';
@@ -6,6 +6,20 @@ import { Browser } from "@capacitor/browser";
 import {TabsProgressService} from "../services/tabs-progress.service";
 import {NavController} from "@ionic/angular";
 import {AppConfigService} from "../../../../../core/services/platform/app-config.service";
+import { ProgressCardAccentTextComponent } from '../components/progress-card-accent-text/progress-card-accent-text.component';
+import { ProgressCardAttentionComponent } from '../components/progress-card-attention/progress-card-attention.component';
+import { ProgressCardBlitzComponent } from '../components/progress-card-blitz/progress-card-blitz.component';
+import { ProgressCardBlockComponent } from '../components/progress-card-block/progress-card-block.component';
+import { ProgressCardButtonComponent } from '../components/progress-card-button/progress-card-button.component';
+import { ProgressCardFileComponent } from '../components/progress-card-file/progress-card-file.component';
+import { ProgressCardImageSquadComponent } from '../components/progress-card-image-squad/progress-card-image-squad.component';
+import { ProgressCardImageComponent } from '../components/progress-card-image/progress-card-image.component';
+import { ProgressCardManualInputComponent } from '../components/progress-card-manual-input/progress-card-manual-input.component';
+import { ProgressCardMoreComponent } from '../components/progress-card-more/progress-card-more.component';
+import { ProgressCardPointsComponent } from '../components/progress-card-points/progress-card-points.component';
+import { ProgressCardTerminComponent } from '../components/progress-card-termin/progress-card-termin.component';
+import { ProgressCardUsualTextComponent } from '../components/progress-card-usual-text/progress-card-usual-text.component';
+import { ProgressCardVideoComponent } from '../components/progress-card-video/progress-card-video.component';
 
 export enum AdaptationComponentsType {
     none, imageWithText, textWithText, headerWithText,
@@ -19,6 +33,22 @@ export enum AdaptationComponentsType {
     styleUrls: ['./progress-card.component.scss'],
 })
 export class ProgressCardComponent implements OnInit {
+    public components = [
+        ProgressCardImageComponent,
+        ProgressCardUsualTextComponent,
+        ProgressCardAccentTextComponent,
+        ProgressCardTerminComponent,
+        ProgressCardAttentionComponent,
+        ProgressCardBlockComponent,
+        ProgressCardBlitzComponent,
+        ProgressCardFileComponent,
+        ProgressCardMoreComponent,
+        ProgressCardPointsComponent,
+        ProgressCardVideoComponent,
+        ProgressCardButtonComponent,
+        ProgressCardImageSquadComponent,
+        ProgressCardManualInputComponent
+    ];
     public id: number;
     public cardData: IStage;
     public isDone: boolean = false;
@@ -30,12 +60,9 @@ export class ProgressCardComponent implements OnInit {
         {id: 4, isActive: false},
         {id: 5, isActive: false}
     ];
-
     public rates: { [key: number]: {id: number; isActive: boolean}[] } = {};
     public text: { [key: number]: string } = {};
-
     public data: IAdaptationComponent[];
-
     public readonly restUrl: string;
 
     constructor(
@@ -45,9 +72,17 @@ export class ProgressCardComponent implements OnInit {
         public tabsService: TabsService,
         private tabsProgressService: TabsProgressService,
         appConfigService: AppConfigService,
+        public injector: Injector,
     ) {
         this.restUrl = appConfigService.getAttribute('restUrl');
     }
+
+    createInjector(item: IAdaptationComponent, comp){
+        const injector = Injector.create([
+          { provide: comp, useValue: item }
+        ], this.injector);
+        return injector;
+      }
 
     ngOnInit(): void {
         this.id = +this.route.snapshot.queryParamMap.get('id');

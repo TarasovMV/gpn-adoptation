@@ -1,0 +1,22 @@
+@import "src/theme/functions/resizer";
+
+* {
+    box-sizing: border-box;
+}
+
+.file {
+    width: 100%;
+    padding: sizeHeight(16);
+    background-color: #ffffff;
+    border-radius: sizeHeight(22);
+
+    display: flex;
+
+    &__path {
+      margin-left: sizeWidth(15);
+      font-size: sizeHeight(14);
+
+      display: flex;
+      align-items: center;
+    }
+  }

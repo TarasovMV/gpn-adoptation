@@ -1,0 +1,10 @@
+<div class="more">
+  <div class="more__title" (click)="openMore(item)">
+    <span style="font-weight: bold">{{item.header}}</span>
+    <svg-icon class="arrow" src="assets/icon/arrow.svg" [ngClass]="{'active': item.isActive}"></svg-icon>
+  </div>
+  <div class="more__description" *ngIf="item.isActive">
+    <span>{{item.body}}</span>
+    <div class="footer">{{item.footer}}</div>
+  </div>
+</div>

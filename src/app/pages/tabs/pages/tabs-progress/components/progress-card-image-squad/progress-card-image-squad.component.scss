@@ -1,0 +1,23 @@
+@import "src/theme/functions/resizer";
+
+* {
+  box-sizing: border-box;
+}
+@import "src/theme/functions/resizer";
+
+* {
+    box-sizing: border-box;
+}
+
+.footer {
+    color: #98a9bc;
+    font-size: sizeHeight(14);
+    margin-top: sizeHeight(5);
+}
+
+.image-squad {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: sizeHeight(22);
+}
