@@ -64,6 +64,7 @@
   left: 0;
   height: 24vh;
   background-color: rgba(255, 255, 255, 0.2);
+  transition: 1s;
 }
 
 ion-content {
@@ -137,10 +138,12 @@ ion-content {
 
     .arrow {
       transform: rotate(-90deg);
+      transition: .3s;
     }
 
     .active {
       transform: none;
+      transition: .3s;
     }
   }
 

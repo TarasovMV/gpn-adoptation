@@ -27,7 +27,7 @@ import { ConfirmPopupComponent } from './components/confirm-popup/confirm-popup.
         SafeUrlPipe,
         CashedImgComponent,
         ConfirmPopupComponent,
-    ]
+    ],
 })
 export class SharedModule {
 }

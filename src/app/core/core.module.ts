@@ -6,6 +6,7 @@ import {AuthenticationInterceptor} from "./interceptors/authentication.intercept
 import {ErrorInterceptor} from "./interceptors/error.interceptor";
 import {AngularSvgIconModule} from "angular-svg-icon";
 import {CacheInterceptor} from "./interceptors/cache.interceptor";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
     declarations: [],
@@ -13,12 +14,14 @@ import {CacheInterceptor} from "./interceptors/cache.interceptor";
         CommonModule,
         HttpClientModule,
         AngularSvgIconModule.forRoot(),
+        BrowserAnimationsModule
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor,  multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor,  multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
         { provide: APP_INITIALIZER, useFactory: appConfigInit, deps: [AppConfigService], multi: true },
+        BrowserAnimationsModule,
     ]
 })
 export class CoreModule {

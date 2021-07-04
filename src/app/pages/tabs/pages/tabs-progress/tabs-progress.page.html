@@ -35,7 +35,7 @@
             {{item?.description}}
           </div>
         </div>
-        <ng-container *ngIf="item.isActive">
+        <div [@inOutAnimation] *ngIf="item.isActive">
           <ng-container *ngFor="let element of item.adaptationSubStages">
             <div class="stage" [ngClass]="{'stage-active': element.isDone, 'stage-disabled': element.disabled}" (click)="toProgressCard(element)">
               <div class="stage__icon" [ngClass]="{'stage__icon-done': element.isDone}">
@@ -47,7 +47,7 @@
               </div>
             </div>
           </ng-container>
-        </ng-container>
+        </div>
       </ng-container>
 <!--    </ion-content>-->
   </div>

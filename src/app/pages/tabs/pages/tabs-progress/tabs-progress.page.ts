@@ -1,17 +1,40 @@
-import { Component, OnInit } from '@angular/core';
-import { TabsService } from 'src/app/core/services/tabs/tabs.service';
-import { IAdaptationStage, IAdaptationSubStage, IPageTab, IProgress, PageTabType } from '../../tabs.model';
-import { ProgressCardComponent } from './progress-card/progress-card.component';
+import {Component, OnInit} from '@angular/core';
+import {TabsService} from 'src/app/core/services/tabs/tabs.service';
+import {IAdaptationStage, IAdaptationSubStage, IPageTab, IProgress, PageTabType} from '../../tabs.model';
 import {TabsProgressService} from "./services/tabs-progress.service";
 import {UserService} from "../../../../core/services/data/user.service";
 import {AlertController, NavController} from "@ionic/angular";
 import {ApiAdaptationService} from "../../../../core/services/api/api-adaptation.service";
+import { trigger, style, animate, transition } from '@angular/animations';
 
 
 @Component({
     selector: 'app-tabs-progress',
     templateUrl: './tabs-progress.page.html',
     styleUrls: ['./tabs-progress.page.scss'],
+    animations: [
+        trigger(
+            'inOutAnimation',
+            [
+                transition(
+                    ':enter',
+                    [
+                        style({height: 0, opacity: 0}),
+                        animate('.3s ease-out',
+                            style({height: '*', opacity: 1}))
+                    ]
+                ),
+                transition(
+                    ':leave',
+                    [
+                        style({height: '*', opacity: 1}),
+                        animate('.3s ease-in',
+                            style({height: 0, opacity: .3}))
+                    ]
+                )
+            ]
+        )
+    ]
 })
 export class TabsProgressPage implements OnInit, IPageTab {
     public route: PageTabType = 'progress';
@@ -42,25 +65,26 @@ export class TabsProgressPage implements OnInit, IPageTab {
 
     async handleButtonClick() {
         const alert = await this.alertController.create({
-          header: 'Вы действительно хотите выйти?',
-          buttons: [
-            {
-                text: 'Отмена',
-                role: 'cancel',
-                handler: () => {
-                  console.log('they hit cancel');
-                  return new Promise(resolve => setTimeout(resolve, 2000));
+            header: 'Вы действительно хотите выйти?',
+            translucent: true,
+            buttons: [
+                {
+                    text: 'Отмена',
+                    role: 'cancel',
+                    handler: () => {
+                        console.log('they hit cancel');
+                        return new Promise(resolve => setTimeout(resolve, 2000));
+                    }
+                }, {
+                    text: 'Выйти',
+                    handler: () => {
+                        this.logout();
+                    }
                 }
-              }, {
-                text: 'Выйти',
-                handler: () => {
-                  this.logout();
-                }
-              }
-          ]
+            ]
         });
         await alert.present();
-      }
+    }
 
     public async getData(): Promise<void> {
         try {
@@ -83,11 +107,9 @@ export class TabsProgressPage implements OnInit, IPageTab {
             this.doneHandler(doneArr, this.data);
             this.tabsProgressService.adaptationDone$.next(doneArr);
             console.log(this.data);
-        }
-        catch(error) {
+        } catch (error) {
             console.error(error);
-        }
-        finally {
+        } finally {
             this.countProgress();
         }
     }
@@ -101,7 +123,7 @@ export class TabsProgressPage implements OnInit, IPageTab {
     }
 
     public countProgress(): void {
-        if  (!this.data) {
+        if (!this.data) {
             return;
         }
         const doneCount = this.data?.adaptationStages
@@ -115,7 +137,7 @@ export class TabsProgressPage implements OnInit, IPageTab {
     }
 
     public toProgressCard(element: IAdaptationSubStage): void {
-        this.navCtr.navigateForward('info', { queryParams: {id: element.id, type: 'progress'}});
+        this.navCtr.navigateForward('info', {queryParams: {id: element.id, type: 'progress'}});
         this.tabsService.adaptationComponents$.next(element);
     }
 

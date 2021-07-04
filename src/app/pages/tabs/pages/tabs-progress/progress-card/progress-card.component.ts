@@ -33,7 +33,7 @@ export enum AdaptationComponentsType {
     styleUrls: ['./progress-card.component.scss'],
 })
 export class ProgressCardComponent implements OnInit {
-    public components = [
+    public readonly components = [
         ProgressCardImageComponent,
         ProgressCardUsualTextComponent,
         ProgressCardAccentTextComponent,
