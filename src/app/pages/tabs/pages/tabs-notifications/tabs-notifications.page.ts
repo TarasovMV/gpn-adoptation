@@ -28,7 +28,7 @@ export class TabsNotificationsPage implements OnInit, IPageTab {
         const mapNotifications: INotifications[] = [];
         notifications.forEach(x => {
             const date = getOnlyDate(x.createdAt);
-            const arr = mapNotifications.find(n => n.date = date);
+            const arr = mapNotifications.find(n => n.date.getTime() === date.getTime());
             if (!arr) {
                 mapNotifications.push({date, notifications: [x]});
             } else {
