@@ -1,12 +1,16 @@
-<div class="popup">
-  <div class="close"></div>
-  <div class="popup__icon">
-    <svg-icon src="assets/icon/confirm.svg"></svg-icon>
-  </div>
-  <div class="popup__text">
-    Вы действительно хотите выйти?
-  </div>
-  <div class="popup__button">
-    Подтвердить
+<div class="container">
+  <div class="popup">
+    <div class="close" (click)="dismiss()">
+      <img src="assets/icon/close.svg">
+    </div>
+    <div class="popup__icon">
+      <img src="assets/icon/confirm.svg">
+    </div>
+    <div class="popup__text">
+      Вы действительно хотите выйти?
+    </div>
+    <div class="popup__button" (click)="logout()">
+      Подтвердить
+    </div>
   </div>
 </div>

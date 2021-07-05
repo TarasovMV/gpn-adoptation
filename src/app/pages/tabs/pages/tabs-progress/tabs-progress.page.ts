@@ -3,10 +3,11 @@ import {TabsService} from 'src/app/core/services/tabs/tabs.service';
 import {IAdaptationStage, IAdaptationSubStage, IPageTab, IProgress, PageTabType} from '../../tabs.model';
 import {TabsProgressService} from "./services/tabs-progress.service";
 import {UserService} from "../../../../core/services/data/user.service";
-import {AlertController, NavController, Platform} from "@ionic/angular";
+import {AlertController, ModalController, NavController, Platform} from "@ionic/angular";
 import {ApiAdaptationService} from "../../../../core/services/api/api-adaptation.service";
 import { trigger, style, animate, transition } from '@angular/animations';
 import {BackButtonService} from "../../../../core/services/platform/back-button.service";
+import { ConfirmPopupComponent } from 'src/app/shared/components/confirm-popup/confirm-popup.component';
 
 
 @Component({
@@ -54,6 +55,7 @@ export class TabsProgressPage implements OnInit, IPageTab {
         private alertController: AlertController,
         private backButtonService: BackButtonService,
         private platform: Platform,
+        public modalController: ModalController
     ) {
     }
 
@@ -66,28 +68,12 @@ export class TabsProgressPage implements OnInit, IPageTab {
         this.getData();
     }
 
-    async handleButtonClick() {
-        const alert = await this.alertController.create({
-            header: 'Вы действительно хотите выйти?',
-            translucent: true,
-            buttons: [
-                {
-                    text: 'Отмена',
-                    role: 'cancel',
-                    handler: () => {
-                        console.log('they hit cancel');
-                        return new Promise(resolve => setTimeout(resolve, 2000));
-                    }
-                }, {
-                    text: 'Выйти',
-                    handler: () => {
-                        this.logout();
-                    }
-                }
-            ]
+    async confirm() {
+        const modal = await this.modalController.create({
+          component: ConfirmPopupComponent,
         });
-        await alert.present();
-    }
+        return await modal.present();
+      }
 
     public async getData(): Promise<void> {
         try {

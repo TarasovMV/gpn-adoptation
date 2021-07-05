@@ -46,3 +46,10 @@ ion-content {
   position: relative;
   //overflow: hidden;
 }
+
+.modal-wrapper{
+  background: transparent !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
