@@ -48,7 +48,7 @@ export class InfoPage implements OnInit {
         this.isProgress = this.route.snapshot.queryParamMap.get('type') === 'progress';
         this.tabsService.adaptationComponents$.subscribe(value => {
             this.data = value?.adaptationComponents;
-            this.data.forEach(x => { this.rates[x.id] = [...this.ratesDefault.map(r => ({...r}))] });
+            this.data?.forEach(x => { this.rates[x.id] = [...this.ratesDefault.map(r => ({...r}))] });
             this.isDone = value.isDone;
         });
     }

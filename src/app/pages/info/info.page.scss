@@ -97,6 +97,11 @@
     border-radius: sizeHeight(22);
   }
 
+  video {
+    width: 100%;
+    object-fit: cover;
+  }
+
   .usualText {
     width: 100%;
     color: #303549;
@@ -182,7 +187,6 @@
     }
   }
 
-
   .more, .manual-input {
     width: 100%;
     padding: sizeHeight(16);
@@ -192,7 +196,8 @@
     flex-direction: column;
     justify-content: center;
     font-size: sizeHeight(12);
-
+    height: fit-content;
+    min-height: fit-content;
     position: relative;
 
     &__title {
