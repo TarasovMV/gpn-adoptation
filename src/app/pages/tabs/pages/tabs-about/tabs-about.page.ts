@@ -1,11 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {BehaviorSubject, Subject} from 'rxjs';
 import { TabsService } from 'src/app/core/services/tabs/tabs.service';
 import {IPageTab, PageTabType} from "../../tabs.model";
 import { IHistory } from './components/tabs-about-history/tabs-about-history.component';
 import {AppConfigService} from "../../../../core/services/platform/app-config.service";
 import {BackButtonService} from "../../../../core/services/platform/back-button.service";
-import {Platform} from "@ionic/angular";
+import {IonSlides, Platform} from "@ionic/angular";
+import {SLIDE_CONFIG_HISTORY} from "./tabs-about.config";
+import {debounce, throttleTime, timeout} from "rxjs/operators";
 
 export interface IMasterMindCategory {
     id: number,
@@ -40,12 +42,14 @@ export interface IBullet {
 export class TabsAboutPage implements OnInit, IPageTab {
     public route: PageTabType = 'about';
 
+    @ViewChild('ionSlides') public ionSlide: IonSlides;
     public readonly restUrl: string;
     public readonly sections: string[] = ['Руководство', 'История'];
     public section$: BehaviorSubject<string> = new BehaviorSubject<string>('Руководство');
     public leadership: IMasterMindCategory[] = [];
     public history: IHistory[] =[];
-    public showHistory: IHistory;
+    public slideOptions = SLIDE_CONFIG_HISTORY(() => this.changeHistory());
+    private detectSlide$: Subject<unknown> = new Subject<unknown>();
 
     constructor(
         public tabsService: TabsService,
@@ -60,11 +64,12 @@ export class TabsAboutPage implements OnInit, IPageTab {
         this.backButtonService.disableBackOnRoot(this.platform);
         this.getMasterMindCategories();
         this.getHistoryBullets();
-        this.tabsService.historyPeriod$.subscribe(value => {
-            this.showHistory = value;
-        });
+        this.detectSlide$
+            .pipe(throttleTime(100))
+            .subscribe(x =>
+                this.ionSlide?.getActiveIndex().then(x => this.tabsService.historyPeriod$.next(x))
+            );
     }
-
 
     public async getMasterMindCategories(): Promise<void> {
         const data = await this.tabsService.getMasterMindCategories();
@@ -76,10 +81,14 @@ export class TabsAboutPage implements OnInit, IPageTab {
 
     public async getHistoryBullets(): Promise<void> {
         this.history = await this.tabsService.getHistory();
-        this.tabsService.historyPeriod$.next(this.history?.[0]);
+        this.tabsService.historyPeriod$.next(0);
     }
 
     public changeSection(section: string): void {
         this.section$.next(section);
+    }
+
+    public async changeHistory(): Promise<void> {
+        this.detectSlide$.next(true);
     }
 }

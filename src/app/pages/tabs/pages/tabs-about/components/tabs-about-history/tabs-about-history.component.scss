@@ -5,11 +5,13 @@
 }
 
 .history-page {
+  position: relative;
   height: sizeHeight(38);
   width: 100%;
 
   display: flex;
   align-items: center;
+  overflow: hidden;
 
   .period {
     min-width: sizeWidth(106);

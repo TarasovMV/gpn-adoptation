@@ -13,10 +13,14 @@
   <div class="content">
     <ng-container [ngSwitch]="section$ | async">
       <div class="history" *ngSwitchCase="'История'">
-        <div class="history__content">
-          <p *ngFor="let bullet of showHistory?.historyBullets">{{ bullet.text }}</p>
-          <cashed-img *ngIf="showHistory?.imagePath" [src]="restUrl+'/'+showHistory?.imagePath"></cashed-img>
-        </div>
+        <ion-slides #ionSlides style="flex-grow: 1" [options]="slideOptions">
+          <ion-slide *ngFor="let item of history">
+            <div class="history__content">
+              <p *ngFor="let bullet of item?.historyBullets">{{ bullet.text }}</p>
+              <cashed-img *ngIf="item?.imagePath" [src]="restUrl+'/'+item?.imagePath"></cashed-img>
+            </div>
+          </ion-slide>
+        </ion-slides>
         <div class="history__periods">
           <app-tabs-about-history [data]="history"></app-tabs-about-history>
         </div>

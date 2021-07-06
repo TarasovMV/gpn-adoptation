@@ -18,7 +18,7 @@ export class TabsService {
     public tabsChat$: BehaviorSubject<IColleague> = new BehaviorSubject<IColleague>(null);
     public businessStages$: BehaviorSubject<IAdaptationStage> = new BehaviorSubject<IAdaptationStage>(null);
     public person$: BehaviorSubject<IMasterMind> = new BehaviorSubject<IMasterMind>(null);
-    public historyPeriod$: BehaviorSubject<IHistory> = new BehaviorSubject<IHistory>(null);
+    public historyPeriod$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
     public adaptationComponents$: BehaviorSubject<IAdaptationSubStage> = new BehaviorSubject<IAdaptationSubStage>(null);
     public test$: BehaviorSubject<ITests> = new BehaviorSubject<ITests>(null);
     public startTest$: BehaviorSubject<number> = new BehaviorSubject<number>(null);
