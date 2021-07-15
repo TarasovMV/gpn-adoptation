@@ -6,9 +6,9 @@
     <svg-icon src="assets/icon/offline/close.svg"></svg-icon>
   </div>
   <div class="container__header">
-    <ng-container *ngFor="let element of story.history index as i">
+    <ng-container *ngFor="let element of story.history">
       <div class="element">
-        <div id="bar"></div>
+        <div id="bar" #bar></div>
       </div>
     </ng-container>
   </div>
