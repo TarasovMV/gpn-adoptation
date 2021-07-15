@@ -127,6 +127,7 @@ export class TabsOfflineStoriesComponent implements OnInit {
     try {
       const adaptationData = await this.apiAdaptationService.getAdaptation();
       const data = await this.tabsService.getRecommendation(adaptationData.id);
+      data.forEach(x => x.history = x.history.sort((a, b) => a.order - b.order));
       this.recomendations = data;
     }
     catch (error) {
