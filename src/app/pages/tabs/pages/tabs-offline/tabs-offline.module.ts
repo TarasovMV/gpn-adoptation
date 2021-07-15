@@ -7,6 +7,7 @@ import {TabsOfflinePage} from './tabs-offline.page';
 import {AngularSvgIconModule} from 'angular-svg-icon';
 import {TabsOfflineSearchComponent} from './components/tabs-offline-search/tabs-offline-search.component';
 import { TabsOfflineRecommendationComponent } from './components/tabs-offline-recommendation/tabs-offline-recommendation.component';
+import { TabsOfflineStoriesComponent } from './components/tabs-offline-stories/tabs-offline-stories.component';
 
 @NgModule({
     imports: [
@@ -15,10 +16,14 @@ import { TabsOfflineRecommendationComponent } from './components/tabs-offline-re
         IonicModule,
         TabsOfflinePageRoutingModule,
         AngularSvgIconModule,
-        ReactiveFormsModule,
-        
+        ReactiveFormsModule, 
     ],
-    declarations: [TabsOfflinePage, TabsOfflineSearchComponent, TabsOfflineRecommendationComponent],
+    declarations: [
+        TabsOfflinePage,
+        TabsOfflineSearchComponent,
+        TabsOfflineRecommendationComponent,
+        TabsOfflineStoriesComponent
+    ],
     exports: [TabsOfflineSearchComponent]
 })
 export class TabsOfflinePageModule {
