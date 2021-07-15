@@ -54,4 +54,17 @@ export class TabsOfflineRecommendationComponent implements OnInit {
       this.index--;
     }
   }
+
+  public progressBar(): void {
+    const bar = document.getElementById('bar');
+    let width = 10;
+    const id = setInterval(() => {
+      if (width >= 100) {
+        clearInterval(id);
+      } else {
+        width++;
+        bar.style.width = width + '%';
+      }
+    }, 10);
+  }
 }
