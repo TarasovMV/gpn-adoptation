@@ -1,0 +1,21 @@
+<ion-slides #slider pager="true" speed="500" (ionSlidesDidLoad)="slidesDidLoad()" autoplay="15000">
+  <ion-slide *ngFor="let item of (tabsService.currentStory$ | async).history; index as i">
+    <div class="container">
+      <img src="{{item.imagePath}}">
+
+      <div class="close" (click)="dismiss()">
+        <svg-icon src="assets/icon/offline/close.svg"></svg-icon>
+      </div>
+      <div class="container__header">
+        <div class="element" *ngFor="let element of (tabsService.currentStory$ | async).history"></div>
+      </div>
+      <div class="container__body">
+        <div class="number">
+          <div class="order">{{item.order}}</div>
+        </div>
+        <div class="title">{{item.header}}</div>
+        <div class="description">{{item.body}}</div>
+      </div>
+    </div>
+  </ion-slide>
+</ion-slides>

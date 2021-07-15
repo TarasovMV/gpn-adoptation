@@ -6,7 +6,7 @@ import { IMasterMind, IMasterMindCategory } from 'src/app/pages/tabs/pages/tabs-
 import { IColleague } from 'src/app/pages/tabs/pages/tabs-chat/tabs-chat.page';
 import { IPost } from 'src/app/pages/tabs/pages/tabs-news/tabs-news.page';
 import { IAnswer, IQuestion, ITests } from 'src/app/pages/tabs/pages/tabs-tests/tabs-tests.page';
-import {IAdaptationStage, IAdaptationSubStage, IProgress} from 'src/app/pages/tabs/tabs.model';
+import {IAdaptationStage, IAdaptationSubStage, IProgress, IRecommendation} from 'src/app/pages/tabs/tabs.model';
 import {AppConfigService} from '../platform/app-config.service';
 import {ITestResult} from "../../../pages/tabs/pages/tabs-tests/test-question/test-question.component";
 
@@ -24,6 +24,7 @@ export class TabsService {
     public startTest$: BehaviorSubject<number> = new BehaviorSubject<number>(null);
     public question$: BehaviorSubject<IQuestion> = new BehaviorSubject<IQuestion>(null);
     public answers: IAnswer[] = [];
+    public currentStory$: BehaviorSubject<IRecommendation> = new BehaviorSubject<IRecommendation>(null);
 
     private readonly restUrl;
 
@@ -47,5 +48,8 @@ export class TabsService {
     }
     public async postTestResult(result: ITestResult[]): Promise<ITestResult[]> {
         return await this.http.post<ITestResult[]>(`${this.restUrl}/api/TestResults/result`, result).toPromise();
+    }
+    public async getRecommendation(id: number): Promise<IRecommendation[]> {
+        return await this.http.get<IRecommendation[]>(`${this.restUrl}/api/Recommendation/adaptation/${id}`).toPromise();
     }
 }

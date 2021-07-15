@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {TabsService} from 'src/app/core/services/tabs/tabs.service';
-import {IAdaptationStage, IAdaptationSubStage, IPageTab, IProgress, PageTabType} from '../../tabs.model';
-import {TabsProgressService} from "./services/tabs-progress.service";
-import {UserService} from "../../../../core/services/data/user.service";
-import {AlertController, ModalController, NavController, Platform} from "@ionic/angular";
-import {ApiAdaptationService} from "../../../../core/services/api/api-adaptation.service";
+import { Component, OnInit } from '@angular/core';
+import { TabsService } from 'src/app/core/services/tabs/tabs.service';
+import { IAdaptationStage, IAdaptationSubStage, IPageTab, IProgress, PageTabType } from '../../tabs.model';
+import { TabsProgressService } from "./services/tabs-progress.service";
+import { UserService } from "../../../../core/services/data/user.service";
+import { AlertController, ModalController, NavController, Platform } from "@ionic/angular";
+import { ApiAdaptationService } from "../../../../core/services/api/api-adaptation.service";
 import { trigger, style, animate, transition } from '@angular/animations';
-import {BackButtonService} from "../../../../core/services/platform/back-button.service";
+import { BackButtonService } from "../../../../core/services/platform/back-button.service";
 import { ConfirmPopupComponent } from 'src/app/shared/components/confirm-popup/confirm-popup.component';
 
 
@@ -21,17 +21,17 @@ import { ConfirmPopupComponent } from 'src/app/shared/components/confirm-popup/c
                 transition(
                     ':enter',
                     [
-                        style({height: 0, opacity: 0}),
+                        style({ height: 0, opacity: 0 }),
                         animate('.3s ease-out',
-                            style({height: '*', opacity: 1}))
+                            style({ height: '*', opacity: 1 }))
                     ]
                 ),
                 transition(
                     ':leave',
                     [
-                        style({height: '*', opacity: 1}),
+                        style({ height: '*', opacity: 1 }),
                         animate('.3s ease-in',
-                            style({height: 0, opacity: .3}))
+                            style({ height: 0, opacity: .3 }))
                     ]
                 )
             ]
@@ -52,7 +52,6 @@ export class TabsProgressPage implements OnInit, IPageTab {
         private tabsProgressService: TabsProgressService,
         private navCtr: NavController,
         private userService: UserService,
-        private alertController: AlertController,
         private backButtonService: BackButtonService,
         private platform: Platform,
         public modalController: ModalController
@@ -70,10 +69,10 @@ export class TabsProgressPage implements OnInit, IPageTab {
 
     async confirm() {
         const modal = await this.modalController.create({
-          component: ConfirmPopupComponent,
+            component: ConfirmPopupComponent,
         });
         return await modal.present();
-      }
+    }
 
     public async getData(): Promise<void> {
         try {
@@ -124,7 +123,7 @@ export class TabsProgressPage implements OnInit, IPageTab {
     }
 
     public toProgressCard(element: IAdaptationSubStage): void {
-        this.navCtr.navigateForward('info', {queryParams: {id: element.id, type: 'progress'}});
+        this.navCtr.navigateForward('info', { queryParams: { id: element.id, type: 'progress' } });
         this.tabsService.adaptationComponents$.next(element);
     }
 

@@ -56,3 +56,20 @@ export interface IStage {
     body: string;
     adaptationStageId: number;
 }
+
+export interface IRecommendation {
+    id: number;
+    header: string;
+    body: string;
+    order: number;
+    imagePath: string;
+    history: IRecommendationHistory[];
+}
+
+export interface IRecommendationHistory {
+    id: number;
+    header: string;
+    body: string;
+    order: number;
+    imagePath: string;
+}
