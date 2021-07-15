@@ -72,4 +72,5 @@ export interface IRecommendationHistory {
     body: string;
     order: number;
     imagePath: string;
+    active?: boolean;
 }

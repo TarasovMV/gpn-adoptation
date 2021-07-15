@@ -64,7 +64,15 @@
             &:last-child {
                 margin-right: 0;
             }
+
+            .bar {
+                background-color: red;
+                width: 5%;
+                height: 100%;
+                transition: width 2s;
+            }
         }
+        
     }
 
     &__body {

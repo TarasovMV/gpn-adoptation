@@ -16,7 +16,7 @@ import { TabsOfflineStoriesComponent } from './components/tabs-offline-stories/t
         IonicModule,
         TabsOfflinePageRoutingModule,
         AngularSvgIconModule,
-        ReactiveFormsModule, 
+        ReactiveFormsModule,
     ],
     declarations: [
         TabsOfflinePage,

@@ -14,6 +14,7 @@ export class TabsOfflineRecommendationComponent implements OnInit {
   @ViewChild('slider') slides: IonSlides;
   @Input() story: IRecommendation;
   public index = 0;
+  public counter = 0;
 
   public readonly restUrl: string;
 
@@ -27,7 +28,9 @@ export class TabsOfflineRecommendationComponent implements OnInit {
   }
   ngOnInit() {
     setInterval(x => {
-      this.index++;
+      if (this.index < this.story.history.length - 1) {
+        this.index++;
+      }
     }, 15000);
   }
 

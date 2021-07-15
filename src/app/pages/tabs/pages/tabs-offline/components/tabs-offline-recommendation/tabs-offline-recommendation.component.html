@@ -7,7 +7,9 @@
   </div>
   <div class="container__header">
     <ng-container *ngFor="let element of story.history index as i">
-      <div class="element" [ngClass]="{'element-active': i === index}"></div>
+      <div class="element">
+        <div class="bar"></div>
+      </div>
     </ng-container>
   </div>
   <div class="container__body">
