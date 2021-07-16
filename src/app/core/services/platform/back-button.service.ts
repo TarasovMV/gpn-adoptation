@@ -6,7 +6,8 @@ import {NavController, Platform} from "@ionic/angular";
 })
 export class BackButtonService {
 
-    constructor(private navCtrl: NavController) {}
+    constructor(private navCtrl: NavController) {
+    }
 
     public init(platform: Platform): void {
         if (!platform.is('android')) {
@@ -21,7 +22,6 @@ export class BackButtonService {
         if (!platform.is('android')) {
             return;
         }
-        platform.backButton.subscribeWithPriority(9, () => {
-        });
+        platform.backButton.subscribeWithPriority(9, () => {});
     }
 }

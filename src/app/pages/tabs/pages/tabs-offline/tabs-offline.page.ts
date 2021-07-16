@@ -1,11 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {TabsService} from 'src/app/core/services/tabs/tabs.service';
-import {IAdaptationStage, IPageTab, IProgress, IRecommendation, PageTabType} from '../../tabs.model';
+import {IAdaptationStage, IPageTab, IProgress, PageTabType} from '../../tabs.model';
 import {AppConfigService} from "../../../../core/services/platform/app-config.service";
-import {ModalController, NavController, Platform} from "@ionic/angular";
+import {NavController, Platform} from "@ionic/angular";
 import {BackButtonService} from "../../../../core/services/platform/back-button.service";
-import { TabsOfflineRecommendationComponent } from './components/tabs-offline-recommendation/tabs-offline-recommendation.component';
-import { ApiAdaptationService } from 'src/app/core/services/api/api-adaptation.service';
 
 @Component({
     selector: 'app-tabs-offline',
@@ -19,13 +17,11 @@ export class TabsOfflinePage implements OnInit, IPageTab {
     public readonly restUrl: string;
 
     constructor(
-        public navCtrl: NavController,
         public tabsService: TabsService,
+        private navCtrl: NavController,
         private backButtonService: BackButtonService,
         private platform: Platform,
         appConfig: AppConfigService,
-        public modalController: ModalController,
-        public apiAdaptationService: ApiAdaptationService
     ) {
         this.restUrl = appConfig.getAttribute("restUrl");
     }
@@ -54,10 +50,5 @@ export class TabsOfflinePage implements OnInit, IPageTab {
     public openCard(card: IAdaptationStage): void {
         this.navCtrl.navigateForward('tabs/tabs-offline/' + card.id).then();
         this.tabsService.businessStages$.next(card);
-    }
-
-    public filterSections(search: string): void {
-        search = search.toLowerCase();
-        this.sections = this.data.adaptationStages.filter(x => x.name?.toLowerCase().search(search) !== -1);
     }
 }
