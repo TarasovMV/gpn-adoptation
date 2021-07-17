@@ -56,13 +56,50 @@
     margin-bottom: 2vh;
   }
 
+  .letter {
+    height: sizeHeight(40);
+    width: 100%;
+    margin-bottom: sizeHeight(8);
+    color: #404763;
+    font-size: sizeHeight(22);
+    font-weight: 700;
+    font-style: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .card {
     width: 100%;
     padding: sizeHeight(14) sizeWidth(17);
     font-size: sizeHeight(17);
     box-sizing: border-box;
     background: white;
-    border-radius: sizeHeight(20);
+    border-radius: sizeHeight(45);
     margin-bottom: sizeHeight(8);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .name {
+      flex-grow: 1;
+      height: 100%;
+      width: 100%;
+      margin-right: sizeWidth(10);
+    }
+
+    .favorite {
+      height: sizeHeight(42);
+      width: sizeHeight(42);
+      border-radius: 50%;
+      padding: sizeHeight(10);
+      color: #FFFFFF;
+      background-color: #E8ECEF;
+
+      &-active {
+        background-color: #F2994A;
+      }
+    }
   }
 }

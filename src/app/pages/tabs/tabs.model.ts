@@ -31,6 +31,7 @@ export interface IAdaptationSubStage {
     isDone?: boolean;
     disabled?: boolean;
     subStageType?: number;
+    favorite?: boolean;
 }
 
 export interface IAdaptationComponent {

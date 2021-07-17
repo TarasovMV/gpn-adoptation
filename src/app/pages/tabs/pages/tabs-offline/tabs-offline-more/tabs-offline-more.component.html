@@ -11,9 +11,15 @@
       <app-tabs-offline-search (search)="filterSections($event)" style="margin-bottom: 2vh"></app-tabs-offline-search>
     </div>
     <div class="scroll-container">
-      <div (click)="openSubStage(stage)" *ngFor="let stage of sections || []" class="card">
-        {{ stage?.name }}
-      </div>
+      <ng-container *ngFor="let stage of sections || [] index as i">
+        <div class="letter" #letter><span>{{stage.name[0]}}</span></div>
+        <div class="card">
+          <div class="name" (click)="openSubStage(stage)">{{ stage?.name }}</div>
+          <div class="favorite" [ngClass]="{'favorite-active': stage.favorite}" (click)="addToFavorite(stage)">
+            <svg-icon src="assets/icon/progress/star.svg"></svg-icon>
+          </div>
+        </div>
+      </ng-container>
     </div>
   </div>
 </ion-content>
