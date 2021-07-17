@@ -59,8 +59,10 @@ export class TabsOfflineRecommendationComponent implements AfterViewInit, OnDest
     public previousStory(): void {
         if (this.index > 0) {
             this.index--;
-            this.progressBar(this.index);
+        } else {
+            this.index = 0;
         }
+        this.progressBar(this.index);
     }
 
     public progressBar(index: number): void {

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="button" (click)="previousStory()"></div>
   <div class="button" (click)="nextStory()"></div>
-  <img src="{{restUrl}}/{{story.history[index].imagePath}}">
+  <cashed-img src="{{restUrl}}/{{story.history[index].imagePath}}"></cashed-img>
   <div class="close" (click)="dismiss()">
     <svg-icon src="assets/icon/offline/close.svg"></svg-icon>
   </div>

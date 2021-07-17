@@ -8,6 +8,7 @@ import {AngularSvgIconModule} from 'angular-svg-icon';
 import {TabsOfflineSearchComponent} from './components/tabs-offline-search/tabs-offline-search.component';
 import { TabsOfflineRecommendationComponent } from './components/tabs-offline-recommendation/tabs-offline-recommendation.component';
 import { TabsOfflineStoriesComponent } from './components/tabs-offline-stories/tabs-offline-stories.component';
+import {SharedModule} from "../../../../shared/shared.module";
 
 @NgModule({
     imports: [
@@ -17,6 +18,7 @@ import { TabsOfflineStoriesComponent } from './components/tabs-offline-stories/t
         TabsOfflinePageRoutingModule,
         AngularSvgIconModule,
         ReactiveFormsModule,
+        SharedModule,
     ],
     declarations: [
         TabsOfflinePage,
