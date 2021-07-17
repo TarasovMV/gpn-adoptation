@@ -22,7 +22,7 @@
 <!--        <ion-refresher-content></ion-refresher-content>-->
 <!--      </ion-refresher>-->
       <ng-container *ngFor="let item of data?.adaptationStages">
-        <div class="item ion-activatable ripple-parent" (click)="switchStage(item)">
+        <div [id]="'stage_' + item.id" class="item ion-activatable ripple-parent" (click)="switchStage(item)">
           <ion-ripple-effect></ion-ripple-effect>
           <div class="item__title">
             <div class="item__header">{{item.name.toUpperCase()}}</div>

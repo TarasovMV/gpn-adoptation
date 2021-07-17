@@ -14,6 +14,11 @@
   display: flex;
   flex-direction: column;
 
+  cashed-img {
+    height: 100%;
+    width: 100%;
+  }
+
   .button {
     z-index: 9;
     position: absolute;

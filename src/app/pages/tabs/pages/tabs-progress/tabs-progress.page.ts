@@ -92,6 +92,7 @@ export class TabsProgressPage implements OnInit, IPageTab {
                 ?.filter(x => x.isDone)
                 ?.map(x => x.id);
             this.doneHandler(doneArr, this.data);
+            this.openInitStage(this.data.adaptationStages);
             this.tabsProgressService.adaptationDone$.next(doneArr);
         } catch (error) {
             console.error(error);
@@ -132,6 +133,22 @@ export class TabsProgressPage implements OnInit, IPageTab {
         setTimeout(() => {
             event.srcElement.complete();
         }, 300);
+    }
+
+    private openInitStage(stages: IAdaptationStage[]): void {
+        let activeStage: IAdaptationStage = null;
+        for (const stage of [...stages].reverse()) {
+            if (stage.adaptationSubStages.some(x => x.isDone)) {
+                activeStage = stage;
+                break;
+            }
+        }
+        activeStage = !!activeStage ? activeStage : stages[0];
+        activeStage.isActive = true;
+        setTimeout(() => {
+            const el = document.getElementById(`stage_${activeStage.id}`);
+            el?.scrollIntoView({block: 'start', behavior: 'smooth'});
+        }, 100);
     }
 
     private doneHandler(doneArr: number[], data: IProgress): void {
