@@ -11,14 +11,23 @@
       <app-tabs-offline-search (search)="filterSections($event)" style="margin-bottom: 2vh"></app-tabs-offline-search>
     </div>
     <div class="scroll-container">
-      <ng-container *ngFor="let dict of dictionaries || [] index as i">
-        <div class="letter" #letter><span>{{dict.letter}}</span></div>
-        <div class="card" *ngFor="let stage of dict.stages">
-          <div class="name" (click)="openSubStage(stage)">{{ stage?.name }}</div>
-          <div class="favorite" [ngClass]="{'favorite-active': stage.isFavourite}" (click)="addToFavorite(stage)">
-            <svg-icon src="assets/icon/progress/star.svg"></svg-icon>
+      <ng-container [ngSwitch]="type">
+        <ng-container *ngSwitchCase="1">
+          <ng-container *ngFor="let dict of dictionaries || [] index as i">
+            <div class="letter"><span>{{dict.letter}}</span></div>
+            <div class="card" *ngFor="let stage of dict.stages">
+              <div class="name" (click)="openSubStage(stage)">{{ stage?.name }}</div>
+              <div class="favorite" [ngClass]="{'favorite-active': stage.isFavourite}" (click)="addToFavorite(stage)">
+                <svg-icon src="assets/icon/progress/star.svg"></svg-icon>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+        <ng-container *ngSwitchDefault>
+          <div class="card" *ngFor="let stage of data.adaptationSubStages">
+            <div class="name" (click)="openSubStage(stage)">{{ stage?.name }}</div>
           </div>
-        </div>
+        </ng-container>
       </ng-container>
     </div>
   </div>

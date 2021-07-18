@@ -1,8 +1,14 @@
-import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
-import { Router } from '@angular/router';
-import { TabsService } from 'src/app/core/services/tabs/tabs.service';
-import { IAdaptationStage, IAdaptationSubStage, IPageTab, PageTabType } from "../../../tabs.model";
-import { NavController } from "@ionic/angular";
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {TabsService} from 'src/app/core/services/tabs/tabs.service';
+import {
+    IAdaptationStage,
+    IAdaptationSubStage,
+    IPageTab,
+    PageTabType,
+    ReferenceBookSectionType
+} from "../../../tabs.model";
+import {NavController} from "@ionic/angular";
 
 interface IDictionary {
     letter: string;
@@ -15,12 +21,12 @@ interface IDictionary {
     styleUrls: ['./tabs-offline-more.component.scss'],
 })
 export class TabsOfflineMoreComponent implements OnInit, IPageTab {
-    @ViewChildren('letter') letters: QueryList<ElementRef>;
-
     public route: PageTabType = 'offline';
-    public data: IAdaptationStage = null;
+
+    public type: ReferenceBookSectionType = ReferenceBookSectionType.Default;
     public dictionaries: IDictionary[];
-    public favorites: IAdaptationSubStage[] = [];
+    public data: IAdaptationStage = null;
+    private favorites: IAdaptationSubStage[] = [];
 
     constructor(
         public nav: Router,
@@ -28,12 +34,13 @@ export class TabsOfflineMoreComponent implements OnInit, IPageTab {
         private navCtrl: NavController,
     ) { }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
         this.tabsService.businessStages$.subscribe(value => {
             this.data = value;
             this.data.adaptationSubStages = this.data?.adaptationSubStages
                 ?.sort((a, b) => a.name > b.name ? 1 : -1);
             this.dictionaries = this.getDictionaries(this.data?.adaptationSubStages);
+            this.type = this.data.referenceBookSectionType ?? ReferenceBookSectionType.Default;
         });
     }
 
@@ -48,7 +55,10 @@ export class TabsOfflineMoreComponent implements OnInit, IPageTab {
 
     public filterSections(search: string): void {
         search = search.toLowerCase();
-        this.dictionaries = this.getDictionaries(this.data.adaptationSubStages.filter(x => x.name?.toLowerCase().search(search) !== -1));
+        this.dictionaries =
+            this.getDictionaries(
+                this.data.adaptationSubStages.filter(x => x.name?.toLowerCase().search(search) !== -1)
+            );
     }
 
     public addToFavorite(stage: IAdaptationSubStage): void {

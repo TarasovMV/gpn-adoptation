@@ -18,6 +18,7 @@ export interface IAdaptationStage {
     description?: string;
     order: number;
     adaptationSubStages: IAdaptationSubStage[];
+    referenceBookSectionType: ReferenceBookSectionType;
     isActive?: boolean;
     doneCount?: number;
     iconPath?: string;
@@ -74,4 +75,9 @@ export interface IRecommendationHistory {
     order: number;
     imagePath: string;
     active?: boolean;
+}
+
+export enum ReferenceBookSectionType {
+    Default = 0,
+    Dictionary = 1,
 }
