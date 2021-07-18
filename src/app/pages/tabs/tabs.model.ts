@@ -28,6 +28,7 @@ export interface IAdaptationSubStage {
     id: number;
     name: string;
     order: number;
+    description?: string;
     adaptationComponents: IAdaptationComponent[];
     isDone?: boolean;
     disabled?: boolean;
