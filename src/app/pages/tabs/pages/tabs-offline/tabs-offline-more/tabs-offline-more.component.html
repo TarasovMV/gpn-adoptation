@@ -11,11 +11,11 @@
       <app-tabs-offline-search (search)="filterSections($event)" style="margin-bottom: 2vh"></app-tabs-offline-search>
     </div>
     <div class="scroll-container">
-      <ng-container *ngFor="let stage of sections || [] index as i">
-        <div class="letter" #letter><span>{{stage.name[0]}}</span></div>
-        <div class="card">
+      <ng-container *ngFor="let dict of dictionaries || [] index as i">
+        <div class="letter" #letter><span>{{dict.letter}}</span></div>
+        <div class="card" *ngFor="let stage of dict.stages">
           <div class="name" (click)="openSubStage(stage)">{{ stage?.name }}</div>
-          <div class="favorite" [ngClass]="{'favorite-active': stage.favorite}" (click)="addToFavorite(stage)">
+          <div class="favorite" [ngClass]="{'favorite-active': stage.isFavourite}" (click)="addToFavorite(stage)">
             <svg-icon src="assets/icon/progress/star.svg"></svg-icon>
           </div>
         </div>
