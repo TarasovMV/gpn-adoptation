@@ -7,6 +7,8 @@ import {RouteFilePipe} from "./pipes/route-file.pipe";
 import {CashedImgComponent} from "./components/cashed-img/cashed-img.component";
 import {SafeUrlPipe} from "./pipes/safe-url.pipe";
 import { ConfirmPopupComponent } from './components/confirm-popup/confirm-popup.component';
+import { InfoPopupComponent } from './components/info-popup/info-popup.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
     declarations: [
@@ -18,6 +20,7 @@ import { ConfirmPopupComponent } from './components/confirm-popup/confirm-popup.
     ],
     imports: [
         CommonModule,
+        BrowserModule,
         IonicModule,
         AngularSvgIconModule,
     ],

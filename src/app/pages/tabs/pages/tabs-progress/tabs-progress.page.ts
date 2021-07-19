@@ -3,11 +3,12 @@ import { TabsService } from 'src/app/core/services/tabs/tabs.service';
 import { IAdaptationStage, IAdaptationSubStage, IPageTab, IProgress, PageTabType } from '../../tabs.model';
 import { TabsProgressService } from "./services/tabs-progress.service";
 import { UserService } from "../../../../core/services/data/user.service";
-import { AlertController, ModalController, NavController, Platform } from "@ionic/angular";
+import { ModalController, NavController, Platform } from "@ionic/angular";
 import { ApiAdaptationService } from "../../../../core/services/api/api-adaptation.service";
 import { trigger, style, animate, transition } from '@angular/animations';
 import { BackButtonService } from "../../../../core/services/platform/back-button.service";
 import { ConfirmPopupComponent } from 'src/app/shared/components/confirm-popup/confirm-popup.component';
+import { InfoPopupComponent } from 'src/app/shared/components/info-popup/info-popup.component';
 
 
 @Component({
@@ -70,6 +71,13 @@ export class TabsProgressPage implements OnInit, IPageTab {
     async confirm() {
         const modal = await this.modalController.create({
             component: ConfirmPopupComponent,
+        });
+        return await modal.present();
+    }
+
+    async showPrompt() {
+        const modal = await this.modalController.create({
+            component: InfoPopupComponent,
         });
         return await modal.present();
     }

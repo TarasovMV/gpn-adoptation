@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="popup">
+    <div class="close" (click)="dismiss()">
+      <img src="assets/icon/close.svg">
+    </div>
+    <div class="popup__icon">
+      <img src="assets/icon/popup-info.svg">
+    </div>
+    <div class="popup__text">
+      Все шаги адаптационного трека разделены на следующие категории:
+    </div>
+    <div class="popup__blocks">
+      <div class="block" *ngFor="let block of blocks, index as idx">
+        <div class="icon">
+          <svg-icon src="assets/icon/progress/{{idx}}.svg"></svg-icon>
+        </div>
+        <div class="description">{{block}}</div>
+      </div>
+    </div>
+    <div class="popup__button">
+      Понятно, больше не показывать
+    </div>
+    <div class="close-text" (click)="dismiss()">Закрыть</div>
+  </div>
+</div>

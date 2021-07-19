@@ -8,6 +8,7 @@ import { TabsProgressPageRoutingModule } from './tabs-progress-routing.module';
 
 import { TabsProgressPage } from './tabs-progress.page';
 import { AngularSvgIconModule } from 'angular-svg-icon';
+import { InfoPopupComponent } from 'src/app/shared/components/info-popup/info-popup.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
     TabsProgressPageRoutingModule,
     AngularSvgIconModule,
   ],
-  declarations: [TabsProgressPage],
+  declarations: [TabsProgressPage, InfoPopupComponent],
 })
 export class TabsProgressPageModule {}
