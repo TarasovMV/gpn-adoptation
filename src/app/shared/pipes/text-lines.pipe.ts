@@ -13,6 +13,9 @@ export class TextLinesPipe implements PipeTransform {
             if (x.search('<left>') !== -1) {
                 classes.push('para__left');
             }
+            if (x.search('<indent>') !== -1) {
+                classes.push('para__indent');
+            }
             const classNames = classes.join(' ');
             return `<p class="${classNames}">${x}</p>`
         });

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TabsService} from 'src/app/core/services/tabs/tabs.service';
-import {IAdaptationStage, IPageTab, IProgress, PageTabType} from '../../tabs.model';
+import {IAdaptationStage, IPageTab, IProgress, PageTabType, ReferenceBookSectionType} from '../../tabs.model';
 import {AppConfigService} from "../../../../core/services/platform/app-config.service";
 import {NavController, Platform} from "@ionic/angular";
 import {BackButtonService} from "../../../../core/services/platform/back-button.service";
@@ -39,6 +39,26 @@ export class TabsOfflinePage implements OnInit, IPageTab {
             data.adaptationStages
                 .flatMap(x => x.adaptationSubStages)
                 .forEach(x => x.adaptationComponents = (x as any).referenceComponents);
+            data.adaptationStages.forEach(x => {
+                if (x.referenceBookSectionType === ReferenceBookSectionType.Dictionary) {
+                    x.adaptationSubStages.forEach(s => {
+                        s.adaptationComponents = [
+                            {
+                                id: 1,
+                                order: 1,
+                                componentType: 3,
+                                body: s.name
+                            },
+                            {
+                                id: 2,
+                                order: 2,
+                                componentType: 2,
+                                body: `<left><indent>${s.description}`,
+                            }
+                        ]
+                    })
+                }
+            })
             this.data = data;
             this.sections = data.adaptationStages;
         }
