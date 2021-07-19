@@ -5,7 +5,7 @@
 }
 .header {
     height: sizeHeight(126);
-    background-color: #006FBA;
+    background-color: #1C76FE;
     color: #ffffff;
     font-weight: 500;
     font-size: sizeHeight(30);
@@ -52,7 +52,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #006FBA;
+            color: #1C76FE;
         }
         .name {
             width: 100%;
@@ -62,7 +62,7 @@
             align-items: center;
         }
         .active {
-            background-color: #006FBA;
+            background-color: #1C76FE;
             color: white;
         }
     }
@@ -105,10 +105,10 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                color: #006FBA;
+                color: #1C76FE;
             }
             .saved {
-                background-color: #006FBA;
+                background-color: #1C76FE;
                 color: #ffffff;
             }
             .share {
@@ -123,7 +123,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                color: #006FBA;
+                color: #1C76FE;
             }
         }
 
