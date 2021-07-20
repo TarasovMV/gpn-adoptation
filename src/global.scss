@@ -47,8 +47,10 @@ ion-content {
 
 // scroll hide
 ::-webkit-scrollbar {
-  width: 0;
-  height: 0;
+  display: none !important;
+  -webkit-appearance: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
 // for mat ripple effect
