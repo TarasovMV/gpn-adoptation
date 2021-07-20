@@ -87,7 +87,7 @@
 
     .section-name {
       width: 100%;
-      padding: sizeHeight(27) 0;
+      padding: sizeHeight(20) 0;
 
       display: flex;
       align-items: center;
@@ -105,17 +105,17 @@
   }
 
   .card {
-    height: sizeHeight(140);
-    width: 40vw;
+    height: 42vw;
+    width: 42vw;
     border-radius: sizeHeight(22);
     background-color: #ffffff;
     padding: sizeHeight(14) sizeWidth(15);
-    margin-bottom: 7vw;
+    margin-bottom: 2vw;
     display: flex;
     flex-direction: column;
     color: #404763;
     overflow: hidden;
-    margin-right: 7vw;
+    margin-right: 2vw;
     font-weight: bold;
 
     &:nth-child(2n) {
