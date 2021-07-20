@@ -16,9 +16,9 @@
               [ngClass]="{'icon__test': element.notificationType === 1, 'icon__daily': element.notificationType === 2}">
               <svg-icon [src]="'assets/icon/'+(element.notificationType === 1 ? 'brain' : 'calendar')+'.svg'"></svg-icon>
             </div>
-              <div class="text">{{element.body}}</div>
+              <div class="text">{{element.header}}</div>
             </div>
-            <div class="notifications__body">{{element.header}}</div>
+            <div class="notifications__body">{{element.body}}</div>
         </div>
       </ng-container>
     </ng-container>
