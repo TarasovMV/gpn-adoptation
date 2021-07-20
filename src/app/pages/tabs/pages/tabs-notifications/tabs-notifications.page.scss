@@ -6,7 +6,7 @@
 
 .header {
   height: sizeHeight(126);
-  background-color: #006fba;
+  background-color: #1C76FE;
   color: #ffffff;
   font-weight: 600;
   font-size: sizeHeight(30);
@@ -59,12 +59,28 @@
 
   .notifications {
     width: 100%;
-    padding: sizeHeight(10) sizeWidth(14);
+    padding: sizeHeight(15) sizeWidth(14);
     border-radius: sizeHeight(4);
     background-color: #ffffff;
     margin: sizeHeight(5) 0;
     display: flex;
+    flex-direction: column;
     align-items: center;
+
+    position: relative;
+
+    &__header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      margin-bottom: sizeHeight(15);
+      font-weight: bold;
+    }
+
+    &__body {
+      width: 100%;
+      padding-left: sizeWidth(45);
+    }
   }
 
   .icon {
@@ -91,13 +107,6 @@
     svg-icon {
       margin-top: 0.5vh;
     }
-  }
-
-  .text {
-    //flex-grow: 1;
-    //display: flex;
-    //justify-content: center;
-    //align-items: center;
   }
 }
 

@@ -18,7 +18,7 @@
   &__header {
     height: sizeHeight(63);
     width: 100%;
-    background-color: #006fba;
+    background-color: #1C76FE;
 
     display: flex;
     align-items: center;
@@ -63,7 +63,7 @@
       line-height: sizeHeight(18);
 
       &-active {
-        background-color: #006fba;
+        background-color: #1C76FE;
         color: #ffffff;
         font-weight: 500;
       }
@@ -101,7 +101,7 @@
       width: sizeWidth(178);
       height: sizeHeight(57);
       border-radius: sizeHeight(28);
-      background-color: #006fba;
+      background-color: #1C76FE;
 
       display: flex;
       justify-content: center;
@@ -113,7 +113,7 @@
       width: sizeHeight(57);
       height: sizeHeight(57);
       border-radius: 50%;
-      background-color: #006fba;
+      background-color: #1C76FE;
       margin: 0 sizeWidth(12);
       color: #FFFFFF;
 

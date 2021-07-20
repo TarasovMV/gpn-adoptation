@@ -7,7 +7,7 @@
 .header {
   height: sizeHeight(63);
   width: 100%;
-  background-color: #006fba;
+  background-color: #1C76FE;
   color: #ffffff;
   font-weight: 500;
   font-size: sizeHeight(18);
@@ -49,7 +49,7 @@
   &__body {
     width: 100%;
     flex-grow: 1;
-    background-color: #006fba;
+    background-color: #1C76FE;
     padding: sizeHeight(63) sizeWidth(37) 0;
 
     display: flex;
@@ -97,7 +97,7 @@
     .button {
       width: sizeWidth(311);
       height: sizeHeight(56);
-      background-color: #006fba;
+      background-color: #1C76FE;
       color: #f8fafb;
       font-size: sizeHeight(18);
       font-weight: 600;
@@ -130,7 +130,7 @@
       width: sizeWidth(311);
       height: sizeHeight(57);
       border-radius: sizeHeight(28);
-      background-color: #006fba;
+      background-color: #1C76FE;
 
       display: flex;
       justify-content: center;

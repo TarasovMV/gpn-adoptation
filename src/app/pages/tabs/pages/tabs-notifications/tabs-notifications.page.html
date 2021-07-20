@@ -10,13 +10,15 @@
       <ng-container *ngFor="let item of notifications$ | async">
         <div class="date">{{item.date | date: 'mediumDate'}}</div>
         <div class="notifications" *ngFor="let element of item.notifications">
-          <div
-            class="icon"
-            [ngClass]="{'icon__test': element.notificationType === 1, 'icon__daily': element.notificationType === 2}"
-          >
-            <svg-icon [src]="'assets/icon/'+(element.notificationType === 1 ? 'brain' : 'calendar')+'.svg'"></svg-icon>
-          </div>
-          <div class="text">{{element.body}}</div>
+
+            <div class="notifications__header">
+              <div class="icon"
+              [ngClass]="{'icon__test': element.notificationType === 1, 'icon__daily': element.notificationType === 2}">
+              <svg-icon [src]="'assets/icon/'+(element.notificationType === 1 ? 'brain' : 'calendar')+'.svg'"></svg-icon>
+            </div>
+              <div class="text">{{element.body}}</div>
+            </div>
+            <div class="notifications__body">{{element.header}}</div>
         </div>
       </ng-container>
     </ng-container>
