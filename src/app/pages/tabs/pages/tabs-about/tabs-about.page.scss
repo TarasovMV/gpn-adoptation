@@ -61,14 +61,13 @@ ion-slides {
 
 .content {
   height: 100%;
-  padding: sizeHeight(24) sizeWidth(24);
+  // padding: sizeHeight(24) sizeWidth(24);
   display: flex;
   flex-wrap: wrap;
   background-color: #f8fafb;
 
   color: #404763;
   font-size: sizeHeight(17);
-  overflow: scroll;
 
   .history {
     width: 100%;
@@ -77,12 +76,25 @@ ion-slides {
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: flex-end;
+
+    .title {
+      width: 100%;
+      font-size: sizeHeight(18);
+      font-weight: 700;
+      color: #12151E;
+    }
+
+    .image {
+      border-radius: sizeHeight(22);
+    }
+
+    .line {
+      height: 3px;
+      width: 80px;
+      background-color: #D12771;
+    }
 
     cashed-img {
-      position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -91,39 +103,31 @@ ion-slides {
 
     p {
       position: relative;
-      z-index: 999;
       text-align: left;
+      color: #303549;
+      font-size: sizeHeight(14);
     }
 
     &__content {
-      position: relative;
-      //flex-grow: 1;
+      flex-grow: 1;
       height: 100%;
       width: 100%;
       padding: sizeHeight(32);
-      color: #ffffff;
-      background-color: #1C76FE;
-      border-radius: sizeHeight(22);
-      overflow: hidden;
-
       font-size: sizeHeight(14);
       line-height: sizeHeight(24);
+      overflow: scroll;
     }
 
     &__periods {
-      z-index: 99;
-      position: absolute;
-      top: 0;
-      left: 0;
       background-color: #1C76FE;
       width: 100%;
       overflow-x: scroll;
       height: sizeHeight(59);
-
     }
   }
 
   .leadership {
     width: 100%;
+    padding: sizeHeight(24) sizeWidth(24);
   }
 }

@@ -6,33 +6,33 @@
 
 .history-page {
   position: relative;
-  height: sizeHeight(59);
-  padding: sizeHeight(10) 0;
-
+  height: 100%;
   width: 100%;
 
   display: flex;
   align-items: center;
-  // overflow: hidden;
+  // overflow-x: scroll;
+  padding: 0 sizeWidth(24);
 
   .period {
     min-width: sizeWidth(89);
     width: sizeWidth(89);
-    margin: 0 sizeWidth(4);
-    height: 100%;
+    margin-right: sizeWidth(9);
+    height: sizeHeight(38);
     border-radius: sizeHeight(10);
-    background-color: rgba(255, 255, 255, 1);
-    color: rgba(28, 118, 254, 1);
+    background-color: #ffffff;
+    color: #1c76fe;
     opacity: 0.75;
     font-size: sizeHeight(14);
+    font-weight: 900;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
     &__active {
-      background: #ffffff;
-      color: #1C76FE;
+      opacity: 1;
+      box-shadow: 0 0 sizeHeight(4) 0 rgba(203, 203, 203, 0.25);
     }
   }
 }

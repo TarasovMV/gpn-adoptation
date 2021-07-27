@@ -1,7 +1,6 @@
 <div class="history-page">
   <ng-container *ngFor="let period of data; let i = index">
-    <div [id]="'period_' + i" class="period" [class.period__active]="i === currentIdx">
-      {{period.periodBounds}}
-    </div>
+    <div class="period" [class.period__active]="period === (tabsService.historyPeriod$ | async)"
+      (click)="selectPeriod(period)">{{period.periodBounds}}</div>
   </ng-container>
 </div>

@@ -6,12 +6,14 @@ export interface IHistory {
     periodBounds: string;
     imagePath: string;
     historyBullets: IHistoryBullet[];
+    header?: string;
 }
 
 export interface IHistoryBullet {
     historyPeriodId: number;
     id: number;
     text: string;
+    header?: string;
 }
 
 @Component({
@@ -31,11 +33,10 @@ export class TabsAboutHistoryComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.tabsService.historyPeriod$.subscribe(x => {
-            this.currentIdx = x;
-            const el = document.getElementById(`period_${x}`);
-            el?.scrollIntoView({block: 'center', inline: 'center', behavior: 'auto'});
-            this.cdRef.detectChanges();
-        })
+        console.log(this.data);
+    }
+
+    public selectPeriod(period: IHistory): void {
+        this.tabsService.historyPeriod$.next(period);
     }
 }

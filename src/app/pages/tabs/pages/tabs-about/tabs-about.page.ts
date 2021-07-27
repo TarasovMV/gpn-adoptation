@@ -48,6 +48,7 @@ export class TabsAboutPage implements OnInit, IPageTab {
     public section$: BehaviorSubject<string> = new BehaviorSubject<string>('Руководство');
     public leadership: IMasterMindCategory[] = [];
     public history: IHistory[] =[];
+    public showHistory: IHistory;
     public slideOptions = SLIDE_CONFIG_HISTORY(() => this.changeHistory());
     private detectSlide$: Subject<unknown> = new Subject<unknown>();
 
@@ -64,11 +65,9 @@ export class TabsAboutPage implements OnInit, IPageTab {
         this.backButtonService.disableBackOnRoot(this.platform);
         this.getMasterMindCategories();
         this.getHistoryBullets();
-        this.detectSlide$
-            .pipe(throttleTime(100))
-            .subscribe(x =>
-                this.ionSlide?.getActiveIndex().then(x => this.tabsService.historyPeriod$.next(x))
-            );
+        this.tabsService.historyPeriod$.subscribe(value => {
+            this.showHistory = value;
+        });
     }
 
     public async getMasterMindCategories(): Promise<void> {
@@ -81,7 +80,7 @@ export class TabsAboutPage implements OnInit, IPageTab {
 
     public async getHistoryBullets(): Promise<void> {
         this.history = await this.tabsService.getHistory();
-        this.tabsService.historyPeriod$.next(0);
+        this.tabsService.historyPeriod$.next(this.history?.[0]);
     }
 
     public changeSection(section: string): void {
