@@ -117,6 +117,7 @@
     overflow: hidden;
     margin-right: 2vw;
     font-weight: bold;
+    box-shadow: 0 0 sizeHeight(4) 0 rgba(203, 203, 203, 0.25);
 
     &:nth-child(2n) {
       margin-right: 0;
@@ -139,7 +140,7 @@
       flex-grow: 1;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
+      margin-top: sizeHeight(16);
     }
 
     img {

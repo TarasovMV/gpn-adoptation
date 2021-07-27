@@ -13,6 +13,9 @@
   <div class="content">
     <ng-container [ngSwitch]="section$ | async">
       <div class="history" *ngSwitchCase="'История'">
+        <div class="history__periods">
+          <app-tabs-about-history [data]="history"></app-tabs-about-history>
+        </div>
         <ion-slides #ionSlides style="flex-grow: 1" [options]="slideOptions">
           <ion-slide *ngFor="let item of history">
             <div class="history__content">
@@ -21,9 +24,6 @@
             </div>
           </ion-slide>
         </ion-slides>
-        <div class="history__periods">
-          <app-tabs-about-history [data]="history"></app-tabs-about-history>
-        </div>
       </div>
       <div class="leadership" *ngSwitchCase="'Руководство'">
         <app-tabs-about-leadership [data]="leadership"></app-tabs-about-leadership>

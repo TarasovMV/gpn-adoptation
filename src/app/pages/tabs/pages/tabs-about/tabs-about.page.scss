@@ -111,9 +111,15 @@ ion-slides {
     }
 
     &__periods {
+      z-index: 99;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #1C76FE;
       width: 100%;
       overflow-x: scroll;
-      min-height: sizeHeight(38);
+      height: sizeHeight(59);
+
     }
   }
 

@@ -74,8 +74,9 @@
     font-size: sizeHeight(17);
     box-sizing: border-box;
     background: white;
-    border-radius: sizeHeight(45);
+    border-radius: sizeHeight(22);
     margin-bottom: sizeHeight(8);
+    box-shadow: 0 0 sizeHeight(4) 0 rgba(203, 203, 203, 0.25);
 
     display: flex;
     justify-content: space-between;

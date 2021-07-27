@@ -38,8 +38,14 @@
   align-items: center;
 
   font-size: sizeHeight(18);
+  position: absolute;
 
   overflow-y: scroll;
+
+  .big-question {
+    position: absolute;
+    
+  }
 
   .question {
     width: 100%;

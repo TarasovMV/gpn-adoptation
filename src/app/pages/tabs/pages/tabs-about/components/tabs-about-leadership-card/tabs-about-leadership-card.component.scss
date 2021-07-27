@@ -6,12 +6,14 @@
 
 .stage {
   width: 100%;
-  height: sizeHeight(165);
+
+  box-shadow: 0 0 sizeHeight(4) 0 rgba(203, 203, 203, 0.25);
 
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: sizeHeight(15) sizeWidth(12);
+  padding: sizeHeight(20) sizeWidth(12);
   border-radius: sizeHeight(22);
   background-color: #FFFFFF;
   font-size: sizeHeight(18);
@@ -24,38 +26,49 @@
 
   &__personal {
     height: 100%;
-    width: 50%;
+    width: 100%;
 
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
-    margin-left: sizeWidth(15);
 
     .name {
       color: #404763;
-      font-size: sizeHeight(13);
+      font-size: sizeHeight(16);
       line-height: sizeHeight(21);
       margin-bottom: sizeHeight(12);
+      font-weight: 700;
 
       display: flex;
       flex-direction: column;
+      align-items: center;
     }
 
     .position {
+      width: 60%;
       color: #98A9BC;
-      font-size: sizeHeight(10);
+      font-size: sizeHeight(14);
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
     }
 
     .surname {
       color: #1C76FE;
-      font-size: sizeHeight(18);
+      font-size: sizeHeight(22);
+      font-weight: 900;
+      margin-bottom: sizeHeight(12);
     }
   }
 
   &__photo {
     width: sizeHeight(135);
     height: sizeHeight(135);
-    border-radius: sizeHeight(22);
+    border-radius: 50%;
+    margin-bottom: sizeHeight(20);
 
     overflow: hidden;
 

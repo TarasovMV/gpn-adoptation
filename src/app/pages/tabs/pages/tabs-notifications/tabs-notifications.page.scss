@@ -60,12 +60,13 @@
   .notifications {
     width: 100%;
     padding: sizeHeight(15) sizeWidth(14);
-    border-radius: sizeHeight(4);
+    border-radius: sizeHeight(22);
     background-color: #ffffff;
     margin: sizeHeight(5) 0;
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-shadow: 0 0 sizeHeight(4) 0 rgba(203, 203, 203, 0.25);
 
     position: relative;
 

@@ -2,6 +2,7 @@
   <svg-icon class="arrow" src="assets/icon/arrow.svg" (click)="backToTests()"></svg-icon>
 </div>
 <div class="content">
+  <svg-icon class="big-question" src="assets/icon/tests/big-question.svg"></svg-icon>
   <ng-container [ngSwitch]="tabsService.startTest$ | async">
     <ng-container *ngSwitchDefault>
       <div class="content__body">

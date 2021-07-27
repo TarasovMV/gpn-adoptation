@@ -41,7 +41,7 @@
     padding: sizeHeight(2);
     color: #FFFFFF;
     position: absolute;
-    top: sizeHeight(65);
+    top: sizeHeight(70);
     right: sizeWidth(22);
     z-index: 99;
   }
@@ -56,7 +56,7 @@
 
   &__header {
     position: absolute;
-    top: sizeHeight(34);
+    top: sizeHeight(48);
     z-index: 1;
     width: 100%;
     padding: 0 sizeWidth(22);

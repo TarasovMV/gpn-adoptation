@@ -45,6 +45,7 @@
     font-size: sizeHeight(18);
 
     .enter {
+      z-index: 99;
       height: sizeHeight(200);
       width: 100%;
 
@@ -55,6 +56,7 @@
       justify-content: center;
       align-items: center;
       margin-bottom: sizeHeight(12);
+      box-shadow: 0 0 sizeHeight(4) 0 rgba(203, 203, 203, 0.25);
 
       &__title {
         margin-bottom: sizeHeight(16);
@@ -64,8 +66,8 @@
       input {
         height: sizeHeight(79);
         width: 75vw;
-        border-radius: sizeHeight(9);
-        font-size: sizeWidth(32);
+        border-radius: sizeHeight(22);
+        font-size: sizeWidth(36);
         color: #1C76FE;
         padding: sizeWidth(40);
         letter-spacing: sizeWidth(22);

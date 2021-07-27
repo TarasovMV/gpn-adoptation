@@ -6,21 +6,24 @@
 
 .history-page {
   position: relative;
-  height: sizeHeight(38);
+  height: sizeHeight(59);
+  padding: sizeHeight(10) 0;
+
   width: 100%;
 
   display: flex;
   align-items: center;
-  overflow: hidden;
+  // overflow: hidden;
 
   .period {
-    min-width: sizeWidth(106);
-    width: sizeWidth(106);
-    margin: 0 sizeWidth(7);
+    min-width: sizeWidth(89);
+    width: sizeWidth(89);
+    margin: 0 sizeWidth(4);
     height: 100%;
-    border-radius: sizeHeight(27);
-    background-color: #ffffff;
-    color: #98a9bc;
+    border-radius: sizeHeight(10);
+    background-color: rgba(255, 255, 255, 1);
+    color: rgba(28, 118, 254, 1);
+    opacity: 0.75;
     font-size: sizeHeight(14);
 
     display: flex;
@@ -28,8 +31,8 @@
     justify-content: center;
 
     &__active {
-      background: #1C76FE;
-      color: white;
+      background: #ffffff;
+      color: #1C76FE;
     }
   }
 }

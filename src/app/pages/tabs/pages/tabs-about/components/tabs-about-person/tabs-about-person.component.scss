@@ -41,12 +41,18 @@
   overflow-y: scroll;
 
   .experience {
+    background-color: #ffffff;
+    border-radius: sizeHeight(22);
     width: 100%;
     margin-bottom: 1.5vh;
+    padding: sizeHeight(15) sizeWidth(22) sizeHeight(12);
+    box-shadow: 0 0 sizeHeight(4) 0 rgba(203, 203, 203, 0.25);
 
     &__period {
       color: #1C76FE;
-      font-size: sizeHeight(32);
+      font-size: sizeHeight(14);
+      font-weight: 600;
+      margin-bottom: sizeHeight(10);
     }
 
     &__content {

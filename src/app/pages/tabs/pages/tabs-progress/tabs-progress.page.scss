@@ -86,13 +86,17 @@ ion-content {
 
   overflow-y: auto;
 
+  .shadow {
+    box-shadow: 0 0 sizeHeight(4) 0 rgba(203, 203, 203, 0.25);
+  }
+
   .item {
     width: 100%;
-    background-color: #1C76FE;
+    background-color: #FFFFFF;
     padding: sizeHeight(14) sizeWidth(14);
     margin-bottom: sizeHeight(10);
     border-radius: sizeHeight(4);
-    color: #ffffff;
+    color: #404763;
 
     display: flex;
     flex-direction: column;
@@ -116,6 +120,7 @@ ion-content {
       align-items: center;
       width: 100%;
       font-size: sizeHeight(16);
+      color: #8C99B2;
     }
 
     &__stage {
