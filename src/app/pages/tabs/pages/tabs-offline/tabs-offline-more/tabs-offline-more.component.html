@@ -7,6 +7,13 @@
 
 <ion-content>
   <div class="content">
+    <div
+      (click)="changeFavouriteView()"
+      class="favorite-common"
+      [class.favorite-common_active]="dictViewFav$ | async"
+    >
+      <span>{{(dictViewFav$ | async) ? 'К списку' : 'Избранное'}}</span>
+    </div>
     <div class="search">
       <app-tabs-offline-search (search)="filterSections($event)" style="margin-bottom: 2vh"></app-tabs-offline-search>
     </div>
