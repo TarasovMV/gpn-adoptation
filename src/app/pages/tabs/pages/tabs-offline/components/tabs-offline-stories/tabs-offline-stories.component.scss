@@ -13,9 +13,9 @@
     &__item {
       height: sizeHeight(157);
       min-width: sizeWidth(224);
+      width: sizeWidth(224);
       max-width: sizeWidth(224);
       border-radius: sizeHeight(22);
-      padding: sizeHeight(15);
       margin-right: 2vw;
       overflow: hidden;
 
@@ -34,13 +34,13 @@
       &:last-child {
         margin-right: 0;
       }
-    }
 
-    .name {
-      position: absolute;
-      top: 50%;
-      z-index: 1;
-      color: #FFFFFF;
-      font-size: sizeHeight(16);
+      .name {
+        position: absolute;
+        top: 50%;
+        z-index: 1;
+        color: #FFFFFF;
+        font-size: sizeHeight(16);
+      }
     }
   }

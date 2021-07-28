@@ -87,7 +87,9 @@ ion-slides {
     }
 
     .image {
+      position: relative;
       border-radius: sizeHeight(22);
+      overflow: hidden;
     }
 
     .line {
@@ -101,6 +103,10 @@ ion-slides {
       height: 100%;
       object-fit: cover;
       z-index: 0;
+
+      position: absolute;
+      top: 0;
+      left: 0;
     }
 
     p {

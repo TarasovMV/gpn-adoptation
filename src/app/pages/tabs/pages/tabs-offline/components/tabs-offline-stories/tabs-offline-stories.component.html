@@ -2,9 +2,9 @@
   <ng-container *ngFor="let item of recommendations">
     <div class="stories__item" (click)="openStories(item)">
       <img src="{{restUrl}}/{{item.imagePath}}">
-      <span class="name">
+      <div class="name">
         {{item.header}}
-      </span>
+      </div>
     </div>
   </ng-container>
 </div>
