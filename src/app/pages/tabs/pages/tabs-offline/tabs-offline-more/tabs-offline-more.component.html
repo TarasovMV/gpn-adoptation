@@ -8,6 +8,7 @@
 <ion-content>
   <div class="content">
     <div
+      *ngIf="type === 1"
       (click)="changeFavouriteView()"
       class="favorite-common"
       [class.favorite-common_active]="dictViewFav$ | async"
