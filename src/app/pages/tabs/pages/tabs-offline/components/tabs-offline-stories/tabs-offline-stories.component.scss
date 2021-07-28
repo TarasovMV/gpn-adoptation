@@ -36,11 +36,13 @@
       }
 
       .name {
+        width: 100%;
         position: absolute;
         top: 50%;
         z-index: 1;
         color: #FFFFFF;
         font-size: sizeHeight(16);
+        padding: 0 sizeWidth(15);
       }
     }
   }
