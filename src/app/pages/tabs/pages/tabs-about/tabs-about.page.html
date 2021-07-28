@@ -17,12 +17,14 @@
           <app-tabs-about-history [data]="history"></app-tabs-about-history>
         </div>
         <div class="history__content">
-          <!-- <div class="title">{{showHistory.header}}</div> -->
+          <ng-container *ngFor="let bullet of showHistory?.historyBullets">
+          <div class="title">{{bullet?.header}}</div>
           <div class="image">
-            <cashed-img *ngIf="showHistory?.imagePath" [src]="restUrl+'/'+showHistory?.imagePath"></cashed-img>
+            <cashed-img *ngIf="bullet.imagePath" [src]="restUrl+'/'+bullet?.imagePath"></cashed-img>
           </div>
-          <p *ngFor="let bullet of showHistory?.historyBullets">{{ bullet.text }}</p>
+          <p>{{ bullet.text }}</p>
           <div class="line"></div>
+        </ng-container>
         </div>
       </div>
       <div class="leadership" *ngSwitchCase="'Руководство'">

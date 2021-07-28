@@ -14,6 +14,7 @@ export interface IHistoryBullet {
     id: number;
     text: string;
     header?: string;
+    imagePath?: string;
 }
 
 @Component({
