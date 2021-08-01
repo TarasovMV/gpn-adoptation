@@ -53,11 +53,18 @@ ion-content {
   height: 0 !important;
 }
 
-// for mat ripple effect
+/**
+#region mat-ripple
+ */
 .ripple-parent {
   position: relative;
-  //overflow: hidden;
 }
+ion-ripple-effect {
+  overflow: hidden;
+}
+/**
+#end region mat-ripple
+ */
 
 .modal-wrapper{
   background: transparent !important;
