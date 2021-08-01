@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {BehaviorSubject, Subject} from 'rxjs';
 import { TabsService } from 'src/app/core/services/tabs/tabs.service';
 import {IPageTab, PageTabType} from "../../tabs.model";
@@ -7,7 +7,6 @@ import {AppConfigService} from "../../../../core/services/platform/app-config.se
 import {BackButtonService} from "../../../../core/services/platform/back-button.service";
 import {IonSlides, Platform} from "@ionic/angular";
 import {SLIDE_CONFIG_HISTORY} from "./tabs-about.config";
-import {debounce, throttleTime, timeout} from "rxjs/operators";
 
 export interface IMasterMindCategory {
     id: number,
@@ -39,7 +38,7 @@ export interface IBullet {
     templateUrl: './tabs-about.page.html',
     styleUrls: ['./tabs-about.page.scss'],
 })
-export class TabsAboutPage implements OnInit, IPageTab {
+export class TabsAboutPage implements OnInit, OnDestroy, IPageTab {
     public route: PageTabType = 'about';
 
     @ViewChild('ionSlides') public ionSlide: IonSlides;
@@ -62,12 +61,21 @@ export class TabsAboutPage implements OnInit, IPageTab {
     }
 
     ngOnInit(): void {
-        this.backButtonService.disableBackOnRoot(this.platform);
         this.getMasterMindCategories();
         this.getHistoryBullets();
         this.tabsService.historyPeriod$.subscribe(value => {
             this.showHistory = value;
         });
+    }
+
+    ngOnDestroy(): void {}
+
+    public ionViewDidEnter(): void {
+        this.backButtonService.disableBackOnRoot(this.platform);
+    }
+
+    public ionViewWillLeave(): void {
+        this.backButtonService.clearOnRoot();
     }
 
     public async getMasterMindCategories(): Promise<void> {

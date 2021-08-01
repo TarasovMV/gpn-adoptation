@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { TabsService } from 'src/app/core/services/tabs/tabs.service';
 import {IPageTab, PageTabType} from '../../tabs.model';
 import {NavController, Platform} from "@ionic/angular";
 import {BackButtonService} from "../../../../core/services/platform/back-button.service";
+import {Subscription} from "rxjs";
 
 export interface ITests {
     id: number;
@@ -49,7 +50,7 @@ export interface IAnswer {
     templateUrl: './tabs-tests.page.html',
     styleUrls: ['./tabs-tests.page.scss'],
 })
-export class TabsTestsPage implements OnInit, IPageTab {
+export class TabsTestsPage implements OnInit, OnDestroy, IPageTab {
     public route: PageTabType = 'tests';
     public data: ITests[] = [];
 
@@ -62,10 +63,19 @@ export class TabsTestsPage implements OnInit, IPageTab {
     }
 
     ngOnInit(): void {
-        this.backButtonService.disableBackOnRoot(this.platform);
         this.tabsService.startTest$.subscribe(x => {
             this.getTests().then();
         })
+    }
+
+    ngOnDestroy(): void {}
+
+    public ionViewDidEnter(): void {
+        this.backButtonService.disableBackOnRoot(this.platform);
+    }
+
+    public ionViewWillLeave(): void {
+        this.backButtonService.clearOnRoot();
     }
 
     public async openTest(test: ITests): Promise<void> {

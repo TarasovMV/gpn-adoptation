@@ -3,23 +3,22 @@ import {
     Component,
     ElementRef,
     Input,
-    OnDestroy,
-    OnInit,
+    OnDestroy, OnInit,
     QueryList,
-    ViewChild,
     ViewChildren
 } from '@angular/core';
-import {IonSlides, ModalController} from '@ionic/angular';
+import {IonSlides, ModalController, Platform} from '@ionic/angular';
 import {AppConfigService} from 'src/app/core/services/platform/app-config.service';
 import {TabsService} from 'src/app/core/services/tabs/tabs.service';
 import {IRecommendation} from 'src/app/pages/tabs/tabs.model';
+import {BackButtonService} from "../../../../../../core/services/platform/back-button.service";
 
 @Component({
     selector: 'app-tabs-offline-recommendation',
     templateUrl: './tabs-offline-recommendation.component.html',
     styleUrls: ['./tabs-offline-recommendation.component.scss'],
 })
-export class TabsOfflineRecommendationComponent implements AfterViewInit, OnDestroy {
+export class TabsOfflineRecommendationComponent implements OnInit, AfterViewInit, OnDestroy {
     @ViewChildren('bar') bars: QueryList<ElementRef>;
     @Input() story: IRecommendation;
     public index = 0;
@@ -29,10 +28,16 @@ export class TabsOfflineRecommendationComponent implements AfterViewInit, OnDest
 
     constructor(
         public tabsService: TabsService,
-        public modalController: ModalController,
+        private modalController: ModalController,
+        private backButtonService: BackButtonService,
+        private platform: Platform,
         appConfig: AppConfigService
     ) {
         this.restUrl = appConfig.getAttribute("restUrl");
+    }
+
+    public ngOnInit(): void {
+        this.backButtonService.actionOnBack(this.platform, () => this.dismiss(), false);
     }
 
     public ngAfterViewInit(): void {
@@ -40,6 +45,7 @@ export class TabsOfflineRecommendationComponent implements AfterViewInit, OnDest
     }
 
     public ngOnDestroy(): void {
+        this.backButtonService.clearAction();
         clearInterval(this.nextTimer);
     }
 

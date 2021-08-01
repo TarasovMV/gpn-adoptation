@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { TabsService } from 'src/app/core/services/tabs/tabs.service';
 import { IAdaptationStage, IAdaptationSubStage, IPageTab, IProgress, PageTabType } from '../../tabs.model';
 import { TabsProgressService } from "./services/tabs-progress.service";
@@ -39,7 +39,7 @@ import { InfoPopupComponent } from 'src/app/shared/components/info-popup/info-po
         )
     ]
 })
-export class TabsProgressPage implements OnInit, IPageTab {
+export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
     public route: PageTabType = 'progress';
 
     public data: IProgress = null;
@@ -60,12 +60,21 @@ export class TabsProgressPage implements OnInit, IPageTab {
     }
 
     ngOnInit(): void {
-        this.backButtonService.disableBackOnRoot(this.platform);
         this.tabsProgressService?.adaptationDone$.subscribe(x => {
             this.doneHandler(x, this.data);
             this.countProgress();
         });
         this.getData();
+    }
+
+    ngOnDestroy(): void {}
+
+    public ionViewDidEnter(): void {
+        this.backButtonService.disableBackOnRoot(this.platform);
+    }
+
+    public ionViewWillLeave(): void {
+        this.backButtonService.clearOnRoot();
     }
 
     async confirm() {

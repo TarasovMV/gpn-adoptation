@@ -1,29 +1,38 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
 import {UserService} from "../../core/services/data/user.service";
 import {BehaviorSubject} from "rxjs";
+import {StatusBarService} from "../../core/services/platform/status-bar.service";
 
 @Component({
     selector: 'app-auth',
     templateUrl: './auth.page.html',
     styleUrls: ['./auth.page.scss'],
 })
-export class AuthPage implements OnInit {
+export class AuthPage implements OnInit, OnDestroy {
     @ViewChild('input') codeInput: ElementRef;
 
     public readonly codeControl: FormControl =
         new FormControl('', [Validators.required, Validators.minLength(5)]);
     public readonly isSwingAnimation$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-    constructor(private userService: UserService) {}
+    constructor(
+        private userService: UserService,
+        private statusbarService: StatusBarService,
+    ) {}
 
     public ngOnInit(): void {
+        this.statusbarService.setAlternativeColor();
         this.codeControl.valueChanges.subscribe(x => {
             if (!this.codeControl.valid) {
                 return;
             }
             this.auth(x).then();
         });
+    }
+
+    public ngOnDestroy(): void {
+        this.statusbarService.setDefaultColor();
     }
 
     private async auth(code: string): Promise<void> {

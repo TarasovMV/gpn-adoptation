@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnDestroy, OnInit} from '@angular/core';
 import {IPageTab, PageTabType} from "../../tabs.model";
 import {INotifications} from "../../../../core/models/notification.model";
 import {ApiNotificationService} from "../../../../core/services/api/api-notification.service";
@@ -12,7 +12,7 @@ import {Platform} from "@ionic/angular";
     styleUrls: ['./tabs-notifications.page.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TabsNotificationsPage implements OnInit, IPageTab {
+export class TabsNotificationsPage implements OnInit, OnDestroy, IPageTab {
     public route: PageTabType = 'notifications';
 
     public notifications$: BehaviorSubject<INotifications[]> = new BehaviorSubject<INotifications[]>([]);
@@ -24,8 +24,17 @@ export class TabsNotificationsPage implements OnInit, IPageTab {
     ) {}
 
     public ngOnInit(): void {
-        this.backButtonService.disableBackOnRoot(this.platform);
         this.getNotifications().then();
+    }
+
+    public ngOnDestroy(): void {}
+
+    public ionViewDidEnter(): void {
+        this.backButtonService.disableBackOnRoot(this.platform);
+    }
+
+    public ionViewWillLeave(): void {
+        this.backButtonService.clearOnRoot();
     }
 
     private async getNotifications(): Promise<void> {

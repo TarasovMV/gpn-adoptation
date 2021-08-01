@@ -1,16 +1,17 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {TabsService} from 'src/app/core/services/tabs/tabs.service';
 import {IAdaptationStage, IPageTab, IProgress, PageTabType, ReferenceBookSectionType} from '../../tabs.model';
 import {AppConfigService} from "../../../../core/services/platform/app-config.service";
 import {NavController, Platform} from "@ionic/angular";
 import {BackButtonService} from "../../../../core/services/platform/back-button.service";
+import {StatusBarService} from "../../../../core/services/platform/status-bar.service";
 
 @Component({
     selector: 'app-tabs-offline',
     templateUrl: './tabs-offline.page.html',
     styleUrls: ['./tabs-offline.page.scss'],
 })
-export class TabsOfflinePage implements OnInit, IPageTab {
+export class TabsOfflinePage implements OnInit, OnDestroy, IPageTab {
     public route: PageTabType = 'offline';
     public data: IProgress;
     public sections: IAdaptationStage[] = [];
@@ -19,6 +20,7 @@ export class TabsOfflinePage implements OnInit, IPageTab {
     constructor(
         public tabsService: TabsService,
         private navCtrl: NavController,
+        private statusbarService: StatusBarService,
         private backButtonService: BackButtonService,
         private platform: Platform,
         appConfig: AppConfigService,
@@ -27,8 +29,19 @@ export class TabsOfflinePage implements OnInit, IPageTab {
     }
 
     ngOnInit(): void {
-        this.backButtonService.disableBackOnRoot(this.platform);
         this.getBusiness().then();
+    }
+
+    ngOnDestroy(): void {}
+
+    public ionViewDidEnter(): void {
+        this.backButtonService.disableBackOnRoot(this.platform);
+        this.statusbarService.setAlternativeColor();
+    }
+
+    public ionViewWillLeave(): void {
+        this.backButtonService.clearOnRoot();
+        this.statusbarService.setDefaultColor();
     }
 
     public async getBusiness(): Promise<void> {
