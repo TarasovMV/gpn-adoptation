@@ -30,6 +30,16 @@ export class TabsPage implements OnInit {
         },
     ];
 
+    public readonly tabsName: { [key in PageTabType]: string } = {
+        news: 'Новости',
+        chat: 'Сообщения',
+        tests: 'Опросы',
+        about: 'Главная',
+        progress: 'Адаптация',
+        offline: 'Справочник',
+        notifications: 'Профиль'
+    };
+
     private readonly tabsRouting: { [key in PageTabType]: string } = {
         news: 'tabs/tabs-news',
         chat: 'tabs/tabs-chat',

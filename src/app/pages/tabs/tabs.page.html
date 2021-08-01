@@ -2,12 +2,16 @@
   <ion-router-outlet (activate)="routing($event)" class="page-wrapper">
   </ion-router-outlet>
   <div class="footer">
-    <div *ngFor="let tab of tabs" class="tab-icon" [class.tab-icon_active]="tab.route === (currentTab$ | async)"
+    <div *ngFor="let tab of tabs" class="tab-icon ion-activatable ripple-parent" [class.tab-icon_active]="tab.route === (currentTab$ | async)"
       (click)="selectTab(tab)">
+      <ion-ripple-effect></ion-ripple-effect>
       <svg-icon src="assets/icon/tabs/{{tab.route}}.svg" [svgStyle]="{
           'height': '3.4vh',
           'width': 'auto'
         }"></svg-icon>
+        <div class="tabs-name" *ngIf="tab.route === (currentTab$ | async)">
+          {{tabsName[tab.route]}}
+        </div>
     </div>
   </div>
 </div>
