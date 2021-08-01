@@ -1,6 +1,7 @@
 import {Injectable, Renderer2, RendererFactory2} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {Storage} from '@ionic/storage';
+import { Storage } from '@capacitor/storage';
+import {Platform} from "@ionic/angular";
 
 @Injectable({
   providedIn: 'root'
@@ -12,20 +13,24 @@ export class ThemeService {
 
     constructor(
         private rendererFactory: RendererFactory2,
-        private storage: Storage
     ) {
         this.renderer = rendererFactory.createRenderer(null, null);
     }
 
     public async setThemeConfiguratorRoot(document: Document): Promise<void> {
-        await this.storage.create();
-        const theme = await this.storage.get('theme');
-        this.themeConfigurator = new ThemeConfigurator(document, this.renderer, theme, this.storage);
+        const theme = await Storage.get({key: 'theme'});
+        this.themeConfigurator = new ThemeConfigurator(document, this.renderer, theme.value);
         this.isDarkTheme = this.themeConfigurator.isDarkThemeObservable;
     }
 
     public changeTheme(): void {
         this.themeConfigurator.switchTheme();
+    }
+
+    public setPlatformClass(document: Document, platform: Platform): void {
+        if (platform.is('ios')) {
+            this.renderer.setAttribute(document.body, 'class', 'ios');
+        }
     }
 }
 
@@ -37,7 +42,6 @@ export class ThemeConfigurator {
         private document: Document,
         private renderer: Renderer2,
         themeStorage: string,
-        private storage: Storage
     ) {
         this.isDarkThemeObservable.subscribe((ref) => this.setTheme(ref));
         if (!themeStorage) {
