@@ -10,7 +10,6 @@
       <ng-container *ngFor="let item of notifications$ | async">
         <div class="date">{{item.date | date: 'mediumDate'}}</div>
         <div class="notifications" *ngFor="let element of item.notifications">
-
             <div class="notifications__header">
               <div class="icon"
               [ngClass]="{'icon__test': element.notificationType === 1, 'icon__daily': element.notificationType === 2}">
