@@ -22,7 +22,7 @@ ion-slides {
   height: sizeHeight(126);
   background-color: #1C76FE;
   color: #ffffff;
-  font-weight: 600;
+  font-family: 'SegoeUI_Bold';
   font-size: sizeHeight(30);
 
   display: flex;
@@ -45,17 +45,18 @@ ion-slides {
   padding: 0 sizeWidth(24);
   background-color: #1C76FE;
   color: #ffffff;
-  font-weight: bold;
-
+  font-family: 'SegoeUI_Bold';
   display: flex;
 
   .item {
     font-size: sizeHeight(17);
     margin-right: sizeWidth(27);
+    transition: .3s;
   }
 
   .active {
     opacity: 0.5;
+    transition: .3s;
   }
 }
 

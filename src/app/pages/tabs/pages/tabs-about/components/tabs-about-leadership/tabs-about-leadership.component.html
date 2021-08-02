@@ -5,12 +5,12 @@
         <svg-icon class="arrow" src="assets/icon/arrow.svg" [ngClass]="{'active': item.isActive}"></svg-icon>
       </div>
     </div>
-    <ng-container *ngIf="item.isActive">
+    <div [@inOutAnimation] style="overflow: hidden; height: 100%;" *ngIf="item.isActive">
       <ng-container *ngFor="let element of item.masterMinds">
         <app-tabs-about-leadership-card
         (click)="openPerson(element)"
         [element] = "element"
         ></app-tabs-about-leadership-card>
       </ng-container>
-    </ng-container>
+    </div>
   </ng-container>
