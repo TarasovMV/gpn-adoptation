@@ -7,7 +7,7 @@ import {
     QueryList,
     ViewChildren
 } from '@angular/core';
-import {IonSlides, ModalController, Platform} from '@ionic/angular';
+import {ModalController, Platform} from '@ionic/angular';
 import {AppConfigService} from 'src/app/core/services/platform/app-config.service';
 import {TabsService} from 'src/app/core/services/tabs/tabs.service';
 import {IRecommendation} from 'src/app/pages/tabs/tabs.model';
