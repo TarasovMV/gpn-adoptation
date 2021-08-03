@@ -47,13 +47,31 @@ ion-content {
   }
 }
 
+.change-user {
+  z-index: 1;
+  position: absolute;
+  display: flex;
+  width: sizeWidth(318);
+  height: sizeHeight(52);
+  background: #9AA0AE;
+  bottom: sizeHeight(32);
+  border-radius: sizeHeight(26);
+  transition: .3s;
+
+  span {
+    margin: auto;
+    color: white;
+    font-size: sizeHeight(16);
+  }
+}
+
+
 .content {
   height: 100%;
   background-color: #f8fafb;
   padding: sizeHeight(24) sizeWidth(24);
   display: flex;
   flex-direction: column;
-  margin-bottom: sizeHeight(5);
 
   color: #404763;
   font-size: sizeHeight(17);

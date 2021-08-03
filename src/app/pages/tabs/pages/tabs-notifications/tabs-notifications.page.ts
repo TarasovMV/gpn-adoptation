@@ -4,7 +4,8 @@ import {INotifications} from "../../../../core/models/notification.model";
 import {ApiNotificationService} from "../../../../core/services/api/api-notification.service";
 import {BehaviorSubject} from "rxjs";
 import {BackButtonService} from "../../../../core/services/platform/back-button.service";
-import {Platform} from "@ionic/angular";
+import {ModalController, Platform} from "@ionic/angular";
+import { ConfirmPopupComponent } from 'src/app/shared/components/confirm-popup/confirm-popup.component';
 
 @Component({
     selector: 'app-tabs-notifications',
@@ -23,6 +24,7 @@ export class TabsNotificationsPage implements OnInit, OnDestroy, IPageTab {
         private apiNotificationService: ApiNotificationService,
         private backButtonService: BackButtonService,
         private platform: Platform,
+        private modalController: ModalController
     ) {}
 
     public ngOnInit(): void {
@@ -37,6 +39,18 @@ export class TabsNotificationsPage implements OnInit, OnDestroy, IPageTab {
 
     public ionViewWillLeave(): void {
         this.backButtonService.clearOnRoot();
+    }
+
+
+    public changeSection(section: string): void {
+        this.section$.next(section);
+    }
+
+    public async changeUser(): Promise<void> {
+        const modal = await this.modalController.create({
+            component: ConfirmPopupComponent,
+        });
+        return await modal.present();
     }
 
     private async getNotifications(): Promise<void> {
@@ -60,7 +74,4 @@ export class TabsNotificationsPage implements OnInit, OnDestroy, IPageTab {
         this.notifications$.next(mapNotifications);
     }
 
-    public changeSection(section: string): void {
-        this.section$.next(section);
-    }
 }
