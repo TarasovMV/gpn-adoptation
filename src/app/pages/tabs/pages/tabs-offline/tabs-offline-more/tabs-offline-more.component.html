@@ -23,7 +23,7 @@
         <ng-container *ngSwitchCase="1">
           <ng-container *ngFor="let dict of dictionaries || [] index as i">
             <div class="letter"><span>{{dict.letter}}</span></div>
-            <div class="card" *ngFor="let stage of dict.stages">
+            <div class="card" *ngFor="let stage of dict.stages" [class.card__last-card] = "type === 1">
               <div class="name" (click)="openSubStage(stage)">{{ stage?.name }}</div>
               <div class="favorite" [ngClass]="{'favorite-active': stage.isFavourite}" (click)="addToFavorite(stage)">
                 <svg-icon src="assets/icon/progress/star.svg"></svg-icon>
