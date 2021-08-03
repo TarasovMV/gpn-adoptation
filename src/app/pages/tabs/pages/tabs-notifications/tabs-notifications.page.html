@@ -1,9 +1,11 @@
-<ion-header>
   <div class="header">
-    <div class="title">Ваши уведомления</div>
+    <div class="title">Ваши профиль</div>
   </div>
-</ion-header>
-
+  <div class="menu">
+    <ng-container *ngFor="let item of sections">
+      <div (click)="changeSection(item)" class="item" [ngClass]="{'active': item !== (section$ | async)}">{{item}}</div>
+    </ng-container>
+  </div>
 <ion-content>
   <div class="content">
     <ng-container *ngIf="!!(notifications$ | async)?.length; else empty">

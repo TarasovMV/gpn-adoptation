@@ -25,6 +25,26 @@
   }
 }
 
+.menu {
+  height: sizeHeight(42);
+  width: 100%;
+  padding: 0 sizeWidth(24);
+  background-color: #1C76FE;
+  color: #ffffff;
+  font-weight: bold;
+
+  display: flex;
+
+  .item {
+    font-size: sizeHeight(17);
+    margin-right: sizeWidth(27);
+  }
+
+  .active {
+    opacity: 0.5;
+  }
+}
+
 .content {
   height: 100%;
   background-color: #f8fafb;

@@ -14,6 +14,8 @@ import {Platform} from "@ionic/angular";
 })
 export class TabsNotificationsPage implements OnInit, OnDestroy, IPageTab {
     public route: PageTabType = 'notifications';
+    public readonly sections: string[] = ['Уведомления', 'Настройки'];
+    public section$: BehaviorSubject<string> = new BehaviorSubject<string>('Уведомления');
 
     public notifications$: BehaviorSubject<INotifications[]> = new BehaviorSubject<INotifications[]>([]);
 
@@ -56,5 +58,9 @@ export class TabsNotificationsPage implements OnInit, OnDestroy, IPageTab {
         });
         mapNotifications.sort((a, b) => b.date.getTime() - a.date.getTime());
         this.notifications$.next(mapNotifications);
+    }
+
+    public changeSection(section: string): void {
+        this.section$.next(section);
     }
 }
