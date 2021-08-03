@@ -19,7 +19,6 @@
   .footer {
     width: 100%;
     height: 8vh;
-
     display: flex;
     background: #ffffff;
     box-shadow: 0 0 20px 0 rgba(#000000, 0.1);
@@ -27,28 +26,28 @@
 
     .tab-icon {
       flex: 1;
-
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      // border-top: 0.5vh solid #ffffff;
-
       color: #e0e0e0;
       font-size: sizeHeight(24);
-      transition: 0.3s;
+      transition: 0.5s;
 
       .tabs-name {
         width: 100%;
+        font-family: 'SegoeUI_Bold';
         font-size: sizeHeight(10);
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-top: -0.7vh;
       }
 
       &_active {
+        transform: scale(1.1);
         color: #1c76fe;
-        transition: 0.3s;
+        transition: 0.5s;
       }
     }
   }

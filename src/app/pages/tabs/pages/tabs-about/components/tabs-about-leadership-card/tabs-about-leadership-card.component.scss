@@ -6,9 +6,7 @@
 
 .stage {
   width: 100%;
-
   box-shadow: 0 0 sizeHeight(4) 0 rgba(203, 203, 203, 0.25);
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -18,6 +16,10 @@
   background-color: #FFFFFF;
   font-size: sizeHeight(18);
   margin: sizeHeight(10) 0;
+
+  ion-ripple-effect {
+    border-radius: sizeHeight(22);
+  }
 
   &-active {
     background-color: #1C76FE;
@@ -35,11 +37,10 @@
 
     .name {
       color: #404763;
-      font-size: sizeHeight(16);
+      font-size: sizeHeight(18);
       line-height: sizeHeight(21);
       margin-bottom: sizeHeight(12);
-      font-weight: 700;
-
+      font-family: 'SegoeUI_Bold';
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -49,7 +50,6 @@
       width: 80%;
       color: #98A9BC;
       font-size: sizeHeight(14);
-
       display: flex;
       justify-content: center;
       align-items: center;
@@ -58,10 +58,10 @@
 
     .surname {
       color: #1C76FE;
+      font-family: 'SegoeUI_Bold';
       text-transform: uppercase;
-      font-size: sizeHeight(22);
-      font-weight: 900;
-      margin-bottom: sizeHeight(12);
+      font-size: sizeHeight(23);
+      margin-bottom: sizeHeight(6);
     }
   }
 

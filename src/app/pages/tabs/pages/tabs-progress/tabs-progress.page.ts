@@ -9,6 +9,7 @@ import { trigger, style, animate, transition } from '@angular/animations';
 import { BackButtonService } from "../../../../core/services/platform/back-button.service";
 import { ConfirmPopupComponent } from 'src/app/shared/components/confirm-popup/confirm-popup.component';
 import { InfoPopupComponent } from 'src/app/shared/components/info-popup/info-popup.component';
+import { Storage } from '@capacitor/storage';
 
 
 @Component({
@@ -55,15 +56,15 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
         private userService: UserService,
         private backButtonService: BackButtonService,
         private platform: Platform,
-        public modalController: ModalController
-    ) {
-    }
+        private modalController: ModalController
+    ) {}
 
     ngOnInit(): void {
         this.tabsProgressService?.adaptationDone$.subscribe(x => {
             this.doneHandler(x, this.data);
             this.countProgress();
         });
+        this.showPrompt();
         this.getData();
     }
 
@@ -77,17 +78,22 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
         this.backButtonService.clearOnRoot();
     }
 
-    async confirm() {
+    public async confirm(): Promise<void> {
         const modal = await this.modalController.create({
             component: ConfirmPopupComponent,
         });
         return await modal.present();
     }
 
-    async showPrompt() {
+    public async showPrompt(): Promise<void> {
+        const isShow: boolean = !!(await Storage.get({key: 'tabs-progress-show'})).value;
+        if (isShow) {
+            return;
+        }
         const modal = await this.modalController.create({
             component: InfoPopupComponent,
         });
+        Storage.set({key: 'tabs-progress-show', value: 'true'}).then();
         return await modal.present();
     }
 

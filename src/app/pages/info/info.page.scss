@@ -8,12 +8,10 @@
   height: sizeHeight(126);
   background-color: #1C76FE;
   color: #ffffff;
-  font-weight: 500;
+  font-family: 'SegoeUI_Bold';
   font-size: sizeHeight(18);
-
   display: flex;
   align-items: center;
-
   padding: sizeHeight(44) sizeWidth(30) 0;
 
   .arrow {

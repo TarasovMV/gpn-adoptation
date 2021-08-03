@@ -14,6 +14,13 @@
   url("fonts/segoe/SegoeUI.ttf") format("truetype")
 }
 
+@font-face {
+  font-family: "SegoeUI_Bold";
+  src: url("fonts/segoe-bold/SegoeUI-Bold.eot");
+  src: url("fonts/segoe-bold/SegoeUI-Bold.woff") format("woff"),
+    url("fonts/segoe-bold/SegoeUI-Bold.ttf") format("truetype")
+}
+
 html {
   font-family: "SegoeUI";
   --ion-font-family: "SegoeUI";
