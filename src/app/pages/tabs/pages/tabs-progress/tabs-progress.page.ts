@@ -80,10 +80,10 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
     }
 
     public async showPrompt(): Promise<void> {
-        const isShow: boolean = !!(await Storage.get({key: 'tabs-progress-show'})).value;
-        if (isShow) {
-            return;
-        }
+        // const isShow: boolean = !!(await Storage.get({key: 'tabs-progress-show'})).value;
+        // if (isShow) {
+        //     return;
+        // }
         const modal = await this.modalController.create({
             component: InfoPopupComponent,
         });
