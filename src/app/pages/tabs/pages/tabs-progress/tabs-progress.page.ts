@@ -63,7 +63,9 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
             this.doneHandler(x, this.data);
             this.countProgress();
         });
-        this.showPrompt();
+        setTimeout(() => {
+            this.showPrompt();
+        }, 1500);
         this.getData();
     }
 
