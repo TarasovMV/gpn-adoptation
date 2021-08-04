@@ -65,7 +65,7 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
         });
         setTimeout(() => {
             this.showPrompt();
-        }, 1500);
+        }, 2500);
         this.getData();
     }
 
