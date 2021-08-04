@@ -44,7 +44,7 @@ export class TabsService {
         return await this.http.get<IHistory[]>(`${this.restUrl}/api/HistoryPeriods`).toPromise();
     }
     public async getTests(): Promise<ITests[]> {
-        return await this.http.get<ITests[]>(`${this.restUrl}/api/Testing/active`).toPromise();
+        return await this.http.get<ITests[]>(`${this.restUrl}/api/Testing/mobile`).toPromise();
     }
     public async postTestResult(result: ITestResult[]): Promise<ITestResult[]> {
         return await this.http.post<ITestResult[]>(`${this.restUrl}/api/TestResults/result`, result).toPromise();

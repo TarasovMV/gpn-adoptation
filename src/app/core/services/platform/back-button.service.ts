@@ -12,7 +12,7 @@ export class BackButtonService {
     constructor(private navCtrl: NavController) {}
 
     public init(platform: Platform): void {
-        platform.backButton.subscribeWithPriority(999, () => {
+        platform.backButton.subscribeWithPriority(9999, () => {
             this.navCtrl.back();
         });
     }
