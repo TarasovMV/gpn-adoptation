@@ -22,8 +22,6 @@ export class TabsNotificationsPage implements OnInit, OnDestroy, IPageTab {
 
     constructor(
         private apiNotificationService: ApiNotificationService,
-        private backButtonService: BackButtonService,
-        private platform: Platform,
         private modalController: ModalController
     ) {}
 
@@ -32,15 +30,6 @@ export class TabsNotificationsPage implements OnInit, OnDestroy, IPageTab {
     }
 
     public ngOnDestroy(): void {}
-
-    public ionViewDidEnter(): void {
-        this.backButtonService.disableBackOnRoot(this.platform);
-    }
-
-    public ionViewWillLeave(): void {
-        this.backButtonService.clearOnRoot();
-    }
-
 
     public changeSection(section: string): void {
         this.section$.next(section);

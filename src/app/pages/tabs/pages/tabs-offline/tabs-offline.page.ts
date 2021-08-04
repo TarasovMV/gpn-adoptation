@@ -21,8 +21,6 @@ export class TabsOfflinePage implements OnInit, OnDestroy, IPageTab {
         public tabsService: TabsService,
         private navCtrl: NavController,
         private statusbarService: StatusBarService,
-        private backButtonService: BackButtonService,
-        private platform: Platform,
         appConfig: AppConfigService,
     ) {
         this.restUrl = appConfig.getAttribute("restUrl");
@@ -35,12 +33,10 @@ export class TabsOfflinePage implements OnInit, OnDestroy, IPageTab {
     ngOnDestroy(): void {}
 
     public ionViewDidEnter(): void {
-        this.backButtonService.disableBackOnRoot(this.platform);
         this.statusbarService.setAlternativeColor();
     }
 
     public ionViewWillLeave(): void {
-        this.backButtonService.clearOnRoot();
         this.statusbarService.setDefaultColor();
     }
 

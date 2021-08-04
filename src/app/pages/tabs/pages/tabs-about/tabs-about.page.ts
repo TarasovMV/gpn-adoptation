@@ -53,8 +53,6 @@ export class TabsAboutPage implements OnInit, OnDestroy, IPageTab {
 
     constructor(
         public tabsService: TabsService,
-        private backButtonService: BackButtonService,
-        private platform: Platform,
         appConfigService: AppConfigService,
     ) {
         this.restUrl = appConfigService.getAttribute('restUrl');
@@ -69,14 +67,6 @@ export class TabsAboutPage implements OnInit, OnDestroy, IPageTab {
     }
 
     ngOnDestroy(): void {}
-
-    public ionViewDidEnter(): void {
-        this.backButtonService.disableBackOnRoot(this.platform);
-    }
-
-    public ionViewWillLeave(): void {
-        this.backButtonService.clearOnRoot();
-    }
 
     public async getMasterMindCategories(): Promise<void> {
         const data = await this.tabsService.getMasterMindCategories();

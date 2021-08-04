@@ -53,8 +53,6 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
         private tabsProgressService: TabsProgressService,
         private navCtr: NavController,
         private userService: UserService,
-        private backButtonService: BackButtonService,
-        private platform: Platform,
         private modalController: ModalController
     ) {}
 
@@ -70,14 +68,6 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
     }
 
     ngOnDestroy(): void {}
-
-    public ionViewDidEnter(): void {
-        this.backButtonService.disableBackOnRoot(this.platform);
-    }
-
-    public ionViewWillLeave(): void {
-        this.backButtonService.clearOnRoot();
-    }
 
     public async showPrompt(): Promise<void> {
         const isShow: boolean = !!(await Storage.get({key: 'tabs-progress-show'})).value;
@@ -137,7 +127,7 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
     }
 
     public toProgressCard(element: IAdaptationSubStage): void {
-        this.navCtr.navigateForward('info', { queryParams: { id: element.id, type: 'progress' } });
+        this.navCtr.navigateForward('info', { queryParams: { id: element.id, type: 'progress' } }).then();
         this.tabsService.adaptationComponents$.next(element);
     }
 

@@ -56,9 +56,7 @@ export class TabsTestsPage implements OnInit, OnDestroy, IPageTab {
 
     constructor(
         public tabsService: TabsService,
-        private platform: Platform,
         private navCtrl: NavController,
-        private backButtonService: BackButtonService,
     ) {
     }
 
@@ -69,14 +67,6 @@ export class TabsTestsPage implements OnInit, OnDestroy, IPageTab {
     }
 
     ngOnDestroy(): void {}
-
-    public ionViewDidEnter(): void {
-        this.backButtonService.disableBackOnRoot(this.platform);
-    }
-
-    public ionViewWillLeave(): void {
-        this.backButtonService.clearOnRoot();
-    }
 
     public async openTest(test: ITests): Promise<void> {
         this.tabsService.test$.next(test);
