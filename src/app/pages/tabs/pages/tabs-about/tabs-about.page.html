@@ -6,26 +6,27 @@
     <div (click)="changeSection(item)" class="item" [ngClass]="{'active': item !== (section$ | async)}">{{item}}</div>
   </ng-container>
 </div>
-
-<div class="content">
-  <ng-container [ngSwitch]="section$ | async">
-    <div class="history" *ngSwitchCase="'История'">
-      <div class="history__periods">
-        <app-tabs-about-history [data]="history"></app-tabs-about-history>
+<ion-content>
+  <div class="content">
+    <ng-container [ngSwitch]="section$ | async">
+      <div class="history" *ngSwitchCase="'История'">
+        <div class="history__periods">
+          <app-tabs-about-history [data]="history"></app-tabs-about-history>
+        </div>
+        <div class="history__content">
+          <ng-container *ngFor="let bullet of showHistory?.historyBullets">
+            <div class="title">{{bullet?.header}}</div>
+            <div class="image">
+              <cashed-img *ngIf="bullet.imagePath" [src]="restUrl+'/'+bullet?.imagePath"></cashed-img>
+            </div>
+            <p>{{ bullet.text }}</p>
+            <div class="line"></div>
+          </ng-container>
+        </div>
       </div>
-      <div class="history__content">
-        <ng-container *ngFor="let bullet of showHistory?.historyBullets">
-          <div class="title">{{bullet?.header}}</div>
-          <div class="image">
-            <cashed-img *ngIf="bullet.imagePath" [src]="restUrl+'/'+bullet?.imagePath"></cashed-img>
-          </div>
-          <p>{{ bullet.text }}</p>
-          <div class="line"></div>
-        </ng-container>
+      <div class="leadership" *ngSwitchCase="'Руководство'">
+        <app-tabs-about-leadership [data]="leadership"></app-tabs-about-leadership>
       </div>
-    </div>
-    <div class="leadership" *ngSwitchCase="'Руководство'">
-      <app-tabs-about-leadership [data]="leadership"></app-tabs-about-leadership>
-    </div>
-  </ng-container>
-</div>
+    </ng-container>
+  </div>
+</ion-content>

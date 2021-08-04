@@ -70,6 +70,7 @@
         .block {
             width: 100%;
             height: sizeHeight(28);
+            margin-bottom: sizeHeight(10);
 
             display: flex;
             align-items: center;
@@ -97,6 +98,7 @@
     &__button {
         width: 100%;
         height: sizeHeight(43);
+        padding: sizeHeight(10);
         background-color: #1C76FE;
         border-radius: sizeHeight(22);
         margin-bottom: sizeHeight(10);

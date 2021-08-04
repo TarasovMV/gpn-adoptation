@@ -7,16 +7,17 @@
 ion-content {
   --background: #f8fafb;
 }
-
 .header {
   height: sizeHeight(126);
   background-color: #1C76FE;
   color: #ffffff;
   font-family: 'SegoeUI_Bold';
   font-size: sizeHeight(30);
+
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+
   padding: 0 sizeWidth(24);
 
   .title {

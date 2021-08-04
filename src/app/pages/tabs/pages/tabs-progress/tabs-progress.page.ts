@@ -7,7 +7,6 @@ import { ModalController, NavController, Platform } from "@ionic/angular";
 import { ApiAdaptationService } from "../../../../core/services/api/api-adaptation.service";
 import { trigger, style, animate, transition } from '@angular/animations';
 import { BackButtonService } from "../../../../core/services/platform/back-button.service";
-import { ConfirmPopupComponent } from 'src/app/shared/components/confirm-popup/confirm-popup.component';
 import { InfoPopupComponent } from 'src/app/shared/components/info-popup/info-popup.component';
 import { Storage } from '@capacitor/storage';
 
@@ -78,13 +77,6 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
         this.backButtonService.clearOnRoot();
     }
 
-    public async confirm(): Promise<void> {
-        const modal = await this.modalController.create({
-            component: ConfirmPopupComponent,
-        });
-        return await modal.present();
-    }
-
     public async showPrompt(): Promise<void> {
         const isShow: boolean = !!(await Storage.get({key: 'tabs-progress-show'})).value;
         if (isShow) {
@@ -126,10 +118,6 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
 
     public switchStage(item: IAdaptationStage): void {
         item.isActive = !item.isActive;
-    }
-
-    public logout(): void {
-        this.userService.logout().then();
     }
 
     public countProgress(): void {
