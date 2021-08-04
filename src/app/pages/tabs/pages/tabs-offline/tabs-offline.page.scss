@@ -77,11 +77,23 @@ ion-content {
   height: 100%;
   display: flex;
   flex-flow: column;
-  padding: sizeHeight(22) sizeWidth(24) 0;
+  padding-top: sizeHeight(22);
   font-size: sizeHeight(17);
   overflow-y: hidden;
   color: #404763;
   background-color: #f8fafb;
+
+  .section-name {
+    width: 100%;
+    padding: sizeHeight(20) sizeWidth(24);
+
+    display: flex;
+    align-items: center;
+
+    color: #404763;
+    font-family: 'SegoeUI_Bold';
+    font-size: sizeHeight(26);
+  }
 
   .scroll-container {
     flex-grow: 1;
@@ -89,19 +101,8 @@ ion-content {
     overflow-y: scroll;
     overflow-x: hidden;
 
-    .section-name {
-      width: 100%;
-      padding: sizeHeight(20) 0;
-
-      display: flex;
-      align-items: center;
-
-      color: #404763;
-      font-family: 'SegoeUI_Bold';
-      font-size: sizeHeight(26);
-    }
-
     .card-wrapper {
+      padding: 0 sizeWidth(24);
       width: 100%;
       display: flex;
       flex-wrap: wrap;

@@ -37,6 +37,7 @@ export class TabsOfflineRecommendationComponent implements OnInit, AfterViewInit
     }
 
     public ngOnInit(): void {
+        this.index = 0;
         this.backButtonService.actionOnBack(this.platform, () => this.dismiss(), false);
     }
 
@@ -46,11 +47,12 @@ export class TabsOfflineRecommendationComponent implements OnInit, AfterViewInit
 
     public ngOnDestroy(): void {
         this.backButtonService.clearAction();
-        clearInterval(this.nextTimer);
+        this.clearTimer();
     }
 
     public dismiss(): void {
         this.modalController.dismiss().then();
+        this.clearTimer();
     }
 
     public nextStory(): void {
@@ -73,7 +75,7 @@ export class TabsOfflineRecommendationComponent implements OnInit, AfterViewInit
 
     public progressBar(index: number): void {
         const timeout = 5 * 1000; // time to show story
-        if (!!this.nextTimer) clearInterval(this.nextTimer);
+        this.clearTimer();
         const prev = this.bars.get(index - 1)?.nativeElement;
         const current = this.bars.get(index)?.nativeElement;
         const next = this.bars.get(index + 1)?.nativeElement;
@@ -92,5 +94,10 @@ export class TabsOfflineRecommendationComponent implements OnInit, AfterViewInit
             current.style.width = 100 + '%';
         });
         this.nextTimer = setTimeout(() => this.nextStory(), timeout);
+    }
+
+    clearTimer(): void {
+        if (!!this.nextTimer) clearTimeout(this.nextTimer);
+        this.nextTimer = null;
     }
 }

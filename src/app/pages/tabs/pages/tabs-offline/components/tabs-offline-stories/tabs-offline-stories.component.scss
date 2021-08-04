@@ -9,7 +9,7 @@
     display: flex;
 
     overflow-x: scroll;
-    
+
     &__item {
       height: sizeHeight(157);
       min-width: sizeWidth(224);
@@ -31,8 +31,12 @@
         object-fit: cover
       }
 
+      &:first-child {
+        margin-left: sizeWidth(24);
+      }
+
       &:last-child {
-        margin-right: 0;
+        margin-right: sizeWidth(24);
       }
 
       .name {

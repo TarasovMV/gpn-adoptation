@@ -3,7 +3,6 @@ import {NavController, Platform} from "@ionic/angular";
 import {Subscription} from "rxjs";
 import {NavigationStart, Router} from "@angular/router";
 import {filter} from "rxjs/operators";
-import {isRoot} from "@angular/compiler-cli/src/ngtsc/file_system";
 
 @Injectable({
     providedIn: 'root'
@@ -61,7 +60,11 @@ export class BackButtonService {
     }
 
     public clearAction(): void {
-        this.actionSubscription.unsubscribe();
+        if (!this.actionSubscription) {
+            return;
+        }
+        this.actionSubscription?.unsubscribe();
+        this.actionSubscription = null;
     }
 
     private isRootPage(path: string): boolean {

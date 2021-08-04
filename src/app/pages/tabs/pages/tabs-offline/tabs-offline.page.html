@@ -1,9 +1,9 @@
 <ion-content>
   <div class="content">
+    <div class="section-name">Советы и рекомендации</div>
+    <app-tabs-offline-stories></app-tabs-offline-stories>
+    <div class="section-name">Справочники</div>
     <div class="scroll-container">
-      <div class="section-name">Советы и рекомендации</div>
-      <app-tabs-offline-stories></app-tabs-offline-stories>
-      <div class="section-name">Справочники</div>
       <div class="card-wrapper">
         <ng-container *ngFor="let card of sections || []">
           <div class="card ripple-parent ion-activatable" (click)="openCard(card)">
