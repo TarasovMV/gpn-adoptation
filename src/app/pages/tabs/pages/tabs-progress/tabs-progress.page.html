@@ -44,7 +44,7 @@
   <!--      </ion-refresher>-->
 
   <div class="scroll">
-    <div [@inOutAnimation] style="width: 100%" *ngIf="(activeStage$ | async)">
+    <div [@inOutAnimation] style="width: 100%; background: white; z-index: 999;" *ngIf="(activeStage$ | async)">
       <ng-container *ngFor="let element of (activeStage$ | async).adaptationSubStages">
         <div class="stage" [ngClass]="{'stage-active': element.isDone, 'stage-disabled': element.disabled}"
           (click)="toProgressCard(element)">
