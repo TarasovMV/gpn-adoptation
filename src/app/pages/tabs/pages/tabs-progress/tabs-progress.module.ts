@@ -10,6 +10,7 @@ import { TabsProgressPage } from './tabs-progress.page';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { InfoPopupComponent } from 'src/app/shared/components/info-popup/info-popup.component';
 import { InfoPopupStagesComponent } from 'src/app/shared/components/info-popup-stages/info-popup-stages.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { InfoPopupStagesComponent } from 'src/app/shared/components/info-popup-s
     IonicModule,
     TabsProgressPageRoutingModule,
     AngularSvgIconModule,
+    SharedModule
   ],
   declarations: [TabsProgressPage, InfoPopupComponent, InfoPopupStagesComponent],
 })

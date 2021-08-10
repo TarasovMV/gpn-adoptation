@@ -83,7 +83,7 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
             return;
         }
         const modal = await this.modalController.create({
-            component: InfoPopupComponent,
+            component: InfoPopupStagesComponent,
         });
         Storage.set({ key: 'tabs-progress-show', value: 'true' }).then();
         return await modal.present();
@@ -117,8 +117,6 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
             this.openInitStage(this.data.adaptationStages);
             this.tabsProgressService.adaptationDone$.next(doneArr);
             this.activeStage$.next(this.data.adaptationStages[0]);
-
-            console.log(this.data);
         } catch (error) {
             console.error(error);
         } finally {
@@ -127,7 +125,7 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
     }
 
     public switchStage(item: IAdaptationStage): void {
-        this.activeStage$.next(item);        
+        this.activeStage$.next(item);
     }
 
     public countProgress(): void {

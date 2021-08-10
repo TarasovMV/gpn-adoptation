@@ -103,12 +103,18 @@ ion-content {
 
   .scroll {
     width: 100%;
-    border-radius: sizeHeight(22) sizeHeight(22) 0 0;
-    padding: sizeHeight(10) sizeWidth(15);
-    padding-top: 47vh;
+    padding-top: 48vh;
     display: flex;
     flex-direction: column;
     overflow: scroll;
+
+    .parallax {
+      width: 100%;
+      padding: sizeHeight(10) sizeWidth(15);
+      border-radius: sizeHeight(22) sizeHeight(22) 0 0;
+      z-index: 999;
+      background: #FFFFFF;
+    }
   }
 
   .stages {
@@ -120,7 +126,6 @@ ion-content {
   }
 
   .shadow {
-    opacity: 1;
     box-shadow: 0 0 sizeHeight(4) 0 rgba(203, 203, 203, 0.25);
   }
 
@@ -141,8 +146,11 @@ ion-content {
 
     position: relative;
 
+    filter: grayscale(100%); 
+
     &-active {
       opacity: 1;
+      filter: grayscale(0); 
     }
 
     &:last-child {
@@ -201,14 +209,8 @@ ion-content {
       border-radius: 50%;
     }
 
-    .arrow {
-      transform: rotate(-90deg);
-      transition: .3s;
-    }
-
-    .active {
-      transform: none;
-      transition: .3s;
+    cashed-img {
+      border-radius: 50%;
     }
   }
 
@@ -230,7 +232,7 @@ ion-content {
       border-radius: 50%;
       background-color: rgba(196, 211, 233, 0.1);
 
-      padding: sizeHeight(15);
+      padding: sizeHeight(12);
       margin-right: sizeWidth(15);
 
       &-done {
@@ -247,11 +249,6 @@ ion-content {
     &-disabled {
       opacity: .5;
       pointer-events: none;
-    }
-
-    &-active {
-      //background-color: #1C76FE;
-      //color: #ffffff;
     }
 
     .done {

@@ -28,7 +28,7 @@
             {{item?.description}}
           </div>
           <div class="item__icon">
-            <img [src]="restUrl+'/'+item?.imagePath">
+            <cashed-img [src]="restUrl+'/'+item?.imagePath"></cashed-img>
           </div>
           <div class="item__stage">
             <div class="total"><span class="total__done">{{item.doneCount || 0}}</span> из
@@ -44,7 +44,7 @@
   <!--      </ion-refresher>-->
 
   <div class="scroll">
-    <div [@inOutAnimation] style="width: 100%; background: white; z-index: 999;" *ngIf="(activeStage$ | async)">
+    <div [@inOutAnimation]  class="parallax" *ngIf="(activeStage$ | async)">
       <ng-container *ngFor="let element of (activeStage$ | async).adaptationSubStages">
         <div class="stage" [ngClass]="{'stage-active': element.isDone, 'stage-disabled': element.disabled}"
           (click)="toProgressCard(element)">
