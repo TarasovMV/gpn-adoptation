@@ -22,6 +22,7 @@ export interface IAdaptationStage {
     isActive?: boolean;
     doneCount?: number;
     iconPath?: string;
+    imagePath?: string;
 }
 
 export interface IAdaptationSubStage {

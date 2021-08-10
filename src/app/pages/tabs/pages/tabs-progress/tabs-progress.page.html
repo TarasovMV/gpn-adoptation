@@ -1,52 +1,63 @@
-<ion-header>
+<div class="content">
   <div class="header">
-    <div class="progress" [ngStyle]="{'width.%': percentProgress * 100}"></div>
-
-    <div class="header__title">
-      <span>Моя адаптация</span>
+    <div class="title">
+      <div class="title__name">Моя адаптация</div>
+      <div class="title__info" (click)="openPrompt()">
+        <svg-icon src="assets/icon/progress/adaptation-info.svg"></svg-icon>
+      </div>
     </div>
-    <div class="header__percent">
-      <span>{{(percentProgress * 100).toFixed(0)}}%</span>
-      <div class="header__step">{{doneStages}} из {{allStagesLength}}</div>
+    <div class="bar">
+      <div class="progress" [ngStyle]="{'width.%': percentProgress * 100}"></div>
+      <div class="bar__lock">
+        <svg-icon src="assets/icon/progress/lock.svg"></svg-icon>
+      </div>
+      <div class="bar__percent">
+        <span>{{(percentProgress * 100).toFixed(0)}}%</span>
+        <span class="task">Заданий выполнено</span>
+      </div>
     </div>
-  </div>
-</ion-header>
-
-<ion-content>
-  <div class="content">
-<!--    <ion-content class="content">-->
-<!--      <ion-refresher #refresher slot="fixed" style="z-index: 999" (ionRefresh)="doRefresh($event)">-->
-<!--        <ion-refresher-content></ion-refresher-content>-->
-<!--      </ion-refresher>-->
+    <div class="stages">
       <ng-container *ngFor="let item of data?.adaptationStages">
-        <div [id]="'stage_' + item.id" class="item ion-activatable ripple-parent" [ngClass]="{'shadow': item.isActive}" (click)="switchStage(item)">
+        <div [id]="'stage_' + item.id" class="item ion-activatable ripple-parent"
+          [ngClass]="{'item-active': (activeStage$ | async)?.id === item.id}" (click)="switchStage(item)">
           <ion-ripple-effect></ion-ripple-effect>
           <div class="item__title">
             <div class="item__header">{{item.name.toUpperCase()}}</div>
-            <div class="item__stage">
-              <div class="total"><span class="total__done">{{item.doneCount || 0}}</span> из
-                {{item.adaptationSubStages?.length}}</div>
-              <svg-icon class="arrow" src="assets/icon/arrow.svg" [ngClass]="{'active': item.isActive}"></svg-icon>
-            </div>
           </div>
           <div class="item__description">
             {{item?.description}}
           </div>
-        </div>
-        <div [@inOutAnimation] style="width: 100%" *ngIf="item.isActive">
-          <ng-container *ngFor="let element of item.adaptationSubStages">
-            <div class="stage" [ngClass]="{'stage-active': element.isDone, 'stage-disabled': element.disabled}" (click)="toProgressCard(element)">
-              <div class="stage__icon" [ngClass]="{'stage__icon-done': element.isDone}">
-                <svg-icon src="assets/icon/progress/{{element.subStageType}}.svg"></svg-icon>
-              </div>
-              <div class="stage__text">
-                <span>{{element.name}}</span>
-                <span *ngIf="element.isDone" class="done">Выполнено</span>
-              </div>
-            </div>
-          </ng-container>
+          <div class="item__icon">
+            <img [src]="restUrl+'/'+item?.imagePath">
+          </div>
+          <div class="item__stage">
+            <div class="total"><span class="total__done">{{item.doneCount || 0}}</span> из
+              {{item.adaptationSubStages?.length}}</div>
+          </div>
         </div>
       </ng-container>
-<!--    </ion-content>-->
+    </div>
   </div>
-</ion-content>
+  <!--    <ion-content class="content">-->
+  <!--      <ion-refresher #refresher slot="fixed" style="z-index: 999" (ionRefresh)="doRefresh($event)">-->
+  <!--        <ion-refresher-content></ion-refresher-content>-->
+  <!--      </ion-refresher>-->
+
+  <div class="scroll">
+    <div [@inOutAnimation] style="width: 100%" *ngIf="(activeStage$ | async)">
+      <ng-container *ngFor="let element of (activeStage$ | async).adaptationSubStages">
+        <div class="stage" [ngClass]="{'stage-active': element.isDone, 'stage-disabled': element.disabled}"
+          (click)="toProgressCard(element)">
+          <div class="stage__icon" [ngClass]="{'stage__icon-done': element.isDone}">
+            <svg-icon *ngIf="element.isDone else def" src="assets/icon/progress/check.svg"></svg-icon>
+            <ng-template #def>
+              <svg-icon src="assets/icon/progress/{{element.subStageType}}.svg"></svg-icon>
+            </ng-template>
+          </div>
+          <div class="stage__text">{{element.name}}</div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <!--    </ion-content>-->
+</div>

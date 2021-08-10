@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TabsService } from 'src/app/core/services/tabs/tabs.service';
 import { IAdaptationStage, IAdaptationSubStage, IPageTab, IProgress, PageTabType } from '../../tabs.model';
 import { TabsProgressService } from "./services/tabs-progress.service";
@@ -9,6 +9,9 @@ import { trigger, style, animate, transition } from '@angular/animations';
 import { BackButtonService } from "../../../../core/services/platform/back-button.service";
 import { InfoPopupComponent } from 'src/app/shared/components/info-popup/info-popup.component';
 import { Storage } from '@capacitor/storage';
+import { AppConfigService } from 'src/app/core/services/platform/app-config.service';
+import { BehaviorSubject } from 'rxjs';
+import { InfoPopupStagesComponent } from 'src/app/shared/components/info-popup-stages/info-popup-stages.component';
 
 
 @Component({
@@ -46,6 +49,8 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
     public doneStages = 0;
     public allStagesLength: number;
     public percentProgress = 0;
+    public readonly restUrl: string;
+    public activeStage$: BehaviorSubject<IAdaptationStage> = new BehaviorSubject<IAdaptationStage>(null);
 
     constructor(
         public tabsService: TabsService,
@@ -53,8 +58,11 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
         private tabsProgressService: TabsProgressService,
         private navCtr: NavController,
         private userService: UserService,
-        private modalController: ModalController
-    ) {}
+        private modalController: ModalController,
+        appConfigService: AppConfigService,
+    ) {
+        this.restUrl = appConfigService.getAttribute('restUrl');
+    }
 
     ngOnInit(): void {
         this.tabsProgressService?.adaptationDone$.subscribe(x => {
@@ -67,17 +75,24 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
         this.getData();
     }
 
-    ngOnDestroy(): void {}
+    ngOnDestroy(): void { }
 
     public async showPrompt(): Promise<void> {
-        const isShow: boolean = !!(await Storage.get({key: 'tabs-progress-show'})).value;
+        const isShow: boolean = !!(await Storage.get({ key: 'tabs-progress-show' })).value;
         if (isShow) {
             return;
         }
         const modal = await this.modalController.create({
             component: InfoPopupComponent,
         });
-        Storage.set({key: 'tabs-progress-show', value: 'true'}).then();
+        Storage.set({ key: 'tabs-progress-show', value: 'true' }).then();
+        return await modal.present();
+    }
+
+    public async openPrompt() {
+        const modal = await this.modalController.create({
+            component: InfoPopupStagesComponent,
+        });
         return await modal.present();
     }
 
@@ -101,6 +116,9 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
             this.doneHandler(doneArr, this.data);
             this.openInitStage(this.data.adaptationStages);
             this.tabsProgressService.adaptationDone$.next(doneArr);
+            this.activeStage$.next(this.data.adaptationStages[0]);
+
+            console.log(this.data);
         } catch (error) {
             console.error(error);
         } finally {
@@ -109,7 +127,7 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
     }
 
     public switchStage(item: IAdaptationStage): void {
-        item.isActive = !item.isActive;
+        this.activeStage$.next(item);        
     }
 
     public countProgress(): void {
@@ -150,7 +168,7 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
         activeStage.isActive = true;
         setTimeout(() => {
             const el = document.getElementById(`stage_${activeStage.id}`);
-            el?.scrollIntoView({block: 'start', behavior: 'smooth'});
+            el?.scrollIntoView({ block: 'start', behavior: 'smooth' });
         }, 100);
     }
 
