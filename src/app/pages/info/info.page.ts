@@ -58,7 +58,8 @@ export class InfoPage implements OnInit {
     }
 
     public openFile(path: string): void {
-        Browser.open({url: `${this.restUrl}/${path}`});
+        // Browser.open({url: `${this.restUrl}/${path}`});
+        window.open(`${this.restUrl}/${path}`);
     }
 
     public openMore(item: IAdaptationComponent): void {
