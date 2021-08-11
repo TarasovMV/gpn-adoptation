@@ -52,15 +52,12 @@
   transition: 1s;
 }
 
-ion-content {
-  --background: #f8fafb;
-}
-
-.content {
+.container {
   position: relative;
   background-color: #f8fafb;
   height: 100%;
   width: 100%;
+  padding-top: sizeHeight(50);
 
   display: flex;
   flex-direction: column;
@@ -70,40 +67,49 @@ ion-content {
   font-size: sizeHeight(17);
   font-weight: 600;
 
+  box-sizing: border-box;
   overflow: hidden;
 
-  .header {
+  .title {
     width: 100%;
+    height: sizeHeight(32);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: sizeHeight(26);
+    font-weight: 700;
+    font-family: 'SegoeUI_Bold';
     padding: 0 sizeWidth(24);
+
     margin-bottom: sizeHeight(20);
 
-    position: absolute;
-    top: sizeHeight(50);
-    left: 0;
+    &__info {
+      height: sizeHeight(29);
+      width: sizeHeight(29);
+    }
+  }
 
-    .title {
+  .content {
+    position: relative;
+    flex-grow: 1;
+    width: 100%;
+    overflow: hidden;
+
+    .header {
       width: 100%;
-      height: sizeHeight(32);
-
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: sizeHeight(26);
-      font-weight: 700;
-      font-family: 'SegoeUI_Bold';
-
+      padding: 0 sizeWidth(24);
       margin-bottom: sizeHeight(20);
 
-      &__info {
-        height: sizeHeight(29);
-        width: sizeHeight(29);
-      }
+      position: absolute;
+      left: 0;
     }
   }
 
   .scroll {
     width: 100%;
-    padding-top: 48vh;
+    height: 100%;
+    padding-top: 35vh;
     display: flex;
     flex-direction: column;
     overflow: scroll;
@@ -146,11 +152,11 @@ ion-content {
 
     position: relative;
 
-    filter: grayscale(100%); 
+    filter: grayscale(100%);
 
     &-active {
       opacity: 1;
-      filter: grayscale(0); 
+      filter: grayscale(0);
     }
 
     &:last-child {
@@ -224,6 +230,7 @@ ion-content {
     font-size: sizeHeight(14);
     font-weight: 400;
     margin-bottom: sizeHeight(8);
+    overflow: hidden;
     box-shadow: 0 0 sizeHeight(4) 0 rgba(203, 203, 203, 0.25);
 
     .timer {
