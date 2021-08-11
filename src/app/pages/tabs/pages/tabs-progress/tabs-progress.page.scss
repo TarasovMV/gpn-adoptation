@@ -15,7 +15,7 @@
   position: relative;
   font-family: 'SegoeUI_Bold';
   padding: sizeHeight(12);
-  margin-bottom: sizeHeight(15);
+  margin-bottom: sizeHeight(12);
 
   &__title {
     font-size: sizeHeight(30);
@@ -103,7 +103,7 @@ ion-content {
 
   .scroll {
     width: 100%;
-    padding-top: 48vh;
+    padding-top: 45vh;
     display: flex;
     flex-direction: column;
     overflow: scroll;
@@ -118,7 +118,6 @@ ion-content {
   }
 
   .stages {
-    height: sizeHeight(230);
     width: 100%;
     display: flex;
     align-items: center;
