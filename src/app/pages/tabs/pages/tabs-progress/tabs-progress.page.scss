@@ -8,7 +8,7 @@
   height: sizeHeight(65);
   width: 100%;
   border-radius: sizeHeight(11);
-  background-color: #0BA4A4;
+  background-color: #1C76FE;
   color: #ffffff;
   display: flex;
   align-items: center;
@@ -209,7 +209,7 @@ ion-content {
       border-radius: 50%;
     }
 
-    cashed-img {
+    img {
       border-radius: 50%;
     }
   }
@@ -225,6 +225,18 @@ ion-content {
     font-weight: 400;
     margin-bottom: sizeHeight(8);
 
+    .timer {
+      width: 100%;
+      display: flex;
+      font-size: sizeHeight(14);
+      color: #8C99B2;
+      font-family: 'SegoeUI_Bold';
+
+      &__logo {
+        margin-right: sizeWidth(7);
+      }
+    }
+
     &__icon {
       width: sizeHeight(54);
       min-width: sizeHeight(54);
@@ -232,7 +244,7 @@ ion-content {
       border-radius: 50%;
       background-color: rgba(196, 211, 233, 0.1);
 
-      padding: sizeHeight(12);
+      padding: sizeHeight(16);
       margin-right: sizeWidth(15);
 
       &-done {
@@ -244,6 +256,11 @@ ion-content {
       height: 100%;
       width: 100%;
       display: flex;
+      flex-direction: column;
+
+      &__name {
+        min-height: sizeHeight(60);
+      }
     }
 
     &-disabled {

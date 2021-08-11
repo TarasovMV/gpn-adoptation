@@ -28,7 +28,7 @@
             {{item?.description}}
           </div>
           <div class="item__icon">
-            <cashed-img [src]="restUrl+'/'+item?.imagePath"></cashed-img>
+            <img [src]="restUrl+'/'+item?.imagePath">
           </div>
           <div class="item__stage">
             <div class="total"><span class="total__done">{{item.doneCount || 0}}</span> из
@@ -44,17 +44,25 @@
   <!--      </ion-refresher>-->
 
   <div class="scroll">
-    <div [@inOutAnimation]  class="parallax" *ngIf="(activeStage$ | async)">
+    <div [@inOutAnimation] class="parallax" *ngIf="(activeStage$ | async)">
       <ng-container *ngFor="let element of (activeStage$ | async).adaptationSubStages">
         <div class="stage" [ngClass]="{'stage-active': element.isDone, 'stage-disabled': element.disabled}"
           (click)="toProgressCard(element)">
-          <div class="stage__icon" [ngClass]="{'stage__icon-done': element.isDone}">
-            <svg-icon *ngIf="element.isDone else def" src="assets/icon/progress/check.svg"></svg-icon>
-            <ng-template #def>
-              <svg-icon src="assets/icon/progress/{{element.subStageType}}.svg"></svg-icon>
-            </ng-template>
-          </div>
-          <div class="stage__text">{{element.name}}</div>
+            <div class="stage__icon" [ngClass]="{'stage__icon-done': element.isDone}">
+              <svg-icon *ngIf="element.isDone else def" src="assets/icon/progress/check.svg"></svg-icon>
+              <ng-template #def>
+                <svg-icon src="assets/icon/progress/{{element.subStageType}}.svg"></svg-icon>
+              </ng-template>
+            </div>
+            <div class="stage__text">
+              <div class="stage__text__name">{{element.name}}</div>
+              <div class="timer">
+                <div class="timer__logo">
+                  <svg-icon src="assets/icon/progress/timer.svg"></svg-icon>
+                </div>
+                <span>{{element?.timeString}}</span>
+              </div>
+            </div>
         </div>
       </ng-container>
     </div>

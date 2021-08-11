@@ -2,12 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TabsService } from 'src/app/core/services/tabs/tabs.service';
 import { IAdaptationStage, IAdaptationSubStage, IPageTab, IProgress, PageTabType } from '../../tabs.model';
 import { TabsProgressService } from "./services/tabs-progress.service";
-import { UserService } from "../../../../core/services/data/user.service";
-import { ModalController, NavController, Platform } from "@ionic/angular";
+import { ModalController, NavController, } from "@ionic/angular";
 import { ApiAdaptationService } from "../../../../core/services/api/api-adaptation.service";
 import { trigger, style, animate, transition } from '@angular/animations';
-import { BackButtonService } from "../../../../core/services/platform/back-button.service";
-import { InfoPopupComponent } from 'src/app/shared/components/info-popup/info-popup.component';
 import { Storage } from '@capacitor/storage';
 import { AppConfigService } from 'src/app/core/services/platform/app-config.service';
 import { BehaviorSubject } from 'rxjs';
@@ -57,7 +54,6 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
         private apiAdaptationService: ApiAdaptationService,
         private tabsProgressService: TabsProgressService,
         private navCtr: NavController,
-        private userService: UserService,
         private modalController: ModalController,
         appConfigService: AppConfigService,
     ) {
@@ -137,7 +133,7 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
             .filter(x => x.isDone)
             .length;
 
-        this.data?.adaptationStages.forEach(x => x.doneCount = x.adaptationSubStages.filter(s => s.isDone).length)
+        this.data?.adaptationStages.forEach(x => x.doneCount = x.adaptationSubStages.filter(s => s.isDone).length);
         this.doneStages = doneCount;
         this.percentProgress = doneCount / this.allStagesLength;
     }

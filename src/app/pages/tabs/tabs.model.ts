@@ -35,6 +35,7 @@ export interface IAdaptationSubStage {
     disabled?: boolean;
     subStageType?: number;
     isFavourite?: boolean;
+    timeString?: string;
 }
 
 export interface IAdaptationComponent {
