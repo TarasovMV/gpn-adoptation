@@ -28,7 +28,7 @@
             {{item?.description}}
           </div>
           <div class="item__icon">
-            <img [src]="restUrl+'/'+item?.imagePath">
+            <cashed-img [src]="restUrl+'/'+item?.imagePath"></cashed-img>
           </div>
           <div class="item__stage">
             <div class="total"><span class="total__done">{{item.doneCount || 0}}</span> из

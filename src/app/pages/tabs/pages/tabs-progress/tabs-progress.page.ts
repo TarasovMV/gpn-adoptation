@@ -112,7 +112,6 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
             this.doneHandler(doneArr, this.data);
             this.openInitStage(this.data.adaptationStages);
             this.tabsProgressService.adaptationDone$.next(doneArr);
-            this.activeStage$.next(this.data.adaptationStages[0]);
         } catch (error) {
             console.error(error);
         } finally {
@@ -158,6 +157,7 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
                 break;
             }
         }
+        this.activeStage$.next(activeStage);
         activeStage = !!activeStage ? activeStage : stages[0];
         activeStage.isActive = true;
         setTimeout(() => {
