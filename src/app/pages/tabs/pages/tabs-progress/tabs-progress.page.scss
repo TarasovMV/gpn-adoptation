@@ -6,7 +6,6 @@
 
 .bar {
   height: sizeHeight(65);
-  width: 100%;
   border-radius: sizeHeight(11);
   background-color: #1C76FE;
   color: #ffffff;
@@ -15,7 +14,7 @@
   position: relative;
   font-family: 'SegoeUI_Bold';
   padding: sizeHeight(12);
-  margin-bottom: sizeHeight(10);
+  margin: 0 sizeWidth(24) sizeHeight(10);
 
   &__title {
     font-size: sizeHeight(30);
@@ -80,9 +79,10 @@
     font-size: sizeHeight(26);
     font-weight: 700;
     font-family: 'SegoeUI_Bold';
-    padding: 0 sizeWidth(24);
+    box-shadow: 0 0 5vh 1vh white;
+    z-index: 9999;
 
-    margin-bottom: sizeHeight(20);
+    padding: 0 sizeWidth(24) sizeHeight(20);
 
     &__info {
       height: sizeHeight(29);
@@ -98,7 +98,6 @@
 
     .header {
       width: 100%;
-      padding: 0 sizeWidth(24);
       margin-bottom: sizeHeight(20);
 
       position: absolute;
@@ -151,16 +150,20 @@
     flex-direction: column;
 
     position: relative;
-
     filter: grayscale(100%);
+    overflow: hidden;
+
+    &:first-child {
+      margin-left: sizeWidth(24);
+    }
+
+    &:last-child {
+      margin-right: sizeWidth(24);
+    }
 
     &-active {
       opacity: 1;
       filter: grayscale(0);
-    }
-
-    &:last-child {
-      margin-right: 0;
     }
 
     &__title {

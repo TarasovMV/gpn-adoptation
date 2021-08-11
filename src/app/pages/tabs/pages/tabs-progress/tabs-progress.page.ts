@@ -163,8 +163,8 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
         activeStage.isActive = true;
         setTimeout(() => {
             const el = document.getElementById(`stage_${activeStage.id}`);
-            el?.scrollIntoView({ block: 'start', behavior: 'smooth' });
-        }, 100);
+            el?.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        }, 500);
     }
 
     private doneHandler(doneArr: number[], data: IProgress): void {
