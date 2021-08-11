@@ -83,6 +83,8 @@ ion-slides {
     align-items: center;
     flex-direction: column;
 
+    overflow: hidden;
+
     .title {
       width: 100%;
       font-size: sizeHeight(18);
@@ -123,7 +125,7 @@ ion-slides {
       padding: sizeHeight(32);
       font-size: sizeHeight(14);
       line-height: sizeHeight(24);
-      overflow: scroll;
+      overflow-y: scroll;
     }
 
     &__periods {

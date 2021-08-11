@@ -18,11 +18,12 @@
 
   .footer {
     width: 100%;
-    height: 8vh;
+    height: 8.5vh;
     display: flex;
     background: #ffffff;
     box-shadow: 0 0 20px 0 rgba(#000000, 0.1);
     z-index: 999;
+    padding: sizeHeight(10) 0;
 
     overflow: hidden;
 
@@ -31,7 +32,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
       color: #e0e0e0;
       font-size: sizeHeight(24);
       transition: 0.5s;
@@ -43,7 +43,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: -1.35vh;
+        margin-top: -0.9vh;
       }
 
       &_active {

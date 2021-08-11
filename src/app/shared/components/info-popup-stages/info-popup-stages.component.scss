@@ -53,8 +53,10 @@
 
   &__text {
     width: sizeWidth(232);
-    font-size: sizeHeght(14);
+    font-size: sizeHeght(16);
     margin-bottom: sizeHeight(25);
+    font-family: 'SegoeUI_Bold';
+
   }
 
   &__blocks {
@@ -67,11 +69,13 @@
 
     .block {
       width: 100%;
-      height: sizeHeight(40);
-      margin-bottom: sizeHeight(15);
+      height: sizeHeight(44);
+      margin-bottom: sizeHeight(12);
 
       display: flex;
       align-items: center;
+      font-family: 'SegoeUI_Bold';
+      font-size: sizeHeght(14);
 
       .icon {
         height: sizeWidth(36);
