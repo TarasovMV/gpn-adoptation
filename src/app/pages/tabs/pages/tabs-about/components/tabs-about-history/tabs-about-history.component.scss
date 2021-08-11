@@ -11,8 +11,7 @@
 
   display: flex;
   align-items: center;
-  // overflow-x: scroll;
-  padding: 0 sizeWidth(24);
+  overflow: scroll;
 
   .period {
     min-width: sizeWidth(89);
@@ -29,6 +28,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    &:first-child {
+      margin-left: sizeWidth(24);
+    }
+
+    &:last-child {
+      margin-right: sizeWidth(24);
+    }
 
     &__active {
       opacity: 1;

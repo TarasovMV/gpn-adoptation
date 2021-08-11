@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+ion-content {
+  overflow: hidden;
+}
+
 ion-slides {
   flex-grow: 1;
   width: 100%;
