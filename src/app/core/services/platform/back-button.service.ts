@@ -17,7 +17,7 @@ export class BackButtonService {
         'tabs-progress',
         'tabs-about',
         'tabs-tests',
-    ]
+    ];
 
     constructor(private navCtrl: NavController, private platform: Platform, private router: Router) {
         this.router.events

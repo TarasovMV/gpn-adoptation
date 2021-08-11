@@ -2,9 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {TabsService} from 'src/app/core/services/tabs/tabs.service';
 import {IAdaptationStage, IPageTab, IProgress, PageTabType, ReferenceBookSectionType} from '../../tabs.model';
 import {AppConfigService} from "../../../../core/services/platform/app-config.service";
-import {NavController, Platform} from "@ionic/angular";
-import {BackButtonService} from "../../../../core/services/platform/back-button.service";
-import {StatusBarService} from "../../../../core/services/platform/status-bar.service";
+import {NavController} from "@ionic/angular";
 
 @Component({
     selector: 'app-tabs-offline',
@@ -20,7 +18,6 @@ export class TabsOfflinePage implements OnInit, OnDestroy, IPageTab {
     constructor(
         public tabsService: TabsService,
         private navCtrl: NavController,
-        private statusbarService: StatusBarService,
         appConfig: AppConfigService,
     ) {
         this.restUrl = appConfig.getAttribute("restUrl");
@@ -30,15 +27,7 @@ export class TabsOfflinePage implements OnInit, OnDestroy, IPageTab {
         this.getBusiness().then();
     }
 
-    ngOnDestroy(): void {}
-
-    public ionViewDidEnter(): void {
-        this.statusbarService.setAlternativeColor();
-    }
-
-    public ionViewWillLeave(): void {
-        this.statusbarService.setDefaultColor();
-    }
+    ngOnDestroy(): void {}x
 
     public async getBusiness(): Promise<void> {
         try {
