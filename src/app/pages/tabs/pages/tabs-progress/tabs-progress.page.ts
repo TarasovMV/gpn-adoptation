@@ -105,6 +105,7 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
             );
             this.data?.adaptationStages.forEach(x => x.adaptationSubStages = x.adaptationSubStages.sort((a, b) => a.order - b.order));
             // const doneArr = this.tabsProgressService.adaptationDone$.getValue();
+            this.activeStage$.next(this.data.adaptationStages[0]);
             const doneArr = this.data?.adaptationStages
                 ?.flatMap(x => x.adaptationSubStages)
                 ?.filter(x => x.isDone)
@@ -154,10 +155,10 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
         for (const stage of [...stages].reverse()) {
             if (stage.adaptationSubStages.some(x => x.isDone)) {
                 activeStage = stage;
+                this.activeStage$.next(activeStage);
                 break;
             }
         }
-        this.activeStage$.next(activeStage);
         activeStage = !!activeStage ? activeStage : stages[0];
         activeStage.isActive = true;
         setTimeout(() => {

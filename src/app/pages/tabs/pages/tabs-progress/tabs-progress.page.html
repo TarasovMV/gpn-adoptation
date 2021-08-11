@@ -46,8 +46,9 @@
   <div class="scroll">
     <div [@inOutAnimation] class="parallax" *ngIf="(activeStage$ | async)">
       <ng-container *ngFor="let element of (activeStage$ | async).adaptationSubStages">
-        <div class="stage" [ngClass]="{'stage-active': element.isDone, 'stage-disabled': element.disabled}"
+        <div class="stage ion-activatable ripple-parent" [ngClass]="{'stage-active': element.isDone, 'stage-disabled': element.disabled}"
           (click)="toProgressCard(element)">
+          <ion-ripple-effect></ion-ripple-effect>
             <div class="stage__icon" [ngClass]="{'stage__icon-done': element.isDone}">
               <svg-icon *ngIf="element.isDone else def" src="assets/icon/progress/check.svg"></svg-icon>
               <ng-template #def>

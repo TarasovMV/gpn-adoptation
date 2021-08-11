@@ -15,7 +15,7 @@
   position: relative;
   font-family: 'SegoeUI_Bold';
   padding: sizeHeight(12);
-  margin-bottom: sizeHeight(12);
+  margin-bottom: sizeHeight(10);
 
   &__title {
     font-size: sizeHeight(30);
@@ -78,7 +78,7 @@ ion-content {
     margin-bottom: sizeHeight(20);
 
     position: absolute;
-    top: sizeHeight(24);
+    top: sizeHeight(50);
     left: 0;
 
     .title {
@@ -88,7 +88,7 @@ ion-content {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: sizeHeight(22);
+      font-size: sizeHeight(26);
       font-weight: 700;
       font-family: 'SegoeUI_Bold';
 
@@ -103,7 +103,7 @@ ion-content {
 
   .scroll {
     width: 100%;
-    padding-top: 45vh;
+    padding-top: 48vh;
     display: flex;
     flex-direction: column;
     overflow: scroll;
@@ -134,10 +134,11 @@ ion-content {
     height: sizeHeight(200);
     background-color: #FFFFFF;
     padding: sizeHeight(14) sizeWidth(14);
-    margin-right: sizeWidth(10);
+    margin-right: sizeHeight(10);
     border-radius: sizeHeight(11);
     color: #404763;
     opacity: 0.6;
+    box-shadow: 0 0 sizeHeight(4) 0 rgba(203, 203, 203, 0.25);
 
     display: flex;
     justify-content: space-between;
@@ -223,6 +224,7 @@ ion-content {
     font-size: sizeHeight(14);
     font-weight: 400;
     margin-bottom: sizeHeight(8);
+    box-shadow: 0 0 sizeHeight(4) 0 rgba(203, 203, 203, 0.25);
 
     .timer {
       width: 100%;
@@ -256,9 +258,10 @@ ion-content {
       width: 100%;
       display: flex;
       flex-direction: column;
+      font-size: sizeHeight(16);
 
       &__name {
-        min-height: sizeHeight(60);
+        margin-bottom: sizeHeight(10);
       }
     }
 
