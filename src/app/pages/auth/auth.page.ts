@@ -9,7 +9,7 @@ import {StatusBarService} from "../../core/services/platform/status-bar.service"
     templateUrl: './auth.page.html',
     styleUrls: ['./auth.page.scss'],
 })
-export class AuthPage implements OnInit, OnDestroy {
+export class AuthPage implements OnInit {
     @ViewChild('input') codeInput: ElementRef;
 
     public readonly codeControl: FormControl =
@@ -18,21 +18,17 @@ export class AuthPage implements OnInit, OnDestroy {
 
     constructor(
         private userService: UserService,
-        private statusbarService: StatusBarService,
+        private statusBarService: StatusBarService,
     ) {}
 
     public ngOnInit(): void {
-        this.statusbarService.setAlternativeColor();
+        this.statusBarService.setAlternativeColor();
         this.codeControl.valueChanges.subscribe(x => {
             if (!this.codeControl.valid) {
                 return;
             }
             this.auth(x).then();
         });
-    }
-
-    public ngOnDestroy(): void {
-        this.statusbarService.setDefaultColor();
     }
 
     private async auth(code: string): Promise<void> {

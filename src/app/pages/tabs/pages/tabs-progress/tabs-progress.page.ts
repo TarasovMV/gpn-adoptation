@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import { TabsService } from 'src/app/core/services/tabs/tabs.service';
 import { IAdaptationStage, IAdaptationSubStage, IPageTab, IProgress, PageTabType } from '../../tabs.model';
 import { TabsProgressService } from "./services/tabs-progress.service";
@@ -9,6 +9,7 @@ import { Storage } from '@capacitor/storage';
 import { AppConfigService } from 'src/app/core/services/platform/app-config.service';
 import { BehaviorSubject } from 'rxjs';
 import { InfoPopupStagesComponent } from 'src/app/shared/components/info-popup-stages/info-popup-stages.component';
+import {StatusBarService} from "../../../../core/services/platform/status-bar.service";
 
 
 @Component({
@@ -39,7 +40,7 @@ import { InfoPopupStagesComponent } from 'src/app/shared/components/info-popup-s
         )
     ]
 })
-export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
+export class TabsProgressPage implements OnInit, AfterViewInit, OnDestroy, IPageTab {
     public route: PageTabType = 'progress';
 
     public data: IProgress = null;
@@ -55,6 +56,7 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
         private tabsProgressService: TabsProgressService,
         private navCtr: NavController,
         private modalController: ModalController,
+        private statusBarService: StatusBarService,
         appConfigService: AppConfigService,
     ) {
         this.restUrl = appConfigService.getAttribute('restUrl');
@@ -69,6 +71,10 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
             this.showPrompt();
         }, 2500);
         this.getData();
+    }
+
+    ngAfterViewInit(): void {
+        this.statusBarService.setAlternativeColor().then();
     }
 
     ngOnDestroy(): void { }
