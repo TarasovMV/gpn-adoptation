@@ -18,8 +18,7 @@ export class StatusBarService {
 
     public async init(): Promise<void> {
         StatusBar.setOverlaysWebView({ overlay: true }).then();
-        const currentUrl = this.router.routerState.snapshot.url;
-        this.stateChecker(currentUrl);
+        await this.setAlternativeColor();
         this.router.events
             .pipe(filter(event => event instanceof NavigationEnd))
             .subscribe((x: NavigationEnd) => this.stateChecker(x.url));

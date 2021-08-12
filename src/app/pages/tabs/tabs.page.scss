@@ -18,7 +18,7 @@
 
   .footer {
     width: 100%;
-    height: calc(8vh + var(--ion-safe-area-bottom));
+    height: calc(7.4vh + var(--ion-safe-area-bottom));
     display: flex;
     background: #ffffff;
     box-shadow: 0 0 20px 0 rgba(#000000, 0.1);
@@ -35,6 +35,10 @@
       color: #e0e0e0;
       font-size: sizeHeight(24);
       transition: 0.5s;
+
+      svg-icon {
+        margin: auto;
+      }
 
       .tabs-name {
         width: 100%;
