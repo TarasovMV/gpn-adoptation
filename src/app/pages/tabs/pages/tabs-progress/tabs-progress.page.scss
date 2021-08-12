@@ -79,7 +79,7 @@
     font-size: sizeHeight(26);
     font-weight: 700;
     font-family: 'SegoeUI_Bold';
-    box-shadow: 0 0 5vh 1vh white;
+    //box-shadow: 0 0 5vh 1vh white;
     z-index: 9999;
 
     padding: 0 sizeWidth(24) sizeHeight(20);
@@ -234,7 +234,7 @@
     font-weight: 400;
     margin-bottom: sizeHeight(8);
     overflow: hidden;
-    box-shadow: 0 0 sizeHeight(4) 0 rgba(203, 203, 203, 0.25);
+    //box-shadow: 0 0 sizeHeight(4) 0 rgba(203, 203, 203, 0.25);
 
     .timer {
       width: 100%;
