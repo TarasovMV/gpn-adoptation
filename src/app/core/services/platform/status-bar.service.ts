@@ -7,7 +7,7 @@ import {NavigationEnd, Router} from "@angular/router";
     providedIn: 'root'
 })
 export class StatusBarService {
-
+    private routeCounter: number = 0;
     private readonly alternativePages: string[] = [
         'tabs-offline',
         'tabs-progress',
@@ -18,7 +18,7 @@ export class StatusBarService {
 
     public async init(): Promise<void> {
         StatusBar.setOverlaysWebView({ overlay: true }).then();
-        // await this.setDefaultColor();
+        await this.setAlternativeColor();
         this.router.events
             .pipe(filter(event => event instanceof NavigationEnd))
             .subscribe((x: NavigationEnd) => this.stateChecker(x.url));
@@ -33,6 +33,10 @@ export class StatusBarService {
     }
 
     private stateChecker(path: string): void {
+        if (!this.routeCounter) {
+            this.routeCounter++;
+            return;
+        }
         if (this.isAlternativePage(path)) {
             this.setAlternativeColor().then();
         } else {

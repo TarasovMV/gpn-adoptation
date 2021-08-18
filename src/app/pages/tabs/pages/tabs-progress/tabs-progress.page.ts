@@ -40,7 +40,7 @@ import {StatusBarService} from "../../../../core/services/platform/status-bar.se
         )
     ]
 })
-export class TabsProgressPage implements OnInit, AfterViewInit, OnDestroy, IPageTab {
+export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
     public route: PageTabType = 'progress';
 
     public data: IProgress = null;
@@ -71,10 +71,6 @@ export class TabsProgressPage implements OnInit, AfterViewInit, OnDestroy, IPage
             this.showPrompt();
         }, 2500);
         this.getData();
-    }
-
-    ngAfterViewInit(): void {
-        this.statusBarService.setAlternativeColor().then();
     }
 
     ngOnDestroy(): void { }
