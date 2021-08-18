@@ -76,3 +76,12 @@ ion-ripple-effect {
 .ios {
   letter-spacing: -0.1ex;
 }
+
+.custom-toast {
+  height: 92.5vh;
+  width: 80vw;
+  margin-left: 10vw;
+  --background: white;
+  --color: #404763;
+  --box-shadow: 0 0 2vw 0 rgb(0 0 0 / 10%);
+}
