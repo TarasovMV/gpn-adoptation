@@ -53,10 +53,11 @@
 
   &__text {
     width: sizeWidth(232);
-    font-size: sizeHeght(16);
+    font-size: sizeHeght(14);
     margin-bottom: sizeHeight(25);
     font-family: 'SegoeUI_Bold';
-
+    color: #404763;
+    font-weight: 700;
   }
 
   &__blocks {
@@ -74,8 +75,6 @@
 
       display: flex;
       align-items: center;
-      font-family: 'SegoeUI_Bold';
-      font-size: sizeHeght(14);
 
       .icon {
         height: sizeWidth(36);
@@ -88,7 +87,9 @@
 
       .description {
         height: 100%;
-        color: rgba(0, 32, 51, 0.6);
+        color: #404763;
+        font-size: sizeHeight(13);
+        font-weight: 600;
 
         display: flex;
         align-items: center;

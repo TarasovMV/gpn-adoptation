@@ -34,7 +34,6 @@ export class TabsAboutHistoryComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log(this.data);
     }
 
     public selectPeriod(period: IHistory): void {
