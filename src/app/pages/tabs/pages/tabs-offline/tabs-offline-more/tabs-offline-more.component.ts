@@ -42,9 +42,9 @@ export class TabsOfflineMoreComponent implements OnInit, IPageTab {
         this.tabsService.businessStages$.subscribe(async value => {
             this.data = value;
             this.type = this.data.referenceBookSectionType ?? ReferenceBookSectionType.Default;
-            if (this.type === ReferenceBookSectionType.Dictionary) {
+            // if (this.type === ReferenceBookSectionType.Dictionary) {
                 this.dictionaries = await this.getDictionaries(this.data?.adaptationSubStages);
-            }
+            // }
         });
     }
 
@@ -101,7 +101,7 @@ export class TabsOfflineMoreComponent implements OnInit, IPageTab {
                 dictionaries.push({
                     letter,
                     stages: [x],
-                })
+                });
             }
         });
         return dictionaries;
