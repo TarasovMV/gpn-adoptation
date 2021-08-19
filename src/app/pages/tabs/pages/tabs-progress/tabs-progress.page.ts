@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { TabsService } from 'src/app/core/services/tabs/tabs.service';
 import { IAdaptationStage, IAdaptationSubStage, IPageTab, IProgress, PageTabType } from '../../tabs.model';
 import { TabsProgressService } from "./services/tabs-progress.service";
@@ -9,7 +9,7 @@ import { Storage } from '@capacitor/storage';
 import { AppConfigService } from 'src/app/core/services/platform/app-config.service';
 import { BehaviorSubject } from 'rxjs';
 import { InfoPopupStagesComponent } from 'src/app/shared/components/info-popup-stages/info-popup-stages.component';
-import {StatusBarService} from "../../../../core/services/platform/status-bar.service";
+import { StatusBarService } from "../../../../core/services/platform/status-bar.service";
 
 
 @Component({
@@ -165,7 +165,12 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
         activeStage.isActive = true;
         setTimeout(() => {
             const el = document.getElementById(`stage_${activeStage.id}`);
+            const xOffset = -24;
+            const x = el?.getBoundingClientRect().left + window.pageXOffset + xOffset;
+            window.scrollTo({left: x, behavior: 'smooth'});
+
             el?.scrollIntoView({ inline: 'start', behavior: 'smooth' });
+
         }, 500);
     }
 
