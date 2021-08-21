@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject} from "rxjs";
 import { Storage } from '@capacitor/storage';
 import {ApiAdaptationService} from "../../../../../core/services/api/api-adaptation.service";
+import {IAdaptationComponentResult} from "../../../tabs.model";
 
 @Injectable({
     providedIn: 'root'
@@ -33,5 +34,16 @@ export class TabsProgressService {
             key: 'done',
             value: JSON.stringify(doneArr),
         })
+    }
+
+    public async saveComponentResult(componentId: number, result: IAdaptationComponentResult): Promise<void> {
+        const storageKey: string = 'component-result';
+        const saveResults = JSON.parse((await Storage.get({key: storageKey}))?.value ?? null) ?? {};
+        saveResults[componentId] = result;
+        await Storage.set({
+            key: storageKey,
+            value: JSON.stringify(saveResults),
+        });
+        await this.apiAdaptationService.saveComponentResult(componentId, result);
     }
 }
