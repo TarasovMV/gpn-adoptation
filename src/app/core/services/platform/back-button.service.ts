@@ -102,7 +102,6 @@ export class BackButtonService {
     }
 
     private isRootPage(path: string): boolean {
-        console.log('BACK ROUTE:', path);
         const checkPath = path.split('/').slice(-1)[0];
         for(let page of this.rootPages) {
             if (checkPath === page) {

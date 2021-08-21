@@ -20,14 +20,14 @@ export class CashedImgComponent implements OnInit {
     constructor() {
     }
 
-    ngOnInit(): void {
-    }
+    ngOnInit(): void {}
 
     public async loadImage(imgUrl: string): Promise<void> {
         const imgName = (await Storage.get({ key: imgUrl })).value;
         await Filesystem.readFile({
             directory: Directory.Cache,
-            path: `${this.cacheFolder}/${imgName}`,
+            path: `${imgName}`,
+            // path: `${this.cacheFolder}/${imgName}`, TODO: create folder
         }).then(file => this._src = `data:image/png;base64,${file.data}`).catch(async e => {
             console.error(e);
             await this.storeImage(imgUrl);
@@ -48,7 +48,8 @@ export class CashedImgComponent implements OnInit {
             + '.' + type;
         await Filesystem.writeFile({
             directory: Directory.Cache,
-            path: `${this.cacheFolder}/${name}`,
+            // path: `${this.cacheFolder}/${name}`, TODO: create folder
+            path: `${name}`,
             data: base64,
         });
         await Storage.set({
