@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+ion-content {
+  overflow: hidden;
+}
+
 .header {
   height: sizeHeight(126);
   background-color: #1C76FE;
