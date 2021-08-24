@@ -6,13 +6,13 @@ import {TabsPage} from './tabs.page';
 const routes: Routes = [
     {
         path: '',
-        redirectTo: 'tabs-progress',
-        pathMatch: 'full',
-    },
-    {
-        path: '',
         component: TabsPage,
         children: [
+            {
+                path: '',
+                redirectTo: 'tabs-progress',
+                pathMatch: 'full',
+            },
             {
                 path: 'tabs-news',
                 loadChildren: () => import('./pages/tabs-news/tabs-news.module').then( m => m.TabsNewsPageModule)
@@ -43,11 +43,6 @@ const routes: Routes = [
             }
         ],
     },
-    // {
-    //     path: '**',
-    //     redirectTo: 'tabs-news',
-    //     pathMatch: 'full',
-    // },
 ];
 
 @NgModule({

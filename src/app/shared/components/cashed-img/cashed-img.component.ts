@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {blobToBase64} from "../../functions/blobToBase64";
-import {Directory, Filesystem} from '@capacitor/filesystem';
+import {Directory, Filesystem, ReadFileResult} from '@capacitor/filesystem';
 import {Storage} from '@capacitor/storage';
+import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
 
 @Component({
     selector: 'cashed-img',
@@ -15,23 +16,33 @@ export class CashedImgComponent implements OnInit {
         this.loadImage(url).then();
     }
 
-    public _src: string;
+    public _src: string | SafeResourceUrl;
 
-    constructor() {
+    constructor(private sanitizer: DomSanitizer) {
     }
 
     ngOnInit(): void {}
 
     public async loadImage(imgUrl: string): Promise<void> {
         const imgName = (await Storage.get({ key: imgUrl })).value;
+        const mimeType = this.getMimeTypeByName(imgName);
         await Filesystem.readFile({
             directory: Directory.Cache,
             path: `${imgName}`,
             // path: `${this.cacheFolder}/${imgName}`, TODO: create folder
-        }).then(file => this._src = `data:image/png;base64,${file.data}`).catch(async e => {
+        }).then(file => this.setImage(file, mimeType)).catch(async e => {
             console.error(e);
             await this.storeImage(imgUrl);
         })
+    }
+
+    private setImage(file: ReadFileResult, mimeType: string): void {
+        this._src = this.sanitizer.bypassSecurityTrustResourceUrl(`data:image/${mimeType};base64,${file.data}`)
+    }
+
+    private getMimeTypeByName = (name: string): string => {
+        let mimeType = name.split('.').pop();
+        return mimeType === 'svg' ? 'svg+xml' : mimeType;
     }
 
     public async storeImage(imgUrl: string): Promise<void> {

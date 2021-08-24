@@ -12,12 +12,17 @@ export class StatusBarService {
         'tabs-offline',
         'tabs-progress',
         'auth',
+        'tabs',
     ];
 
     constructor(private router: Router) {}
 
     public async init(): Promise<void> {
-        StatusBar.setOverlaysWebView({ overlay: true }).then();
+        try {
+            await StatusBar.setOverlaysWebView({ overlay: true });
+        } catch (e) {
+            console.warn('Status bar not supported');
+        }
         await this.setAlternativeColor();
         this.router.events
             .pipe(filter(event => event instanceof NavigationEnd))
@@ -25,11 +30,19 @@ export class StatusBarService {
     }
 
     public async setDefaultColor(): Promise<void> {
-        StatusBar.setStyle({ style: Style.Dark }).then();
+        try {
+            await StatusBar.setStyle({ style: Style.Dark });
+        } catch (e) {
+            console.warn('Status bar not supported', 'DEFAULT');
+        }
     }
 
     public async setAlternativeColor(): Promise<void> {
-        StatusBar.setStyle({ style: Style.Light }).then();
+        try {
+            await StatusBar.setStyle({ style: Style.Light });
+        } catch (e) {
+            console.warn('Status bar not supported', 'ALTER');
+        }
     }
 
     private stateChecker(path: string): void {
