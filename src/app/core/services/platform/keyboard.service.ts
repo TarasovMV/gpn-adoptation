@@ -24,6 +24,9 @@ export class KeyboardService {
     private actionListeners(platform: Platform, appWindow: ElementRef): void {
         platform.keyboardDidShow.subscribe((event) => this.keyboardHeight$.next(event.keyboardHeight));
         platform.keyboardDidHide.subscribe(() => this.keyboardHeight$.next(0));
-        this.keyboardHeight$.subscribe((height) => (appWindow as any).el.style = `height: calc(100vh - ${height}px)`);
+        this.keyboardHeight$.subscribe((height) => {
+            (appWindow as any).el.style = `height: calc(100vh - ${height}px)`;
+            setTimeout(() => document.activeElement.scrollIntoView({ behavior: 'smooth' }));
+        });
     }
 }
