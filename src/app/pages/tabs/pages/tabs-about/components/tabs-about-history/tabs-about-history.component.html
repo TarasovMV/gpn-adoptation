@@ -3,4 +3,5 @@
     <div class="period" [class.period__active]="period === (tabsService.historyPeriod$ | async)"
       (click)="selectPeriod(period)">{{period.periodBounds}}</div>
   </ng-container>
+  <div class="margin-helper"></div>
 </div>

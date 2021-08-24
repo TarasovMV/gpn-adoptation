@@ -33,13 +33,19 @@
       margin-left: sizeWidth(24);
     }
 
-    &:last-child {
-      margin-right: sizeWidth(24);
-    }
+    //&:last-child {
+    //  margin-right: sizeWidth(24);
+    //}
 
     &__active {
       opacity: 1;
       box-shadow: 0 0 sizeHeight(4) 0 rgba(203, 203, 203, 0.25);
     }
+  }
+
+  .margin-helper {
+    height: 1px;
+    width: sizeWidth(24 - 9);
+    min-width: sizeWidth(24 - 9);
   }
 }

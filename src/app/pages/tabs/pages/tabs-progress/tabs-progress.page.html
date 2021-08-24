@@ -17,7 +17,7 @@
           <span class="task">Заданий выполнено</span>
         </div>
       </div>
-      <div class="stages">
+      <div class="stages" id="stages">
         <ng-container *ngFor="let item of data?.adaptationStages">
           <div [id]="'stage_' + item.id" class="item ion-activatable ripple-parent"
                [ngClass]="{'item-active': (activeStage$ | async)?.id === item.id}" (click)="switchStage(item)">
