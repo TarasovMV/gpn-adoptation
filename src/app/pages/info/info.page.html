@@ -7,8 +7,8 @@
   </div>
 </ion-header>
 
-<ion-content>
-  <div class="content">
+<ion-content scrollY="false">
+  <div class="content" id="content">
     <ng-container *ngFor="let item of data">
       <ng-container [ngSwitch]="item.componentType">
         <div *ngSwitchCase="1" class="image mb">
