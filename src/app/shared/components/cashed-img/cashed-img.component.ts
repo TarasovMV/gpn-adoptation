@@ -24,6 +24,9 @@ export class CashedImgComponent implements OnInit {
     ngOnInit(): void {}
 
     public async loadImage(imgUrl: string): Promise<void> {
+        // TODO: fix caching
+        await this.storeImage(imgUrl);
+        return;
         const imgName = (await Storage.get({ key: imgUrl })).value;
         const mimeType = this.getMimeTypeByName(imgName);
         await Filesystem.readFile({
