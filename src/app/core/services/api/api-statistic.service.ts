@@ -15,7 +15,7 @@ export class ApiStatisticService {
         this.restUrl = appConfigService.getAttribute('restUrl');
     }
 
-    public async sendTimerStat(timestamp: Date, seconds: number): Promise<unknown> {
-        return await this.http.post('', {}).toPromise();
+    public async sendTimerStat(date: Date, seconds: number): Promise<unknown> {
+        return await this.http.post(`${this.restUrl}/api/stats/mobile-user-time-stat`, {date, seconds}).toPromise();
     }
 }
