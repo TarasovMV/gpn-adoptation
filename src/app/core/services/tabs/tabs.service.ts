@@ -34,8 +34,8 @@ export class TabsService {
     public async getNews(): Promise<IPost[]> {
         return await this.http.get<IPost[]>(`${this.restUrl}/api/news`).toPromise();
     }
-    public async getBusinessProcesses(): Promise<IProgress> {
-        return await this.http.get<IProgress>(`${this.restUrl}/api/ReferenceBook/2`).toPromise();
+    public async getBusinessProcesses(adaptationId: number): Promise<IProgress> {
+        return await this.http.get<IProgress>(`${this.restUrl}/api/ReferenceBook/${adaptationId}`).toPromise();
     }
     public async getMasterMindCategories(): Promise<IMasterMindCategory[]> {
         return await this.http.get<IMasterMindCategory[]>(`${this.restUrl}/api/MasterMindCategories`).toPromise();

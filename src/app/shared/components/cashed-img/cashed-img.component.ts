@@ -50,8 +50,10 @@ export class CashedImgComponent implements OnInit {
 
     public async storeImage(imgUrl: string): Promise<void> {
         this._src = imgUrl;
-        const url = `https://api-cors-proxy-devdactic.herokuapp.com/${imgUrl}`
-        const res = await fetch(url);
+        return;
+        // const url = `https://api-cors-proxy-devdactic.herokuapp.com/${imgUrl}`;
+        const url = imgUrl;
+        const res = await fetch(url, {cache: 'no-cache'});
         const blob = await res.blob();
         const base64 = await blobToBase64(blob) as string;
         const type = imgUrl.split('.').pop();
