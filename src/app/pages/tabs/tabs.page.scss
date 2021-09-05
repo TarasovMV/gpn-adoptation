@@ -23,6 +23,7 @@
     box-shadow: 0 0 20px 0 rgba(#000000, 0.1);
     z-index: 999;
     padding-top: 1.25vh;
+    padding-bottom: 1.25vh;
     padding-bottom: max(env(safe-area-inset-bottom), 1.25vh);
 
     overflow: hidden;
@@ -46,6 +47,10 @@
         justify-content: center;
         align-items: center;
         margin-top: -0.9vh;
+        -webkit-animation: tabs-name .5s ease;
+        animation: tabs-name .5s ease;
+        -webkit-animation-iteration-count: 1;
+        animation-iteration-count: 1;
       }
 
       &_active {
@@ -55,4 +60,57 @@
       }
     }
   }
+}
+
+.ripple {
+  position: absolute;
+  background: #F0F1F3;
+  -webkit-animation: ripple .6s ease;
+  animation: ripple .6s ease;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+@mixin ripple-animation() {
+  0% {
+    width: 0;
+    height: 0;
+  }
+  99% {
+    width: 12vh;
+    height: 11vh;
+    background: #F0F1F3;
+  }
+  100% {
+    width: 12vh;
+    height: 11vh;
+    background: transparent;
+  }
+}
+
+@-webkit-keyframes ripple {
+  @include ripple-animation();
+}
+
+@keyframes ripple {
+  @include ripple-animation();
+}
+
+@mixin tabs-name-animation() {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@-webkit-keyframes tabs-name {
+  @include tabs-name-animation();
+}
+
+@keyframes tabs-name {
+  @include tabs-name-animation();
 }

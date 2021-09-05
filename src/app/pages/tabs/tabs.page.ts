@@ -15,18 +15,23 @@ export class TabsPage implements OnInit {
     public readonly tabs: IPageTab[] = [
         {
             route: 'about',
+            ripple$: new BehaviorSubject(false),
         },
         {
             route: 'progress',
+            ripple$: new BehaviorSubject(false),
         },
         {
             route: 'offline',
+            ripple$: new BehaviorSubject(false),
         },
         {
             route: 'tests',
+            ripple$: new BehaviorSubject(false),
         },
         {
             route: 'notifications',
+            ripple$: new BehaviorSubject(false),
         },
     ];
 
@@ -58,6 +63,8 @@ export class TabsPage implements OnInit {
     public ngOnInit(): void {}
 
     public selectTab(tab: IPageTab): void {
+        tab.ripple$.next(false);
+        setTimeout(() => tab.ripple$.next(true));
         this.navCtrl.navigateRoot(this.tabsRouting[tab.route] ?? this.tabsRouting[this.currentTab$.value]).then();
     }
 

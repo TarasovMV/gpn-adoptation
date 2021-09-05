@@ -5,10 +5,10 @@
   </div>
 </ion-header>
 
-<ion-content>
+<ion-content scrollY="false">
   <div class="content">
     <app-tabs-about-leadership-card
-    [element] = "tabsService.person$ | async"
+      [element]="tabsService.person$ | async"
     ></app-tabs-about-leadership-card>
 
     <div class="experience" *ngFor="let exp of data">

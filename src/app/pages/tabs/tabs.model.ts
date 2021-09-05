@@ -1,5 +1,8 @@
+import {BehaviorSubject} from "rxjs";
+
 export interface IPageTab {
     readonly route: PageTabType;
+    readonly ripple$?: BehaviorSubject<boolean>;
 }
 
 export type PageTabType = 'news' | 'chat' | 'tests' | 'about' | 'progress' | 'offline' | 'notifications';
