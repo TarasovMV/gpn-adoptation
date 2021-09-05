@@ -12,6 +12,7 @@ export class StatisticService {
     constructor(private apiStatisticService: ApiStatisticService) {}
 
     public init(): void {
+        this.startCount();
         App.addListener('appStateChange', ({isActive}) => {
             if (isActive) {
                 this.startCount();
