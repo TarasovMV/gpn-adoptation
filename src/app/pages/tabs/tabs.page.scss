@@ -35,7 +35,6 @@
       align-items: center;
       color: #e0e0e0;
       font-size: sizeHeight(24);
-      transition: 0.5s;
       height: 5vh;
       justify-content: center;
 
@@ -47,16 +46,19 @@
         justify-content: center;
         align-items: center;
         margin-top: -0.9vh;
-        -webkit-animation: tabs-name .5s ease;
-        animation: tabs-name .5s ease;
+        -webkit-animation: tabs-name .3s ease;
+        animation: tabs-name .3s ease;
         -webkit-animation-iteration-count: 1;
         animation-iteration-count: 1;
       }
 
       &_active {
-        transform: scale(1.1);
+        svg-icon {
+          transform: scale(1.1);
+          transition: 0.3s;
+        }
         color: #1c76fe;
-        transition: 0.5s;
+        transition: 0.3s;
       }
     }
   }
@@ -80,12 +82,12 @@
   }
   99% {
     width: 12vh;
-    height: 11vh;
+    height: 12vh;
     background: #F0F1F3;
   }
   100% {
     width: 12vh;
-    height: 11vh;
+    height: 12vh;
     background: transparent;
   }
 }
