@@ -63,12 +63,16 @@ export class TabsPage implements OnInit {
     public ngOnInit(): void {}
 
     public selectTab(tab: IPageTab): void {
-        tab.ripple$.next(false);
-        setTimeout(() => tab.ripple$.next(true));
+        tab.ripple$.next(true);
+        setTimeout(() => tab.ripple$.next(false), 500);
         this.navCtrl.navigateRoot(this.tabsRouting[tab.route] ?? this.tabsRouting[this.currentTab$.value]).then();
     }
 
     public routing(tab: IPageTab): void {
         this.currentTab$.next(tab.route);
+    }
+
+    public tabTrack(index: number, el: IPageTab): string {
+        return el.route;
     }
 }

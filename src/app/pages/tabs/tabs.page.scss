@@ -67,8 +67,8 @@
 .ripple {
   position: absolute;
   background: #F0F1F3;
-  -webkit-animation: ripple .6s ease;
-  animation: ripple .6s ease;
+  -webkit-animation: ripple .4s ease;
+  animation: ripple .4s ease;
   -webkit-animation-iteration-count: 1;
   animation-iteration-count: 1;
   border-radius: 50%;
@@ -81,13 +81,13 @@
     height: 0;
   }
   99% {
-    width: 12vh;
-    height: 12vh;
+    width: 14vh;
+    height: 14vh;
     background: #F0F1F3;
   }
   100% {
-    width: 12vh;
-    height: 12vh;
+    width: 14vh;
+    height: 14vh;
     background: transparent;
   }
 }
