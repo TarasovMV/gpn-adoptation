@@ -43,6 +43,7 @@ export interface IAnswer {
     scoreString: string;
     isActive?: boolean;
     text?: string;
+    imagePath?: string;
 }
 
 @Component({

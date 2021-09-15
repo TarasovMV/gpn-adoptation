@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import { AppConfigService } from 'src/app/core/services/platform/app-config.service';
 import {TabsService} from 'src/app/core/services/tabs/tabs.service';
 import {IAnswer, IQuestion, ITests} from '../tabs-tests.page';
 
@@ -20,10 +21,13 @@ export class TestQuestionComponent implements OnInit {
     public test: ITests;
     public question: IQuestion;
     public questionCount = 0;
+    public readonly restUrl: string;
 
     constructor(
+        appConfigService: AppConfigService,
         public tabsService: TabsService,
     ) {
+        this.restUrl = appConfigService.getAttribute('restUrl');
     }
 
     ngOnInit() {
