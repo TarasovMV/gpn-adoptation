@@ -16,10 +16,15 @@
   overflow-y: scroll;
 
   &__header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
     padding-top: sizeHeight(50);
     width: 100%;
     min-height: sizeHeight(126);
-    background-color: #1C76FE;
+    background-color: #001F4A;
 
     display: flex;
     align-items: center;
@@ -27,14 +32,19 @@
 
     color: #ffffff;
     font-weight: 700;
-    font-style: sizeHeight(14);
+    font-size: sizeHeight(14);
+    font-family: 'SegoeUI_Bold';
+
+    .current-question {
+      font-size: sizeHeight(18);
+    }
   }
 
   &__body {
     flex-grow: 1;
     width: 100%;
     background-color: #f8fafb;
-    padding: sizeHeight(23) sizeWidth(32);
+    padding: sizeHeight(23) sizeWidth(32) sizeHeight(100);
     font-size: sizeHeight(18);
     color: #404763;
 
@@ -48,6 +58,8 @@
       width: 100%;
       font-weight: 600;
       margin-bottom: sizeHeight(17);
+      font-size: sizeHeght(18);
+      font-family: 'SegoeUI_Bold';
     }
 
     .answer {
@@ -161,7 +173,7 @@
       width: sizeWidth(178);
       height: sizeHeight(57);
       border-radius: sizeHeight(28);
-      background-color: #1C76FE;
+      background-color: #001F4A;
 
       display: flex;
       justify-content: center;
@@ -173,7 +185,7 @@
       width: sizeHeight(57);
       height: sizeHeight(57);
       border-radius: 50%;
-      background-color: #1C76FE;
+      background-color: #001F4A;
       margin: 0 sizeWidth(12);
       color: #FFFFFF;
 
