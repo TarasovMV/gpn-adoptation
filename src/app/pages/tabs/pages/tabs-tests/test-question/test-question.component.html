@@ -30,7 +30,7 @@
               <div class="image" [ngClass]="{'image-active': item.isActive}" >
                 <img src='{{restUrl}}/{{item.imagePath}}'>
               </div>
-              <div class="image-card__text">
+              <div class="image-card__text" [ngClass]="{'image-card__text-active': item.isActive}" >
                 {{item.title}}
               </div>
             </div>
