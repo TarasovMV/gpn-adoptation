@@ -3,6 +3,7 @@ import {TabsService} from 'src/app/core/services/tabs/tabs.service';
 import {IAdaptationStage, IPageTab, IProgress, PageTabType, ReferenceBookSectionType} from '../../tabs.model';
 import {AppConfigService} from "../../../../core/services/platform/app-config.service";
 import {NavController} from "@ionic/angular";
+import {ApiAdaptationService} from "../../../../core/services/api/api-adaptation.service";
 
 @Component({
     selector: 'app-tabs-offline',
@@ -18,6 +19,7 @@ export class TabsOfflinePage implements OnInit, OnDestroy, IPageTab {
     constructor(
         public tabsService: TabsService,
         private navCtrl: NavController,
+        private apiAdaptationService: ApiAdaptationService,
         appConfig: AppConfigService,
     ) {
         this.restUrl = appConfig.getAttribute("restUrl");
@@ -27,11 +29,12 @@ export class TabsOfflinePage implements OnInit, OnDestroy, IPageTab {
         this.getBusiness().then();
     }
 
-    ngOnDestroy(): void {}x
+    ngOnDestroy(): void {}
 
     public async getBusiness(): Promise<void> {
         try {
-            const data = await this.tabsService.getBusinessProcesses();
+            const adaptation = await this.apiAdaptationService.getAdaptation();
+            const data = await this.tabsService.getBusinessProcesses(adaptation?.id);
             data.adaptationStages = (data as any).referenceSections;
             data.adaptationStages.forEach(x => x.adaptationSubStages = (x as any).referenceSubSections);
             data.adaptationStages

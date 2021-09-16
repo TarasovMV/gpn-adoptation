@@ -7,6 +7,7 @@ import {StatusBarService} from "./core/services/platform/status-bar.service";
 import {BackButtonService} from "./core/services/platform/back-button.service";
 import {ThemeService} from "./core/services/platform/theme-service.service";
 import {DOCUMENT} from "@angular/common";
+import {StatisticService} from "./core/services/platform/statistic.service";
 
 @Component({
     selector: 'app-root',
@@ -25,6 +26,7 @@ export class AppComponent implements OnInit {
         private statusBarService: StatusBarService,
         private backButtonService: BackButtonService,
         private themeService: ThemeService,
+        private statisticService: StatisticService,
     ) {}
 
     public ngOnInit(): void {
@@ -34,6 +36,7 @@ export class AppComponent implements OnInit {
             this.statusBarService.init();
             this.backButtonService.init(this.platform);
             this.themeService.setPlatformClass(this.document, this.platform);
+            this.statisticService.init();
         });
     }
 }
