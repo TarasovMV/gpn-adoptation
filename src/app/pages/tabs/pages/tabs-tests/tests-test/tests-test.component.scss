@@ -21,14 +21,6 @@
     z-index: 999;
     transform: rotate(90deg);
   }
-
-  .title {
-    display: flex;
-    align-items: center;
-    font-weight: 700;
-    font-family: 'SegoeUI_Bold';
-    margin-left: sizeWidth(25);
-  }
 }
 
 .content {
@@ -43,6 +35,13 @@
   position: absolute;
 
   overflow-y: scroll;
+
+  .title {
+    display: flex;
+    font-weight: 700;
+    font-family: 'SegoeUI_Bold';
+    padding-top: sizeHeight(10);
+  }
   
 
   .big-question {
@@ -110,6 +109,7 @@
       margin-bottom: sizeHeight(24);
       font-size: sizeHeight(18);
       font-weight: 700;
+      font-family: 'SegoeUI_Bold';
 
       color: #ffffff;
 
