@@ -14,6 +14,9 @@
   flex-direction: column;
   justify-content: flex-end;
   padding: 0 sizeWidth(24);
+  overflow: hidden;
+
+  position: relative;
 
   .gradient {
     position: absolute;
@@ -48,6 +51,7 @@ ion-content {
 
   color: #404763;
   font-size: sizeHeight(17);
+  z-index: 99;
 
   overflow-y: scroll;
 
@@ -75,10 +79,11 @@ ion-content {
   .test {
     width: 100%;
     border-radius: sizeHeight(22);
-    background-color: #ffffff;
+    background: linear-gradient(272.34deg, #E59D47 -1.96%, #EB426A 39.57%);
     padding: sizeHeight(14) sizeWidth(20);
     margin-bottom: sizeHeight(8);
     box-shadow: 0 0 sizeHeight(4) 0 rgba(203, 203, 203, 0.25);
+    color: #F8FAFB;
 
     display: flex;
     align-items: center;
@@ -87,7 +92,6 @@ ion-content {
       min-width: sizeHeight(36);
       height: sizeHeight(36);
       width: sizeHeight(36);
-      background-color: #001F4A;
       border-radius: sizeHeight(12);
       margin-right: sizeHeight(15);
       padding: sizeHeight(7);
@@ -99,10 +103,8 @@ ion-content {
       display: flex;
       flex-direction: column;
       justify-content: center;
-
-      .title {
-        color: #404763
-      }
+      font-family: 'SegoeUI_Bold';
+      font-size: sizeHeight(16);
 
       .deadline {
         font-size: sizeHeight(14);
