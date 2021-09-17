@@ -18,13 +18,15 @@
   padding: sizeHeight(44) sizeWidth(30) 0;
 
   .arrow {
+    z-index: 999;
     transform: rotate(90deg);
   }
 
   .title {
     display: flex;
     align-items: center;
-    font-weight: bold;
+    font-weight: 700;
+    font-family: 'SegoeUI_Bold';
     margin-left: sizeWidth(25);
   }
 }
@@ -66,8 +68,8 @@
       width: 100%;
       height: sizeHeight(147);
       font-size: sizeHeight(22);
-      font-weight: 700;
-      font-style: Bold;
+      font-weight: 500;
+      font-family: 'SegoeUI_Bold';
       color: #ffffff;
       margin-bottom: sizeHeight(24);
     }
@@ -77,12 +79,14 @@
       display: flex;
       align-items: center;
       margin-bottom: sizeHeight(24);
+      font-size: sizeHeight(18);
+      font-weight: 700;
 
       color: #ffffff;
 
       .logo {
-        width: sizeHeight(45);
-        height: sizeHeight(45);
+        width: sizeHeight(50);
+        height: sizeHeight(50);
         border-radius: sizeHeight(14);
 
         margin-right: sizeWidth(24);
