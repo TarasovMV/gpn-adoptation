@@ -19,7 +19,6 @@
     position: absolute;
     right: sizeWidth(-65);
     top: sizeHeight(-50);
-    z-index: 1;
     width: sizeWidth(168);
     height: sizeHeight(270);
     background: linear-gradient(244.98deg, #FFFFFF 9.11%, rgba(255, 255, 255, 0) 53.64%);
@@ -28,10 +27,6 @@
   }
 
   &__header {
-    position: sticky;
-    top: 0;
-    left: 0;
-    z-index: 1;
 
     padding-top: sizeHeight(50);
     width: 100%;
