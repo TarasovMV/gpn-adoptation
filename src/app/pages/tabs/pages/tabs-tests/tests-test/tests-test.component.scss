@@ -43,6 +43,7 @@
   position: absolute;
 
   overflow-y: scroll;
+  
 
   .big-question {
     position: absolute;
@@ -59,10 +60,38 @@
     width: 100%;
     flex-grow: 1;
     background: linear-gradient(163.36deg, #EB426A 44.89%, #E8AA60 102.64%);
-    padding: sizeHeight(63) sizeWidth(37) 0;
+    padding: sizeHeight(63) sizeWidth(50) 0;
 
     display: flex;
     flex-direction: column;
+
+    overflow: hidden;
+
+    position: relative;
+
+    .gradient {
+      position: absolute;
+      left: sizeWidth(85);
+      top: sizeHeight(50);
+      z-index: 1;
+      width: sizeWidth(443);
+      height: sizeHeight(837);
+      background: linear-gradient(244.98deg, #FFFFFF 9.11%, rgba(255, 255, 255, 0) 53.64%);
+      opacity: 0.25;
+      transform: rotate(-145deg);
+    }
+
+    .gradient-top {
+      position: absolute;
+      left: sizeWidth(-90);
+      top: sizeHeight(-100);
+      z-index: 1;
+      width: sizeWidth(443);
+      height: sizeHeight(837);
+      background: linear-gradient(244.98deg, #FFFFFF 9.11%, rgba(255, 255, 255, 0) 53.64%);
+      opacity: 0.25;
+      transform: rotate(-145deg);
+    }
 
     .title {
       width: 100%;
@@ -85,13 +114,13 @@
       color: #ffffff;
 
       .logo {
-        width: sizeHeight(50);
-        height: sizeHeight(50);
+        width: sizeHeight(35);
+        height: sizeHeight(35);
         border-radius: sizeHeight(14);
 
-        margin-right: sizeWidth(24);
+        margin-right: sizeWidth(10);
         position: relative;
-        padding: 1vh;
+        padding: 0.1vh;
       }
     }
   }
@@ -105,6 +134,7 @@
     justify-content: flex-end;
 
     .button {
+      z-index: 999;
       width: sizeWidth(311);
       height: sizeHeight(56);
       background-color: #001F4A;

@@ -14,7 +14,7 @@
   font-size: sizeHeight(18);
 
   overflow-y: scroll;
-  position: relative;
+  overflow-x: hidden;
 
   .gradient {
     position: absolute;
@@ -99,7 +99,7 @@
     .input {
       width: 100%;
       min-height: sizeHeight(100);
-      border-radius: sizeHeight(11);
+      border-radius: sizeHeight(4);
       background-color: #ffffff;
       padding: sizeHeight(12) sizeWidth(16);
       font-weight: 400;
@@ -157,7 +157,6 @@
       width: 39.3vw;
       border-radius: sizeHeight(11);
       overflow: hidden;
-      box-shadow: 0 0 sizeHeight(4) 0 rgba(203, 203, 203, 0.25);
       opacity: .3;
 
       &-active {
