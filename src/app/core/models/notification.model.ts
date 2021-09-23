@@ -10,9 +10,11 @@ export interface INotification {
     iconPath?: string;
     createdAt: Date;
     notificationType: NotificationType;
+    subtitle?: string;
 }
 
 export enum NotificationType {
     StartPoll = 1,
     Daily = 2,
+    Answers
 }

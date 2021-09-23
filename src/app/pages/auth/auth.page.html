@@ -5,12 +5,17 @@
     </div>
   </div>
   <div class="content">
+    <div class="gradient"></div>
+    <div class="gradient-top"></div>
     <div class="enter" [class.swing]="isSwingAnimation$ | async">
       <div class="enter__title">
-        Введите пароль доступа
+        Введите код доступа
       </div>
       <div class="enter__code">
         <input #input [formControl]="codeControl" type="tel" maxlength="5">
+      </div>
+      <div class="enter__subtitle">
+        Если у Вас нет кода, обратитесь к Вашему <span>HR бизнес-партнёру</span>
       </div>
     </div>
     <svg-icon class="logo" src="assets/icon/gpn-logo.svg"></svg-icon>
