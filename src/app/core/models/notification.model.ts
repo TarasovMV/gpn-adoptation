@@ -16,5 +16,5 @@ export interface INotification {
 export enum NotificationType {
     StartPoll = 1,
     Daily = 2,
-    Answers
+    Answers = 3
 }
