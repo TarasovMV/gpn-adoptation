@@ -117,7 +117,16 @@ ion-content {
       display: flex;
       align-items: center;
       margin-bottom: sizeHeight(15);
-      font-weight: bold;
+      font-weight: 700;
+    }
+
+    &__subtitle {
+      width: 100%;
+      padding-left: sizeWidth(45);
+      font-size: sizeHeight(10);
+      color: #606580;
+      font-weight: 400;
+      margin-bottom: sizeHeight(13);
     }
 
     &__body {

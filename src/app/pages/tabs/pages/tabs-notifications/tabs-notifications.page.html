@@ -29,6 +29,9 @@
                 </div>
                 <div class="text">{{element.header}}</div>
               </div>
+              <div class="notifications__subtitle" *ngIf="element.notificationType === 3">
+                {{element?.subtitle}}
+              </div>
               <div class="notifications__body">{{element.body}}</div>
             </div>
           </ng-container>
