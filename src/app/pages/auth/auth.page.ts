@@ -12,6 +12,7 @@ import {NavigationStart, Router} from "@angular/router";
 })
 export class AuthPage implements OnInit, AfterViewInit {
     @ViewChild('input') codeInput: ElementRef;
+    public isInputFocused: boolean;
 
     public readonly codeControl: FormControl =
         new FormControl('', [Validators.required, Validators.minLength(5)]);
@@ -49,4 +50,16 @@ export class AuthPage implements OnInit, AfterViewInit {
         }
     }
 
+    // eslint-disable-next-line @typescript-eslint/member-ordering
+    onInputFocused(): void {
+        setTimeout(()=> {
+            this.isInputFocused = true;
+        }, 0);
+    }
+
+    onInputBlured(): void {
+        setTimeout(()=> {
+            this.isInputFocused = false;
+        }, 50);
+    }
 }

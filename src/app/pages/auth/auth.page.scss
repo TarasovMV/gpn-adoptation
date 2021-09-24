@@ -48,7 +48,7 @@
 
   .content {
     width: 100%;
-    flex-grow: 1;
+    height: 100vh;
     background-color: #001F4A;
     position: relative;
     display: flex;
@@ -188,4 +188,10 @@
 .enter-with-logo {
   margin-bottom: sizeHeight(40);
 }
+
+.logo-wrapper {
+  margin-left: - sizeWidth(6);
+  bottom: sizeHeight(20);
+}
+
 

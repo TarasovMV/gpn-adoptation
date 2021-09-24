@@ -14,14 +14,11 @@
           Введите код доступа
         </div>
         <div class="enter__code">
-          <input #input [formControl]="codeControl" type="tel" maxlength="5">
+          <input (focus)="onInputFocused()" (blur)="onInputBlured()" #input [formControl]="codeControl" type="tel" maxlength="5">
         </div>
         <div class="enter__subtitle">
           Если у Вас нет кода, обратитесь к Вашему <span>HR бизнес-партнёру</span>
         </div>
-      </div>
-      <div>
-        <svg-icon class="logo" src="assets/icon/gpn-logo.svg"></svg-icon>
       </div>
     </div>
     <div class="container" style="overflow: hidden; position: absolute; height: 100%">
@@ -29,8 +26,16 @@
         <svg-icon src="assets/icon/gradient2.svg"></svg-icon>
       </div>
     </div>
+
   </div>
 </div>
+
+<div style="position: absolute; bottom: 0; height: 100vh;">
+  <div class="logo-wrapper" style="position: absolute; display: flex; width: 100vw; justify-content: center; align-items: center;">
+    <svg-icon class="logo" src="assets/icon/gpn-logo.svg"></svg-icon>
+  </div>
+</div>
+
 
 
 
