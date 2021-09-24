@@ -12,6 +12,12 @@
   display: flex;
   flex-direction: column;
 
+  .gradient {
+    margin-left: - sizeWidth(80);
+    margin-top: - sizeHeight(400);
+  }
+
+
   .header {
     z-index: 999;
     height: sizeHeight(126);
@@ -37,7 +43,7 @@
 
   .logo {
     z-index: 999;
-    margin-bottom: sizeHeight(81);
+    margin-left: - sizeWidth(6);
   }
 
   .content {
@@ -47,33 +53,17 @@
     position: relative;
     display: flex;
     flex-flow: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     color: #ffffff;
     font-size: sizeHeight(18);
 
-    .gradient {
-      position: absolute;
-      left: sizeWidth(-25);
-      top: sizeHeight(-120);
-      z-index: 1;
-    }
-
-    .gradient-top {
-      position: absolute;
-      left: sizeWidth(-220);
-      top: sizeHeight(-280);
-      z-index: 1;
-    }
 
     .enter {
       z-index: 99;
-      height: sizeHeight(360);
       width: 100%;
-      padding-top: sizeHeight(160);
-
       position: relative;
-
+      padding-top: sizeHeight(170);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -90,8 +80,8 @@
 
       &__title {
         margin-bottom: sizeHeight(16);
-        font-weight: 400;
-        font-size: sizeHeight(16);
+        font-weight: 700;
+        font-size: sizeHeight(18);
       }
 
       &__subtitle {
@@ -99,7 +89,7 @@
         width: sizeWidth(250);
         color: #FFFFFF;
         font-weight: 300;
-        font-size: sizeHeight(12);
+        font-size: sizeHeight(14);
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -107,7 +97,8 @@
         text-align: center;
 
         span {
-          font-weight: 600;
+          font-family: 'SegoeUI_Bold';
+          font-weight: 700;
         }
       }
 
@@ -118,7 +109,8 @@
         border-radius: sizeHeight(8);
         font-size: sizeWidth(36);
         color: #1C76FE;
-        padding: sizeWidth(40);
+        padding: sizeWidth(40) 0;
+        padding-left: sizeWidth(10);
         letter-spacing: sizeWidth(22);
         background-color: #ffffff;
         outline: none;
@@ -192,3 +184,8 @@
     transform: translateX(0);
   }
 }
+
+.enter-with-logo {
+  margin-bottom: sizeHeight(40);
+}
+

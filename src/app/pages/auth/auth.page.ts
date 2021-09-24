@@ -1,15 +1,16 @@
-import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
 import {UserService} from "../../core/services/data/user.service";
 import {BehaviorSubject} from "rxjs";
 import {StatusBarService} from "../../core/services/platform/status-bar.service";
+import {NavigationStart, Router} from "@angular/router";
 
 @Component({
     selector: 'app-auth',
     templateUrl: './auth.page.html',
     styleUrls: ['./auth.page.scss'],
 })
-export class AuthPage implements OnInit {
+export class AuthPage implements OnInit, AfterViewInit {
     @ViewChild('input') codeInput: ElementRef;
 
     public readonly codeControl: FormControl =
@@ -18,17 +19,24 @@ export class AuthPage implements OnInit {
 
     constructor(
         private userService: UserService,
-        private statusBarService: StatusBarService,
-    ) {}
+        private statusBarService: StatusBarService
+    ) {
+    }
 
     public ngOnInit(): void {
-        this.statusBarService.setAlternativeColor();
         this.codeControl.valueChanges.subscribe(x => {
             if (!this.codeControl.valid) {
                 return;
             }
             this.auth(x).then();
         });
+    }
+
+    public ngAfterViewInit(): void {
+        this.statusBarService.setAlternativeColor();
+        setTimeout(()=> {
+            this.statusBarService.setDefaultColor();
+        }, 10);
     }
 
     private async auth(code: string): Promise<void> {

@@ -3,6 +3,7 @@ import {ApiUserService} from "../api/api-user.service";
 import {TokenService} from "./token.service";
 import {NavController} from "@ionic/angular";
 import {FcmService} from "../platform/fcm.service";
+import {StatusBarService} from "../platform/status-bar.service";
 
 @Injectable({
     providedIn: 'root'
@@ -14,6 +15,7 @@ export class UserService {
         private tokenService: TokenService,
         private navCtrl: NavController,
         private fcmService: FcmService,
+        private statusBarService: StatusBarService
     ) {}
 
     public async authorize(): Promise<boolean> {
@@ -30,6 +32,7 @@ export class UserService {
 
     public async logout(): Promise<void> {
         await this.tokenService.deleteToken();
+        this.statusBarService.setDefaultColor();
         await this.navCtrl.navigateRoot('auth');
     }
 }

@@ -11,7 +11,7 @@
 <ion-content>
   <div class="content">
     <ng-container [ngSwitch]="section$ | async">
-      <ng-container *ngSwitchCase="'Уведомления'">
+      <ng-container *ngSwitchCase="'События'">
         <ng-container *ngIf="!!(notifications$ | async)?.length; else empty">
           <ng-container *ngFor="let item of notifications$ | async">
             <div class="date">{{item.date | date: 'mediumDate'}}</div>

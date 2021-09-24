@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
 import { TabsService } from 'src/app/core/services/tabs/tabs.service';
 import {IPageTab, PageTabType} from './tabs.model';
+import {StatusBarService} from '../../core/services/platform/status-bar.service';
 
 @Component({
     selector: 'app-tabs',
     templateUrl: './tabs.page.html',
     styleUrls: ['./tabs.page.scss'],
 })
-export class TabsPage implements OnInit {
+export class TabsPage implements OnInit, AfterViewInit {
     public currentTab$: BehaviorSubject<PageTabType> = new BehaviorSubject<PageTabType>('news');
 
     public readonly tabs: IPageTab[] = [
@@ -57,10 +58,15 @@ export class TabsPage implements OnInit {
 
     constructor(
         private navCtrl: NavController,
-        public tabsService: TabsService
+        public tabsService: TabsService,
+        public statusBarService: StatusBarService
     ) { }
 
     public ngOnInit(): void {}
+
+    public ngAfterViewInit(): void {
+        this.statusBarService.setAlternativeColor();
+    }
 
     public selectTab(tab: IPageTab): void {
         tab.ripple$.next(true);
