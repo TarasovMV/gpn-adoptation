@@ -5,9 +5,14 @@
     </div>
   </div>
   <div class="content">
-    <div class="gradient"></div>
-    <div class="gradient-top"></div>
+
     <div class="enter" [class.swing]="isSwingAnimation$ | async">
+      <div class="gradient">
+        <svg-icon src="assets/icon/gradient.svg"></svg-icon>
+      </div>
+      <div class="gradient-top">
+        <svg-icon src="assets/icon/gradient.svg"></svg-icon>
+      </div>
       <div class="enter__title">
         Введите код доступа
       </div>

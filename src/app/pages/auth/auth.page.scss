@@ -54,32 +54,23 @@
 
     .gradient {
       position: absolute;
-      left: sizeWidth(85);
-      top: sizeHeight(50);
+      left: sizeWidth(-25);
+      top: sizeHeight(-120);
       z-index: 1;
-      width: sizeWidth(443);
-      height: sizeHeight(837);
-      background: linear-gradient(244.98deg, #FFFFFF 9.11%, rgba(255, 255, 255, 0) 53.64%);
-      opacity: 0.25;
-      transform: rotate(-145deg);
     }
 
     .gradient-top {
       position: absolute;
-      left: sizeWidth(-90);
-      top: sizeHeight(-100);
+      left: sizeWidth(-220);
+      top: sizeHeight(-280);
       z-index: 1;
-      width: sizeWidth(443);
-      height: sizeHeight(837);
-      background: linear-gradient(244.98deg, #FFFFFF 9.11%, rgba(255, 255, 255, 0) 53.64%);
-      opacity: 0.25;
-      transform: rotate(-145deg);
     }
 
     .enter {
       z-index: 99;
-      height: sizeHeight(200);
+      height: sizeHeight(360);
       width: 100%;
+      padding-top: sizeHeight(160);
 
       position: relative;
 
@@ -87,9 +78,9 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      margin-top: sizeHeight(160);
 
       &__code {
+        z-index: 999;
         height: sizeHeight(79);
         border-radius: sizeHeight(8);
         box-shadow: 0 0 sizeHeight(4) sizeHeight(2) rgba(203, 203, 203, 0.25);
@@ -99,14 +90,15 @@
 
       &__title {
         margin-bottom: sizeHeight(16);
-        font-weight: 600;
+        font-weight: 400;
+        font-size: sizeHeight(16);
       }
 
       &__subtitle {
         height: sizeHeight(96);
         width: sizeWidth(250);
         color: #FFFFFF;
-        font-weight: 400;
+        font-weight: 300;
         font-size: sizeHeight(12);
         display: flex;
         flex-direction: column;
@@ -115,7 +107,7 @@
         text-align: center;
 
         span {
-          font-weight: 700;
+          font-weight: 600;
         }
       }
 
