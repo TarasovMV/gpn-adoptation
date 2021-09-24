@@ -14,7 +14,7 @@
           Введите код доступа
         </div>
         <div class="enter__code">
-          <input (focus)="onInputFocused()" (blur)="onInputBlured()" #input [formControl]="codeControl" type="tel" maxlength="5">
+          <input #input [formControl]="codeControl" type="tel" maxlength="5">
         </div>
         <div class="enter__subtitle">
           Если у Вас нет кода, обратитесь к Вашему <span>HR бизнес-партнёру</span>
