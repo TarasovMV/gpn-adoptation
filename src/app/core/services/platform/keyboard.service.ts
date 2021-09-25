@@ -7,7 +7,7 @@ import {Keyboard, KeyboardStyle, KeyboardResize} from "@capacitor/keyboard";
     providedIn: 'root'
 })
 export class KeyboardService {
-    keyboardHeight$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+    private keyboardHeight$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
     constructor() {
     }

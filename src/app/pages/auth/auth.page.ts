@@ -10,18 +10,14 @@ import {NavigationStart, Router} from "@angular/router";
     templateUrl: './auth.page.html',
     styleUrls: ['./auth.page.scss'],
 })
-export class AuthPage implements OnInit, AfterViewInit {
+export class AuthPage implements OnInit {
     @ViewChild('input') codeInput: ElementRef;
 
     public readonly codeControl: FormControl =
         new FormControl('', [Validators.required, Validators.minLength(5)]);
     public readonly isSwingAnimation$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-    constructor(
-        private userService: UserService,
-        private statusBarService: StatusBarService
-    ) {
-    }
+    constructor(private userService: UserService) {}
 
     public ngOnInit(): void {
         this.codeControl.valueChanges.subscribe(x => {
@@ -32,13 +28,6 @@ export class AuthPage implements OnInit, AfterViewInit {
         });
     }
 
-    public ngAfterViewInit(): void {
-        this.statusBarService.setAlternativeColor();
-        setTimeout(()=> {
-            this.statusBarService.setDefaultColor();
-        }, 10);
-    }
-
     private async auth(code: string): Promise<void> {
         this.codeInput.nativeElement.blur();
         this.isSwingAnimation$.next(false);
@@ -46,6 +35,7 @@ export class AuthPage implements OnInit, AfterViewInit {
             await this.userService.login(code);
         } catch (e) {
             this.isSwingAnimation$.next(true);
+            this.codeControl.setValue('');
         }
     }
 

@@ -32,7 +32,6 @@ export class UserService {
 
     public async logout(): Promise<void> {
         await this.tokenService.deleteToken();
-        this.statusBarService.setDefaultColor();
         await this.navCtrl.navigateRoot('auth');
     }
 }

@@ -1,17 +1,15 @@
 import {Injectable} from '@angular/core';
 import {StatusBar, Style} from '@capacitor/status-bar';
-import {filter} from "rxjs/operators";
+import {debounceTime, filter, skip} from "rxjs/operators";
 import {NavigationEnd, Router} from "@angular/router";
 
 @Injectable({
     providedIn: 'root'
 })
 export class StatusBarService {
-    private routeCounter: number = 0;
     private readonly alternativePages: string[] = [
         'tabs-offline',
         'tabs-progress',
-        'auth',
         'tabs',
     ];
 
@@ -23,13 +21,12 @@ export class StatusBarService {
         } catch (e) {
             console.warn('Status bar not supported');
         }
-        await this.setAlternativeColor();
         this.router.events
-            .pipe(filter(event => event instanceof NavigationEnd))
+            .pipe(filter(event => event instanceof NavigationEnd), debounceTime(100))
             .subscribe((x: NavigationEnd) => this.stateChecker(x.url));
     }
 
-    public async setDefaultColor(): Promise<void> {
+    private async setDefaultColor(): Promise<void> {
         try {
             await StatusBar.setStyle({ style: Style.Dark });
         } catch (e) {
@@ -37,7 +34,7 @@ export class StatusBarService {
         }
     }
 
-    public async setAlternativeColor(): Promise<void> {
+    private async setAlternativeColor(): Promise<void> {
         try {
             await StatusBar.setStyle({ style: Style.Light });
         } catch (e) {
@@ -46,10 +43,7 @@ export class StatusBarService {
     }
 
     private stateChecker(path: string): void {
-        if (!this.routeCounter) {
-            this.routeCounter++;
-            return;
-        }
+        console.log('statecehcker', path);
         if (this.isAlternativePage(path)) {
             this.setAlternativeColor().then();
         } else {

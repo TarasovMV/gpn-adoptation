@@ -10,7 +10,7 @@ import {StatusBarService} from '../../core/services/platform/status-bar.service'
     templateUrl: './tabs.page.html',
     styleUrls: ['./tabs.page.scss'],
 })
-export class TabsPage implements OnInit, AfterViewInit {
+export class TabsPage implements OnInit {
     public currentTab$: BehaviorSubject<PageTabType> = new BehaviorSubject<PageTabType>('news');
 
     public readonly tabs: IPageTab[] = [
@@ -63,10 +63,6 @@ export class TabsPage implements OnInit, AfterViewInit {
     ) { }
 
     public ngOnInit(): void {}
-
-    public ngAfterViewInit(): void {
-        this.statusBarService.setAlternativeColor();
-    }
 
     public selectTab(tab: IPageTab): void {
         tab.ripple$.next(true);
