@@ -43,7 +43,6 @@ export class StatusBarService {
     }
 
     private stateChecker(path: string): void {
-        console.log('statecehcker', path);
         if (this.isAlternativePage(path)) {
             this.setAlternativeColor().then();
         } else {
