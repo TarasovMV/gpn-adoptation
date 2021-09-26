@@ -52,7 +52,6 @@
     font-size: sizeHeight(26);
     font-weight: 600;
     font-family: 'SegoeUI_Bold';
-
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -79,17 +78,17 @@
     align-items: center;
     color: #ffffff;
     font-size: sizeHeight(18);
-
+    overflow: hidden;
 
     .enter {
       z-index: 99;
       width: 100%;
       position: relative;
-      padding-top: sizeHeight(170);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      margin-top: - sizeHeight(100);
 
       &__code {
         z-index: 999;
