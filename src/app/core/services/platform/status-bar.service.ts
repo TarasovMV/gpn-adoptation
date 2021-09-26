@@ -52,11 +52,6 @@ export class StatusBarService {
 
     private isAlternativePage(path: string): boolean {
         const checkPath = path.split('/').slice(-1)[0];
-        for(let page of this.alternativePages) {
-            if (checkPath === page) {
-                return true;
-            }
-        }
-        return false;
+        return this.alternativePages.includes(checkPath);
     }
 }

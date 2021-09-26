@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
 })
 export class KeyboardService {
     private keyboardHeight$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
-    private routesWithCoveredKeyboard = ['/auth', '/test'];
+    private readonly routesWithCoveredKeyboard = ['/auth', '/test'];
 
     constructor(private router: Router) {
     }
@@ -27,9 +27,9 @@ export class KeyboardService {
         platform.keyboardDidShow.subscribe((event) => this.keyboardHeight$.next(event.keyboardHeight));
         platform.keyboardDidHide.subscribe(() => this.keyboardHeight$.next(0));
         this.keyboardHeight$.subscribe((height) => {
+            (appWindow as any).el.style = `height: calc(100vh - ${height}px)`;
             if (!this.routesWithCoveredKeyboard.includes(this.router.url)) {
-                (appWindow as any).el.style = `height: calc(100vh - ${height}px)`;
-                setTimeout(() => document.activeElement.scrollIntoView({ behavior: 'smooth' }));
+                setTimeout(() => document.activeElement.scrollIntoView({ behavior: 'smooth' }), 300);
             }
         });
     }
