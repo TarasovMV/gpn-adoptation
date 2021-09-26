@@ -48,6 +48,8 @@
   .header {
     z-index: 999;
     height: sizeHeight(126);
+    min-height: sizeHeight(126);
+    max-height: sizeHeight(126);
     background: linear-gradient(126.05deg, #EB426A 56.23%, #E8AA60 108.51%);
     font-size: sizeHeight(26);
     font-weight: 600;
