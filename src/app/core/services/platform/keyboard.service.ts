@@ -2,6 +2,7 @@ import {ElementRef, Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
 import {Platform} from '@ionic/angular';
 import {Keyboard, KeyboardStyle, KeyboardResize} from "@capacitor/keyboard";
+import {Router} from "@angular/router";
 
 @Injectable({
     providedIn: 'root'
@@ -9,7 +10,7 @@ import {Keyboard, KeyboardStyle, KeyboardResize} from "@capacitor/keyboard";
 export class KeyboardService {
     private keyboardHeight$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
-    constructor() {
+    constructor(private router: Router) {
     }
 
     public async setInitSettings(platform: Platform, appWindow: ElementRef): Promise<void> {
@@ -25,8 +26,10 @@ export class KeyboardService {
         platform.keyboardDidShow.subscribe((event) => this.keyboardHeight$.next(event.keyboardHeight));
         platform.keyboardDidHide.subscribe(() => this.keyboardHeight$.next(0));
         this.keyboardHeight$.subscribe((height) => {
-            //(appWindow as any).el.style = `height: calc(100vh - ${height}px)`;
-            //setTimeout(() => document.activeElement.scrollIntoView({ behavior: 'smooth' }));
+            if (this.router.url != '/auth') {
+                (appWindow as any).el.style = `height: calc(100vh - ${height}px)`;
+                setTimeout(() => document.activeElement.scrollIntoView({ behavior: 'smooth' }));
+            }
         });
     }
 }
