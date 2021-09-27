@@ -19,10 +19,13 @@
         </div>
       </ng-container>
       <ng-container *ngSwitchCase="3">
-        <div class="input">
-          <ion-textarea [ngModel]="question.answers[0]?.text" (ionChange)="inputTextAnswer($event, question)" auto-grow>
-          </ion-textarea>
-        </div>
+        <ion-textarea
+          class="input"
+          [ngModel]="question.answers[0]?.text"
+          (ionChange)="inputTextAnswer($event, question)"
+          auto-grow
+          rows="2"
+        ></ion-textarea>
       </ng-container>
       <ng-container *ngSwitchCase="4">
         <div class="images-test">
