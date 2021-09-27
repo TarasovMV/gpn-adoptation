@@ -8,13 +8,13 @@
     <ng-container [ngSwitch]="question.type">
       <ng-container *ngSwitchCase="1">
         <div class="answer" *ngFor="let item of (tabsService?.question$ | async)?.answers"
-          (click)="selectOneAnswer(item, question)" [ngClass]="{'answer-active': item.isActive}">
+             (click)="selectOneAnswer(item, question)" [ngClass]="{'answer-active': item.isActive}">
           {{item.title}}
         </div>
       </ng-container>
       <ng-container *ngSwitchCase="2">
         <div class="answer" *ngFor="let item of (tabsService?.question$ | async)?.answers" (click)="selectAnswer(item)"
-          [ngClass]="{'answer-active': item.isActive}">
+             [ngClass]="{'answer-active': item.isActive}">
           {{item.title}}
         </div>
       </ng-container>
@@ -39,17 +39,16 @@
         </div>
       </ng-container>
     </ng-container>
-
-  </div>
-  <div class="buttons">
-    <div class="buttons__arrow prev" (click)="previousQuestion()" *ngIf="questionCount !== 0">
-      <svg-icon src="assets/icon/arrow.svg"></svg-icon>
-    </div>
-    <div class="buttons__arrow next" (click)="nextQuestion()" *ngIf="questionCount !== test.questions.length - 1">
-      <svg-icon src="assets/icon/arrow.svg"></svg-icon>
-    </div>
-    <div class="buttons__end" (click)="endTest()" *ngIf="questionCount === test?.questions?.length - 1">
-      Завершить
+    <div class="buttons">
+      <div class="buttons__arrow prev" (click)="previousQuestion()" *ngIf="questionCount !== 0">
+        <svg-icon src="assets/icon/arrow.svg"></svg-icon>
+      </div>
+      <div class="buttons__arrow next" (click)="nextQuestion()" *ngIf="questionCount !== test.questions.length - 1">
+        <svg-icon src="assets/icon/arrow.svg"></svg-icon>
+      </div>
+      <div class="buttons__end" (click)="endTest()" *ngIf="questionCount === test?.questions?.length - 1">
+        Завершить
+      </div>
     </div>
   </div>
 </div>

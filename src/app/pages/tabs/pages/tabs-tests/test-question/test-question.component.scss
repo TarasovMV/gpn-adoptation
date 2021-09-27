@@ -13,7 +13,7 @@
 
   font-size: sizeHeight(18);
 
-  overflow-x: hidden;
+  overflow: hidden;
   position: relative;
 
   .gradient {
@@ -52,16 +52,13 @@
     flex-grow: 1;
     width: 100%;
     background-color: #f8fafb;
-    padding: sizeHeight(23) sizeWidth(32) sizeHeight(100);
+    padding: sizeHeight(23) sizeWidth(32) 0;
     font-size: sizeHeight(18);
     color: #404763;
-
     position: relative;
-
     display: flex;
     flex-direction: column;
     align-items: center;
-
     overflow-y: scroll;
 
     .title {
@@ -70,6 +67,10 @@
       margin-bottom: sizeHeight(17);
       font-size: sizeHeght(18);
       font-family: 'SegoeUI_Bold';
+    }
+
+    .answer, .input, .images-test {
+      margin-bottom: sizeHeight(17);
     }
 
     .answer {
@@ -171,8 +172,7 @@
   .buttons {
     width: 100%;
     height: sizeHeight(57);
-    position: absolute;
-    bottom: sizeHeight(41);
+    margin: auto 0 sizeHeight(41);
 
     display: flex;
     align-items: center;
