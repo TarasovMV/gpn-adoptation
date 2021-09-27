@@ -69,7 +69,7 @@
     }
 
     .answer, .input, .images-test {
-      margin-bottom: sizeHeight(17);
+      margin-bottom: 13vh;
     }
 
     .answer {
@@ -162,13 +162,14 @@
   }
 
   .buttons {
+    position: absolute;
+    top: 89vh;
     width: 100%;
     height: sizeHeight(57);
-    margin: auto 0 sizeHeight(41);
-
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 999;
 
     &__end {
       width: sizeWidth(178);
