@@ -112,6 +112,11 @@ ion-content {
 
     position: relative;
 
+    &__block {
+      width: 100%;
+      display: flex;
+    }
+
     &__header {
       width: 100%;
       display: flex;
@@ -122,29 +127,30 @@ ion-content {
 
     &__subtitle {
       width: 100%;
-      padding-left: sizeWidth(45);
       font-size: sizeHeight(10);
       color: #606580;
       font-weight: 400;
-      margin-top: - sizeHeight(4);
-      margin-bottom: sizeHeight(13);
+      margin-top: sizeHeight(5.5);
     }
 
     &__body {
       width: 100%;
-      padding-left: sizeWidth(45);
+      margin-top: sizeHeight(12);
       font-size: sizeHeight(14);
-      margin-top: - sizeHeight(3);
     }
   }
 
   .icon {
-    width: sizeWidth(35);
-    height: sizeWidth(35);
+    min-width: sizeWidth(35);
+    min-height: sizeWidth(35);
+    max-width: sizeWidth(35);
+    max-height: sizeWidth(35);
     border-radius: 50%;
     margin-right: sizeWidth(10);
     color: white;
-    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &__daily {
       background-color: #0BA4A4;
@@ -159,11 +165,11 @@ ion-content {
     }
 
     svg-icon {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      height: 45%;
-      transform: translate(-50%, -50%);
+      display: flex;
+      min-width: sizeWidth(18);
+      min-height: sizeWidth(18);
+      max-width: sizeWidth(18);
+      max-height: sizeWidth(18);
     }
 
   }
