@@ -131,14 +131,13 @@
         border-radius: sizeHeight(8);
         font-size: sizeWidth(36);
         color: #1C76FE;
-        padding: sizeWidth(40) 0 sizeWidth(40) sizeWidth(10);
+        padding: sizeWidth(40) 0 sizeWidth(40) sizeWidth(0);
         letter-spacing: sizeWidth(22);
         background-color: #ffffff;
         outline: none;
         border: none;
         margin-bottom: sizeHeight(42);
         text-align: center;
-        text-indent: sizeWidth(11);
         font-weight: bold;
       }
     }
