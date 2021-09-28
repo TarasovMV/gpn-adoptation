@@ -154,14 +154,18 @@ ion-content {
 
     &__daily {
       background-color: #0BA4A4;
+      padding-bottom: sizeHeight(1);
+      padding-left: sizeWidth(0.4);
     }
 
     &__test {
       background-color: #EB426A;
+      padding-left: sizeWidth(0.4);
     }
 
     &__plane {
       background-color: #1C76FE;
+      padding-right: sizeWidth(1.2);
     }
 
     svg-icon {
