@@ -5,7 +5,7 @@
         <svg-icon class="arrow" src="assets/icon/arrow.svg" [ngClass]="{'active': item.isActive}"></svg-icon>
       </div>
     </div>
-    <div [@inOutAnimation] style="overflow: hidden; height: 100%;" *ngIf="item.isActive">
+    <div [@inOutAnimation] style="overflow: hidden;" *ngIf="item.isActive">
       <ng-container *ngFor="let element of item.masterMinds">
         <app-tabs-about-leadership-card
         (click)="openPerson(element)"
