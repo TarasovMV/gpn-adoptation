@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
 import { TabsService } from 'src/app/core/services/tabs/tabs.service';
 import {IPageTab, PageTabType} from './tabs.model';
+import {StatusBarService} from '../../core/services/platform/status-bar.service';
 
 @Component({
     selector: 'app-tabs',
@@ -57,7 +58,8 @@ export class TabsPage implements OnInit {
 
     constructor(
         private navCtrl: NavController,
-        public tabsService: TabsService
+        public tabsService: TabsService,
+        public statusBarService: StatusBarService
     ) { }
 
     public ngOnInit(): void {}

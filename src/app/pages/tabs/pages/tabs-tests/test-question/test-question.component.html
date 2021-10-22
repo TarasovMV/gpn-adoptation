@@ -8,21 +8,24 @@
     <ng-container [ngSwitch]="question.type">
       <ng-container *ngSwitchCase="1">
         <div class="answer" *ngFor="let item of (tabsService?.question$ | async)?.answers"
-          (click)="selectOneAnswer(item, question)" [ngClass]="{'answer-active': item.isActive}">
+             (click)="selectOneAnswer(item, question)" [ngClass]="{'answer-active': item.isActive}">
           {{item.title}}
         </div>
       </ng-container>
       <ng-container *ngSwitchCase="2">
         <div class="answer" *ngFor="let item of (tabsService?.question$ | async)?.answers" (click)="selectAnswer(item)"
-          [ngClass]="{'answer-active': item.isActive}">
+             [ngClass]="{'answer-active': item.isActive}">
           {{item.title}}
         </div>
       </ng-container>
       <ng-container *ngSwitchCase="3">
-        <div class="input">
-          <ion-textarea [ngModel]="question.answers[0]?.text" (ionChange)="inputTextAnswer($event, question)" auto-grow>
-          </ion-textarea>
-        </div>
+        <ion-textarea
+          class="input"
+          [ngModel]="question.answers[0]?.text"
+          (ionChange)="inputTextAnswer($event, question)"
+          auto-grow
+          rows="2"
+        ></ion-textarea>
       </ng-container>
       <ng-container *ngSwitchCase="4">
         <div class="images-test">
@@ -39,7 +42,6 @@
         </div>
       </ng-container>
     </ng-container>
-
   </div>
   <div class="buttons">
     <div class="buttons__arrow prev" (click)="previousQuestion()" *ngIf="questionCount !== 0">

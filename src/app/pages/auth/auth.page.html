@@ -1,3 +1,7 @@
+<div class="container" style="position: fixed; top: 0; height: 30%; z-index: 9999999">
+
+
+</div>
 <div class="container">
   <div class="header">
     <div class="title">
@@ -5,14 +9,31 @@
     </div>
   </div>
   <div class="content">
-    <div class="enter" [class.swing]="isSwingAnimation$ | async">
-      <div class="enter__title">
-        Введите пароль доступа
-      </div>
-      <div class="enter__code">
-        <input #input [formControl]="codeControl" type="tel" maxlength="5">
+    <div class="enter-with-logo">
+      <div class="enter" [class.swing]="isSwingAnimation$ | async">
+        <div class="enter__title">
+          Введите код доступа
+        </div>
+        <div class="enter__code">
+          <input #input [formControl]="codeControl" type="tel" maxlength="5">
+        </div>
+        <div class="enter__subtitle">
+          Если у Вас нет кода, обратитесь к Вашему <span>HR бизнес-партнёру</span>
+        </div>
       </div>
     </div>
-    <svg-icon class="logo" src="assets/icon/gpn-logo.svg"></svg-icon>
+    <div class="container" style="overflow: hidden; position: absolute; height: 100%">
+      <div class="gradient">
+        <svg-icon src="assets/icon/gradient2.svg"></svg-icon>
+      </div>
+    </div>
+    <div class="logo-wrapper">
+      <svg-icon src="assets/icon/gpn-logo.svg"></svg-icon>
+    </div>
   </div>
 </div>
+
+
+
+
+

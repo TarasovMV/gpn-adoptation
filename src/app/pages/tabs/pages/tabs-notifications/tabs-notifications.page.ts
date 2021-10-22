@@ -15,8 +15,8 @@ import { ConfirmPopupComponent } from 'src/app/shared/components/confirm-popup/c
 })
 export class TabsNotificationsPage implements OnInit, OnDestroy, IPageTab {
     public route: PageTabType = 'notifications';
-    public readonly sections: string[] = ['Уведомления', 'Настройки'];
-    public section$: BehaviorSubject<string> = new BehaviorSubject<string>('Уведомления');
+    public readonly sections: string[] = ['События', 'Настройки'];
+    public section$: BehaviorSubject<string> = new BehaviorSubject<string>('События');
 
     public notifications$: BehaviorSubject<INotifications[]> = new BehaviorSubject<INotifications[]>([]);
 

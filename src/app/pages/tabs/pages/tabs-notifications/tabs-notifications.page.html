@@ -11,20 +11,32 @@
 <ion-content>
   <div class="content">
     <ng-container [ngSwitch]="section$ | async">
-      <ng-container *ngSwitchCase="'Уведомления'">
+      <ng-container *ngSwitchCase="'События'">
         <ng-container *ngIf="!!(notifications$ | async)?.length; else empty">
           <ng-container *ngFor="let item of notifications$ | async">
             <div class="date">{{item.date | date: 'mediumDate'}}</div>
             <div class="notifications" *ngFor="let element of item.notifications">
-              <div class="notifications__header">
+              <div class="notifications__block">
                 <div class="icon"
-                  [ngClass]="{'icon__test': element.notificationType === 1, 'icon__daily': element.notificationType === 2}">
-                  <svg-icon [src]="'assets/icon/'+(element.notificationType === 1 ? 'brain' : 'calendar')+'.svg'">
+                     [ngClass]="{
+                  'icon__test': element.notificationType === 1,
+                  'icon__daily': element.notificationType === 2,
+                  'icon__plane': element.notificationType === 3
+                  }">
+                  <svg-icon [src]="'assets/icon/'+((element.notificationType === 1) ? 'brain' :
+                  (element.notificationType === 2) ? 'calendar' : 'plane') + '.svg'">
                   </svg-icon>
                 </div>
-                <div class="text">{{element.header}}</div>
+                <div>
+                  <div class="notifications__header">
+                    <div class="text">{{element.header}}</div>
+                  </div>
+                  <div class="notifications__subtitle" *ngIf="element.notificationType === 3">
+                    {{element?.subtitle}}
+                  </div>
+                  <div class="notifications__body">{{element.body}}</div>
+                </div>
               </div>
-              <div class="notifications__body">{{element.body}}</div>
             </div>
           </ng-container>
         </ng-container>

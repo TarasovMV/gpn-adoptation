@@ -38,7 +38,6 @@ export class TokenService {
 
     public async loadSystemToken(): Promise<boolean> {
         const res = await Storage.get({key: this.tokenSystemUrl});
-        console.log('token', res);
         return (!!res.value && res.value !== 'null' && res.value !== 'undefined');
     }
 

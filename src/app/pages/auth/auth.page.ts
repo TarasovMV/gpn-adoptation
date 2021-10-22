@@ -1,8 +1,9 @@
-import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
 import {UserService} from "../../core/services/data/user.service";
 import {BehaviorSubject} from "rxjs";
 import {StatusBarService} from "../../core/services/platform/status-bar.service";
+import {NavigationStart, Router} from "@angular/router";
 
 @Component({
     selector: 'app-auth',
@@ -16,13 +17,9 @@ export class AuthPage implements OnInit {
         new FormControl('', [Validators.required, Validators.minLength(5)]);
     public readonly isSwingAnimation$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-    constructor(
-        private userService: UserService,
-        private statusBarService: StatusBarService,
-    ) {}
+    constructor(private userService: UserService) {}
 
     public ngOnInit(): void {
-        this.statusBarService.setAlternativeColor();
         this.codeControl.valueChanges.subscribe(x => {
             if (!this.codeControl.valid) {
                 return;
@@ -38,6 +35,7 @@ export class AuthPage implements OnInit {
             await this.userService.login(code);
         } catch (e) {
             this.isSwingAnimation$.next(true);
+            this.codeControl.setValue('');
         }
     }
 
