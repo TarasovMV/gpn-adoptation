@@ -55,6 +55,7 @@ export interface IAdaptationComponent {
     isActive?: boolean;
     result?: IAdaptationComponentResult;
     rate?: {id: number; isActive: boolean}[];
+    checked?: boolean;
 }
 
 export interface IAdaptationComponentResult {

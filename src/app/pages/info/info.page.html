@@ -1,8 +1,6 @@
 <ion-header>
   <div class="header">
-    <svg-icon class="arrow" src="assets/icon/arrow.svg"
-              (click)="back()"
-    ></svg-icon>
+    <svg-icon class="arrow" src="assets/icon/arrow.svg" (click)="back()"></svg-icon>
     <div class="title">Подробная информация</div>
   </div>
 </ion-header>
@@ -16,7 +14,7 @@
           <div class="footer">{{item.footer}}</div>
         </div>
         <div *ngSwitchCase="13" class="image-squad mb">
-          <img  src='{{restUrl}}/{{item.imagePath}}'/>
+          <img src='{{restUrl}}/{{item.imagePath}}' />
           <div class="footer">{{item.footer}}</div>
         </div>
         <div *ngSwitchCase="2" class="usualText mb">
@@ -25,7 +23,8 @@
         </div>
         <div *ngSwitchCase="12" class="button mb" (click)="clickButton(item)">{{item.header}}</div>
         <div *ngSwitchCase="11" class="video mb">
-          <video *ngIf="!!item.filePath" src='{{restUrl}}/{{item.filePath}}' preload="metadata" poster="assets/images/video-preview.png" controls></video>
+          <video *ngIf="!!item.filePath" src='{{restUrl}}/{{item.filePath}}' preload="metadata"
+            poster="assets/images/video-preview.png" controls></video>
           <iframe *ngIf="!!item.body" [src]="item.body | safeUrl" allowfullscreen></iframe>
           <div class="footer">{{item.footer}}</div>
         </div>
@@ -83,7 +82,8 @@
         <div class="blitz mb" *ngSwitchCase="7">
           <div class="blitz__header">{{item.header}}</div>
           <div class="blitz__rate">
-            <div class="star" *ngFor="let rate of rates[item.id]" (click)="rateIt(rate, item.id)" [ngClass]="{'star-active': rate.isActive}">
+            <div class="star" *ngFor="let rate of rates[item.id]" (click)="rateIt(rate, item.id)"
+              [ngClass]="{'star-active': rate.isActive}">
               <svg-icon src="assets/icon/progress/star.svg"></svg-icon>
             </div>
           </div>
@@ -91,14 +91,22 @@
         </div>
         <div class="manual-input mb" *ngSwitchCase="14">
           <span class="manual-input__title">{{item.header}}</span>
-          <ion-textarea auto-grow class="manual-input__text" rows="2" placeholder="Введите текст..." [(ngModel)]="text[item.id]"></ion-textarea>
-<!--          <div class="manual-input__send" (click)="sendIt(item.id)">-->
-<!--            <svg-icon src="assets/icon/progress/plane.svg"></svg-icon>-->
-<!--          </div>-->
+          <ion-textarea auto-grow class="manual-input__text" rows="2" placeholder="Введите текст..."
+            [(ngModel)]="text[item.id]"></ion-textarea>
+          <!--          <div class="manual-input__send" (click)="sendIt(item.id)">-->
+          <!--            <svg-icon src="assets/icon/progress/plane.svg"></svg-icon>-->
+          <!--          </div>-->
+        </div>
+        <div class="checkbox mb" *ngSwitchCase="15">
+          <div class="checkbox__logo">
+            <ion-checkbox mode="md" (click)="isChecked(item.id, item)" checked="{{!!item.isActive ? true : false}}"></ion-checkbox>
+          </div>
+          <div class="checkbox__description" [ngClass]="{'checkbox-active': !!item.result.comment}">{{item.body}}</div>
         </div>
       </ng-container>
     </ng-container>
 
-    <div *ngIf="isProgress" class="button button__done" [class.button__disabled]="isDone" style="margin-top: auto" (click)="setDone()">Выполнено</div>
+    <div *ngIf="isProgress" class="button button__done" [class.button__disabled]="isDone" style="margin-top: auto"
+      (click)="setDone()">Выполнено</div>
   </div>
 </ion-content>

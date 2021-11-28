@@ -20,6 +20,7 @@ import {ProgressCardMoreComponent} from '../components/progress-card-more/progre
 import {ProgressCardBlitzComponent} from '../components/progress-card-blitz/progress-card-blitz.component';
 import {ProgressCardManualInputComponent} from '../components/progress-card-manual-input/progress-card-manual-input.component';
 import {RouterModule} from "@angular/router";
+import { ProgressCardCheckboxComponent } from '../components/progress-card-checkbox/progress-card-checkbox.component';
 
 @NgModule({
     declarations: [
@@ -37,7 +38,8 @@ import {RouterModule} from "@angular/router";
         ProgressCardFileComponent,
         ProgressCardMoreComponent,
         ProgressCardBlitzComponent,
-        ProgressCardManualInputComponent
+        ProgressCardManualInputComponent,
+        ProgressCardCheckboxComponent
     ],
     imports: [
         CommonModule,

@@ -11,9 +11,9 @@ ion-content {
 
 .header {
   height: sizeHeight(126);
-  background-color: #1C76FE;
+  background-color: #1c76fe;
   color: #ffffff;
-  font-family: 'SegoeUI_Bold';
+  font-family: "SegoeUI_Bold";
   font-size: sizeHeight(18);
   display: flex;
   align-items: center;
@@ -54,7 +54,8 @@ ion-content {
   }
 
   .video,
-  .image, .image-squad {
+  .image,
+  .image-squad {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -65,24 +66,24 @@ ion-content {
     min-height: sizeHeight(56);
     width: 100%;
     border-radius: sizeHeight(28);
-    background-color: #1C76FE;
-    color: #FFFFFF;
+    background-color: #1c76fe;
+    color: #ffffff;
     font-size: sizeHeight(18);
 
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: .5s;
+    transition: 0.5s;
 
     &__done {
-      background: #0BA4A4;
+      background: #0ba4a4;
       font-weight: bold;
     }
 
     &__disabled {
-      opacity: .5;
+      opacity: 0.5;
       pointer-events: none;
-      transition: .5s;
+      transition: 0.5s;
     }
   }
 
@@ -182,18 +183,19 @@ ion-content {
         border-radius: 50%;
         padding: sizeHeight(8);
 
-        background-color: #E8ECEF;
-        color: #F2F2F2;
+        background-color: #e8ecef;
+        color: #f2f2f2;
 
         &-active {
-          background-color: #F2994A;
-          color: #FFFFFF;
+          background-color: #f2994a;
+          color: #ffffff;
         }
       }
     }
   }
 
-  .more, .manual-input {
+  .more,
+  .manual-input {
     width: 100%;
     padding: sizeHeight(16);
     background-color: #ffffff;
@@ -232,7 +234,7 @@ ion-content {
     &__send {
       width: sizeHeight(40);
       height: sizeHeight(40);
-      background-color: #0089FF;
+      background-color: #0089ff;
       border-radius: sizeHeight(11);
 
       display: flex;
@@ -299,6 +301,33 @@ ion-content {
       margin-top: sizeHeight(18);
       font-size: sizeHeight(17);
       text-align: left;
+    }
+  }
+
+  .checkbox {
+    width: 100%;
+    padding: sizeHeight(16);
+    background-color: #ffffff;
+    border-radius: sizeHeight(22);
+    box-shadow: 0 0 sizeHeight(4) 0 rgba(203, 203, 203, 0.25);
+
+    display: flex;
+
+    &__description {
+      margin-left: sizeWidth(17);
+      font-size: sizeHeight(17);
+      text-align: left;
+      overflow: hidden;
+    }
+
+    &__logo {
+      width: sizeWidth(25);
+      height: 100%;
+      padding: sizeHeight(2);
+    }
+
+    .checkbox-active {
+      font-weight: bold;
     }
   }
 }

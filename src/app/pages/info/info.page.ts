@@ -27,6 +27,7 @@ export class InfoPage implements OnInit {
 
     public rates: { [key: number]: {id: number; isActive: boolean}[] } = {};
     public text: { [key: number]: string } = {};
+    public checkbox: {[key: number]: string} = {}
 
     public data: IAdaptationComponent[];
 
@@ -58,7 +59,27 @@ export class InfoPage implements OnInit {
                 if (x.componentType === 14 && !!x.result?.comment) {
                     this.text[x.id] = x.result.comment;
                 }
-            })
+                if (x.componentType === 15) {
+                    this.checkbox[x.id] = x.result.comment;
+                    if (!!x.result?.comment) {
+                        if (x.result.comment === 'checked') {
+                            x.result.comment = 'checked';
+                            x.isActive = true;
+                        } else {
+                            x.result.comment = null;
+                            x.isActive = false;
+                        }
+                    } else {
+                        if (x.header === 'checked') {
+                            x.isActive = true;
+                            x.result.comment = 'checked';
+                        } else {
+                            x.result.comment = null;
+                            x.isActive = false;
+                        }
+                    }
+                }
+            });
         });
     }
 
@@ -105,6 +126,14 @@ export class InfoPage implements OnInit {
         });
     }
 
+    public isChecked(id: number, item?: IAdaptationComponent): void {
+        if (item.result.comment === 'checked') {
+            item.result.comment = null;
+        } else {
+            item.result.comment = 'checked';
+        }
+    }
+
     private validateComponentsResults(): boolean {
         if (!Object.keys(this.rates).length) {
             return true;
@@ -121,9 +150,9 @@ export class InfoPage implements OnInit {
     private async saveComponentsResult(): Promise<void> {
         const saveResult = async (id, result): Promise<void> => {
             await this.tabsProgressService.saveComponentResult(id, result);
-            console.log('obj', this.data.find(x => x.id === +id))
+            console.log('obj', this.data.find(x => x.id === +id));
             this.data.find(x => x.id === +id).result = result;
-        }
+        };
 
         // save rates
         for (const id of Object.keys(this.rates)) {
@@ -137,6 +166,12 @@ export class InfoPage implements OnInit {
         // save comments
         for (const id of Object.keys(this.text)) {
             const result = {rating: null, comment: this.text[+id]};
+            await saveResult(+id, result);
+        }
+
+        // save checkbox
+        for (const id of Object.keys(this.checkbox)) {
+            const result = {rating: null, comment: this.checkbox[+id]};
             await saveResult(+id, result);
         }
     }

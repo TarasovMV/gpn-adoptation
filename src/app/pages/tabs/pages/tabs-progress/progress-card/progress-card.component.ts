@@ -20,6 +20,7 @@ import {ProgressCardPointsComponent} from '../components/progress-card-points/pr
 import {ProgressCardTerminComponent} from '../components/progress-card-termin/progress-card-termin.component';
 import {ProgressCardUsualTextComponent} from '../components/progress-card-usual-text/progress-card-usual-text.component';
 import {ProgressCardVideoComponent} from '../components/progress-card-video/progress-card-video.component';
+import { ProgressCardCheckboxComponent } from '../components/progress-card-checkbox/progress-card-checkbox.component';
 
 export enum AdaptationComponentsType {
     none, imageWithText, textWithText, headerWithText,
@@ -47,7 +48,8 @@ export class ProgressCardComponent implements OnInit {
         ProgressCardVideoComponent,
         ProgressCardButtonComponent,
         ProgressCardImageSquadComponent,
-        ProgressCardManualInputComponent
+        ProgressCardManualInputComponent,
+        ProgressCardCheckboxComponent,
     ];
     public id: number;
     public cardData: IStage;
