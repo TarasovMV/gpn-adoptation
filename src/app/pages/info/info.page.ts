@@ -60,23 +60,33 @@ export class InfoPage implements OnInit {
                     this.text[x.id] = x.result.comment;
                 }
                 if (x.componentType === 15) {
-                    console.log(x.result);
+                    console.log(x);
                     this.checkbox[x.id] = x.result.comment;
                     if (!x.result.comment) {
                         if (x.header === 'checked') {
+                            console.log(1);
+                            this.checkbox[x.id] = 'checked';
                             x.isActive = true;
                         }
                         else {
+                            console.log(2);
+                            this.checkbox[x.id] = 'unchecked';
                             x.isActive = false;
                         }
                     } else {
                         if (x.result.comment === 'checked') {
+                            this.checkbox[x.id] = 'checked';
                             x.isActive = true;
+                            console.log(3);
                         } else {
+                            this.checkbox[x.id] = 'unchecked';
                             x.isActive = false;
+                            console.log(4);
                         }
                     }
+
                 }
+                console.log(x);
             });
         });
     }
@@ -125,11 +135,16 @@ export class InfoPage implements OnInit {
     }
 
     public isChecked(id: number, item?: IAdaptationComponent): void {
-        if (item.isActive) {
+        if (this.checkbox[id] === 'checked') {
             this.checkbox[id] = 'unchecked';
-        } else {
+        }
+        else if (!this.checkbox[id]) {
+            this.checkbox[id] = 'unchecked';
+        }
+        else {
             this.checkbox[id] = 'checked';
         }
+        console.log(this.checkbox[id]);
     }
 
     private validateComponentsResults(): boolean {

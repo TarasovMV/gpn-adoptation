@@ -99,9 +99,9 @@
         </div>
         <div class="checkbox mb" *ngSwitchCase="15">
           <div class="checkbox__logo">
-            <ion-checkbox mode="md" (click)="isChecked(item.id, item)" checked="{{!!item.isActive ? true : false}}"></ion-checkbox>
+            <ion-checkbox (click)="isChecked(item.id, item)" [(ngModel)]="item.isActive"></ion-checkbox>
           </div>
-          <div class="checkbox__description" [ngClass]="{'checkbox-active': !!item.result.comment}">{{item.body}}</div>
+          <div class="checkbox__description" [class.checkbox-active]="item.isActive" >{{item.body}}</div>
         </div>
       </ng-container>
     </ng-container>
