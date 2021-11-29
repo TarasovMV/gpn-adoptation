@@ -60,21 +60,19 @@ export class InfoPage implements OnInit {
                     this.text[x.id] = x.result.comment;
                 }
                 if (x.componentType === 15) {
+                    console.log(x.result);
                     this.checkbox[x.id] = x.result.comment;
-                    if (!!x.result?.comment) {
-                        if (x.result.comment === 'checked') {
-                            x.result.comment = 'checked';
+                    if (!x.result.comment) {
+                        if (x.header === 'checked') {
                             x.isActive = true;
-                        } else {
-                            x.result.comment = null;
+                        }
+                        else {
                             x.isActive = false;
                         }
                     } else {
-                        if (x.header === 'checked') {
+                        if (x.result.comment === 'checked') {
                             x.isActive = true;
-                            x.result.comment = 'checked';
                         } else {
-                            x.result.comment = null;
                             x.isActive = false;
                         }
                     }
@@ -127,10 +125,10 @@ export class InfoPage implements OnInit {
     }
 
     public isChecked(id: number, item?: IAdaptationComponent): void {
-        if (item.result.comment === 'checked') {
-            item.result.comment = null;
+        if (item.isActive) {
+            this.checkbox[id] = 'unchecked';
         } else {
-            item.result.comment = 'checked';
+            this.checkbox[id] = 'checked';
         }
     }
 
@@ -171,7 +169,8 @@ export class InfoPage implements OnInit {
 
         // save checkbox
         for (const id of Object.keys(this.checkbox)) {
-            const result = {rating: null, comment: this.checkbox[+id]};
+            const result = {rating: null, comment: this.checkbox[id]};
+            console.log(result);
             await saveResult(+id, result);
         }
     }
