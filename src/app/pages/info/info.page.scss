@@ -339,8 +339,7 @@ ion-content {
   }
 
   .file__icon {
-    position: relative;;
-    top: 3px;
+    position: relative;
   }
 
   .footer-top {
@@ -349,6 +348,8 @@ ion-content {
 
   .file__path {
     color: #303549;
+    position: relative;
+    top: sizeHeight(-6);
   }
 
   .blitz__header {

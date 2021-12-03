@@ -67,7 +67,7 @@
         </div>
         <div class="file mb" *ngSwitchCase="8" (click)="openFile(item.filePath)">
           <div *ngIf="item.footer" class="footer footer-top" >{{item.footer}}</div>
-          <div style="display: flex; align-items: center;">
+          <div style="display: flex;">
             <svg-icon class="file__icon" [src]="getFileIcon(item)"></svg-icon>
             <div class="file__path" style="overflow: hidden; display: inline-block; word-wrap: break-word;">{{item.filePath | routeFile}}</div>
           </div>
