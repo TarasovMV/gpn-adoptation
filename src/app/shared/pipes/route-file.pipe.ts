@@ -6,7 +6,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 export class RouteFilePipe implements PipeTransform {
 
     transform(value: string): unknown {
-        let arr = value.split('\\');
-        return arr[arr.length - 1];
+        const arr = value.split('\\');
+        return arr[arr.length - 1].replace(/\.[^/.]+$/, "");
     }
 }

@@ -66,8 +66,12 @@
           <div class="points__description">{{item.body}}</div>
         </div>
         <div class="file mb" *ngSwitchCase="8" (click)="openFile(item.filePath)">
-          <svg-icon src="assets/icon/progress/file.svg"></svg-icon>
-          <span class="file__path">{{item.filePath | routeFile}}</span>
+          <div *ngIf="item.footer" class="footer footer-top" >{{item.footer}}</div>
+          <div style="display: flex; align-items: center;">
+            <svg-icon class="file__icon" [src]="getFileIcon(item)"></svg-icon>
+            <div class="file__path" style="overflow: hidden; display: inline-block; word-wrap: break-word;">{{item.filePath | routeFile}}</div>
+          </div>
+
         </div>
         <div class="more mb" *ngSwitchCase="9">
           <div class="more__title" (click)="openMore(item)">
@@ -93,9 +97,6 @@
           <span class="manual-input__title">{{item.header}}</span>
           <ion-textarea auto-grow class="manual-input__text" rows="2" placeholder="Введите текст..."
             [(ngModel)]="text[item.id]"></ion-textarea>
-          <!--          <div class="manual-input__send" (click)="sendIt(item.id)">-->
-          <!--            <svg-icon src="assets/icon/progress/plane.svg"></svg-icon>-->
-          <!--          </div>-->
         </div>
         <div class="checkbox mb" *ngSwitchCase="15">
           <div class="checkbox__logo">
