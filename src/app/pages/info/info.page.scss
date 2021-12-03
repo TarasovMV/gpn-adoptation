@@ -49,7 +49,7 @@ ion-content {
   }
   .footer {
     color: #98a9bc;
-    font-size: sizeHeight(14);
+    font-size: sizeHeight(16);
     margin-top: sizeHeight(5);
   }
 
@@ -109,7 +109,7 @@ ion-content {
   .usualText {
     width: 100%;
     color: #303549;
-    font-size: sizeHeight(14);
+    font-size: sizeHeight(16);
     text-align: justify;
   }
 
@@ -125,7 +125,7 @@ ion-content {
     padding: sizeWidth(16);
     background-color: #ffffff;
     border-radius: sizeWidth(22);
-    font-size: sizeHeight(14);
+    font-size: sizeHeight(16);
     box-shadow: 0 0 sizeHeight(4) 0 rgba(203, 203, 203, 0.25);
 
     display: flex;
@@ -142,7 +142,7 @@ ion-content {
 
     &__path {
       margin-left: sizeWidth(15);
-      font-size: sizeHeight(14);
+      font-size: sizeHeight(16);
 
       display: flex;
       align-items: center;
@@ -162,7 +162,7 @@ ion-content {
     &__header {
       width: 100%;
       font-style: bold;
-      font-size: sizeHeight(14);
+      font-size: sizeHeight(16);
 
       display: flex;
       align-items: center;
@@ -215,18 +215,18 @@ ion-content {
       justify-content: space-between;
       align-items: center;
       font-style: bold;
-      font-size: sizeHeight(14);
+      font-size: sizeHeight(16);
     }
 
     &__description {
-      font-size: sizeHeight(14);
+      font-size: sizeHeight(16);
       margin-top: sizeHeight(18);
     }
 
     &__text {
       outline: none;
       border: none;
-      font-size: sizeHeight(14);
+      font-size: sizeHeight(16);
       --padding-start: 0;
     }
 
@@ -266,7 +266,7 @@ ion-content {
     &__title {
       width: 100%;
       font-style: bold;
-      font-size: sizeHeight(14);
+      font-size: sizeHeight(16);
       display: flex;
       align-items: center;
 
@@ -298,7 +298,7 @@ ion-content {
 
     &__description {
       margin-top: sizeHeight(18);
-      font-size: sizeHeight(14);
+      font-size: sizeHeight(16);
       text-align: left;
     }
   }
@@ -314,7 +314,7 @@ ion-content {
 
     &__description {
       margin-left: sizeWidth(14);
-      font-size: sizeHeight(14);
+      font-size: sizeHeight(16);
       text-align: left;
       overflow: hidden;
       width: 90%;
