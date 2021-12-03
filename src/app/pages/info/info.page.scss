@@ -311,18 +311,21 @@ ion-content {
     box-shadow: 0 0 sizeHeight(4) 0 rgba(203, 203, 203, 0.25);
 
     display: flex;
+    justify-content: left;
 
     &__description {
-      margin-left: sizeWidth(17);
-      font-size: sizeHeight(17);
+      margin-left: sizeWidth(14);
+      font-size: sizeHeight(14);
       text-align: left;
       overflow: hidden;
+      width: 90%;
     }
 
     &__logo {
-      width: sizeWidth(25);
-      height: 100%;
+      width: sizeWidth(27);
+      width: sizeWidth(27);
       padding: sizeHeight(2);
+      margin-top: sizeHeight(-2);
     }
 
     .checkbox-active {
