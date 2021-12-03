@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, NgZone, OnInit} from '@angular/core';
 import { TabsService } from 'src/app/core/services/tabs/tabs.service';
 import {NavController, ToastController} from "@ionic/angular";
 import {IAdaptationComponent, IStage} from "../tabs/tabs.model";
@@ -42,6 +42,7 @@ export class InfoPage implements OnInit {
         private tabsProgressService: TabsProgressService,
         private toastController: ToastController,
         appConfigService: AppConfigService,
+        private ngZone: NgZone
     ) {
         this.restUrl = appConfigService.getAttribute('restUrl');
     }
@@ -153,17 +154,22 @@ export class InfoPage implements OnInit {
     }
 
     public isChecked(id: number, item?: IAdaptationComponent): void {
-        if (this.checkbox[id] === 'checked') {
-            this.checkbox[id] = 'unchecked';
-        }
-        else if (!this.checkbox[id]) {
-            this.checkbox[id] = 'unchecked';
-        }
-        else {
-            this.checkbox[id] = 'checked';
-        }
-        console.log(this.checkbox[id]);
-        localStorage.setItem("checkbox", JSON.stringify(this.checkbox));
+        this.ngZone.run(()=> {
+            if (this.checkbox[id] === 'checked') {
+                this.checkbox[id] = 'unchecked';
+                item.isActive = false;
+            }
+            else if (!this.checkbox[id]) {
+                this.checkbox[id] = 'unchecked';
+                item.isActive = false;
+            }
+            else {
+                this.checkbox[id] = 'checked';
+                item.isActive = true;
+            }
+            console.log(this.checkbox[id]);
+            localStorage.setItem("checkbox", JSON.stringify(this.checkbox));
+        });
     }
 
     private validateComponentsResults(): boolean {

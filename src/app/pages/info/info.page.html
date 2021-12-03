@@ -98,9 +98,9 @@
           <ion-textarea auto-grow class="manual-input__text" rows="2" placeholder="Введите текст..."
             [(ngModel)]="text[item.id]"></ion-textarea>
         </div>
-        <div class="checkbox mb" *ngSwitchCase="15">
+        <div (click)="isChecked(item.id, item)" class="checkbox mb" *ngSwitchCase="15">
           <div class="checkbox__logo">
-            <ion-checkbox mode="md" (click)="isChecked(item.id, item)" [(ngModel)]="item.isActive"></ion-checkbox>
+            <ion-checkbox mode="md" [(ngModel)]="item.isActive"></ion-checkbox>
           </div>
           <div class="checkbox__description" [class.checkbox-active]="item.isActive" >{{item.body}}</div>
         </div>
