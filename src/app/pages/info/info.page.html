@@ -99,7 +99,7 @@
         </div>
         <div class="checkbox mb" *ngSwitchCase="15">
           <div class="checkbox__logo">
-            <ion-checkbox mode="mb" (click)="isChecked(item.id, item)" [(ngModel)]="item.isActive"></ion-checkbox>
+            <ion-checkbox mode="md" (click)="isChecked(item.id, item)" [(ngModel)]="item.isActive"></ion-checkbox>
           </div>
           <div class="checkbox__description" [class.checkbox-active]="item.isActive" >{{item.body}}</div>
         </div>
