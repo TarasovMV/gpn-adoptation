@@ -60,6 +60,7 @@ export class InfoPage implements OnInit {
             this.data.forEach(x => {
                 if (x.componentType === 7 && !!x.result?.rating) {
                     this.rateIt({id: x.result.rating, isActive: true}, x.id);
+                    console.log(x);
                 }
                 if (x.componentType === 14 && !!x.result?.comment) {
                     this.text[x.id] = x.result.comment;
@@ -213,6 +214,30 @@ export class InfoPage implements OnInit {
             console.log(result);
             await saveResult(+id, result);
         }
+    }
+
+    getBlitzIcon(item: IAdaptationComponent) {
+        if (item.body === "stars") {
+            return "assets/icon/progress/star.svg";
+        }
+        else if (item.body === "rockets") {
+            return "assets/icon/progress/rocket.svg";
+        }
+        return "assets/icon/progress/heart.svg";
+    }
+
+    getBlitzBackgroundColor(rate, item) {
+        if (!rate.isActive) {
+            return "#E8ECEF";
+        }
+        console.log("Define bg color");
+        if (item.body === "stars") {
+            return "#f2994a";
+        }
+        else if (item.body === "rockets") {
+            return "#0BA4A4";
+        }
+        return "#FF2E58";
     }
 
     getFileIcon(item: IAdaptationComponent) {

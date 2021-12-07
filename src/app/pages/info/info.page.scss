@@ -176,11 +176,18 @@ ion-content {
 
       margin-bottom: sizeHeight(14);
 
+      svg-icon {
+        display: flex;
+      }
+
       .star {
         height: sizeHeight(43);
         width: sizeHeight(43);
         border-radius: 50%;
         padding: sizeHeight(8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         background-color: #e8ecef;
         color: #f2f2f2;

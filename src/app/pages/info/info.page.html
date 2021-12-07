@@ -87,11 +87,11 @@
           <div class="blitz__header">{{item.header}}</div>
           <div class="blitz__rate">
             <div class="star" *ngFor="let rate of rates[item.id]" (click)="rateIt(rate, item.id)"
-              [ngClass]="{'star-active': rate.isActive}">
-              <svg-icon src="assets/icon/progress/star.svg"></svg-icon>
+               [ngStyle]="{'background': getBlitzBackgroundColor(rate, item)}">
+              <svg-icon [src]="getBlitzIcon(item)"></svg-icon>
             </div>
           </div>
-          <div class="footer">{{item.footer}}</div>
+          <div *ngIf="item.footer" class="footer">{{item.footer}}</div>
         </div>
         <div class="manual-input mb" *ngSwitchCase="14">
           <span class="manual-input__title">{{item.header}}</span>
