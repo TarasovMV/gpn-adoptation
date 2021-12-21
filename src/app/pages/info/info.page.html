@@ -96,9 +96,12 @@
         <div class="attention mb" *ngSwitchCase="16">
           <div *ngIf="getBulletType(item) === 3">
             <div class="attention__title">
-              <div *ngIf="getBulletType(item) === 3" class="attention__title__logo-attention" style="display: flex;
+              <div *ngIf="getBulletType(item) === 3" style="display: flex;  border-radius: 50%;
             justify-content: center; align-items: center;" [style.background]="getBulletBackground(item)">
-                <img style="display: flex; object-fit: fill" src='{{restUrl}}/{{item.imagePath}}'/>
+                <div class="digit-container" style="padding: 7px" [style.background]="getBulletBackground(item)">
+                  <img style="display: flex;" src='{{restUrl}}/{{item.imagePath}}'/>
+                </div>
+               <!-- <img style="display: flex;" src='{{restUrl}}/{{item.imagePath}}'/>-->
               </div>
               <div class="text" style="font-weight: bold">{{item.header}}</div>
             </div>
