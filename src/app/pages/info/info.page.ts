@@ -7,6 +7,12 @@ import {AppConfigService} from "../../core/services/platform/app-config.service"
 import {Browser} from "@capacitor/browser";
 import {TabsProgressService} from "../tabs/pages/tabs-progress/services/tabs-progress.service";
 
+export class AdaptationBullet {
+    public type: number;
+    public digit: number;
+    public background: string;
+}
+
 @Component({
     selector: 'app-info',
     templateUrl: './info.page.html',
@@ -27,12 +33,12 @@ export class InfoPage implements OnInit {
 
     public rates: { [key: number]: {id: number; isActive: boolean}[] } = {};
     public text: { [key: number]: string } = {};
-    public checkbox: {[key: number]: string} = {}
+    public checkbox: {[key: number]: string} = {};
+    public bullets: {[key: number]: AdaptationBullet} = {};
 
     public data: IAdaptationComponent[];
 
     public readonly restUrl: string;
-
 
     constructor(
         private route: ActivatedRoute,
@@ -64,6 +70,9 @@ export class InfoPage implements OnInit {
                 }
                 if (x.componentType === 14 && !!x.result?.comment) {
                     this.text[x.id] = x.result.comment;
+                }
+                if (x.componentType === 16) {
+                    this.bullets[x.id] = JSON.parse(x.footer);
                 }
                 if (x.componentType === 15) {
                     console.log(x);
@@ -186,6 +195,18 @@ export class InfoPage implements OnInit {
         return false;
     }
 
+    public getBulletType(item: IAdaptationComponent): number {
+        return this.bullets[item.id].type;
+    }
+
+    public getBulletDigit(item: IAdaptationComponent): number {
+        return this.bullets[item.id].digit;
+    }
+
+    public getBulletBackground(item: IAdaptationComponent): string{
+        return this.bullets[item.id].background;
+    }
+
     private async saveComponentsResult(): Promise<void> {
         const saveResult = async (id, result): Promise<void> => {
             await this.tabsProgressService.saveComponentResult(id, result);
@@ -246,5 +267,10 @@ export class InfoPage implements OnInit {
             return "assets/icon/progress/pdf.svg";
         }
         return "assets/icon/progress/word.svg";
+    }
+
+    getBulletIcon(item: IAdaptationComponent) {
+        console.log(`${this.restUrl}/${item.imagePath}`);
+        return `${this.restUrl}/${item.imagePath}`;
     }
 }

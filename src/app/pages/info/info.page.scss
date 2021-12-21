@@ -47,6 +47,7 @@ ion-content {
   .mb {
     margin-bottom: sizeHeight(14);
   }
+
   .footer {
     color: #98a9bc;
     font-size: sizeHeight(16);
@@ -228,6 +229,7 @@ ion-content {
     &__description {
       font-size: sizeHeight(16);
       margin-top: sizeHeight(18);
+      white-space: pre-wrap;
     }
 
     &__text {
@@ -235,6 +237,7 @@ ion-content {
       border: none;
       font-size: sizeHeight(16);
       --padding-start: 0;
+      white-space: pre-wrap;
     }
 
     &__send {
@@ -280,6 +283,7 @@ ion-content {
       .text {
         padding-left: sizeWidth(13);
         max-width: sizeWidth(200);
+        font-size: sizeHeight(16);
       }
 
       &__logo {
@@ -307,8 +311,10 @@ ion-content {
       margin-top: sizeHeight(18);
       font-size: sizeHeight(16);
       text-align: left;
+      white-space: pre-wrap;
     }
   }
+
   .checkbox {
     width: 100%;
     padding: sizeHeight(16);
@@ -325,6 +331,7 @@ ion-content {
       text-align: left;
       overflow: hidden;
       width: 90%;
+      white-space: pre-wrap;
     }
 
     &__logo {
@@ -361,5 +368,55 @@ ion-content {
 
   .blitz__header {
     font-weight: bold;
+    width: 100%;
+  }
+
+  .bullet-point {
+    min-width: sizeHeight(28);
+    min-height: sizeWidth(28);
+    max-width: sizeHeight(28);
+    max-height: sizeWidth(28);
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+
+    .digit {
+      color: white;
+      font-weight: 500;
+      font-family: "Magistral";
+      font-size: sizeHeight(14);
+    }
+  }
+
+  svg-icon {
+    display: flex;
+  }
+
+  .mb10 {
+    margin-bottom: sizeHeight(10);
+  }
+
+  .mt8 {
+    margin-top: sizeHeight(8);
+  }
+
+  .digit-block {
+    font-size: sizeHeight(16);
+    font-family: "Magistral";
+    font-weight: 500;
+    color: white;
+  }
+
+  .digit-container {
+    border-radius: 50%;
+    min-width: 34px;
+    min-height: 34px;
+    max-height: 34px;
+    max-width: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

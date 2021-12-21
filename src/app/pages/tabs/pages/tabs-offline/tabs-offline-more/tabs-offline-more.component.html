@@ -32,11 +32,9 @@
           </ng-container>
         </ng-container>
         <ng-container *ngSwitchDefault>
-        <ng-container  *ngFor="let dict of dictionaries || []">
-          <div class="card" *ngFor="let item of dict.stages">
+          <div class="card" *ngFor="let item of substages">
             <div class="name" (click)="openSubStage(item)">{{ item?.name }}</div>
           </div>
-        </ng-container>
         </ng-container>
       </ng-container>
     </div>

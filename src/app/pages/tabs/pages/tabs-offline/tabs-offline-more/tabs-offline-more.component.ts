@@ -40,13 +40,20 @@ export class TabsOfflineMoreComponent implements OnInit, IPageTab {
 
     public ngOnInit(): void {
         this.tabsService.businessStages$.subscribe(async value => {
+            console.log(value);
             this.data = value;
-            this.type = this.data.referenceBookSectionType ?? ReferenceBookSectionType.Default;
-            // if (this.type === ReferenceBookSectionType.Dictionary) {
+            this.type = this.data.referenceBookSectionType === 0 ? ReferenceBookSectionType.Default : ReferenceBookSectionType.Dictionary;
+            if (this.type === ReferenceBookSectionType.Default) {
+                this.substages = this.data?.adaptationSubStages;
+                console.log(this.data?.adaptationSubStages);
+            }
+            if (this.type === ReferenceBookSectionType.Dictionary) {
                 this.dictionaries = await this.getDictionaries(this.data?.adaptationSubStages);
-            // }
+            }
         });
     }
+
+    public substages = [];
 
     public backToOffline(): void {
         this.navCtrl.back();

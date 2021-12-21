@@ -93,6 +93,43 @@
           </div>
           <div *ngIf="item.footer" class="footer">{{item.footer}}</div>
         </div>
+        <div class="attention mb" *ngSwitchCase="16">
+          <div *ngIf="getBulletType(item) === 3">
+            <div class="attention__title">
+              <div *ngIf="getBulletType(item) === 3" class="attention__title__logo-attention" style="display: flex;
+            justify-content: center; align-items: center;" [style.background]="getBulletBackground(item)">
+                <img style="display: flex; object-fit: fill" src='{{restUrl}}/{{item.imagePath}}'/>
+              </div>
+              <div class="text" style="font-weight: bold">{{item.header}}</div>
+            </div>
+            <div class="attention__description text mb10 mt8" style="white-space: pre-line">{{ item.body }}</div>
+          </div>
+
+          <div *ngIf="getBulletType(item) === 1">
+            <div class="attention__title">
+              <div *ngIf="getBulletType(item) === 1" class="attention__title__logo-attention" style="display: flex;
+            justify-content: center; align-items: center; background: transparent">
+                <svg-icon style="display: flex;" [style.color]="getBulletBackground(item)"
+                          src="assets/icon/progress/bullet-point.svg"></svg-icon>
+              </div>
+              <div class="text" style="font-weight: bold">{{item.header}}</div>
+            </div>
+            <div class="attention__description text mb10 mt8" style="white-space: pre-line">{{ item.body }}</div>
+          </div>
+
+          <div *ngIf="getBulletType(item) === 2">
+            <div class="attention__title">
+              <div *ngIf="getBulletType(item) === 2" class="attention__title__logo-attention" style="display: flex;
+            justify-content: center; align-items: center; background: transparent">
+                <div class="digit-container" [style.background]="getBulletBackground(item)">
+                  <div class="digit-block">{{getBulletDigit(item)}}</div>
+                </div>
+              </div>
+              <div class="text" style="font-weight: bold">{{item.header}}</div>
+            </div>
+            <div class="attention__description text mb10 mt8" style="white-space: pre-line">{{ item.body }}</div>
+          </div>
+        </div>
         <div class="manual-input mb" *ngSwitchCase="14">
           <span class="manual-input__title">{{item.header}}</span>
           <ion-textarea auto-grow class="manual-input__text" rows="2" placeholder="Введите текст..."
