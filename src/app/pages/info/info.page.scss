@@ -406,21 +406,32 @@ ion-content {
     font-size: sizeHeight(16);
     font-family: "Magistral";
     font-weight: 500;
+    min-width: sizeHeight(40);
+    max-width: sizeHeight(40);
+    text-align: center;
     color: white;
   }
 
   .digit-container {
     border-radius: 50%;
-    min-width: sizeHeight(34);
-    min-height: sizeHeight(34);
-    max-height: sizeHeight(34);
-    max-width: sizeHeight(34);
+    min-width: sizeHeight(40);
+    min-height: sizeHeight(40);
+    max-height: sizeHeight(40);
+    max-width: sizeHeight(40);
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: sizeHeight(7);
   }
 
   .rel-5 {
-    margin-top: sizeHeight(5);
+    margin-top: sizeHeight(8.5);
+  }
+
+  .bullet-icon {
+    min-width: sizeHeight(40);
+    min-height: sizeHeight(40);
+    max-height: sizeHeight(40);
+    max-width: sizeHeight(40);
   }
 }
