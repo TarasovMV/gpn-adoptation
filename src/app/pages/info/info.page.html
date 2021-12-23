@@ -95,40 +95,39 @@
         </div>
         <div class="attention mb" *ngSwitchCase="16">
           <div *ngIf="getBulletType(item) === 3">
-            <div class="attention__title">
-              <div *ngIf="getBulletType(item) === 3" style="display: flex;   border-radius: 50%;
+            <div class="attention__title" style="align-items: flex-start">
+              <div *ngIf="getBulletType(item) === 3" style="display: flex;  border-radius: 50%;
             justify-content: center; align-items: center;" [style.background]="getBulletBackground(item)">
                 <div class="digit-container" style="" [style.background]="getBulletBackground(item)">
                   <img style="display: flex;" src='{{restUrl}}/{{item.imagePath}}'/>
                 </div>
-               <!-- <img style="display: flex;" src='{{restUrl}}/{{item.imagePath}}'/>-->
               </div>
-              <div class="text" style="font-weight: bold">{{item.header}}</div>
+              <div class="text rel-5" style="font-weight: bold">{{item.header}}</div>
             </div>
             <div class="attention__description text mb10 mt8" style="white-space: pre-line">{{ item.body }}</div>
           </div>
 
           <div *ngIf="getBulletType(item) === 1">
-            <div class="attention__title">
-              <div *ngIf="getBulletType(item) === 1" style="display: flex;
+            <div class="attention__title" style="align-items: flex-start">
+              <div *ngIf="getBulletType(item) === 1" class="digit-container" style="display: flex;
             justify-content: center; align-items: center; background: transparent">
                 <svg-icon style="display: flex;" [style.color]="getBulletBackground(item)"
                           src="assets/icon/progress/bullet-point.svg"></svg-icon>
               </div>
-              <div class="text" style="font-weight: bold">{{item.header}}</div>
+              <div class="text rel-5" style="font-weight: bold">{{item.header}}</div>
             </div>
             <div class="attention__description text mb10 mt8" style="white-space: pre-line">{{ item.body }}</div>
           </div>
 
           <div *ngIf="getBulletType(item) === 2">
-            <div class="attention__title">
+            <div class="attention__title" style="align-items: flex-start">
               <div *ngIf="getBulletType(item) === 2" style="display: flex;
             justify-content: center; align-items: center; background: transparent">
                 <div class="digit-container" [style.background]="getBulletBackground(item)">
                   <div class="digit-block">{{getBulletDigit(item)}}</div>
                 </div>
               </div>
-              <div class="text" style="font-weight: bold">{{item.header}}</div>
+              <div class="text rel-5" style="font-weight: bold">{{item.header}}</div>
             </div>
             <div class="attention__description text mb10 mt8" style="white-space: pre-line">{{ item.body }}</div>
           </div>
