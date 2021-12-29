@@ -434,4 +434,9 @@ ion-content {
     max-height: sizeHeight(40);
     max-width: sizeHeight(40);
   }
+
+  .rel-2 {
+    position: relative;
+    left: - sizeWidth(1);
+  }
 }
