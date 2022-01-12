@@ -26,18 +26,22 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 @import "theme/theme";
+@import "src/theme/functions/resizer";
 
 
 .para {
   margin: 0;
+  min-height: sizeHeight(14);
+  text-align: justify;
   text-indent: 7vw;
 
   &__left {
     text-align: left;
+    text-indent: 0 !important;
   }
 
   &__indent {
-    text-indent: 0;
+
   }
 }
 
@@ -59,14 +63,16 @@ ion-content {
 .ripple-parent {
   position: relative;
 }
+
 ion-ripple-effect {
   overflow: hidden;
 }
+
 /**
 #end region mat-ripple
  */
 
-.modal-wrapper{
+.modal-wrapper {
   background: transparent !important;
   display: flex;
   justify-content: center;

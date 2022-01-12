@@ -56,7 +56,7 @@
   background-color: #f8fafb;
   height: 100%;
   width: 100%;
-  padding-top: sizeHeight(65);
+  padding-top: sizeHeight(55);
 
   display: flex;
   flex-direction: column;
@@ -71,7 +71,7 @@
 
   .title {
     width: 100%;
-    height: sizeHeight(32);
+    /*height: sizeHeight(32);*/
 
     display: flex;
     justify-content: space-between;
@@ -83,6 +83,13 @@
     z-index: 9999;
 
     padding: 0 sizeWidth(24) sizeHeight(20);
+    padding-bottom: 0;
+
+    &__name {
+      color: #404763;
+      font-family: 'SegoeUI_Bold';
+      font-size: sizeHeight(26);
+    }
 
     &__info {
       height: sizeHeight(29);
@@ -95,11 +102,11 @@
     flex-grow: 1;
     width: 100%;
     overflow: hidden;
+    margin-top: sizeHeight(20);
 
     .header {
       width: 100%;
       margin-bottom: sizeHeight(20);
-
       position: absolute;
       left: 0;
     }
@@ -234,7 +241,7 @@
     font-weight: 400;
     margin-bottom: sizeHeight(8);
     overflow: hidden;
-    
+
     //box-shadow: 0 0 sizeHeight(4) 0 rgba(203, 203, 203, 0.25);
 
     .timer {

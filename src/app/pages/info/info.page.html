@@ -18,7 +18,7 @@
           <div class="footer">{{item.footer}}</div>
         </div>
         <div *ngSwitchCase="2" class="usualText mb">
-          <span style="text-align: justify" [innerHTML]="item.body | textLines"></span>
+          <span style="text-align: justify;" [innerHTML]="item.body | textLines"></span>
           <div class="footer">{{item.footer}}</div>
         </div>
         <div *ngSwitchCase="12" class="button mb" (click)="clickButton(item)">{{item.header}}</div>
@@ -29,7 +29,7 @@
           <div class="footer">{{item.footer}}</div>
         </div>
         <div *ngSwitchCase="3" class="accentText mb">
-          <span>{{item?.body}}</span>
+          <span [innerHTML]="item.body" ></span>
           <div class="footer">{{item.footer}}</div>
         </div>
         <div class="termin mb" *ngSwitchCase="4">
@@ -39,7 +39,7 @@
             </div>
             <div class="text">{{item.header}}</div>
           </div>
-          <div class="termin__description">{{item.body}}</div>
+          <div class="termin__description" [innerHTML]="item.body | textLines" ></div>
           <div class="footer">{{item.footer}}</div>
         </div>
         <div class="attention mb" *ngSwitchCase="5">
@@ -49,11 +49,11 @@
             </div>
             <div class="text" style="font-weight: bold">{{item.header}}</div>
           </div>
-          <div class="attention__description">{{ item.body }}</div>
+          <div class="attention__description" [innerHTML]="item.body | textLines" ></div>
           <div class="footer">{{item.footer}}</div>
         </div>
         <div class="block mb" *ngSwitchCase="6">
-          <span style="text-align: justify" [innerHTML]="item.body | textLines"></span>
+          <span style="text-align: justify;" [innerHTML]="item.body | textLines"></span>
           <div class="footer">{{item.footer}}</div>
         </div>
         <div class="points mb" *ngSwitchCase="10">
@@ -63,7 +63,7 @@
             </div>
             <div class="text">{{item.header}}</div>
           </div>
-          <div class="points__description">{{item.body}}</div>
+          <div class="points__description" [innerHTML]="item.body | textLines" ></div>
         </div>
         <div class="file mb" *ngSwitchCase="8" (click)="openFile(item.filePath)">
           <div *ngIf="item.footer" class="footer footer-top" >{{item.footer}}</div>
@@ -78,8 +78,7 @@
             <span style="font-weight: bold">{{item.header}}</span>
             <svg-icon class="arrow" src="assets/icon/arrow.svg" [ngClass]="{'active': item.isActive}"></svg-icon>
           </div>
-          <div class="more__description" *ngIf="item.isActive">
-            <span>{{item.body}}</span>
+          <div class="more__description" *ngIf="item.isActive" [innerHTML]="item.body | textLines">
             <div class="footer">{{item.footer}}</div>
           </div>
         </div>
@@ -104,7 +103,7 @@
               </div>
               <div class="text rel-5" style="font-weight: bold">{{item.header}}</div>
             </div>
-            <div class="attention__description text mb10 mt8" style="white-space: pre-line">{{ item.body }}</div>
+            <div *ngIf="item.body"  class="attention__description text mb10 mt8" [innerHTML]="item.body | textLines"  style=""></div>
           </div>
 
           <div *ngIf="getBulletType(item) === 1">
@@ -120,7 +119,7 @@
               </div>
               <div class="text rel-5 rel-2" style="font-weight: bold">{{item.header}}</div>
             </div>
-            <div class="attention__description text mb10 mt8" style="white-space: pre-line">{{ item.body }}</div>
+            <div *ngIf="item.body"  class="attention__description text mb10 mt8" [innerHTML]="item.body | textLines" style=""></div>
           </div>
 
           <div *ngIf="getBulletType(item) === 2">
@@ -133,7 +132,7 @@
               </div>
               <div class="text rel-5" style="font-weight: bold">{{item.header}}</div>
             </div>
-            <div class="attention__description text mb10 mt8" style="white-space: pre-line">{{ item.body }}</div>
+            <div *ngIf="item.body"  class="attention__description text mb10 mt8" [innerHTML]="item.body | textLines" style=""></div>
           </div>
         </div>
         <div class="manual-input mb" *ngSwitchCase="14">
@@ -145,7 +144,7 @@
           <div class="checkbox__logo">
             <ion-checkbox mode="md" [(ngModel)]="item.isActive"></ion-checkbox>
           </div>
-          <div class="checkbox__description" [class.checkbox-active]="item.isActive" >{{item.body}}</div>
+          <div *ngIf="item.body" class="checkbox__description" [class.checkbox-active]="item.isActive" [innerHTML]="item.body | textLines"></div>
         </div>
       </ng-container>
     </ng-container>

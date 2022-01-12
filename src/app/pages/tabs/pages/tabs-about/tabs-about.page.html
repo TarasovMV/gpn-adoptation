@@ -1,3 +1,4 @@
+<ion-header>
 <div class="header">
   <div class="title">О компании</div>
 </div>
@@ -6,6 +7,7 @@
     <div (click)="changeSection(item)" class="item" [ngClass]="{'active': item !== (section$ | async)}">{{item}}</div>
   </ng-container>
 </div>
+</ion-header>
 <div class="content">
   <ng-container [ngSwitch]="section$ | async">
     <div class="history" *ngSwitchCase="'История'">

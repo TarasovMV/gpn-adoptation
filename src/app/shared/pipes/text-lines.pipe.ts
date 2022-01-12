@@ -8,6 +8,8 @@ export class TextLinesPipe implements PipeTransform {
     transform(value: string): unknown {
         if (!value) {return ''}
         let arr = value.split('\n');
+        console.log(arr);
+        //arr = arr.filter(x => x.length > 0);
         arr = arr.map(x => {
             const classes = ['para'];
             if (x.search('<left>') !== -1) {
@@ -17,10 +19,10 @@ export class TextLinesPipe implements PipeTransform {
                 classes.push('para__indent');
             }
             const classNames = classes.join(' ');
-            return `<p class="${classNames}">${x}</p>`
+            return `<div class="${classNames}">${x}</div>`
         });
         // return value.replaceAll('\n', '<br>');
-        return arr.join('');
+        return arr.join('\n');
         // return arr.join('<br>');
     }
 }
