@@ -8,6 +8,7 @@ import {BackButtonService} from "./core/services/platform/back-button.service";
 import {ThemeService} from "./core/services/platform/theme-service.service";
 import {DOCUMENT} from "@angular/common";
 import {StatisticService} from "./core/services/platform/statistic.service";
+import {AppVersion} from "@ionic-native/app-version/ngx";
 
 @Component({
     selector: 'app-root',
@@ -27,16 +28,20 @@ export class AppComponent implements OnInit {
         private backButtonService: BackButtonService,
         private themeService: ThemeService,
         private statisticService: StatisticService,
+        private appVersion: AppVersion
     ) {}
 
     public ngOnInit(): void {
-        this.platform.ready().then(() => {
+        this.platform.ready().then(async() => {
             this.keyboardService.setInitSettings(this.platform, this.appWindow).then();
             this.fcmService.initPush();
             this.statusBarService.init();
             this.backButtonService.init(this.platform);
             this.themeService.setPlatformClass(this.document, this.platform);
             this.statisticService.init();
+            // TODO заменить сервисом
+            console.log("Версия:");
+            console.log(await this.appVersion.getVersionNumber());
         });
     }
 }
