@@ -1,12 +1,12 @@
-<ion-content>
-<div class="container">
+<ion-content scrollY="false">
+<div class="container" >
   <div class="title">
     <div class="title__name">Моя адаптация</div>
     <div class="title__info" (click)="openPrompt()">
       <svg-icon src="assets/icon/progress/adaptation-info.svg"></svg-icon>
     </div>
   </div>
-  <div class="content">
+  <div class="content" style="overflow: scroll">
     <div class="header">
       <div class="bar">
         <div class="progress" [ngStyle]="{'width.%': percentProgress * 100}"></div>
@@ -18,8 +18,8 @@
           <span class="task">Заданий выполнено</span>
         </div>
       </div>
-      <div class="stages" id="stages">
-        <ng-container *ngFor="let item of data?.adaptationStages">
+      <div class="stages" style="overflow-x: scroll" id="stages">
+        <div *ngFor="let item of data?.adaptationStages">
           <div [id]="'stage_' + item.id" class="item ion-activatable ripple-parent"
                [ngClass]="{'item-active': (activeStage$ | async)?.id === item.id}" (click)="switchStage(item)">
             <ion-ripple-effect></ion-ripple-effect>
@@ -37,20 +37,22 @@
                 {{item.adaptationSubStages?.length}}</div>
             </div>
           </div>
-        </ng-container>
+        </div>
       </div>
     </div>
     <div class="scroll">
       <div [@inOutAnimation] class="parallax" *ngIf="(activeStage$ | async)">
-        <ng-container *ngFor="let element of (activeStage$ | async).adaptationSubStages">
+        <div *ngFor="let element of (activeStage$ | async).adaptationSubStages">
           <div class="stage ion-activatable ripple-parent" [ngClass]="{'stage-active': element.isDone, 'stage-disabled': element.disabled}"
                (click)="toProgressCard(element)">
             <ion-ripple-effect></ion-ripple-effect>
             <div class="stage__icon" [ngClass]="{'stage__icon-done': element.isDone}">
-              <svg-icon *ngIf="element.isDone else def" src="assets/icon/progress/check.svg"></svg-icon>
-              <ng-template #def>
+              <div style="display: flex; justify-content: center; align-items: center"  *ngIf="element.isDone">
+                <svg-icon  src="assets/icon/progress/check.svg"></svg-icon>
+              </div>
+              <div style="display: flex; justify-content: center; align-items: center" *ngIf="!element.isDone">
                 <svg-icon src="assets/icon/progress/{{element.subStageType}}.svg"></svg-icon>
-              </ng-template>
+              </div>
             </div>
             <div class="stage__text">
               <div class="stage__text__name">{{element.name}}</div>
@@ -62,7 +64,7 @@
               </div>
             </div>
           </div>
-        </ng-container>
+        </div>
       </div>
     </div>
   </div>

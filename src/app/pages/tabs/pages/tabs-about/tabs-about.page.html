@@ -8,29 +8,32 @@
   </ng-container>
 </div>
 </ion-header>
-<div class="content">
-  <ng-container [ngSwitch]="section$ | async">
-    <div class="history" *ngSwitchCase="'История'">
-      <ion-header>
-        <div class="history__periods">
-          <app-tabs-about-history [data]="history"></app-tabs-about-history>
-        </div>
-      </ion-header>
-
-      <div class="history__content">
-
-        <ng-container *ngFor="let bullet of showHistory?.historyBullets">
-          <div class="title">{{bullet?.header}}</div>
-          <div class="image">
-            <cashed-img *ngIf="bullet.imagePath" [src]="restUrl+'/'+bullet?.imagePath"></cashed-img>
+<ion-content scrollY="false">
+  <div class="content">
+    <ng-container [ngSwitch]="section$ | async">
+      <div class="history" *ngSwitchCase="'История'">
+        <ion-header>
+          <div class="history__periods">
+            <app-tabs-about-history [data]="history"></app-tabs-about-history>
           </div>
-          <p>{{ bullet.text }}</p>
-          <div class="line"></div>
-        </ng-container>
+        </ion-header>
+
+        <div class="history__content">
+
+          <ng-container *ngFor="let bullet of showHistory?.historyBullets">
+            <div class="title">{{bullet?.header}}</div>
+            <div class="image">
+              <cashed-img *ngIf="bullet.imagePath" [src]="restUrl+'/'+bullet?.imagePath"></cashed-img>
+            </div>
+            <p>{{ bullet.text }}</p>
+            <div class="line"></div>
+          </ng-container>
+        </div>
       </div>
-    </div>
-    <div class="leadership" *ngSwitchCase="'Руководство'">
-      <app-tabs-about-leadership [data]="leadership"></app-tabs-about-leadership>
-    </div>
-  </ng-container>
-</div>
+      <div class="leadership" *ngSwitchCase="'Руководство'">
+        <app-tabs-about-leadership [data]="leadership"></app-tabs-about-leadership>
+      </div>
+    </ng-container>
+  </div>
+</ion-content>
+
