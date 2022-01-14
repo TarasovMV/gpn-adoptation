@@ -83,6 +83,7 @@ export class TabsAboutPage implements OnInit, OnDestroy, IPageTab {
 
     public changeSection(section: string): void {
         this.section$.next(section);
+        console.log(this.section$);
     }
 
     public async changeHistory(): Promise<void> {

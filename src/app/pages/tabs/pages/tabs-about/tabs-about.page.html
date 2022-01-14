@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header [class.ion-no-border]="section$.value === 'История'">
 <div class="header">
   <div class="title">О компании</div>
 </div>
@@ -11,10 +11,14 @@
 <div class="content">
   <ng-container [ngSwitch]="section$ | async">
     <div class="history" *ngSwitchCase="'История'">
-      <div class="history__periods">
-        <app-tabs-about-history [data]="history"></app-tabs-about-history>
-      </div>
+      <ion-header>
+        <div class="history__periods">
+          <app-tabs-about-history [data]="history"></app-tabs-about-history>
+        </div>
+      </ion-header>
+
       <div class="history__content">
+
         <ng-container *ngFor="let bullet of showHistory?.historyBullets">
           <div class="title">{{bullet?.header}}</div>
           <div class="image">
