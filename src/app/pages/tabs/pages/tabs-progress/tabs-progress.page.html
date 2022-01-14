@@ -18,8 +18,8 @@
           <span class="task">Заданий выполнено</span>
         </div>
       </div>
-      <div class="stages" style="overflow-x: scroll" id="stages">
-        <div *ngFor="let item of data?.adaptationStages">
+      <div class="stages" id="stages">
+        <div class="stage-block" *ngFor="let item of data?.adaptationStages">
           <div [id]="'stage_' + item.id" class="item ion-activatable ripple-parent"
                [ngClass]="{'item-active': (activeStage$ | async)?.id === item.id}" (click)="switchStage(item)">
             <ion-ripple-effect></ion-ripple-effect>
@@ -47,8 +47,8 @@
                (click)="toProgressCard(element)">
             <ion-ripple-effect></ion-ripple-effect>
             <div style="display: flex; justify-content: center; align-items: center" class="stage__icon" [ngClass]="{'stage__icon-done': element.isDone}">
-              <img  *ngIf="element.isDone" src="assets/icon/progress/check.svg"/>
-              <img *ngIf="!element.isDone" src="assets/icon/progress/{{element.subStageType}}.svg"/>
+              <img class="icon-image"  *ngIf="element.isDone" src="assets/icon/progress/check.svg"/>
+              <img class="icon-image" *ngIf="!element.isDone" src="assets/icon/progress/{{element.subStageType}}.svg"/>
             </div>
 
             <div class="stage__text">

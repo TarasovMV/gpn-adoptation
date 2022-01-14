@@ -101,7 +101,7 @@
     position: relative;
     flex-grow: 1;
     width: 100%;
-    height: 77vh;
+    height: 80vh;
     overflow: hidden;
     margin-top: sizeHeight(20);
 
@@ -147,8 +147,6 @@
     height: sizeHeight(200);
     background-color: #FFFFFF;
     padding: sizeHeight(14) sizeWidth(14);
-    margin-right: sizeHeight(10);
-    border-radius: sizeHeight(11);
     color: #404763;
     opacity: 0.6;
     box-shadow: 0 0 sizeHeight(4) 0 rgba(203, 203, 203, 0.25);
@@ -160,14 +158,7 @@
     position: relative;
     filter: grayscale(100%);
     overflow: hidden;
-
-    &:first-child {
-      margin-left: sizeWidth(24);
-    }
-
-    &:last-child {
-      margin-right: sizeWidth(24);
-    }
+    margin-left: sizeWidth(0);
 
     &-active {
       opacity: 1;
@@ -299,4 +290,23 @@
 
 svg-icon {
   display: flex;
+}
+
+.icon-image {
+  min-height: sizeHeight(23);
+  max-height: sizeHeight(23);
+  min-width: sizeHeight(23);
+  max-width: sizeHeight(23);
+}
+
+.stage-block {
+  margin-right: sizeHeight(14);
+}
+
+.stage-block:first-child {
+  margin-left: sizeHeight(24);
+}
+
+.stage-block:last-child {
+  margin-right: sizeHeight(24);
 }
