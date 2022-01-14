@@ -7,8 +7,8 @@
 
 <ion-content scrollY="false">
   <div class="content" id="content">
-    <div style="width: 100%" *ngFor="let item of data">
-      <div style="width: 100%" [ngSwitch]="item.componentType">
+    <div style="width: 100%;" *ngFor="let item of data">
+      <div  [ngSwitch]="item.componentType">
         <div *ngSwitchCase="1" class="image mb">
           <cashed-img src='{{restUrl}}/{{item.imagePath}}'></cashed-img>
           <div class="footer">{{item.footer}}</div>
@@ -53,7 +53,7 @@
           <div class="footer">{{item.footer}}</div>
         </div>
         <div class="block mb" *ngSwitchCase="6">
-          <span style="white-space: pre">{{item.body}}</span>
+          <span style="white-space: pre-line">{{item.body}}</span>
           <div class="footer">{{item.footer}}</div>
         </div>
         <div class="points mb" *ngSwitchCase="10">
