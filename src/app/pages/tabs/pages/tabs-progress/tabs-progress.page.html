@@ -11,7 +11,7 @@
       <div class="bar">
         <div class="progress" [ngStyle]="{'width.%': percentProgress * 100}"></div>
         <div class="bar__lock">
-          <svg-icon src="assets/icon/progress/lock.svg"></svg-icon>
+          <img class="bar__lock" src="assets/icon/progress/lock.svg"/>
         </div>
         <div class="bar__percent">
           <span>{{(percentProgress * 100).toFixed(0)}}%</span>
@@ -46,14 +46,11 @@
           <div class="stage ion-activatable ripple-parent" [ngClass]="{'stage-active': element.isDone, 'stage-disabled': element.disabled}"
                (click)="toProgressCard(element)">
             <ion-ripple-effect></ion-ripple-effect>
-            <div class="stage__icon" [ngClass]="{'stage__icon-done': element.isDone}">
-              <div style="display: flex; justify-content: center; align-items: center"  *ngIf="element.isDone">
-                <svg-icon  src="assets/icon/progress/check.svg"></svg-icon>
-              </div>
-              <div style="display: flex; justify-content: center; align-items: center" *ngIf="!element.isDone">
-                <svg-icon src="assets/icon/progress/{{element.subStageType}}.svg"></svg-icon>
-              </div>
+            <div style="display: flex; justify-content: center; align-items: center" class="stage__icon" [ngClass]="{'stage__icon-done': element.isDone}">
+              <img  *ngIf="element.isDone" src="assets/icon/progress/check.svg"/>
+              <img *ngIf="!element.isDone" src="assets/icon/progress/{{element.subStageType}}.svg"/>
             </div>
+
             <div class="stage__text">
               <div class="stage__text__name">{{element.name}}</div>
               <div class="timer">

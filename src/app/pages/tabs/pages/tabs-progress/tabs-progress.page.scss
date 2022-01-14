@@ -36,8 +36,10 @@
   }
 
   &__lock {
-    height: sizeHeight(30);
-    width: sizeHeight(30);
+    min-height: sizeHeight(30);
+    min-width: sizeHeight(30);
+    max-height: sizeHeight(30);
+    max-width: sizeHeight(30);
     margin-right: sizeHeight(12);
   }
 }
