@@ -7,8 +7,8 @@
 
 <ion-content scrollY="false">
   <div class="content" id="content">
-    <ng-container *ngFor="let item of data">
-      <ng-container [ngSwitch]="item.componentType">
+    <div style="width: 100%" *ngFor="let item of data">
+      <div style="width: 100%" [ngSwitch]="item.componentType">
         <div *ngSwitchCase="1" class="image mb">
           <cashed-img src='{{restUrl}}/{{item.imagePath}}'></cashed-img>
           <div class="footer">{{item.footer}}</div>
@@ -146,8 +146,8 @@
           </div>
           <div *ngIf="item.body" style="white-space: pre-line" class="checkbox__description" [class.checkbox-active]="item.isActive">{{item.body}}</div>
         </div>
-      </ng-container>
-    </ng-container>
+      </div>
+    </div>
 
     <div *ngIf="isProgress" class="button button__done" [class.button__disabled]="isDone" style="margin-top: auto"
       (click)="setDone()">Выполнено</div>
