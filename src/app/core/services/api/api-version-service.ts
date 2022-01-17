@@ -58,8 +58,11 @@ export class ApiVersionService {
 
     private async getCurrentVersion(): Promise<IVersion> {
         const versionHistory = await this.http.get<IVersion[]>(`${this.restUrl}/api/ApplicationVersions`).toPromise();
-        const currentVersion = versionHistory.find(async x => x.versionCode === await this.appVersion.getVersionCode());
+        const buildNumber = await this.appVersion.getVersionCode();
+        const currentVersion = versionHistory.find(x => Number(x.versionCode) === Number(buildNumber));
         if (currentVersion) {
+            console.log("Current version");
+            console.log(await this.appVersion.getVersionCode());
             return currentVersion;
         }
         else {
