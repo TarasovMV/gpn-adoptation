@@ -9,14 +9,14 @@ import {StatusBarService} from "../platform/status-bar.service";
     providedIn: 'root'
 })
 export class UserService {
-
     constructor(
         private apiUserService: ApiUserService,
         private tokenService: TokenService,
         private navCtrl: NavController,
         private fcmService: FcmService,
         private statusBarService: StatusBarService
-    ) {}
+    ) {
+    }
 
     public async authorize(): Promise<boolean> {
         const token = await this.tokenService.loadToken();
@@ -28,6 +28,8 @@ export class UserService {
         await this.tokenService.saveToken(user.token);
         await this.navCtrl.navigateRoot('start');
         this.fcmService.sendFcmToken().then();
+        console.log(code);
+        localStorage.setItem("userCode", code);
     }
 
     public async logout(): Promise<void> {

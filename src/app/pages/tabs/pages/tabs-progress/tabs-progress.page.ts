@@ -10,6 +10,8 @@ import { AppConfigService } from 'src/app/core/services/platform/app-config.serv
 import { BehaviorSubject } from 'rxjs';
 import { InfoPopupStagesComponent } from 'src/app/shared/components/info-popup-stages/info-popup-stages.component';
 import { StatusBarService } from "../../../../core/services/platform/status-bar.service";
+import {InfoPopupVersionComponent} from "../../../../shared/components/info-popup-version/info-popup-version.component";
+import {ApiVersionService} from "../../../../core/services/api/api-version-service";
 
 
 @Component({

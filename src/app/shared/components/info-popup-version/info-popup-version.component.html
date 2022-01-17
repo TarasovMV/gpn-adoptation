@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="popup">
+    <div class="close" (click)="dismiss()">
+      <img src="assets/icon/close.svg">
+    </div>
+    <div class="popup__icon">
+      <img src="assets/icon/version-warning.svg">
+    </div>
+    <div class="popup__header">
+      Доступна новая версия приложения
+    </div>
+    <div class="popup__text">
+      Во избежание ошибок, пожалуйста, установите обновление
+    </div>
+    <div class="popup__button" (click)="openStore()">
+      <div class="popup__button__text">Обновить</div>
+    </div>
+  </div>
+</div>

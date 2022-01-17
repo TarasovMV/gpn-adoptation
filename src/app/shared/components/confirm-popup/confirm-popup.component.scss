@@ -36,15 +36,15 @@
         width: sizeHeight(32);
         height: sizeHeight(32);
         position: absolute;
-        top: sizeHeight(12);
-        right: sizeHeight(12);
+        top: sizeHeight(17);
+        right: sizeHeight(17);
 
         display: flex;
         justify-content: center;
         align-items: center;
         padding: sizeHeight(5);
     }
-    
+
     &__icon {
         height: sizeHeight(116);
         width: sizeWidth(131);
@@ -67,5 +67,12 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
+      &__text {
+        font-family: "SegoeUI";
+        font-weight: 600;
+        color: white;
+        font-size: sizeHeight(16);
+      }
     }
 }

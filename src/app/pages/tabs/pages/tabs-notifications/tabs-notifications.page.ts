@@ -6,6 +6,9 @@ import {BehaviorSubject} from "rxjs";
 import {BackButtonService} from "../../../../core/services/platform/back-button.service";
 import {ModalController, Platform} from "@ionic/angular";
 import { ConfirmPopupComponent } from 'src/app/shared/components/confirm-popup/confirm-popup.component';
+import {UserService} from "../../../../core/services/data/user.service";
+import {IVersion} from "../../../../core/models/version-model";
+import {ApiVersionService} from "../../../../core/services/api/api-version-service";
 
 @Component({
     selector: 'app-tabs-notifications',
@@ -20,13 +23,18 @@ export class TabsNotificationsPage implements OnInit, OnDestroy, IPageTab {
 
     public notifications$: BehaviorSubject<INotifications[]> = new BehaviorSubject<INotifications[]>([]);
 
+    public userId: string;
+    public currentVersion: IVersion;
+
     constructor(
         private apiNotificationService: ApiNotificationService,
-        private modalController: ModalController
+        private modalController: ModalController,
+        public apiVersionService: ApiVersionService
     ) {}
 
-    public ngOnInit(): void {
+    public async ngOnInit(): Promise<void> {
         this.getNotifications().then();
+        this.userId = localStorage.getItem("userCode");
     }
 
     public ngOnDestroy(): void {}

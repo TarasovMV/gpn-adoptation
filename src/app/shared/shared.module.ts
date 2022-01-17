@@ -9,6 +9,7 @@ import {SafeUrlPipe} from "./pipes/safe-url.pipe";
 import { ConfirmPopupComponent } from './components/confirm-popup/confirm-popup.component';
 import { InfoPopupComponent } from './components/info-popup/info-popup.component';
 import { BrowserModule } from '@angular/platform-browser';
+import {InfoPopupVersionComponent} from "./components/info-popup-version/info-popup-version.component";
 
 @NgModule({
     declarations: [
@@ -17,6 +18,7 @@ import { BrowserModule } from '@angular/platform-browser';
         SafeUrlPipe,
         CashedImgComponent,
         ConfirmPopupComponent,
+        InfoPopupVersionComponent
     ],
     imports: [
         CommonModule,

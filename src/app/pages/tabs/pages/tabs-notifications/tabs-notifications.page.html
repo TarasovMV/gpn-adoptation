@@ -48,6 +48,21 @@
         </ng-template>
       </ng-container>
       <ng-container *ngSwitchCase="'Настройки'">
+        <div class="notifications settings-item">
+          <div class="settings-item__name">ID</div>
+          <div class="settings-item__simple-text">{{userId}}</div>
+        </div>
+        <div class="notifications settings-item">
+          <div class="settings-item__name">Версия</div>
+          <div class="settings-item__version-block">
+            <div class="settings-item__version-block__date">
+              {{(apiVersionService.versions$ | async).currentVersion.dateTime | date: 'dd.MM.yyyy'}}
+            </div>
+            <div class="settings-item__version-block__name">
+              {{(apiVersionService.versions$ | async).currentVersion.versionName}}
+            </div>
+          </div>
+        </div>
         <div class="change-user" (click)="changeUser()">
           <span>Сменить пользователя</span>
         </div>

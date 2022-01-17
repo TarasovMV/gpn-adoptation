@@ -80,6 +80,50 @@ ion-content {
 
   overflow-y: scroll;
 
+  .settings-item {
+    position: relative;
+    top: - sizeHeight(8);
+    justify-content: space-between;
+    flex-direction: row !important;
+    border-radius: sizeHeight(44) !important;
+    padding: sizeHeight(16) sizeWidth(28) !important;
+
+    &__name {
+      color: #404763;
+      font-family: 'SegoeUI';
+      font-weight: 400;
+      font-size: sizeHeight(16);
+    }
+
+    &__simple-text {
+      color: #5B6179;
+      font-family: 'SegoeUI_Bold';
+      font-size: sizeHeight(16);
+      font-weight: 700;
+    }
+
+    &__version-block {
+      vertical-align: bottom;
+
+      &__date {
+        font-family: 'SegoeUI_Bold';
+        font-weight: 700;
+        font-size: sizeHeight(12);
+        display: inline-block;
+        margin-right: sizeWidth(3);
+        color: #8591A9;
+      }
+
+      &__name {
+        font-family: 'SegoeUI_Bold';
+        font-weight: 700;
+        font-size: sizeHeight(16);
+        display: inline-block;
+        color: #5B6179;
+      }
+    }
+  }
+
   .empty {
     width: 100%;
     height: 100%;
