@@ -56,10 +56,10 @@
           <div class="settings-item__name">Версия</div>
           <div class="settings-item__version-block">
             <div class="settings-item__version-block__date">
-              {{(apiVersionService.versions$ | async).currentVersion.dateTime | date: 'dd.MM.yyyy'}}
+              {{apiVersionService.currentVersion.dateTime | date: 'dd.MM.yyyy'}}
             </div>
             <div class="settings-item__version-block__name">
-              {{(apiVersionService.versions$ | async).currentVersion.versionName}}
+              {{apiVersionService.currentVersion.versionName}}
             </div>
           </div>
         </div>

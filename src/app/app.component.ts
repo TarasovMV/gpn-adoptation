@@ -43,7 +43,9 @@ export class AppComponent implements OnInit {
             this.statisticService.init();
             this.apiVersionService.versions$.subscribe((value) => {
                 if (value) {
-                    this.showVersionPrompt();
+                    if (value.currentVersion.versionCode < value.latestVersion.versionCode) {
+                        this.showVersionPrompt();
+                    }
                 }
             });
             this.apiVersionService.init(this.platform);

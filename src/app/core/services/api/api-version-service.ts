@@ -16,8 +16,8 @@ export class Versions {
 
 export class ApiVersionService {
     public versions$: BehaviorSubject<Versions> = new BehaviorSubject<Versions>(null);
-    private currentVersion: IVersion;
-    private latestVersion: IVersion;
+    public currentVersion: IVersion;
+    public latestVersion: IVersion;
     private readonly restUrl: string;
     private _storeUrl: string;
 
