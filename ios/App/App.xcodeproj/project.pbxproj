@@ -166,6 +166,13 @@
 			remoteGlobalIDString = 21B03CA622E690725A6626C088E1D09F;
 			remoteInfo = ReachabilitySwift;
 		};
+		5DF8E4572791E2E3009401C0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5D4DCD0926BA8DA000034CB6 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 905488119B59CE9E075BE7526F21DF2E;
+			remoteInfo = CordovaPlugins;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -256,6 +263,7 @@
 				5D4DCD3326BA8DA000034CB6 /* CapacitorSplashScreen.framework */,
 				5D4DCD3526BA8DA000034CB6 /* CapacitorStatusBar.framework */,
 				5D4DCD3726BA8DA000034CB6 /* CapacitorStorage.framework */,
+				5DF8E4582791E2E3009401C0 /* CordovaPlugins.framework */,
 				5D4DCD3926BA8DA000034CB6 /* FirebaseCore.framework */,
 				5D4DCD3B26BA8DA000034CB6 /* FirebaseCoreDiagnostics.framework */,
 				5D4DCD3D26BA8DA000034CB6 /* FirebaseInstallations.framework */,
@@ -489,6 +497,13 @@
 			remoteRef = 5D4DCD4A26BA8DA000034CB6 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		5DF8E4582791E2E3009401C0 /* CordovaPlugins.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CordovaPlugins.framework;
+			remoteRef = 5DF8E4572791E2E3009401C0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -690,12 +705,12 @@
 				CODE_SIGN_ENTITLEMENTS = App/App.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = WKVG8VFM9Z;
 				INFOPLIST_FILE = App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.16;
+				MARKETING_VERSION = 1.22;
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-DDEBUG\"";
 				PRODUCT_BUNDLE_IDENTIFIER = io.gpn.adoptation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -714,12 +729,12 @@
 				CODE_SIGN_ENTITLEMENTS = App/App.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 23;
 				DEVELOPMENT_TEAM = WKVG8VFM9Z;
 				INFOPLIST_FILE = App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.16;
+				MARKETING_VERSION = 1.22;
 				PRODUCT_BUNDLE_IDENTIFIER = io.gpn.adoptation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "GPN Distribution Profile";
