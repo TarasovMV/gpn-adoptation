@@ -43,7 +43,10 @@ export class AppComponent implements OnInit {
             this.statisticService.init();
             this.apiVersionService.setPlatform(this.platform);
             localStorage.setItem("is-version-prompt-showed", "1");
-            localStorage.setItem("tabs-progress-show", "1");
+            const firstTime = localStorage.getItem("tabs-progress-show");
+            if (!firstTime) {
+                localStorage.setItem("tabs-progress-show", "1");
+            }
         });
     }
 }

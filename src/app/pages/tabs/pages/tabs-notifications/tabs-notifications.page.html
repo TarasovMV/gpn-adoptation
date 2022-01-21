@@ -3,17 +3,17 @@
     <div class="title">Ваш профиль</div>
   </div>
   <div class="menu">
-    <ng-container *ngFor="let item of sections">
+    <div *ngFor="let item of sections">
       <div (click)="changeSection(item)" class="item" [ngClass]="{'active': item !== (section$ | async)}">{{item}}</div>
-    </ng-container>
+    </div>
   </div>
 </ion-header>
-<ion-content>
+<ion-content style="height: 100%">
   <div class="content">
-    <ng-container [ngSwitch]="section$ | async">
-      <ng-container *ngSwitchCase="'События'">
-        <ng-container *ngIf="!!(notifications$ | async)?.length; else empty">
-          <ng-container *ngFor="let item of notifications$ | async">
+    <div style="height: 100%" [ngSwitch]="section$ | async">
+      <div style="height: 100%" *ngSwitchCase="'События'">
+       <div *ngIf="!!(notifications$ | async)?.length">
+          <div *ngFor="let item of notifications$ | async">
             <div class="date">{{item.date | date: 'mediumDate'}}</div>
             <div class="notifications" *ngFor="let element of item.notifications">
               <div class="notifications__block">
@@ -38,16 +38,19 @@
                 </div>
               </div>
             </div>
-          </ng-container>
-        </ng-container>
-        <ng-template #empty>
-          <div class="empty">
-            <svg-icon src="assets/icon/empty.svg"></svg-icon>
-            <div class="text">У Вас пока нет уведомлений</div>
           </div>
-        </ng-template>
-      </ng-container>
-      <ng-container *ngSwitchCase="'Настройки'">
+        </div>
+        <div class="empty" *ngIf="!!!(notifications$ | async)?.length">
+          <div>
+            <div>
+              <svg-icon src="assets/icon/empty.svg"></svg-icon>
+              <div class="text">У Вас пока нет уведомлений</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div *ngSwitchCase="'Настройки'">
         <div class="notifications settings-item">
           <div class="settings-item__name">ID</div>
           <div class="settings-item__simple-text">{{userId}}</div>
@@ -66,7 +69,7 @@
         <div class="change-user" (click)="changeUser()">
           <span>Сменить пользователя</span>
         </div>
-      </ng-container>
-    </ng-container>
+      </div>
+    </div>
   </div>
 </ion-content>
