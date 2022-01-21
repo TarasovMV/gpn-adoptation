@@ -41,22 +41,10 @@ export class AppComponent implements OnInit {
             this.backButtonService.init(this.platform);
             this.themeService.setPlatformClass(this.document, this.platform);
             this.statisticService.init();
-            this.apiVersionService.versions$.subscribe((value) => {
-                if (value) {
-                    if (value.currentVersion.versionCode < value.latestVersion.versionCode) {
-                        this.showVersionPrompt();
-                    }
-                }
-            });
-            this.apiVersionService.init(this.platform);
+            this.apiVersionService.setPlatform(this.platform);
+            localStorage.setItem("is-version-prompt-showed", "1");
+            localStorage.setItem("tabs-progress-show", "1");
         });
-    }
-
-    public async showVersionPrompt(): Promise<void> {
-        const modal = await this.modalController.create({
-            component: InfoPopupVersionComponent,
-        });
-        return await modal.present();
     }
 }
 

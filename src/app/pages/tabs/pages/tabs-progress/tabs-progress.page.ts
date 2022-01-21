@@ -1,11 +1,10 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TabsService } from 'src/app/core/services/tabs/tabs.service';
 import { IAdaptationStage, IAdaptationSubStage, IPageTab, IProgress, PageTabType } from '../../tabs.model';
 import { TabsProgressService } from "./services/tabs-progress.service";
 import { ModalController, NavController, } from "@ionic/angular";
 import { ApiAdaptationService } from "../../../../core/services/api/api-adaptation.service";
 import { trigger, style, animate, transition } from '@angular/animations';
-import { Storage } from '@capacitor/storage';
 import { AppConfigService } from 'src/app/core/services/platform/app-config.service';
 import { BehaviorSubject } from 'rxjs';
 import { InfoPopupStagesComponent } from 'src/app/shared/components/info-popup-stages/info-popup-stages.component';
@@ -60,6 +59,7 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
         private modalController: ModalController,
         private statusBarService: StatusBarService,
         appConfigService: AppConfigService,
+        private apiVersionService: ApiVersionService
     ) {
         this.restUrl = appConfigService.getAttribute('restUrl');
     }
@@ -69,30 +69,76 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
             this.doneHandler(x, this.data);
             this.countProgress();
         });
-        setTimeout(() => {
-            this.showPrompt();
-        }, 2500);
+
+        this.apiVersionService.versions$.subscribe(async (value) => {
+            if (value) {
+                const isShow = localStorage.getItem("is-version-prompt-showed");
+                // eslint-disable-next-line max-len
+                if (this.apiVersionService.currentVersion.versionCode < this.apiVersionService.latestVersion.versionCode) {
+                    if (isShow === "1") {
+                        await this.showVersionPrompt();
+                        localStorage.setItem("is-version-prompt-showed", "0");
+                    }
+                }
+                else {
+                    setTimeout(() => {
+                        this.showPrompt();
+                    }, 500);
+                }
+            }
+        });
+        if (!this.apiVersionService.isInit()) {
+            this.apiVersionService.init();
+        }
+        else {
+            setTimeout(async () => {
+                if (this.apiVersionService.isInit()) {
+                    const isShow = localStorage.getItem("is-version-prompt-showed");
+                    // eslint-disable-next-line max-len
+                    if (this.apiVersionService.currentVersion.versionCode < this.apiVersionService.latestVersion.versionCode) {
+                        if (isShow === "1") {
+                            await this.showVersionPrompt();
+                            localStorage.setItem("is-version-prompt-showed", "0");
+                        }
+                    }
+                    else {
+                        setTimeout(() => {
+                            this.showPrompt();
+                        }, 500);
+                    }
+                }
+            }, 300);
+        }
+
         this.getData();
     }
 
     ngOnDestroy(): void { }
 
     public async showPrompt(): Promise<void> {
-        const isShow: boolean = !!(await Storage.get({ key: 'tabs-progress-show' })).value;
-        if (isShow) {
+        const isShow = localStorage.getItem("tabs-progress-show");
+        if (isShow !== "1") {
             return;
         }
         const modal = await this.modalController.create({
             component: InfoPopupStagesComponent,
         });
-        Storage.set({ key: 'tabs-progress-show', value: 'true' }).then();
-        return await modal.present();
+        await modal.present();
+        localStorage.setItem("tabs-progress-show", "0");
     }
 
     public async openPrompt() {
         const modal = await this.modalController.create({
             component: InfoPopupStagesComponent,
         });
+        return await modal.present();
+    }
+
+    public async showVersionPrompt(): Promise<void> {
+        const modal = await this.modalController.create({
+            component: InfoPopupVersionComponent,
+        });
+
         return await modal.present();
     }
 

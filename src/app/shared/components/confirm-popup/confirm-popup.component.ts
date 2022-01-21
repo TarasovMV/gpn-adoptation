@@ -21,6 +21,8 @@ export class ConfirmPopupComponent implements OnInit {
   }
 
   public logout(): void {
+      localStorage.setItem("is-version-prompt-showed", "1");
+      localStorage.setItem("tabs-progress-show", "1");
     this.userService.logout().then();
     this.dismiss();
 }
