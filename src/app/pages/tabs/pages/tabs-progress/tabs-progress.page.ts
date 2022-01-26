@@ -1,14 +1,14 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { TabsService } from 'src/app/core/services/tabs/tabs.service';
-import { IAdaptationStage, IAdaptationSubStage, IPageTab, IProgress, PageTabType } from '../../tabs.model';
-import { TabsProgressService } from "./services/tabs-progress.service";
-import { ModalController, NavController, } from "@ionic/angular";
-import { ApiAdaptationService } from "../../../../core/services/api/api-adaptation.service";
-import { trigger, style, animate, transition } from '@angular/animations';
-import { AppConfigService } from 'src/app/core/services/platform/app-config.service';
-import { BehaviorSubject } from 'rxjs';
-import { InfoPopupStagesComponent } from 'src/app/shared/components/info-popup-stages/info-popup-stages.component';
-import { StatusBarService } from "../../../../core/services/platform/status-bar.service";
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {TabsService} from 'src/app/core/services/tabs/tabs.service';
+import {IAdaptationStage, IAdaptationSubStage, IPageTab, IProgress, PageTabType} from '../../tabs.model';
+import {TabsProgressService} from "./services/tabs-progress.service";
+import {ModalController, NavController,} from "@ionic/angular";
+import {ApiAdaptationService} from "../../../../core/services/api/api-adaptation.service";
+import {trigger, style, animate, transition} from '@angular/animations';
+import {AppConfigService} from 'src/app/core/services/platform/app-config.service';
+import {BehaviorSubject} from 'rxjs';
+import {InfoPopupStagesComponent} from 'src/app/shared/components/info-popup-stages/info-popup-stages.component';
+import {StatusBarService} from "../../../../core/services/platform/status-bar.service";
 import {InfoPopupVersionComponent} from "../../../../shared/components/info-popup-version/info-popup-version.component";
 import {ApiVersionService} from "../../../../core/services/api/api-version-service";
 
@@ -24,17 +24,17 @@ import {ApiVersionService} from "../../../../core/services/api/api-version-servi
                 transition(
                     ':enter',
                     [
-                        style({ height: 0, opacity: 0 }),
+                        style({height: 0, opacity: 0}),
                         animate('.3s ease-out',
-                            style({ height: '*', opacity: 1 }))
+                            style({height: '*', opacity: 1}))
                     ]
                 ),
                 transition(
                     ':leave',
                     [
-                        style({ height: '*', opacity: 1 }),
+                        style({height: '*', opacity: 1}),
                         animate('.3s ease-in',
-                            style({ height: 0, opacity: .3 }))
+                            style({height: 0, opacity: .3}))
                     ]
                 )
             ]
@@ -79,8 +79,7 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
                         await this.showVersionPrompt();
                         localStorage.setItem("is-version-prompt-showed", "0");
                     }
-                }
-                else {
+                } else {
                     setTimeout(() => {
                         this.showPrompt();
                     }, 500);
@@ -89,8 +88,7 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
         });
         if (!this.apiVersionService.isInit()) {
             this.apiVersionService.init();
-        }
-        else {
+        } else {
             setTimeout(async () => {
                 if (this.apiVersionService.isInit()) {
                     const isShow = localStorage.getItem("is-version-prompt-showed");
@@ -100,8 +98,7 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
                             await this.showVersionPrompt();
                             localStorage.setItem("is-version-prompt-showed", "0");
                         }
-                    }
-                    else {
+                    } else {
                         setTimeout(() => {
                             this.showPrompt();
                         }, 500);
@@ -113,7 +110,8 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
         this.getData();
     }
 
-    ngOnDestroy(): void { }
+    ngOnDestroy(): void {
+    }
 
     public async showPrompt(): Promise<void> {
         const isShow = localStorage.getItem("tabs-progress-show");
@@ -189,7 +187,7 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
     }
 
     public toProgressCard(element: IAdaptationSubStage): void {
-        this.navCtr.navigateForward('info', { queryParams: { id: element.id, type: 'progress' } }).then();
+        this.navCtr.navigateForward('info', {queryParams: {id: element.id, type: 'progress'}}).then();
         this.tabsService.adaptationComponents$.next(element);
     }
 
@@ -198,6 +196,10 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
         setTimeout(() => {
             event.srcElement.complete();
         }, 300);
+    }
+
+    public isAdaptationComplete(): boolean {
+        return Number((this.percentProgress * 100).toFixed(0)) === 100;
     }
 
     private openInitStage(stages: IAdaptationStage[]): void {

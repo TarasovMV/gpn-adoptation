@@ -51,11 +51,11 @@
         </div>
       </div>
       <div *ngSwitchCase="'Настройки'">
-        <div class="notifications settings-item">
+        <div class="notifications settings-item" style="height: 6.65vh !important;">
           <div class="settings-item__name">ID</div>
           <div class="settings-item__simple-text">{{userId}}</div>
         </div>
-        <div class="notifications settings-item">
+        <div class="notifications settings-item" style="height: 6.65vh !important;">
           <div class="settings-item__name">Версия</div>
           <div class="settings-item__version-block">
             <div class="settings-item__version-block__date">
@@ -64,6 +64,12 @@
             <div class="settings-item__version-block__name">
               {{apiVersionService.currentVersion.versionName}}
             </div>
+          </div>
+        </div>
+        <div class="notifications settings-item" style="height: 6.65vh !important;">
+          <div class="settings-item__name">Push-уведомления</div>
+          <div class="toggle-block" [class.toggle-block_enabled]="areNotificationsEnabled">
+            <ion-toggle [(ngModel)]="areNotificationsEnabled" class="toggle"></ion-toggle>
           </div>
         </div>
         <div class="change-user" (click)="changeUser()">

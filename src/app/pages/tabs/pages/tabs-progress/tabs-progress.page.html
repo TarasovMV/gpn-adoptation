@@ -9,7 +9,7 @@
   <div class="content" style="overflow-y: scroll;">
     <div class="header">
       <div class="bar">
-        <div class="progress" [ngStyle]="{'width.%': percentProgress * 100}"></div>
+        <div class="progress" [class.progress__full-rounded]="isAdaptationComplete()" [ngStyle]="{'width.%': percentProgress * 100}"></div>
         <div class="bar__lock">
           <img class="bar__lock" src="assets/icon/progress/lock.svg"/>
         </div>

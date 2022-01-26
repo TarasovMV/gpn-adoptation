@@ -25,6 +25,7 @@ export class TabsNotificationsPage implements OnInit, OnDestroy, IPageTab {
 
     public userId: string;
     public currentVersion: IVersion;
+    public areNotificationsEnabled = false;
 
     constructor(
         private apiNotificationService: ApiNotificationService,
@@ -71,4 +72,7 @@ export class TabsNotificationsPage implements OnInit, OnDestroy, IPageTab {
         this.notifications$.next(mapNotifications);
     }
 
+    public toggleNotifications(): void {
+        this.areNotificationsEnabled = !this.areNotificationsEnabled;
+    }
 }

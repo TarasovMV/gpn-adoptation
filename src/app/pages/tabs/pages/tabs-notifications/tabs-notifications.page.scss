@@ -87,6 +87,13 @@ ion-content {
     flex-direction: row !important;
     border-radius: sizeHeight(44) !important;
     padding: sizeHeight(16) sizeWidth(28) !important;
+    max-height: sizeHeight(54) !important;
+
+    &_with-toggle {
+      padding: 0 !important;
+      padding-right: sizeWidth(28) !important;
+      padding-left: sizeWidth(28) !important;
+    }
 
     &__name {
       color: #404763;
@@ -121,6 +128,42 @@ ion-content {
         display: inline-block;
         color: #5B6179;
       }
+    }
+
+    .toggle-block {
+      position: absolute;
+      background: #C4D3E9;
+      height: calc(2.956vh + 2px);
+      width: calc(12.8vw + 2px);
+      border-radius: sizeHeight(16);
+      display: flex;
+      right: sizeWidth(28);
+      justify-content: center;
+      align-items: center;
+
+      &_enabled {
+        background: #0F62FE;
+      }
+    }
+
+    .toggle {
+      padding-inline: 1px !important;
+      width: sizeWidth(48);
+      height: sizeHeight(24);
+      margin: 0;
+      padding: 0;
+      --background: #8C99B2;
+      --background-checked: #0089FF;
+      --handle-background: #ffffff;
+      --handle-spacing: 1px;
+      --inner-padding: sizeHeight(1);
+      --handle-background-checked: #ffffff;
+      --handle-box-shadow: none;
+      /*border: sizeHeight(1) solid #C4D3E9;*/
+    }
+
+    .toggle .handle {
+      width: 60px;
     }
   }
 
