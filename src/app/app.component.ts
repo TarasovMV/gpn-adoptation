@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
             localStorage.setItem("is-version-prompt-showed", "1");
             const firstTime = localStorage.getItem("tabs-progress-show");
             if (!firstTime) {
-                localStorage.setItem("tabs-progress-show", "1");
+                localStorage.setItem("tabs-progress-show", "0");
             }
         });
     }

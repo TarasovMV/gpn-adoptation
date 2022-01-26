@@ -84,7 +84,7 @@ export class ApiVersionService {
         else {
             return {
                 versionName: await this.appVersion.getVersionNumber(), versionCode: await this.appVersion.getVersionCode(),
-                versionDescription: null, dateTime: ""};
+                versionDescription: null, dateTime: Date()};
         }
     }
 }

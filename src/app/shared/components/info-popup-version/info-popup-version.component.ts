@@ -21,11 +21,13 @@ export class InfoPopupVersionComponent implements OnInit {
         this.modalController.dismiss().then();
 
         setTimeout(async() => {
-            if (this.apiVersionService.currentVersion.versionCode < this.apiVersionService.latestVersion.versionCode) {
+            const isShow = localStorage.getItem("tabs-progress-show");
+            if ( isShow === "0") {
                 const modal = await this.modalController.create({
                     component: InfoPopupStagesComponent,
                 });
                 modal.present().then();
+                localStorage.setItem("tabs-progress-show", "1");
             }
         }, 300);
     }

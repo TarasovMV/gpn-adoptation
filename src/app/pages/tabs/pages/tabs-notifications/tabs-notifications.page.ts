@@ -4,11 +4,13 @@ import {INotifications} from "../../../../core/models/notification.model";
 import {ApiNotificationService} from "../../../../core/services/api/api-notification.service";
 import {BehaviorSubject} from "rxjs";
 import {BackButtonService} from "../../../../core/services/platform/back-button.service";
-import {ModalController, Platform} from "@ionic/angular";
+import {ModalController, Platform, ToastController} from "@ionic/angular";
 import { ConfirmPopupComponent } from 'src/app/shared/components/confirm-popup/confirm-popup.component';
 import {UserService} from "../../../../core/services/data/user.service";
 import {IVersion} from "../../../../core/models/version-model";
 import {ApiVersionService} from "../../../../core/services/api/api-version-service";
+import {ApiSettingsService} from "../../../../core/services/api/api-settings-service";
+import {CurrentUserModel} from "../../../../core/models/current-user.model";
 
 @Component({
     selector: 'app-tabs-notifications',
@@ -25,17 +27,21 @@ export class TabsNotificationsPage implements OnInit, OnDestroy, IPageTab {
 
     public userId: string;
     public currentVersion: IVersion;
-    public areNotificationsEnabled = false;
 
     constructor(
         private apiNotificationService: ApiNotificationService,
         private modalController: ModalController,
-        public apiVersionService: ApiVersionService
+        public apiVersionService: ApiVersionService,
+        private toastController: ToastController,
+        public apiSettingsService: ApiSettingsService
     ) {}
 
     public async ngOnInit(): Promise<void> {
         this.getNotifications().then();
         this.userId = localStorage.getItem("userCode");
+        this.apiSettingsService.getCurrentUser().subscribe((data: CurrentUserModel) => {
+            this.apiSettingsService.currentUser = data;
+        });
     }
 
     public ngOnDestroy(): void {}
@@ -72,7 +78,27 @@ export class TabsNotificationsPage implements OnInit, OnDestroy, IPageTab {
         this.notifications$.next(mapNotifications);
     }
 
-    public toggleNotifications(): void {
-        this.areNotificationsEnabled = !this.areNotificationsEnabled;
+    public async toggleNotifications(value): Promise<void> {
+        this.apiSettingsService.setAreNotificationsEnabledFlag(value).subscribe(async () => {
+            if (!value) {
+                const toast = await this.toastController.create({
+                    message: 'Push-уведомления отключены. Возможно, Вы не сможете своевременно получать информацию о новых событиях',
+                    duration: 2000,
+                    cssClass: 'custom-toast-2'
+                });
+                toast.present().then();
+            }
+        });
     }
+
+    public async toggleTheme(): Promise<void> {
+        const toast = await this.toastController.create({
+            message: 'Изменение темы приложения не реализовано',
+            duration: 2000,
+            cssClass: 'custom-toast-2'
+        });
+        toast.present().then();
+    }
+
+
 }
