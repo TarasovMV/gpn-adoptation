@@ -159,7 +159,8 @@ ion-content {
       --inner-padding: sizeHeight(1);
       --handle-background-checked: #ffffff;
       --handle-box-shadow: none;
-      /*border: sizeHeight(1) solid #C4D3E9;*/
+      --handle-height: 2.463vh;
+      --handle-width: 2.463vh;
     }
 
     .toggle .handle {

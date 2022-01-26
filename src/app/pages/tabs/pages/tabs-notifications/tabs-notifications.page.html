@@ -72,6 +72,12 @@
             <ion-toggle [(ngModel)]="areNotificationsEnabled" class="toggle"></ion-toggle>
           </div>
         </div>
+        <div class="notifications settings-item" style="height: 6.65vh !important;">
+          <div class="settings-item__name">Тема</div>
+          <div class="toggle-block" [class.toggle-block_enabled]="areNotificationsEnabled">
+            <ion-toggle [(ngModel)]="areNotificationsEnabled" class="toggle"></ion-toggle>
+          </div>
+        </div>
         <div class="change-user" (click)="changeUser()">
           <span>Сменить пользователя</span>
         </div>
