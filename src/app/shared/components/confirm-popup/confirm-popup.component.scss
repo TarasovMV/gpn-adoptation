@@ -74,6 +74,7 @@
         font-weight: 600;
         color: white;
         font-size: sizeHeight(16);
+        font-feature-settings: 'ss04' on, 'ss05' on, 'ss06' on, 'ss01' on, 'ss02' on, 'ss03' on, 'ss07' on;
       }
     }
 }

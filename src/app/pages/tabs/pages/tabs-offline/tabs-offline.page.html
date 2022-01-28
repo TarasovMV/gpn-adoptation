@@ -5,15 +5,13 @@
     <div class="section-name">Справочники</div>
     <div class="scroll-container">
       <div class="card-wrapper">
-        <ng-container *ngFor="let card of sections || []">
-          <div class="card ripple-parent ion-activatable" (click)="openCard(card)">
-            <ion-ripple-effect></ion-ripple-effect>
-            <div class="card__icon">
-              <img src="{{restUrl}}/{{card?.iconPath}}"/>
-            </div>
-            <div class="card__name">{{card.name}}</div>
+        <div *ngFor="let card of sections || []" class="card ripple-parent ion-activatable" (click)="openCard(card)">
+          <ion-ripple-effect></ion-ripple-effect>
+          <div class="card__icon">
+            <img src="{{restUrl}}/{{card?.iconPath}}"/>
           </div>
-        </ng-container>
+          <div class="card__name">{{card.name}}</div>
+        </div>
       </div>
     </div>
   </div>
