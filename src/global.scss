@@ -100,3 +100,10 @@ ion-ripple-effect {
   --color: #404763;
   --box-shadow: 0 0 2vw 0 rgb(0 0 0 / 10%);
 }
+
+ion-modal::part(content){
+  background: transparent !important;
+  backdrop-filter: blur(0.6px);
+}
+
+

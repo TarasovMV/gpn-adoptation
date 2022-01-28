@@ -18,7 +18,7 @@
   background-color: #ffffff;
   border-radius: sizeHeight(22);
   //padding: sizeHeight(48) sizeWidth(20) sizeHeight(85) sizeWidth(38);
-  padding: 5.5vh 7vw;
+  padding: 5.5vh sizeWidth(38);
   color: #404763;
 
   display: flex;
@@ -52,7 +52,6 @@
   }
 
   &__text {
-    width: sizeWidth(232);
     font-size: sizeHeght(14);
     margin-bottom: sizeHeight(25);
     font-family: 'SegoeUI_Bold';
@@ -77,12 +76,16 @@
       align-items: center;
 
       .icon {
-        height: sizeWidth(36);
-        width: sizeWidth(36);
+        max-height: sizeHeight(36);
+        max-width: sizeHeight(36);
+        min-height: sizeHeight(36);
+        min-width: sizeHeight(36);
         border-radius: 50%;
         background-color: rgba(196, 211, 233, 0.1);
-        padding: sizeHeight(8) sizeHeight(8);
         margin-right: sizeHeight(10);
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
 
       .description {
@@ -113,4 +116,10 @@
     justify-content: center;
     align-items: center;
   }
+}
+
+svg-icon {
+  display: flex;
+  width: sizeHeight(17);
+  height: sizeHeight(17);
 }
