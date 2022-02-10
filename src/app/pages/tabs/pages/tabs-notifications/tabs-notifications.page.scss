@@ -9,7 +9,7 @@ ion-content {
 }
 .header {
   height: sizeHeight(126);
-  background-color: #1C76FE;
+  background-color: var(--header);
   color: #ffffff;
   font-family: 'SegoeUI_Bold';
   font-size: sizeHeight(30);
@@ -32,7 +32,7 @@ ion-content {
   height: sizeHeight(42);
   width: 100%;
   padding: 0 sizeWidth(24);
-  background-color: #1C76FE;
+  background-color: var(--header);
   color: #ffffff;
   font-weight: bold;
   font-family: 'SegoeUI_Bold';
@@ -55,7 +55,8 @@ ion-content {
   display: flex;
   width: sizeWidth(318);
   height: sizeHeight(52);
-  background: #9AA0AE;
+  // background: #9AA0AE;
+  background: var(--border-icons);
   bottom: sizeHeight(32);
   border-radius: sizeHeight(26);
   transition: .3s;
@@ -70,7 +71,7 @@ ion-content {
 
 .content {
   height: 100%;
-  background-color: #f8fafb;
+  background-color: var(--bg-color-2);
   padding: sizeHeight(24) sizeWidth(24);
   display: flex;
   flex-direction: column;
@@ -87,7 +88,7 @@ ion-content {
     flex-direction: row !important;
     border-radius: sizeHeight(44) !important;
     padding: sizeHeight(16) sizeWidth(28) !important;
-    max-height: sizeHeight(54) !important;
+    min-height: sizeHeight(54) !important;
 
     &_with-toggle {
       padding: 0 !important;
@@ -96,18 +97,20 @@ ion-content {
     }
 
     &__name {
-      color: #404763;
+      color: var(--text-contrast);
       font-family: 'SegoeUI';
       font-weight: 400;
       font-size: sizeHeight(16);
     }
 
     &__simple-text {
-      color: #5B6179;
+      color: var(--text-normal);
       font-family: 'SegoeUI_Bold';
       font-size: sizeHeight(16);
       font-weight: 700;
     }
+
+
 
     &__version-block {
       vertical-align: bottom;
@@ -118,7 +121,7 @@ ion-content {
         font-size: sizeHeight(12);
         display: inline-block;
         margin-right: sizeWidth(3);
-        color: #8591A9;
+        color: var(--text-subtitle);
       }
 
       &__name {
@@ -126,13 +129,13 @@ ion-content {
         font-weight: 700;
         font-size: sizeHeight(16);
         display: inline-block;
-        color: #5B6179;
+        color: var(--text-normal)
       }
     }
 
     .toggle-block {
       position: absolute;
-      background: #C4D3E9;
+      background: var(--borders);
       height: calc(2.956vh + 2px);
       width: calc(12.8vw + 2px);
       border-radius: sizeHeight(16);
@@ -142,7 +145,7 @@ ion-content {
       align-items: center;
 
       &_enabled {
-        background: #0F62FE;
+        background: var(--blue);
       }
     }
 
@@ -152,8 +155,8 @@ ion-content {
       height: sizeHeight(24);
       margin: 0;
       padding: 0;
-      --background: #8C99B2;
-      --background-checked: #0089FF;
+      --background: var(--gray-g7);
+      --background-checked: var(--blue);
       --handle-background: #ffffff;
       --handle-spacing: 1px;
       --inner-padding: sizeHeight(1);
@@ -181,7 +184,7 @@ ion-content {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #606580;
+    color: var(--text-normal);
     font-size: sizeHeight(14);
     margin: sizeHeight(10) 0;
   }
@@ -190,12 +193,12 @@ ion-content {
     width: 100%;
     padding: sizeHeight(15) sizeWidth(14);
     border-radius: sizeHeight(22);
-    background-color: #ffffff;
+    background-color: var(--bg-block);
     margin: sizeHeight(5) 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 0 0 sizeHeight(4) 0 rgba(203, 203, 203, 0.25);
+    box-shadow: var(--shadow-big);
 
     position: relative;
 
@@ -209,13 +212,14 @@ ion-content {
       display: flex;
       align-items: center;
       font-weight: 700;
+      color: var(--text-contrast);
       font-size: sizeHeight(14);
     }
 
     &__subtitle {
       width: 100%;
       font-size: sizeHeight(10);
-      color: #606580;
+      color: var(--text-normal);
       font-weight: 400;
       margin-top: sizeHeight(5.5);
     }
@@ -224,6 +228,7 @@ ion-content {
       width: 100%;
       margin-top: sizeHeight(12);
       font-size: sizeHeight(14);
+      color: var(--text-normal);
     }
   }
 
@@ -269,6 +274,7 @@ ion-content {
 .empty {
   width: 100%;
   height: 100%;
+  color: var(--text-contrast);
 
   display: flex;
   flex-direction: column;
@@ -283,4 +289,8 @@ ion-content {
     justify-content: center;
     align-items: center;
   }
+}
+
+.organization-name {
+  font-size: sizeHeight(12) !important;
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { UserService } from 'src/app/core/services/data/user.service';
+import {MyThemeService} from "../../../core/services/platform/my-theme-service.service";
 
 @Component({
   selector: 'app-confirm-popup',
@@ -11,7 +12,8 @@ export class ConfirmPopupComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    public modalController: ModalController
+    public modalController: ModalController,
+    public myThemeService: MyThemeService
     ) { }
 
   ngOnInit() {}

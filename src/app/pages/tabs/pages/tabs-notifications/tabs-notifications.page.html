@@ -15,7 +15,8 @@
        <div *ngIf="!!(notifications$ | async)?.length">
           <div *ngFor="let item of notifications$ | async">
             <div class="date">{{item.date | date: 'mediumDate'}}</div>
-            <div class="notifications" *ngFor="let element of item.notifications">
+            <div class="notifications" *ngFor="let element of item.notifications"
+                 [class.big-shadow-light]="myThemeService.isThemeLight" [class.big-shadow-dark]="!myThemeService.isThemeLight">
               <div class="notifications__block">
                 <div class="icon"
                      [ngClass]="{
@@ -51,11 +52,19 @@
         </div>
       </div>
       <div *ngSwitchCase="'Настройки'">
-        <div class="notifications settings-item" style="height: 6.65vh !important;">
+        <div class="notifications settings-item" style="min-height: 6.65vh !important;"
+             [class.big-shadow-light]="myThemeService.isThemeLight" [class.big-shadow-dark]="!myThemeService.isThemeLight">
+          <div class="settings-item__name">Организация</div>
+          <div style="max-width: 50%; text-align: right" *ngIf="apiSettingsService.currentUser.organization" class="settings-item__simple-text organization-name">{{apiSettingsService.currentUser.organization}}</div>
+          <div style="max-width: 50%; text-align: right" *ngIf="!apiSettingsService.currentUser.organization"  class="settings-item__simple-text organization-name">Не определена</div>
+        </div>
+        <div class="notifications settings-item" style="height: 6.65vh !important;"
+             [class.big-shadow-light]="myThemeService.isThemeLight" [class.big-shadow-dark]="!myThemeService.isThemeLight">
           <div class="settings-item__name">ID</div>
           <div class="settings-item__simple-text">{{apiSettingsService.currentUser.userName}}</div>
         </div>
-        <div class="notifications settings-item" style="height: 6.65vh !important;">
+        <div class="notifications settings-item" style="height: 6.65vh !important;"
+             [class.big-shadow-light]="myThemeService.isThemeLight" [class.big-shadow-dark]="!myThemeService.isThemeLight">
           <div class="settings-item__name">Версия</div>
           <div class="settings-item__version-block">
             <div class="settings-item__version-block__date">
@@ -66,16 +75,18 @@
             </div>
           </div>
         </div>
-        <div class="notifications settings-item" style="height: 6.65vh !important;">
+        <div class="notifications settings-item" style="height: 6.65vh !important;"
+             [class.big-shadow-light]="myThemeService.isThemeLight" [class.big-shadow-dark]="!myThemeService.isThemeLight">
           <div class="settings-item__name">Push-уведомления</div>
           <div class="toggle-block" [class.toggle-block_enabled]="apiSettingsService.currentUser.areNotificationsEnabled">
             <ion-toggle (ngModelChange)="toggleNotifications($event)" [(ngModel)]="apiSettingsService.currentUser.areNotificationsEnabled" class="toggle"></ion-toggle>
           </div>
         </div>
-        <div class="notifications settings-item" style="height: 6.65vh !important;">
+        <div class="notifications settings-item" style="height: 6.65vh !important;"
+             [class.big-shadow-light]="myThemeService.isThemeLight" [class.big-shadow-dark]="!myThemeService.isThemeLight">
           <div class="settings-item__name">Тема</div>
-          <div class="toggle-block" [class.toggle-block_enabled]="apiSettingsService.isThemeLight">
-            <ion-toggle (ngModelChange)="toggleTheme()" [(ngModel)]="apiSettingsService.isThemeLight" class="toggle"></ion-toggle>
+          <div class="toggle-block" [class.toggle-block_enabled]="myThemeService.isThemeLight">
+            <ion-toggle (ngModelChange)="toggleTheme()" [(ngModel)]="myThemeService.isThemeLight" class="toggle"></ion-toggle>
             <img  style="position: absolute; pointer-events: none; z-index: 9999; left: 1.6vw; height: 1.724vh; width: 1.724vh"
                  src="assets/icon/theme_dark.svg"/>
             <img style="position: absolute; pointer-events: none; z-index: 9999; right: 1.6vw; height: 1.724vh; width: 1.724vh"

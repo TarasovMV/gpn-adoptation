@@ -34,5 +34,9 @@
 	{
 		"pkg": "@capacitor/storage",
 		"classpath": "com.capacitorjs.plugins.storage.StoragePlugin"
+	},
+	{
+		"pkg": "@hugotomazi/capacitor-navigation-bar",
+		"classpath": "br.com.tombus.capacitor.plugin.navigationbar.NavigationBarPlugin"
 	}
 ]

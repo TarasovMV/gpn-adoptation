@@ -19,8 +19,9 @@
         </div>
       </div>
       <div class="stages" id="stages">
-        <div class="stage-block" *ngFor="let item of data?.adaptationStages">
+        <div class="stage-block" *ngFor="let item of data?.adaptationStages" >
           <div [id]="'stage_' + item.id" class="item ion-activatable ripple-parent"
+               [class.big-shadow-light]="myThemeService.isThemeLight" [class.big-shadow-dark]="!myThemeService.isThemeLight"
                [ngClass]="{'item-active': (activeStage$ | async)?.id === item.id}" (click)="switchStage(item)">
             <ion-ripple-effect></ion-ripple-effect>
             <div class="item__title">
@@ -43,7 +44,8 @@
     <div class="scroll">
       <div [@inOutAnimation] class="parallax" *ngIf="(activeStage$ | async)">
         <div *ngFor="let element of (activeStage$ | async).adaptationSubStages">
-          <div class="stage ion-activatable ripple-parent" [ngClass]="{'stage-active': element.isDone, 'stage-disabled': element.disabled}"
+          <div [class.big-shadow-light]="myThemeService.isThemeLight" [class.big-shadow-dark]="!myThemeService.isThemeLight"
+               class="stage ion-activatable ripple-parent" [ngClass]="{'stage-active': element.isDone, 'stage-disabled': element.disabled}"
                (click)="toProgressCard(element)">
             <ion-ripple-effect></ion-ripple-effect>
             <div style="display: flex; justify-content: center; align-items: center" class="stage__icon" [ngClass]="{'stage__icon-done': element.isDone}">

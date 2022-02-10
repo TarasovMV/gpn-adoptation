@@ -14,12 +14,12 @@
 
 .popup {
   width: sizeWidth(310);
-  height: sizeHeight(550);
-  background-color: #ffffff;
+  height: sizeHeight(502);
+  background-color: var(--bg-block);
   border-radius: sizeHeight(22);
   //padding: sizeHeight(48) sizeWidth(20) sizeHeight(85) sizeWidth(38);
   padding: 5.5vh sizeWidth(38);
-  color: #404763;
+  color: var(--text-contrast);
 
   display: flex;
   flex-direction: column;
@@ -38,7 +38,7 @@
     position: absolute;
     top: sizeHeight(17);
     right: sizeHeight(17);
-
+    color: var(--border-icons);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -49,13 +49,14 @@
     height: sizeHeight(80);
     width: sizeWidth(101);
     margin-bottom: sizeHeight(15);
+    color: var(--text-contrast);
   }
 
   &__text {
-    font-size: sizeHeght(14);
+    font-size: sizeHeight(14);
     margin-bottom: sizeHeight(25);
     font-family: 'SegoeUI_Bold';
-    color: #404763;
+    color: var(--text-contrast);
     font-weight: 700;
   }
 
@@ -86,11 +87,13 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        color: var(--borders);
+
       }
 
       .description {
         height: 100%;
-        color: #404763;
+        color: var(--text-contrast);
         font-size: sizeHeight(13);
         font-weight: 600;
 

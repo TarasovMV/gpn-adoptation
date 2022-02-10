@@ -6,11 +6,11 @@
 
 #background-content {
   height: 100%;
-  background-color: #f8fafb;
+  background-color: var(--bg-color-2);
 }
 
 ion-content {
-  --background: #f8fafb;
+  --background: var(--bg-color-2);
 }
 
 .favorite-common {
@@ -38,7 +38,7 @@ ion-content {
 
 .header {
   height: sizeHeight(126);
-  background-color: #1C76FE;
+  background-color: var(--header);
   color: #ffffff;
   font-weight: 500;
   font-size: sizeHeight(18);
@@ -64,12 +64,12 @@ ion-content {
 .content {
   position: relative;
   height: 100%;
-  background-color: #f8fafb;
+  background-color: var(--bg-color-2);
   padding: sizeHeight(25) sizeWidth(24) 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #404763;
+  color: var(--text-contrast);
   font-size: sizeHeight(18);
 
 
@@ -89,7 +89,7 @@ ion-content {
     height: sizeHeight(40);
     width: 100%;
     margin-bottom: sizeHeight(8);
-    color: #404763;
+    color: var(--text-subtitle);
     font-size: sizeHeight(22);
     font-weight: bold;
     display: flex;
@@ -98,14 +98,13 @@ ion-content {
   }
 
   .card {
-    width: 100%;
+    width: 99.5%;
     padding: sizeHeight(14) sizeWidth(17);
-    font-size: sizeHeight(17);
+    margin-right: 4px;
     box-sizing: border-box;
-    background: white;
+    background: var(--bg-block);
     border-radius: sizeHeight(22);
     margin-bottom: sizeHeight(8);
-    box-shadow: 0 0 sizeHeight(4) 0 rgba(203, 203, 203, 0.25);
 
     &__last-card {
       padding: sizeHeight(6) sizeWidth(8) sizeHeight(6) sizeWidth(17);
@@ -133,7 +132,7 @@ ion-content {
       border-radius: 50%;
       padding: sizeHeight(10);
       color: #FFFFFF;
-      background-color: #E8ECEF;
+      background-color: var(--gray-g9);
 
       &-active {
         background-color: #F2994A;

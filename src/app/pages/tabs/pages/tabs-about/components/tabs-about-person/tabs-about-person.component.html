@@ -11,7 +11,7 @@
       [element]="tabsService.person$ | async"
     ></app-tabs-about-leadership-card>
 
-    <div class="experience" *ngFor="let exp of data">
+    <div class="experience" [class.big-shadow-light]="myThemeService.isThemeLight" [class.big-shadow-dark]="!myThemeService.isThemeLight" *ngFor="let exp of data">
       <div class="experience__period">{{exp.title}}</div>
       <div class="experience__content">{{exp.content}}</div>
     </div>

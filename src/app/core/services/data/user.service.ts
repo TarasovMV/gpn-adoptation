@@ -4,6 +4,7 @@ import {TokenService} from "./token.service";
 import {NavController} from "@ionic/angular";
 import {FcmService} from "../platform/fcm.service";
 import {StatusBarService} from "../platform/status-bar.service";
+import {ApiSettingsService} from "../api/api-settings-service";
 
 @Injectable({
     providedIn: 'root'
@@ -14,7 +15,8 @@ export class UserService {
         private tokenService: TokenService,
         private navCtrl: NavController,
         private fcmService: FcmService,
-        private statusBarService: StatusBarService
+        private statusBarService: StatusBarService,
+        private apiSettingsService: ApiSettingsService
     ) {
     }
 
@@ -33,6 +35,7 @@ export class UserService {
     }
 
     public async logout(): Promise<void> {
+        await this.apiUserService.fcmTokenRegister(null);
         await this.tokenService.deleteToken();
         await this.navCtrl.navigateRoot('auth');
     }

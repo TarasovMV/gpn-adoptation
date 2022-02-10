@@ -5,12 +5,12 @@
 }
 
 ion-content {
-  --background: #f8fafb;
+  --background: var(--bg-color-2);
 }
 
 .header {
   height: sizeHeight(126);
-  background-color: #1C76FE;
+  background-color: var(--header);
   color: #ffffff;
   font-family: 'SegoeUI_Bold';
   font-size: sizeHeight(18);
@@ -33,28 +33,29 @@ ion-content {
 
 .content {
   height: 100%;
-  background-color: #f8fafb;
+  background-color: var(--bg-color-2);
   padding: sizeHeight(25) sizeWidth(24) 0;
   display: flex;
   flex-direction: column;
-  color: #404763;
+  color: var(--text-contrast);
   font-size: sizeHeight(18);
 
   overflow-y: scroll;
 
   .experience {
-    background-color: #ffffff;
+    background-color: var(--bg-menu);
     border-radius: sizeHeight(22);
     width: 100%;
     margin-bottom: 1.5vh;
     padding: sizeHeight(15) sizeWidth(22) sizeHeight(12);
 
     &__period {
-      color: #1C76FE;
-      font-size: sizeHeight(16);
+      color: var(--blue);
+      font-size: sizeHeight(18);
       font-weight: 900;
       margin-bottom: sizeHeight(10);
       font-family: 'SegoeUI_Bold';
+      font-feature-settings: 'ss04' on, 'ss05' on, 'ss06' on, 'ss01' on, 'ss02' on, 'ss03' on, 'ss07' on;
     }
 
     &__content {

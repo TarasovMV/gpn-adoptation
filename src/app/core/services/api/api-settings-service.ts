@@ -14,7 +14,6 @@ export class Versions {
 })
 export class ApiSettingsService {
     public currentUser: CurrentUserModel;
-    public isThemeLight = true;
     private readonly restUrl: string;
 
     constructor(

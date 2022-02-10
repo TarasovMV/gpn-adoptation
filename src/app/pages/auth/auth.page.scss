@@ -72,7 +72,7 @@
   .content {
     width: 100%;
     height: 100vh;
-    background-color: #001F4A;
+    background-color: var(--auth-bg);
     position: relative;
     display: flex;
     flex-flow: column;
@@ -95,7 +95,8 @@
         z-index: 999;
         height: sizeHeight(79);
         border-radius: sizeHeight(8);
-        box-shadow: 0 0 sizeHeight(4) sizeHeight(2) rgba(203, 203, 203, 0.25);
+        /*box-shadow: 0 0 sizeHeight(4) sizeHeight(2) rgba(203, 203, 203, 0.25);*/
+        box-shadow: 0 sizeHeight(2) sizeHeight(4) rgba(0, 0, 0, 0.25);
         font-weight: 900;
         font-family: 'SegoeUI_Bold';
       }
@@ -130,10 +131,10 @@
         width: 75vw;
         border-radius: sizeHeight(8);
         font-size: sizeWidth(36);
-        color: #1C76FE;
+        color: var(--auth-text);
         padding: sizeWidth(40) 0 sizeWidth(40) sizeWidth(0);
         letter-spacing: sizeWidth(22);
-        background-color: #ffffff;
+        background-color: var(--forms);
         outline: none;
         border: none;
         margin-bottom: sizeHeight(42);

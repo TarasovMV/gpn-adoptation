@@ -16,10 +16,10 @@
 .popup {
   width: sizeWidth(232);
   height: sizeHeight(318);
-  background-color: #ffffff;
+  background-color: var(--bg-block);
   border-radius: sizeHeight(22);
   padding: sizeHeight(12) sizeWidth(12);
-  color: #404763;
+  color: var(--text-contrast);
 
   display: flex;
   flex-direction: column;
@@ -43,12 +43,14 @@
     justify-content: center;
     align-items: center;
     padding: sizeHeight(5);
+    color: var(--border-icons);
   }
 
   &__icon {
     height: sizeHeight(36);
     width: sizeWidth(36);
     margin-top: sizeHeight(40);
+    color: var(--text-contrast);
   }
 
   &__header {
@@ -58,14 +60,14 @@
     margin-top: sizeHeight(11);
     font-family: "SegoeUI";
     font-weight: 400;
-    color: #404763;
+    color: var(--text-contrast);
     font-size: sizeHeight(16);
   }
 
   &__text {
     width: 100%;
     text-align: center;
-    color: #8C99B2;
+    color: var(--text-normal);
     margin: sizeHeight(18) 0 sizeHeight(32);
     font-size: sizeHeight(14);
     font-family: "SegoeUI";

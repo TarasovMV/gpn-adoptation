@@ -7,6 +7,7 @@ import {AppConfigService} from "../../../../core/services/platform/app-config.se
 import {BackButtonService} from "../../../../core/services/platform/back-button.service";
 import {IonSlides, Platform} from "@ionic/angular";
 import {SLIDE_CONFIG_HISTORY} from "./tabs-about.config";
+import {MyThemeService} from "../../../../core/services/platform/my-theme-service.service";
 
 export interface IMasterMindCategory {
     id: number,
@@ -54,6 +55,7 @@ export class TabsAboutPage implements OnInit, OnDestroy, IPageTab {
     constructor(
         public tabsService: TabsService,
         appConfigService: AppConfigService,
+        public myThemeService: MyThemeService
     ) {
         this.restUrl = appConfigService.getAttribute('restUrl');
     }

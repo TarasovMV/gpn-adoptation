@@ -24,7 +24,7 @@ ion-slides {
 
 .header {
   height: sizeHeight(126);
-  background-color: #1C76FE;
+  background-color: var(--header);
   color: #ffffff;
   font-family: 'SegoeUI_Bold';
   font-size: sizeHeight(30);
@@ -47,7 +47,7 @@ ion-slides {
   height: sizeHeight(42);
   width: 100%;
   padding: 0 sizeWidth(24);
-  background-color: #1C76FE;
+  background-color: var(--header);
   color: #ffffff;
   font-family: 'SegoeUI_Bold';
   display: flex;
@@ -69,8 +69,8 @@ ion-slides {
   // padding: sizeHeight(24) sizeWidth(24);
   display: flex;
   flex-wrap: wrap;
-  background-color: #f8fafb;
-  color: #404763;
+  background-color: var(--bg-color-2);
+  color: var(--text-normal);
   font-size: sizeHeight(17);
   overflow: auto;
 
@@ -88,7 +88,7 @@ ion-slides {
       width: 100%;
       font-size: sizeHeight(18);
       font-weight: 700;
-      color: #12151E;
+      color: var(--text-contrast);
       margin: sizeHeight(18) 0;
 
       &:first-child {
@@ -103,7 +103,7 @@ ion-slides {
     .line {
       height: 3px;
       width: 80px;
-      background-color: #D12771;
+      background-color: var(--pink);
     }
 
     cashed-img {
@@ -113,7 +113,7 @@ ion-slides {
     p {
       position: relative;
       text-align: left;
-      color: #303549;
+      color: var(--text-normal);
       font-size: sizeHeight(14);
     }
 
@@ -128,7 +128,7 @@ ion-slides {
     }
 
     &__periods {
-      background-color: #1C76FE;
+      background-color: var(--header);
       width: 100%;
       overflow-x: scroll;
       height: sizeHeight(59);

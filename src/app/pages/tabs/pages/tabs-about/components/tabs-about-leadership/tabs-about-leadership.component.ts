@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {TabsService} from 'src/app/core/services/tabs/tabs.service';
 import {IMasterMind, IMasterMindCategory} from '../../tabs-about.page';
 import {animate, style, transition, trigger} from "@angular/animations";
+import {MyThemeService} from "../../../../../../core/services/platform/my-theme-service.service";
 
 @Component({
     selector: 'app-tabs-about-leadership',
@@ -38,7 +39,8 @@ export class TabsAboutLeadershipComponent implements OnInit {
 
     constructor(
         public router: Router,
-        public tabsService: TabsService
+        public tabsService: TabsService,
+        public myThemeService: MyThemeService
     ) {}
 
     ngOnInit(): void {}

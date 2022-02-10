@@ -5,6 +5,7 @@ import {IPageTab, PageTabType} from '../../tabs.model';
 import {NavController, Platform} from "@ionic/angular";
 import {BackButtonService} from "../../../../core/services/platform/back-button.service";
 import {Subscription} from "rxjs";
+import {MyThemeService} from "../../../../core/services/platform/my-theme-service.service";
 
 export interface ITests {
     id: number;
@@ -58,13 +59,14 @@ export class TabsTestsPage implements OnInit, OnDestroy, IPageTab {
     constructor(
         public tabsService: TabsService,
         private navCtrl: NavController,
+        public myThemeService: MyThemeService
     ) {
     }
 
     ngOnInit(): void {
         this.tabsService.startTest$.subscribe(x => {
             this.getTests().then();
-        })
+        });
     }
 
     ngOnDestroy(): void {}

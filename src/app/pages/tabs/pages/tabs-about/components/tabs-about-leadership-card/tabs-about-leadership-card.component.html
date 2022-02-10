@@ -1,4 +1,5 @@
-<div class="stage ion-activatable ripple-parent">
+<div class="stage ion-activatable ripple-parent"
+     [class.big-shadow-light]="myThemeService.isThemeLight" [class.big-shadow-dark]="!myThemeService.isThemeLight">
   <ion-ripple-effect></ion-ripple-effect>
   <div class="stage__photo">
     <cashed-img src="{{restUrl}}/{{element.imagePath}}"></cashed-img>

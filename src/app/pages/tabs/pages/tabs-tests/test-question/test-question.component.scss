@@ -7,7 +7,7 @@
 .questions {
   height: 100%;
   width: 100%;
-  background-color: #f8fafb;
+  background-color: var(--bg-color-2);
   display: flex;
   flex-direction: column;
 
@@ -31,7 +31,7 @@
     padding-top: sizeHeight(45);
     width: 100%;
     min-height: sizeHeight(126);
-    background-color: #001F4A;
+    background-color: var(--auth-bg);
 
     display: flex;
     align-items: center;
@@ -50,10 +50,10 @@
 
   &__body {
     width: 100%;
-    background-color: #f8fafb;
+    background-color: var(--bg-color-2);
     padding: sizeHeight(23) sizeWidth(32) 0;
     font-size: sizeHeight(18);
-    color: #404763;
+    color: var(--text-contrast);
     position: relative;
     display: flex;
     flex-direction: column;
@@ -64,7 +64,7 @@
       width: 100%;
       font-weight: 600;
       margin-bottom: sizeHeight(17);
-      font-size: sizeHeght(18);
+      font-size: sizeHeight(18);
       font-family: 'SegoeUI_Bold';
     }
 
@@ -76,8 +76,8 @@
       width: 100%;
       min-height: sizeHeight(57);
       border-radius: sizeHeight(4);
-      background-color: #ffffff;
-      box-shadow: 0 0 sizeHeight(4) 0 rgba(203, 203, 203, 0.25);
+      background-color: var(--bg-block);
+      box-shadow: var(--shadow-big);
       font-weight: 400;
       padding: sizeHeight(12) sizeWidth(16);
       margin-bottom: sizeHeight(8);
@@ -96,11 +96,13 @@
     .input {
       outline: none;
       border: none;
-      background-color: #ffffff;
+      background-color: var(--bg-block);
       padding: sizeHeight(12) sizeWidth(16);
       font-weight: 400;
       font-size: sizeHeight(17);
+      color: var(--text-contrast);
       border-radius: sizeHeight(4);
+      box-shadow: var(--shadow-big);
     }
 
     .images-test {
@@ -175,7 +177,7 @@
       width: sizeWidth(178);
       height: sizeHeight(57);
       border-radius: sizeHeight(28);
-      background-color: #001F4A;
+      background-color: var(--test-start-bg);
 
       display: flex;
       justify-content: center;
@@ -187,7 +189,7 @@
       width: sizeHeight(57);
       height: sizeHeight(57);
       border-radius: 50%;
-      background-color: #001F4A;
+      background-color: var(--test-start-bg);
       margin: 0 sizeWidth(12);
       color: #FFFFFF;
 

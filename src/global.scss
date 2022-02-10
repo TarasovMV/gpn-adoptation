@@ -83,12 +83,17 @@ ion-ripple-effect {
   letter-spacing: -0.1ex;
 }
 
+ion-modal::part(content){
+  background: transparent !important;
+}
+
+
 .custom-toast {
   height: 92.5vh;
   width: 80vw;
   margin-left: 10vw;
-  --background: white;
-  --color: #404763;
+  --background: var(--bg-block);
+  --color: var(--text-contrast);
   --box-shadow: 0 0 2vw 0 rgb(0 0 0 / 10%);
 }
 
@@ -96,13 +101,15 @@ ion-ripple-effect {
   height: 77.5vh;
   width: 80vw;
   margin-left: 10vw;
-  --background: white;
-  --color: #404763;
+  --background: var(--bg-block);
+  --color: var(--text-contrast);
   --box-shadow: 0 0 2vw 0 rgb(0 0 0 / 10%);
 }
 
-ion-modal::part(content){
-  background: transparent !important;
+.big-shadow-light {
+  box-shadow: sizeHeight(0) sizeHeight(0) sizeHeight(5) rgba(203, 203, 203, 0.25) !important;
 }
 
-
+.big-shadow-dark {
+  box-shadow: sizeHeight(2) sizeHeight(2) sizeHeight(8) rgba(0, 0, 0, 0.25) !important;
+}

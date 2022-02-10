@@ -9,7 +9,8 @@
   <div class="content">
     <ng-container *ngIf="!!data.length; else empty">
       <ng-container *ngFor="let test of data">
-        <div class="test" (click)="openTest(test)">
+        <div class="test" (click)="openTest(test)"
+             [class.big-shadow-light]="myThemeService.isThemeLight" [class.big-shadow-dark]="!myThemeService.isThemeLight">
           <div class="test__logo">
             <svg-icon src="assets/icon/tests/list.svg"></svg-icon>
           </div>

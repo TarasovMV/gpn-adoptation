@@ -8,9 +8,8 @@
   height: sizeHeight(48);
   width: 87vw;
   border-radius: sizeHeight(24);
-  background-color: #FFFFFF;
-  border: sizeHeight(1) solid #E3E4E8;
-
+  background-color: var(--bg-block);
+  border: sizeHeight(1) solid var(--dividers);
   display: flex;
   align-items: center;
 
@@ -21,7 +20,7 @@
     width: sizeHeight(30);
     padding: sizeHeight(5);
     margin-top: .7vh;
-
+    color: var(--border-icons);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -29,8 +28,13 @@
 
   input {
     width: 100%;
+    color: var(--border-icons);
     outline: none;
     border: none;
     background: none;
+  }
+
+  input::placeholder {
+    color: var(--border-icons);
   }
 }

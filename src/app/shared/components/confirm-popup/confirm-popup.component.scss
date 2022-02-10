@@ -16,10 +16,10 @@
 .popup {
     width: sizeWidth(232);
     height: sizeHeight(318);
-    background-color: #ffffff;
+    background-color: var(--bg-block);
     border-radius: sizeHeight(22);
     padding: sizeHeight(12) sizeWidth(12);
-    color: #404763;
+    color: var(--text-contrast);
 
     display: flex;
     flex-direction: column;
@@ -39,6 +39,7 @@
         position: absolute;
         top: sizeHeight(17);
         right: sizeHeight(17);
+        color: var(--border-icons);
 
         display: flex;
         justify-content: center;
@@ -49,13 +50,14 @@
     &__icon {
         height: sizeHeight(116);
         width: sizeWidth(131);
+        color: var(--text-contrast);
     }
 
     &__text {
         width: 100%;
         text-align: center;
         margin: sizeHeight(18) 0 sizeHeight(32);
-        font-size: sizeHeght(18);
+        font-size: sizeHeight(18);
     }
 
     &__button {

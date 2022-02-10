@@ -32,6 +32,7 @@
     "@capacitor/splash-screen": "^1.2.1",
     "@capacitor/status-bar": "^1.0.7",
     "@capacitor/storage": "^1.2.4",
+    "@hugotomazi/capacitor-navigation-bar": "^1.1.1",
     "@ionic-native/app-version": "^5.36.0",
     "@ionic-native/core": "^5.36.0",
     "@ionic-native/in-app-browser": "^5.36.0",

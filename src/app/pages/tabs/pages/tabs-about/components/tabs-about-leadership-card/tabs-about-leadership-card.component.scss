@@ -6,14 +6,13 @@
 
 .stage {
   width: 100%;
-  box-shadow: 0 0 sizeHeight(4) 0 rgba(203, 203, 203, 0.25);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: sizeHeight(20) sizeWidth(12);
   border-radius: sizeHeight(22);
-  background-color: #FFFFFF;
+  background-color: var(--bg-block);
   font-size: sizeHeight(18);
   margin: sizeHeight(10) 0;
 
@@ -36,7 +35,7 @@
     justify-content: center;
 
     .name {
-      color: #404763;
+      color: var(--text-contrast);
       font-size: sizeHeight(18);
       line-height: sizeHeight(21);
       margin-bottom: sizeHeight(12);
@@ -48,7 +47,7 @@
 
     .position {
       width: 80%;
-      color: #98A9BC;
+      color: var(--text-subtitle);
       font-size: sizeHeight(14);
       display: flex;
       justify-content: center;
@@ -57,7 +56,7 @@
     }
 
     .surname {
-      color: #1C76FE;
+      color: var(--blue);
       font-family: 'SegoeUI_Bold';
       text-transform: uppercase;
       font-size: sizeHeight(23);

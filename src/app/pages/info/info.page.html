@@ -32,7 +32,8 @@
           <span>{{item.body}}</span>
           <div class="footer">{{item.footer}}</div>
         </div>
-        <div class="termin mb" *ngSwitchCase="4">
+        <div class="termin mb" *ngSwitchCase="4"
+             [class.big-shadow-light]="myThemeService.isThemeLight" [class.big-shadow-dark]="!myThemeService.isThemeLight">
           <div class="termin__title">
             <div class="termin__title__logo">
               <svg-icon src="assets/icon/progress/termin.svg"></svg-icon>
@@ -42,7 +43,8 @@
           <div style="white-space: pre-line" class="termin__description" >{{item.body}}</div>
           <div class="footer">{{item.footer}}</div>
         </div>
-        <div class="attention mb" *ngSwitchCase="5">
+        <div class="attention mb" *ngSwitchCase="5"
+             [class.big-shadow-light]="myThemeService.isThemeLight" [class.big-shadow-dark]="!myThemeService.isThemeLight">
           <div class="attention__title">
             <div class="attention__title__logo-attention">
               <img src="assets/icon/progress/attention.svg"/>
@@ -52,11 +54,13 @@
           <div class="attention__description" style="white-space: pre-line">{{item.body}}</div>
           <div class="footer">{{item.footer}}</div>
         </div>
-        <div class="block mb" *ngSwitchCase="6">
+        <div class="block mb" *ngSwitchCase="6"
+             [class.big-shadow-light]="myThemeService.isThemeLight" [class.big-shadow-dark]="!myThemeService.isThemeLight">
           <span style="white-space: pre-line">{{item.body}}</span>
           <div class="footer">{{item.footer}}</div>
         </div>
-        <div class="points mb" *ngSwitchCase="10">
+        <div class="points mb" *ngSwitchCase="10"
+             [class.big-shadow-light]="myThemeService.isThemeLight" [class.big-shadow-dark]="!myThemeService.isThemeLight">
           <div class="points__title">
             <div class="point">
               <svg-icon src="assets/icon/progress/point.svg"></svg-icon>
@@ -65,7 +69,8 @@
           </div>
           <div class="points__description" style="white-space: pre-line">{{item.body}}</div>
         </div>
-        <div class="file mb" *ngSwitchCase="8" (click)="openFile(item.filePath)">
+        <div class="file mb" *ngSwitchCase="8" (click)="openFile(item.filePath)"
+             [class.big-shadow-light]="myThemeService.isThemeLight" [class.big-shadow-dark]="!myThemeService.isThemeLight">
           <div *ngIf="item.footer" class="footer footer-top" >{{item.footer}}</div>
           <div style="display: flex; align-items: center">
             <svg-icon class="file__icon" [src]="getFileIcon(item)"></svg-icon>
@@ -73,7 +78,8 @@
           </div>
 
         </div>
-        <div class="more mb" *ngSwitchCase="9">
+        <div class="more mb" *ngSwitchCase="9"
+             [class.big-shadow-light]="myThemeService.isThemeLight" [class.big-shadow-dark]="!myThemeService.isThemeLight">
           <div class="more__title" (click)="openMore(item)">
             <span style="font-weight: bold">{{item.header}}</span>
             <svg-icon class="arrow" src="assets/icon/arrow.svg" [ngClass]="{'active': item.isActive}"></svg-icon>
@@ -82,7 +88,8 @@
             <div class="footer">{{item.footer}}</div>
           </div>
         </div>
-        <div class="blitz mb" *ngSwitchCase="7">
+        <div class="blitz mb" *ngSwitchCase="7"
+             [class.big-shadow-light]="myThemeService.isThemeLight" [class.big-shadow-dark]="!myThemeService.isThemeLight">
           <div class="blitz__header">{{item.header}}</div>
           <div class="blitz__rate">
             <div class="star" *ngFor="let rate of rates[item.id]" (click)="rateIt(rate, item.id)"
@@ -92,7 +99,8 @@
           </div>
           <div *ngIf="item.footer" class="footer">{{item.footer}}</div>
         </div>
-        <div class="attention mb" *ngSwitchCase="16">
+        <div class="attention mb" *ngSwitchCase="16"
+             [class.big-shadow-light]="myThemeService.isThemeLight" [class.big-shadow-dark]="!myThemeService.isThemeLight">
           <div *ngIf="getBulletType(item) === 3">
             <div class="attention__title" style="align-items: flex-start">
               <div *ngIf="getBulletType(item) === 3" style="display: flex;  border-radius: 50%;
@@ -135,12 +143,14 @@
             <div *ngIf="item.body" class="attention__description text mb10 mt8" style="white-space: pre-line">{{item.body}}</div>
           </div>
         </div>
-        <div class="manual-input mb" *ngSwitchCase="14">
+        <div class="manual-input mb" *ngSwitchCase="14"
+             [class.big-shadow-light]="myThemeService.isThemeLight" [class.big-shadow-dark]="!myThemeService.isThemeLight">
           <span class="manual-input__title">{{item.header}}</span>
           <ion-textarea auto-grow class="manual-input__text" rows="2" placeholder="Введите текст..."
             [(ngModel)]="text[item.id]"></ion-textarea>
         </div>
-        <div (click)="isChecked(item.id, item)" class="checkbox mb" *ngSwitchCase="15">
+        <div (click)="isChecked(item.id, item)" class="checkbox mb" *ngSwitchCase="15"
+             [class.big-shadow-light]="myThemeService.isThemeLight" [class.big-shadow-dark]="!myThemeService.isThemeLight">
           <div class="checkbox__logo">
             <ion-checkbox mode="md" [(ngModel)]="item.isActive"></ion-checkbox>
           </div>

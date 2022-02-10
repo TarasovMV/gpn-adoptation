@@ -11,6 +11,7 @@ import {
 import {NavController} from "@ionic/angular";
 import {ApiReferenceService} from "../../../../../core/services/api/api-reference.service";
 import {BehaviorSubject} from "rxjs";
+import {MyThemeService} from "../../../../../core/services/platform/my-theme-service.service";
 
 interface IDictionary {
     letter: string;
@@ -36,6 +37,7 @@ export class TabsOfflineMoreComponent implements OnInit, IPageTab {
         public tabsService: TabsService,
         private navCtrl: NavController,
         private apiReferenceService: ApiReferenceService,
+        public myThemeService: MyThemeService
     ) { }
 
     public ngOnInit(): void {

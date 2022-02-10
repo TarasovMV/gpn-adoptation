@@ -3,6 +3,7 @@ import {TabsService} from 'src/app/core/services/tabs/tabs.service';
 import {IBullet} from '../../tabs-about.page';
 import {NavController} from "@ionic/angular";
 import {IPageTab, PageTabType} from "../../../../tabs.model";
+import {MyThemeService} from "../../../../../../core/services/platform/my-theme-service.service";
 
 @Component({
     selector: 'app-tabs-about-person',
@@ -16,6 +17,7 @@ export class TabsAboutPersonComponent implements OnInit, IPageTab {
     constructor(
         public tabsService: TabsService,
         private navCtrl: NavController,
+        public myThemeService: MyThemeService
     ) {
     }
 

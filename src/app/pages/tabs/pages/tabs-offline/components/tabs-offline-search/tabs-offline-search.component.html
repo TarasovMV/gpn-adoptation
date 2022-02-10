@@ -1,4 +1,4 @@
-<div class="search">
+<div class="search" [class.big-shadow-light]="myThemeService.isThemeLight" [class.big-shadow-dark]="!myThemeService.isThemeLight">
   <div class="search__logo">
     <svg-icon src="assets/icon/search.svg"></svg-icon>
   </div>

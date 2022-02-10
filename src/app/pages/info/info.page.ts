@@ -6,6 +6,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {AppConfigService} from "../../core/services/platform/app-config.service";
 import {Browser} from "@capacitor/browser";
 import {TabsProgressService} from "../tabs/pages/tabs-progress/services/tabs-progress.service";
+import {MyThemeService} from "../../core/services/platform/my-theme-service.service";
 
 export class AdaptationBullet {
     public type: number;
@@ -48,7 +49,8 @@ export class InfoPage implements OnInit {
         private tabsProgressService: TabsProgressService,
         private toastController: ToastController,
         appConfigService: AppConfigService,
-        private ngZone: NgZone
+        private ngZone: NgZone,
+        public myThemeService: MyThemeService
     ) {
         this.restUrl = appConfigService.getAttribute('restUrl');
     }

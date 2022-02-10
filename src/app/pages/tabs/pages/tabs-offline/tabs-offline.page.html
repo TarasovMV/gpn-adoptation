@@ -5,7 +5,8 @@
     <div class="section-name">Справочники</div>
     <div class="scroll-container">
       <div class="card-wrapper">
-        <div *ngFor="let card of sections || []" class="card ripple-parent ion-activatable" (click)="openCard(card)">
+        <div *ngFor="let card of sections || []" class="card ripple-parent ion-activatable" (click)="openCard(card)"
+             [class.big-shadow-light]="myThemeService.isThemeLight" [class.big-shadow-dark]="!myThemeService.isThemeLight">
           <ion-ripple-effect></ion-ripple-effect>
           <div class="card__icon">
             <img src="{{restUrl}}/{{card?.iconPath}}"/>

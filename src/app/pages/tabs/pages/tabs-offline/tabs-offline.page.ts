@@ -4,6 +4,7 @@ import {IAdaptationStage, IPageTab, IProgress, PageTabType, ReferenceBookSection
 import {AppConfigService} from "../../../../core/services/platform/app-config.service";
 import {NavController} from "@ionic/angular";
 import {ApiAdaptationService} from "../../../../core/services/api/api-adaptation.service";
+import {MyThemeService} from "../../../../core/services/platform/my-theme-service.service";
 
 @Component({
     selector: 'app-tabs-offline',
@@ -21,6 +22,7 @@ export class TabsOfflinePage implements OnInit, OnDestroy, IPageTab {
         private navCtrl: NavController,
         private apiAdaptationService: ApiAdaptationService,
         appConfig: AppConfigService,
+        public myThemeService: MyThemeService
     ) {
         this.restUrl = appConfig.getAttribute("restUrl");
     }

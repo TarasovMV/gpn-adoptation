@@ -81,7 +81,7 @@ ion-content {
   font-size: sizeHeight(17);
   overflow-y: hidden;
   color: #404763;
-  background-color: #f8fafb;
+  background-color: var(--bg-color-2);
 
   .section-name {
     width: 100%;
@@ -90,7 +90,7 @@ ion-content {
     display: flex;
     align-items: center;
 
-    color: #404763;
+    color: var(--text-contrast);
     font-family: 'SegoeUI_Bold';
     font-size: sizeHeight(26);
   }
@@ -113,16 +113,16 @@ ion-content {
     height: 42vw;
     width: 42.6vw;
     border-radius: sizeHeight(22);
-    background-color: #ffffff;
+    background-color: var(--bg-block);
     padding: sizeHeight(14) sizeWidth(15);
     margin-bottom: 2vw;
     display: flex;
     flex-direction: column;
-    color: #404763;
+    color: var(--text-contrast);
     overflow: hidden;
     margin-right: 2vw;
     font-weight: bold;
-    box-shadow: 0 0 sizeHeight(4) 0 rgba(203, 203, 203, 0.25);
+    box-shadow: var(--shadow-big);
 
     &:nth-child(2n) {
       margin-right: 0;
@@ -133,7 +133,7 @@ ion-content {
       height: sizeWidth(40);
       width: sizeWidth(40);
       border-radius: sizeHeight(12);
-      background-color: #002D4B;
+      background-color: var(--sprav-icon-bg);
 
       display: flex;
       justify-content: center;

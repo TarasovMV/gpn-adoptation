@@ -4,6 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 import { TabsService } from 'src/app/core/services/tabs/tabs.service';
 import {IPageTab, PageTabType} from './tabs.model';
 import {StatusBarService} from '../../core/services/platform/status-bar.service';
+import {Storage} from "@capacitor/storage";
 
 @Component({
     selector: 'app-tabs',
@@ -68,6 +69,7 @@ export class TabsPage implements OnInit {
         tab.ripple$.next(true);
         setTimeout(() => tab.ripple$.next(false), 500);
         this.navCtrl.navigateRoot(this.tabsRouting[tab.route] ?? this.tabsRouting[this.currentTab$.value]).then();
+        Storage.set({key: "current-tab", value: tab.route}).then();
     }
 
     public routing(tab: IPageTab): void {

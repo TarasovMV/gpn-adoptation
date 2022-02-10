@@ -11,6 +11,7 @@ import {InfoPopupStagesComponent} from 'src/app/shared/components/info-popup-sta
 import {StatusBarService} from "../../../../core/services/platform/status-bar.service";
 import {InfoPopupVersionComponent} from "../../../../shared/components/info-popup-version/info-popup-version.component";
 import {ApiVersionService} from "../../../../core/services/api/api-version-service";
+import {MyThemeService} from "../../../../core/services/platform/my-theme-service.service";
 
 
 @Component({
@@ -59,7 +60,8 @@ export class TabsProgressPage implements OnInit, OnDestroy, IPageTab {
         private modalController: ModalController,
         private statusBarService: StatusBarService,
         appConfigService: AppConfigService,
-        private apiVersionService: ApiVersionService
+        private apiVersionService: ApiVersionService,
+        public myThemeService: MyThemeService
     ) {
         this.restUrl = appConfigService.getAttribute('restUrl');
     }

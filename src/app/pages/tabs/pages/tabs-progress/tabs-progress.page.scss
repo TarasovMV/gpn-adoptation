@@ -7,7 +7,7 @@
 .bar {
   height: sizeHeight(65);
   border-radius: sizeHeight(11);
-  background-color: #1C76FE;
+  background-color: var(--blue);
   color: #ffffff;
   display: flex;
   align-items: center;
@@ -60,7 +60,7 @@
 
 .container {
   position: relative;
-  background-color: #f8fafb;
+  background-color: var(--bg-color-2);
   height: 100%;
   width: 100%;
   padding-top: sizeHeight(55);
@@ -90,7 +90,7 @@
     padding-bottom: 0;
 
     &__name {
-      color: #404763;
+      color: var(--text-contrast);
       font-family: 'SegoeUI_Bold';
       font-size: sizeHeight(26);
       font-weight: 400 !important;
@@ -99,6 +99,7 @@
     &__info {
       height: sizeHeight(29);
       width: sizeHeight(29);
+      color: var(--border-icons);
     }
   }
 
@@ -131,7 +132,7 @@
       padding: sizeHeight(20) sizeWidth(24);
       border-radius: sizeHeight(22) sizeHeight(22) 0 0;
       z-index: 999;
-      background: #FFFFFF;
+      background: var(--bg-block);
     }
   }
 
@@ -143,25 +144,25 @@
   }
 
   .shadow {
-    box-shadow: 0 0 sizeHeight(4) 0 rgba(203, 203, 203, 0.25);
+
   }
 
   .item {
     min-width: sizeWidth(220);
     width: sizeWidth(220);
     height: sizeHeight(200);
-    background-color: #FFFFFF;
+    background-color: var(--bg-menu);
     padding: sizeHeight(14) sizeWidth(14);
-    color: #404763;
+    color: var(--text-normal);
     opacity: 0.6;
-    box-shadow: 0 0 sizeHeight(4) 0 rgba(203, 203, 203, 0.25);
+    border-radius: sizeHeight(11);
 
     display: flex;
     justify-content: space-between;
     flex-direction: column;
 
     position: relative;
-    filter: grayscale(100%);
+    filter: grayscale(0%);
     overflow: hidden;
     margin-left: sizeWidth(0);
 
@@ -179,7 +180,7 @@
 
     &__header {
       flex-grow: 1;
-      color: #404763;
+      color: var(--text-contrast);
       font-family: 'SegoeUI_Bold';
       font-size: sizeHeight(20);
     }
@@ -189,7 +190,7 @@
       align-items: center;
       width: 100%;
       font-size: sizeHeight(14);
-      color: #8C99B2;
+      color: var(--text-normal);
     }
 
     &__stage {
@@ -220,6 +221,7 @@
       width: sizeHeight(85);
       height: sizeHeight(85);
       border-radius: 50%;
+      background: var(--gray-g11);
     }
 
     cashed-img {
@@ -233,22 +235,23 @@
     display: flex;
     padding: sizeHeight(16) sizeWidth(10);
     border-radius: sizeHeight(11);
-    background-color: #F8FAFB;
+    background-color: var(--forms);
     font-size: sizeHeight(14);
     font-weight: 400;
     margin-bottom: sizeHeight(8);
     overflow: hidden;
 
-    //box-shadow: 0 0 sizeHeight(4) 0 rgba(203, 203, 203, 0.25);
+    // box-shadow: sizeHeight(2) sizeHeight(2) sizeHeight(8) rgba(0, 0, 0, 0.5);
 
     .timer {
       width: 100%;
       display: flex;
       font-size: sizeHeight(14);
-      color: #8C99B2;
+      color: var(--text-subtitle);
       font-family: 'SegoeUI_Bold';
 
       &__logo {
+        color: var(--border-icons);
         margin-right: sizeWidth(7);
       }
     }
@@ -277,6 +280,7 @@
 
       &__name {
         margin-bottom: sizeHeight(10);
+        color: var(--text-contrast);
       }
     }
 
@@ -306,6 +310,7 @@ svg-icon {
 
 .stage-block {
   margin-right: sizeHeight(14);
+  padding: sizeWidth(2);
 }
 
 .stage-block:first-child {

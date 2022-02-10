@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { AppConfigService } from 'src/app/core/services/platform/app-config.service';
 import {TabsService} from 'src/app/core/services/tabs/tabs.service';
 import {IAnswer, IQuestion, ITests} from '../tabs-tests.page';
+import {MyThemeService} from "../../../../../core/services/platform/my-theme-service.service";
 
 export interface ITestResult {
     testRoomId: number;
@@ -26,6 +27,7 @@ export class TestQuestionComponent implements OnInit {
     constructor(
         appConfigService: AppConfigService,
         public tabsService: TabsService,
+        public myThemeService: MyThemeService
     ) {
         this.restUrl = appConfigService.getAttribute('restUrl');
     }

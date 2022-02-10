@@ -19,11 +19,12 @@
     margin-right: sizeWidth(9);
     height: sizeHeight(38);
     border-radius: sizeHeight(10);
-    background-color: #ffffff;
-    color: #1c76fe;
-    opacity: 0.75;
+    background-color: var(--gray-g12);
+    color: var(--blue);
+    opacity: 0.5;
     font-size: sizeHeight(14);
     font-weight: 900;
+    box-shadow: 0 0 sizeHeight(4) rgba(0, 0, 0, 0.25);
 
     display: flex;
     align-items: center;
@@ -39,7 +40,7 @@
 
     &__active {
       opacity: 1;
-      box-shadow: 0 0 sizeHeight(4) 0 rgba(203, 203, 203, 0.25);
+      box-shadow: var(--shadow-big);
     }
   }
 

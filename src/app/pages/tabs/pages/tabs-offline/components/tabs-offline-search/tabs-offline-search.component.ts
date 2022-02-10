@@ -1,6 +1,7 @@
 import {Output, Component, EventEmitter, OnInit, Input} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {debounceTime, distinctUntilChanged, filter} from 'rxjs/operators';
+import {MyThemeService} from "../../../../../../core/services/platform/my-theme-service.service";
 
 @Component({
     selector: 'app-tabs-offline-search',
@@ -13,6 +14,7 @@ export class TabsOfflineSearchComponent implements OnInit {
     @Output() public search: EventEmitter<string> = new EventEmitter<string>();
 
     constructor(
+        public myThemeService: MyThemeService
     ) {}
 
     ngOnInit() {

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ModalController} from '@ionic/angular';
+import {MyThemeService} from "../../../core/services/platform/my-theme-service.service";
 
 @Component({
     selector: 'app-info-popup-stages',
@@ -16,7 +17,8 @@ export class InfoPopupStagesComponent implements OnInit {
     ];
 
     constructor(
-        private modalController: ModalController
+        private modalController: ModalController,
+        public myThemeService: MyThemeService
     ) {}
 
     public ngOnInit(): void {}

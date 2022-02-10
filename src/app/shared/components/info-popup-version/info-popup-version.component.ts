@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ModalController} from "@ionic/angular";
 import {ApiVersionService} from "../../../core/services/api/api-version-service";
 import {InfoPopupStagesComponent} from "../info-popup-stages/info-popup-stages.component";
+import {MyThemeService} from "../../../core/services/platform/my-theme-service.service";
 
 @Component({
   selector: 'app-info-popup-version',
@@ -12,7 +13,8 @@ export class InfoPopupVersionComponent implements OnInit {
 
     constructor(
         private modalController: ModalController,
-        private apiVersionService: ApiVersionService
+        private apiVersionService: ApiVersionService,
+        public myThemeService: MyThemeService
     ) {}
 
     public ngOnInit(): void {}

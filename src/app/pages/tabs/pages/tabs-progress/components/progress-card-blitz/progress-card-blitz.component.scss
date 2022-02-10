@@ -15,7 +15,7 @@
     padding: sizeHeight(16) sizeWidth(16);
     background-color: #ffffff;
     border-radius: sizeHeight(22);
-    box-shadow: 0 0 sizeHeight(4) 0 rgba(203, 203, 203, 0.25);
+    box-shadow: var(--shadow-big);
 
     display: flex;
     flex-direction: column;

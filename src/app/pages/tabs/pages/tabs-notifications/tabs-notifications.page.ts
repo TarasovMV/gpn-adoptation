@@ -4,13 +4,14 @@ import {INotifications} from "../../../../core/models/notification.model";
 import {ApiNotificationService} from "../../../../core/services/api/api-notification.service";
 import {BehaviorSubject} from "rxjs";
 import {BackButtonService} from "../../../../core/services/platform/back-button.service";
-import {ModalController, Platform, ToastController} from "@ionic/angular";
+import {ModalController, Platform, ToastController, ViewWillEnter} from "@ionic/angular";
 import { ConfirmPopupComponent } from 'src/app/shared/components/confirm-popup/confirm-popup.component';
 import {UserService} from "../../../../core/services/data/user.service";
 import {IVersion} from "../../../../core/models/version-model";
 import {ApiVersionService} from "../../../../core/services/api/api-version-service";
 import {ApiSettingsService} from "../../../../core/services/api/api-settings-service";
 import {CurrentUserModel} from "../../../../core/models/current-user.model";
+import {MyThemeService} from "../../../../core/services/platform/my-theme-service.service";
 
 @Component({
     selector: 'app-tabs-notifications',
@@ -18,7 +19,7 @@ import {CurrentUserModel} from "../../../../core/models/current-user.model";
     styleUrls: ['./tabs-notifications.page.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TabsNotificationsPage implements OnInit, OnDestroy, IPageTab {
+export class TabsNotificationsPage implements OnInit, OnDestroy, IPageTab, ViewWillEnter {
     public route: PageTabType = 'notifications';
     public readonly sections: string[] = ['События', 'Настройки'];
     public section$: BehaviorSubject<string> = new BehaviorSubject<string>('События');
@@ -33,10 +34,15 @@ export class TabsNotificationsPage implements OnInit, OnDestroy, IPageTab {
         private modalController: ModalController,
         public apiVersionService: ApiVersionService,
         private toastController: ToastController,
-        public apiSettingsService: ApiSettingsService
+        public apiSettingsService: ApiSettingsService,
+        public myThemeService: MyThemeService
     ) {}
 
     public async ngOnInit(): Promise<void> {
+
+    }
+
+    async ionViewWillEnter() {
         this.getNotifications().then();
         this.userId = localStorage.getItem("userCode");
         this.apiSettingsService.getCurrentUser().subscribe((data: CurrentUserModel) => {
@@ -92,12 +98,7 @@ export class TabsNotificationsPage implements OnInit, OnDestroy, IPageTab {
     }
 
     public async toggleTheme(): Promise<void> {
-        const toast = await this.toastController.create({
-            message: 'Изменение темы приложения не реализовано',
-            duration: 2000,
-            cssClass: 'custom-toast-2'
-        });
-        toast.present().then();
+        await this.myThemeService.switchTheme();
     }
 
 
