@@ -74,10 +74,9 @@ ion-content {
 
 
   .scroll-container {
-    flex-grow: 1;
-    width: 100%;
+    width: sizeWidth(345);
+    align-self: start;
     overflow-y: scroll;
-    overflow-x: hidden;
   }
   .search {
     height: sizeHeight(48);
@@ -98,7 +97,7 @@ ion-content {
   }
 
   .card {
-    width: 99.5%;
+    width: sizeWidth(328.1);
     padding: sizeHeight(14) sizeWidth(17);
     margin-right: 4px;
     box-sizing: border-box;
