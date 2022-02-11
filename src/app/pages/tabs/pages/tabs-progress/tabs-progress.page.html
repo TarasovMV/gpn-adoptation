@@ -50,7 +50,25 @@
             <ion-ripple-effect></ion-ripple-effect>
             <div style="display: flex; justify-content: center; align-items: center" class="stage__icon" [ngClass]="{'stage__icon-done': element.isDone}">
               <img class="icon-image"  *ngIf="element.isDone" src="assets/icon/progress/check.svg"/>
-              <img class="icon-image" *ngIf="!element.isDone" src="assets/icon/progress/{{element.subStageType}}.svg"/>
+              <svg class="icon-image" style="color: var(--borders);" *ngIf="!element.isDone && element.subStageType === 0" width="100%" height="100%" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 5.6375C12.075 2.6625 9.3625 1 6.65 1H1.75V17.8875H6.65C9.45 17.8875 12.075 19.55 14 22.4375" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M14 22.525C15.925 19.55 18.6375 17.8875 21.35 17.8875H26.25V1H21.35C18.55 1 15.925 2.6625 14 5.55V22.175" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <svg class="icon-image" style="color: var(--borders);" *ngIf="!element.isDone && element.subStageType === 1" width="100%" height="100%" viewBox="0 0 17 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 8.0772C1 9.62279 1.48808 11.1684 2.46425 12.3886L4.33523 14.829C4.66062 15.2357 4.74197 15.6425 4.74197 16.1306V18.2456H11.6565V16.1306C11.6565 15.6425 11.8192 15.2357 12.0632 14.829L13.9342 12.3886C14.9104 11.1684 15.3984 9.62279 15.3984 8.0772C15.3984 4.17254 12.2259 1 8.32124 1H8.15855C4.17254 1 1 4.17254 1 8.0772Z" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M11.6567 18.2441H4.74219V21.4167H11.6567V18.2441Z" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M11.5753 21.4199H4.74219L6.69452 24.5925H9.62301L11.5753 21.4199Z" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M8.15625 4.17188C10.5153 4.17188 12.4676 6.12421 12.4676 8.48327" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <svg class="icon-image" style="color: var(--borders);" *ngIf="!element.isDone && element.subStageType === 2" width="100%" height="100%" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3.15234 10.5875C3.15234 10.5875 5.33984 9.1 8.66484 9.1C11.9898 9.1 11.9898 11.2875 17.5023 10.2375V2.8875C12.0773 3.9375 12.0773 1.75 8.66484 1.75C5.25234 1.75 3.15234 3.2375 3.15234 3.2375V18.025" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M10.4141 13.8242V26.2492" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M10.4141 18.8129C10.4141 18.8129 12.6016 17.3254 15.9266 17.3254C19.2516 17.3254 19.2516 19.5129 24.7641 18.4629V11.0254C23.1016 11.3754 21.9641 11.3754 21.0891 11.2879" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <svg class="icon-image" style="color: var(--borders);" *ngIf="!element.isDone && element.subStageType === 3" width="100%" height="100%" viewBox="0 0 26 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M25 15.0554V5.96964C25 4.5125 24.0571 3.3125 22.6 2.96964C16.2571 1.42679 9.65714 1.42679 3.31429 2.96964C1.94286 3.3125 1 4.59821 1 5.96964V14.9696C1 16.4268 1.94286 17.6268 3.4 17.9696C9.74286 19.5125 16.3429 19.5125 22.6857 17.9696C24.0571 17.7125 25 16.4268 25 15.0554Z" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M9.91406 14.7141V6.22839C9.91406 5.62839 10.5998 5.28553 11.1141 5.62839L17.2855 9.82839C17.7141 10.0855 17.7141 10.7712 17.2855 11.1141L11.1141 15.3141C10.5998 15.7427 9.91406 15.3141 9.91406 14.7141Z" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
             </div>
 
             <div class="stage__text">
