@@ -294,3 +294,7 @@ ion-content {
 .organization-name {
   font-size: sizeHeight(12) !important;
 }
+
+.notifications__group:last-child {
+  padding-bottom: sizeHeight(25);
+}

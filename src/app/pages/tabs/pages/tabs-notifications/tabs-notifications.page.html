@@ -13,7 +13,7 @@
     <div style="height: 100%" [ngSwitch]="section$ | async">
       <div style="height: 100%" *ngSwitchCase="'События'">
        <div *ngIf="!!(notifications$ | async)?.length">
-          <div *ngFor="let item of notifications$ | async">
+          <div class="notifications__group" *ngFor="let item of notifications$ | async">
             <div class="date">{{item.date | date: 'mediumDate'}}</div>
             <div class="notifications" *ngFor="let element of item.notifications"
                  [class.big-shadow-light]="myThemeService.isThemeLight" [class.big-shadow-dark]="!myThemeService.isThemeLight">
