@@ -123,6 +123,7 @@ ion-content {
     margin-right: 2vw;
     font-weight: bold;
     box-shadow: var(--shadow-big);
+    opacity: 0.9999999;
 
     &:nth-child(2n) {
       margin-right: 0;

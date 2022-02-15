@@ -241,6 +241,7 @@
     font-weight: 400;
     margin-bottom: sizeHeight(8);
     overflow: hidden;
+    opacity: 0.9999999;
 
     // box-shadow: sizeHeight(2) sizeHeight(2) sizeHeight(8) rgba(0, 0, 0, 0.5);
 
@@ -320,5 +321,5 @@ svg-icon {
 }
 
 .stage-block:last-child {
-  margin-right: sizeHeight(24);
+  padding-right: sizeWidth(25);
 }

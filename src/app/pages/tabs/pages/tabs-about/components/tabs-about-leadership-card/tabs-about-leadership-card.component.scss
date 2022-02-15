@@ -15,10 +15,9 @@
   background-color: var(--bg-block);
   font-size: sizeHeight(18);
   margin: sizeHeight(10) 0;
+  opacity: 0.9999999;
+  overflow: hidden;
 
-  ion-ripple-effect {
-    border-radius: sizeHeight(22);
-  }
 
   &-active {
     background-color: #1C76FE;
