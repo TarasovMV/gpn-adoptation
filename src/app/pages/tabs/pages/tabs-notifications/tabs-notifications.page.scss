@@ -5,7 +5,7 @@
 }
 
 ion-content {
-  --background: #f8fafb;
+  --background: var(--bg-color-2);
 }
 .header {
   height: sizeHeight(126);

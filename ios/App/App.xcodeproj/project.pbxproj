@@ -19,6 +19,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5D2A1EF727B793BA00C5968F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5D4DCD0926BA8DA000034CB6 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 68666BA72400D0E5BB97A900DAB5156E;
+			remoteInfo = HugotomaziCapacitorNavigationBar;
+		};
 		5D4DCD2226BA8DA000034CB6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5D4DCD0926BA8DA000034CB6 /* Pods.xcodeproj */;
@@ -270,6 +277,7 @@
 				5D4DCD3F26BA8DA000034CB6 /* FirebaseMessaging.framework */,
 				5D4DCD4126BA8DA000034CB6 /* GoogleDataTransport.framework */,
 				5D4DCD4326BA8DA000034CB6 /* GoogleUtilities.framework */,
+				5D2A1EF827B793BA00C5968F /* HugotomaziCapacitorNavigationBar.framework */,
 				5D4DCD4526BA8DA000034CB6 /* nanopb.framework */,
 				5D4DCD4726BA8DA000034CB6 /* Pods_App.framework */,
 				5D4DCD4926BA8DA000034CB6 /* FBLPromises.framework */,
@@ -350,6 +358,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		5D2A1EF827B793BA00C5968F /* HugotomaziCapacitorNavigationBar.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = HugotomaziCapacitorNavigationBar.framework;
+			remoteRef = 5D2A1EF727B793BA00C5968F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		5D4DCD2326BA8DA000034CB6 /* Capacitor.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -705,12 +720,12 @@
 				CODE_SIGN_ENTITLEMENTS = App/App.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = WKVG8VFM9Z;
 				INFOPLIST_FILE = App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.20;
+				MARKETING_VERSION = 1.24;
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-DDEBUG\"";
 				PRODUCT_BUNDLE_IDENTIFIER = io.gpn.adoptation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -729,12 +744,12 @@
 				CODE_SIGN_ENTITLEMENTS = App/App.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = WKVG8VFM9Z;
 				INFOPLIST_FILE = App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.20;
+				MARKETING_VERSION = 1.24;
 				PRODUCT_BUNDLE_IDENTIFIER = io.gpn.adoptation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "GPN Distribution Profile";

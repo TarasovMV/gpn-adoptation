@@ -44,8 +44,8 @@ export class TabsOfflineStoriesComponent implements OnInit {
         this.tabsService.currentStory$.next(item);
         const modal = await this.modalController.create({
             component: TabsOfflineRecommendationComponent,
+            mode: "ios",
             swipeToClose: true,
-            presentingElement: this.routerOutlet.nativeEl,
             componentProps: {
                 story: item
             }

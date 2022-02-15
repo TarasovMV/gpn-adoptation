@@ -7,7 +7,7 @@
       <div class="card-wrapper">
         <div *ngFor="let card of sections || []" class="card ripple-parent ion-activatable" (click)="openCard(card)"
              [class.big-shadow-light]="myThemeService.isThemeLight" [class.big-shadow-dark]="!myThemeService.isThemeLight">
-          <ion-ripple-effect></ion-ripple-effect>
+          <ion-ripple-effect style="overflow: hidden"></ion-ripple-effect>
           <div class="card__icon">
             <img src="{{restUrl}}/{{card?.iconPath}}"/>
           </div>

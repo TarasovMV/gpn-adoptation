@@ -40,7 +40,7 @@
 }
 
 ion-content {
-  --background: #f8fafb;
+  --background: var(--bg-color-2);
 }
 
 .content {
