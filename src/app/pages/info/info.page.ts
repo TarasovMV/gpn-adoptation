@@ -7,6 +7,9 @@ import {AppConfigService} from "../../core/services/platform/app-config.service"
 import {Browser} from "@capacitor/browser";
 import {TabsProgressService} from "../tabs/pages/tabs-progress/services/tabs-progress.service";
 import {MyThemeService} from "../../core/services/platform/my-theme-service.service";
+import {forkJoin} from "rxjs";
+import {FileDownloaderService} from "../../core/services/file-downloader.service";
+import {FullscreenService} from "../../core/services/platform/fullscreen.service";
 
 export class AdaptationBullet {
     public type: number;
@@ -50,12 +53,19 @@ export class InfoPage implements OnInit {
         private toastController: ToastController,
         appConfigService: AppConfigService,
         private ngZone: NgZone,
-        public myThemeService: MyThemeService
+        public myThemeService: MyThemeService,
+        private fileDownloaderService: FileDownloaderService,
+        private fullScreenService: FullscreenService
     ) {
         this.restUrl = appConfigService.getAttribute('restUrl');
     }
 
     public async ngOnInit(): Promise<void> {
+       /* window.addEventListener("orientationchange", function(event) {
+            // @ts-ignore
+            window.location.reload();
+        });*/
+
         if (!localStorage.getItem("checkbox")) {
             localStorage.setItem("checkbox", JSON.stringify(this.checkbox));
         }
@@ -63,6 +73,20 @@ export class InfoPage implements OnInit {
         this.isProgress = this.route.snapshot.queryParamMap.get('type') === 'progress';
         this.tabsService.adaptationComponents$.subscribe(value => {
             this.data = value?.adaptationComponents;
+
+           /* forkJoin(this.data.map(p => this.fileDownloaderService.getFileBase64(p.imageId)))
+                .subscribe(async (data: Blob[]) => {
+                        for (let i = 0; i < data.length; i++)
+                        {
+                            // @ts-ignore
+                            period.data.imageBase64 = await this.fileDownloaderService.convertBlobToBase64(data[i]);
+                        }
+                    }, (err) => {
+                        console.log("Ощибка");
+                        console.log(err);
+                    }
+                );*/
+
             this.data?.filter(x => x.componentType === 7)?.forEach(x => { this.rates[x.id] = [...this.ratesDefault.map(r => ({...r}))] });
             this.isDone = value.isDone;
             this.data.forEach(x => {
@@ -135,7 +159,7 @@ export class InfoPage implements OnInit {
     }
 
     public clickButton(item: IAdaptationComponent): void {
-        Browser.open({url: item.body}).then();
+        Browser.open({url: item.body.trim()}).then();
     }
 
     public async setDone(): Promise<void> {
@@ -274,5 +298,19 @@ export class InfoPage implements OnInit {
     getBulletIcon(item: IAdaptationComponent) {
         console.log(`${this.restUrl}/${item.imagePath}`);
         return `${this.restUrl}/${item.imagePath}`;
+    }
+
+    onStartPlayingVideo() {
+        this.fullScreenService.fullScreen = !this.fullScreenService.fullScreen;
+        if (this.fullScreenService.fullScreen) {
+            window.screen.orientation.lock("landscape");
+        }
+        else {
+            window.screen.orientation.lock('portrait');
+        }
+    }
+
+    onVideoResize(video) {
+        window.location.reload();
     }
 }

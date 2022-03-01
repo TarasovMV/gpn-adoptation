@@ -4,6 +4,7 @@ import {Subscription} from "rxjs";
 import {NavigationStart, Router} from "@angular/router";
 import {filter} from "rxjs/operators";
 import { App } from '@capacitor/app';
+import {FullscreenService} from "./fullscreen.service";
 
 @Injectable({
     providedIn: 'root'
@@ -28,6 +29,7 @@ export class BackButtonService {
         private platform: Platform,
         private router: Router,
         private toastController: ToastController,
+        private fullScreenService: FullscreenService
     ) {
         this.router.events
             .pipe(filter(event => event instanceof NavigationStart))
@@ -51,7 +53,12 @@ export class BackButtonService {
 
     public default(platform: Platform): void {
         platform.backButton.subscribeWithPriority(9999, () => {
-            this.navCtrl.back();
+            if (!this.fullScreenService.fullScreen) {
+                this.navCtrl.back();
+            }
+            else {
+                document.exitFullscreen();
+            }
         });
     }
 

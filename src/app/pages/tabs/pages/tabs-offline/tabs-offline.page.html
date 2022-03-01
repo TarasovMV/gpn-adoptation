@@ -9,7 +9,7 @@
              [class.big-shadow-light]="myThemeService.isThemeLight" [class.big-shadow-dark]="!myThemeService.isThemeLight">
           <ion-ripple-effect style="overflow: hidden"></ion-ripple-effect>
           <div class="card__icon">
-            <img src="{{restUrl}}/{{card?.iconPath}}"/>
+            <img src="{{card?.imageBase64}}"/>
           </div>
           <div class="card__name">{{card.name}}</div>
         </div>

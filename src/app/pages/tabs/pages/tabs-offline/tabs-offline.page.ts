@@ -5,6 +5,8 @@ import {AppConfigService} from "../../../../core/services/platform/app-config.se
 import {NavController} from "@ionic/angular";
 import {ApiAdaptationService} from "../../../../core/services/api/api-adaptation.service";
 import {MyThemeService} from "../../../../core/services/platform/my-theme-service.service";
+import {forkJoin} from "rxjs";
+import {FileDownloaderService} from "../../../../core/services/file-downloader.service";
 
 @Component({
     selector: 'app-tabs-offline',
@@ -22,7 +24,8 @@ export class TabsOfflinePage implements OnInit, OnDestroy, IPageTab {
         private navCtrl: NavController,
         private apiAdaptationService: ApiAdaptationService,
         appConfig: AppConfigService,
-        public myThemeService: MyThemeService
+        public myThemeService: MyThemeService,
+        private fileDownloaderService: FileDownloaderService
     ) {
         this.restUrl = appConfig.getAttribute("restUrl");
     }
@@ -64,6 +67,19 @@ export class TabsOfflinePage implements OnInit, OnDestroy, IPageTab {
             })
             this.data = data;
             this.sections = data.adaptationStages;
+            console.log(this.sections);
+            forkJoin(this.sections.map(p => this.fileDownloaderService.getFileBase64(p.imageId)))
+                .subscribe(async (data: Blob[]) => {
+                        for (let i = 0; i < data.length; i++)
+                        {
+                            // @ts-ignore
+                            period.sections[i].imageBase64 = await this.fileDownloaderService.convertBlobToBase64(data[i]);
+                        }
+                    }, (err) => {
+                        console.log("Ощибка");
+                        console.log(err);
+                    }
+                );
         }
         catch (error) {
             console.error(error);

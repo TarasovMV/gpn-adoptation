@@ -6,6 +6,7 @@ import {InfoPageRoutingModule} from './info-routing.module';
 import {InfoPage} from './info.page';
 import {AngularSvgIconModule} from "angular-svg-icon";
 import {SharedModule} from "../../shared/shared.module";
+import {YouTubePlayerModule} from "@angular/youtube-player";
 
 @NgModule({
     imports: [
@@ -14,7 +15,8 @@ import {SharedModule} from "../../shared/shared.module";
         IonicModule,
         InfoPageRoutingModule,
         AngularSvgIconModule,
-        SharedModule
+        SharedModule,
+        YouTubePlayerModule
     ],
     declarations: [InfoPage]
 })

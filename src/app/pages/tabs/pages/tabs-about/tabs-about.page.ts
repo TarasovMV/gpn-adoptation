@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {BehaviorSubject, Subject} from 'rxjs';
+import {BehaviorSubject, forkJoin, Subject} from 'rxjs';
 import { TabsService } from 'src/app/core/services/tabs/tabs.service';
 import {IPageTab, PageTabType} from "../../tabs.model";
 import { IHistory } from './components/tabs-about-history/tabs-about-history.component';
@@ -8,6 +8,7 @@ import {BackButtonService} from "../../../../core/services/platform/back-button.
 import {IonSlides, Platform} from "@ionic/angular";
 import {SLIDE_CONFIG_HISTORY} from "./tabs-about.config";
 import {MyThemeService} from "../../../../core/services/platform/my-theme-service.service";
+import {FileDownloaderService} from "../../../../core/services/file-downloader.service";
 
 export interface IMasterMindCategory {
     id: number,
@@ -24,6 +25,8 @@ export interface IMasterMind {
     position: string,
     image: string,
     imagePath: string,
+    imageId: string,
+    imageBase64: string,
     bullets: IBullet[]
 }
 
@@ -55,12 +58,13 @@ export class TabsAboutPage implements OnInit, OnDestroy, IPageTab {
     constructor(
         public tabsService: TabsService,
         appConfigService: AppConfigService,
-        public myThemeService: MyThemeService
+        public myThemeService: MyThemeService,
+        private fileDownloaderService: FileDownloaderService
     ) {
         this.restUrl = appConfigService.getAttribute('restUrl');
     }
 
-    ngOnInit(): void {
+    async ngOnInit() {
         this.getMasterMindCategories();
         this.getHistoryBullets();
         this.tabsService.historyPeriod$.subscribe(value => {
@@ -73,6 +77,18 @@ export class TabsAboutPage implements OnInit, OnDestroy, IPageTab {
     public async getMasterMindCategories(): Promise<void> {
         const data = await this.tabsService.getMasterMindCategories();
         this.leadership = data;
+        for (let category of this.leadership) {
+            forkJoin(category.masterMinds.map(p => this.fileDownloaderService.getFileBase64(p.imageId)))
+                .subscribe(async (d: Blob[]) => {
+                        for (let i = 0; i < d.length; i++)
+                        {
+                            // @ts-ignore
+                            category.masterMinds[i].imageBase64 = await this.fileDownloaderService.convertBlobToBase64(d[i]);
+                            console.log("good")
+                        }
+                    }
+                );
+        }
         if (this.leadership?.[0]) {
             this.leadership[0].isActive = true;
         }
@@ -80,7 +96,22 @@ export class TabsAboutPage implements OnInit, OnDestroy, IPageTab {
 
     public async getHistoryBullets(): Promise<void> {
         this.history = await this.tabsService.getHistory();
+        for (let period of this.history) {
+            forkJoin(period.historyBullets.map(p => this.fileDownloaderService.getFileBase64(p.imageId)))
+                .subscribe(async (data: Blob[]) => {
+                        for (let i = 0; i < data.length; i++)
+                        {
+                            // @ts-ignore
+                            period.historyBullets[i].imageBase64 = await this.fileDownloaderService.convertBlobToBase64(data[i]);
+                        }
+                    }, (err) => {
+                    console.log("Ощибка");
+                    console.log(err);
+                    }
+                );
+        }
         this.tabsService.historyPeriod$.next(this.history?.[0]);
+        console.log(this.history);
     }
 
     public changeSection(section: string): void {

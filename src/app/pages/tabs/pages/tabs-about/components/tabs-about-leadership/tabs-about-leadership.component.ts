@@ -17,7 +17,7 @@ import {MyThemeService} from "../../../../../../core/services/platform/my-theme-
                     ':enter',
                     [
                         style({ height: 0, opacity: .3 }),
-                        animate('.3s ease-in',
+                        animate('.2s ease-in',
                             style({ height: '*', opacity: 1 }))
                     ]
                 ),
@@ -25,7 +25,7 @@ import {MyThemeService} from "../../../../../../core/services/platform/my-theme-
                     ':leave',
                     [
                         style({ height: '*', opacity: 1 }),
-                        animate('.3s ease-out',
+                        animate('.2s ease-out',
                             style({ height: 0, opacity: .3 }))
                     ]
                 )

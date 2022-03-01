@@ -10,6 +10,7 @@ import { ConfirmPopupComponent } from './components/confirm-popup/confirm-popup.
 import { InfoPopupComponent } from './components/info-popup/info-popup.component';
 import { BrowserModule } from '@angular/platform-browser';
 import {InfoPopupVersionComponent} from "./components/info-popup-version/info-popup-version.component";
+import {TrimPipe} from "./pipes/trim.pipe";
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import {InfoPopupVersionComponent} from "./components/info-popup-version/info-po
         SafeUrlPipe,
         CashedImgComponent,
         ConfirmPopupComponent,
-        InfoPopupVersionComponent
+        InfoPopupVersionComponent,
+        TrimPipe
     ],
     imports: [
         CommonModule,

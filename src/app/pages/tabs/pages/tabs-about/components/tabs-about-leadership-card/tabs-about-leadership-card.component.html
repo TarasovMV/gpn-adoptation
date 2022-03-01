@@ -2,7 +2,7 @@
      [class.big-shadow-light]="myThemeService.isThemeLight" [class.big-shadow-dark]="!myThemeService.isThemeLight">
   <ion-ripple-effect></ion-ripple-effect>
   <div class="stage__photo">
-    <cashed-img src="{{restUrl}}/{{element.imagePath}}"></cashed-img>
+    <cashed-img *ngIf="element.imageBase64" src="{{element.imageBase64}}"></cashed-img>
   </div>
   <div class="stage__personal">
     <div class="name">

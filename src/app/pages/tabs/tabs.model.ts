@@ -26,6 +26,8 @@ export interface IAdaptationStage {
     doneCount?: number;
     iconPath?: string;
     imagePath?: string;
+    imageId: string;
+    imageBase64: string;
 }
 
 export interface IAdaptationSubStage {
@@ -50,7 +52,11 @@ export interface IAdaptationComponent {
     body?: string;
     footer?: string;
     imagePath?: string;
+    imageId?: string;
+    imageBase64?: string;
     filePath?: string;
+    fileId?: string;
+    fileBase64?: string;
     videoPath?: string;
     isActive?: boolean;
     result?: IAdaptationComponentResult;

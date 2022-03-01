@@ -51,6 +51,7 @@ export class AppComponent implements OnInit {
             if (!firstTime) {
                 localStorage.setItem("tabs-progress-show", "0");
             }
+            window.screen.orientation.lock("portrait");
         });
 
         this.platform.resume.subscribe(async ()=> {
