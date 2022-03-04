@@ -25,7 +25,7 @@
         <div *ngSwitchCase="11" class="video mb">
           <video (webkitfullscreenchange)="onStartPlayingVideo()" *ngIf="!!item.filePath" src='{{restUrl}}/{{item.filePath}}' preload="metadata"
             poster="assets/images/video-preview.png" controls></video>
-          <div class="yt-video-container">
+          <div *ngIf="!!item.body" class="yt-video-container">
             <iframe class="yt-video" *ngIf="!!item.body" [src]="(item.body | ytNoFullscreen) | safeUrl"></iframe>
           </div>
 
