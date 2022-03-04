@@ -23,7 +23,7 @@
           <ng-container *ngFor="let bullet of showHistory?.historyBullets">
             <div class="title">{{bullet?.header}}</div>
             <div class="image">
-              <cashed-img *ngIf="bullet.imageBase64" [src]="bullet?.imageBase64"></cashed-img>
+              <cashed-img *ngIf="bullet.imagePath" src="{{restUrl}}/{{bullet?.imagePath}}"></cashed-img>
             </div>
             <p>{{ bullet.text }}</p>
             <div class="line"></div>

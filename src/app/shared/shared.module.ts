@@ -11,6 +11,7 @@ import { InfoPopupComponent } from './components/info-popup/info-popup.component
 import { BrowserModule } from '@angular/platform-browser';
 import {InfoPopupVersionComponent} from "./components/info-popup-version/info-popup-version.component";
 import {TrimPipe} from "./pipes/trim.pipe";
+import {YtNoFullscreenPipe} from "./pipes/yt-no-fullscreen.pipe";
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import {TrimPipe} from "./pipes/trim.pipe";
         CashedImgComponent,
         ConfirmPopupComponent,
         InfoPopupVersionComponent,
-        TrimPipe
+        TrimPipe,
+        YtNoFullscreenPipe
     ],
     imports: [
         CommonModule,
@@ -33,6 +35,7 @@ import {TrimPipe} from "./pipes/trim.pipe";
         SafeUrlPipe,
         CashedImgComponent,
         ConfirmPopupComponent,
+        YtNoFullscreenPipe,
     ],
 })
 export class SharedModule {

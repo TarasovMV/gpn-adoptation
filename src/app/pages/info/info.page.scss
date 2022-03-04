@@ -90,8 +90,8 @@ ion-content {
 
   iframe {
     outline: none;
-    width: 100%;
-    height: 27vh;
+    /*width: 100%;
+    height: 27vh;*/
     border: none;
   }
 
@@ -434,5 +434,20 @@ ion-content {
   .rel-2 {
     position: relative;
     left: - sizeWidth(1.7);
+  }
+
+  .yt-video-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+  }
+
+  .yt-video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
   }
 }
