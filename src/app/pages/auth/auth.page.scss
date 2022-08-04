@@ -32,9 +32,12 @@
 }
 
 .container {
+  font-family: "Segoe UI";
   height: 100%;
   width: 100%;
+  padding: sizeHeight(73) sizeWidth(27);
   font-weight: 500;
+  background: #1268EC;
 
   display: flex;
   flex-direction: column;
@@ -69,6 +72,68 @@
     }
   }
 
+  .enter {
+    z-index: 99;
+    margin-top: sizeHeight(45);
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__code {
+      z-index: 999;
+      height: sizeHeight(79);
+      border-radius: sizeHeight(34);
+      box-shadow: 0 0 sizeHeight(4) sizeHeight(2) rgba(203, 203, 203, 0.25);
+
+      font-weight: 900;
+      font-family: 'SegoeUI_Bold';
+    }
+
+    &__title {
+      margin-bottom: sizeHeight(16);
+      font-weight: 700;
+      font-size: sizeHeight(18);
+    }
+
+    &__subtitle {
+      height: sizeHeight(96);
+      width: sizeWidth(250);
+      color: #FFFFFF;
+      font-weight: 300;
+      font-size: sizeHeight(14);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+
+      span {
+        font-family: 'SegoeUI_Bold';
+        font-weight: 700;
+      }
+    }
+
+    input {
+      z-index: 99;
+      height: sizeHeight(93);
+      width: 100%;
+      border-radius: sizeHeight(34);
+      font-size: sizeWidth(36);
+      color: var(--auth-text);
+      padding: sizeWidth(40) 0 sizeWidth(40) sizeWidth(0);
+      letter-spacing: sizeWidth(29);
+      background-color: var(--forms);
+      box-shadow: sizeHeight(2) sizeHeight(2) sizeHeight(92) rgba(49, 49, 49, 0.24);
+      outline: none;
+      border: none;
+      margin-bottom: sizeHeight(42);
+      text-align: center;
+      font-weight: bold;
+    }
+
   .content {
     width: 100%;
     height: 100vh;
@@ -82,65 +147,6 @@
     font-size: sizeHeight(18);
     overflow: hidden;
 
-    .enter {
-      z-index: 99;
-      width: 100%;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-
-      &__code {
-        z-index: 999;
-        height: sizeHeight(79);
-        border-radius: sizeHeight(8);
-        /*box-shadow: 0 0 sizeHeight(4) sizeHeight(2) rgba(203, 203, 203, 0.25);*/
-        box-shadow: 0 sizeHeight(2) sizeHeight(4) rgba(0, 0, 0, 0.25);
-        font-weight: 900;
-        font-family: 'SegoeUI_Bold';
-      }
-
-      &__title {
-        margin-bottom: sizeHeight(16);
-        font-weight: 700;
-        font-size: sizeHeight(18);
-      }
-
-      &__subtitle {
-        height: sizeHeight(96);
-        width: sizeWidth(250);
-        color: #FFFFFF;
-        font-weight: 300;
-        font-size: sizeHeight(14);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-
-        span {
-          font-family: 'SegoeUI_Bold';
-          font-weight: 700;
-        }
-      }
-
-      input {
-        z-index: 99;
-        height: sizeHeight(79);
-        width: 75vw;
-        border-radius: sizeHeight(8);
-        font-size: sizeWidth(36);
-        color: var(--auth-text);
-        padding: sizeWidth(40) 0 sizeWidth(40) sizeWidth(0);
-        letter-spacing: sizeWidth(22);
-        background-color: var(--forms);
-        outline: none;
-        border: none;
-        margin-bottom: sizeHeight(42);
-        text-align: center;
-        font-weight: bold;
-      }
     }
   }
 }
