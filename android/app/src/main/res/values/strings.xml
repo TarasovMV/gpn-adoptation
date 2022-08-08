@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Адаптация</string>
-    <string name="title_activity_main">Адаптация</string>
-    <string name="package_name">io.gpn.adoptation</string>
-    <string name="custom_url_scheme">io.gpn.adoptation</string>
+    <string name="app_name">Моя адаптация</string>
+    <string name="title_activity_main">Моя адаптация</string>
+    <string name="package_name">io.avsv.adaptation</string>
+    <string name="custom_url_scheme">io.avsv.adaptation</string>
 </resources>

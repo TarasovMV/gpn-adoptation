@@ -3,20 +3,29 @@
 
 </div>-->
 <div class="container">
-  <div style="font-size: 3.94vh; font-weight: bold; line-height: 4.8vh">ВВЕДИТЕ</div>
-  <div style="font-size: 3.94vh; font-weight: bold; color: #AB92FF; line-height: 4.8vh">КОД</div>
-  <div style="font-size: 3.94vh; font-weight: bold; line-height: 4.8vh">ДОСТУПА</div>
-  <div style="margin-top: 3.69vh; max-width: 70vw; font-weight: normal; font-size: 1.724vh; line-height: 2.09vh">
-    Если у Вас нет кода, то обратитесь к Вашему <span style="text-decoration: underline; text-underline-offset: 0.32vh">HR-менеджеру</span>
-  </div>
-  <div class="enter" [class.swing]="isSwingAnimation$ | async">
-    <div class="enter__code">
-      <input #input [formControl]="codeControl" type="tel" maxlength="5">
+  <div style="display: flex; flex-direction: column; height: 100%; justify-content: space-between">
+    <div>
+      <div style="font-size: 3.94vh; font-weight: bold; line-height: 4.8vh">ВВЕДИТЕ</div>
+      <div style="font-size: 3.94vh; font-weight: bold; color: #AB92FF; line-height: 4.8vh">КОД</div>
+      <div style="font-size: 3.94vh; font-weight: bold; line-height: 4.8vh">ДОСТУПА</div>
+      <div style="margin-top: 3.69vh; max-width: 70vw; font-weight: normal; font-size: 1.724vh; line-height: 2.09vh">
+        Если у Вас нет кода, то обратитесь к Вашему <span style="text-decoration: underline; text-underline-offset: 0.32vh">HR-менеджеру</span>
+      </div>
+      <div class="enter" [class.swing]="isSwingAnimation$ | async">
+        <div class="enter__code">
+          <input #input [formControl]="codeControl" type="tel" maxlength="5">
+        </div>
+      </div>
+    </div>
+    <div #logo id="logo-with-text-auth">
+      <div>
+        <svg-icon class="logo" src="assets/icon/logo.svg"></svg-icon>
+      </div>
+      <div>
+        <svg-icon class="logo-text" src="assets/icon/logo-text.svg"></svg-icon>
+      </div>
     </div>
   </div>
-    <div class="logo-wrapper">
-      <svg-icon src="assets/icon/gpn-logo.svg"></svg-icon>
-    </div>
 </div>
 
 

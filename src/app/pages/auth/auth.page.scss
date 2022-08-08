@@ -122,10 +122,11 @@
       width: 100%;
       border-radius: sizeHeight(34);
       font-size: sizeWidth(36);
-      color: var(--auth-text);
+      font-family: "SegoeUI_Bold";
+      color: #1268EC;
       padding: sizeWidth(40) 0 sizeWidth(40) sizeWidth(0);
       letter-spacing: sizeWidth(29);
-      background-color: var(--forms);
+      background-color: white;
       box-shadow: sizeHeight(2) sizeHeight(2) sizeHeight(92) rgba(49, 49, 49, 0.24);
       outline: none;
       border: none;
@@ -184,6 +185,18 @@
   width: 33vw;
   justify-content: center;
   align-items: center;
+}
+
+.logo {
+  display: flex;
+  margin-left: - sizeWidth(11);
+  height: sizeHeight(90);
+}
+
+.logo-text {
+  margin-top: sizeHeight(19);
+  height: sizeHeight(46);
+  display: flex;
 }
 
 

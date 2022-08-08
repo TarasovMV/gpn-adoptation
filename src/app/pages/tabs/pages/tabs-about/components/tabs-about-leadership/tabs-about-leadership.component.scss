@@ -5,13 +5,17 @@
 }
 
 .item {
+  margin-top: sizeHeight(10);
   width: 100%;
-  height: sizeHeight(38);
-  padding: sizeHeight(10) 0;
+  // height: sizeHeight(38);
+  padding: sizeHeight(21) sizeHeight(16) !important;
   display: flex;
-  color: var(--text-contrast);
+  background: #845CF4;
+  color: white;
   align-items: center;
   justify-content: space-between;
+  box-shadow: 0px 0px sizeHeight(5) rgba(203, 203, 203, 0.25);
+  border-radius: sizeHeight(16);
 
   &__header {
     flex-grow: 1;

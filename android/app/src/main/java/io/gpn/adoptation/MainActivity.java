@@ -1,4 +1,4 @@
-package io.gpn.adoptation;
+package io.avsv.adaptation;
 
 import android.app.NotificationManager;
 import android.content.Context;

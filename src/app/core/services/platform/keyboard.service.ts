@@ -25,8 +25,24 @@ export class KeyboardService {
 
     private actionListeners(platform: Platform, appWindow: ElementRef): void {
 
-        Keyboard.addListener('keyboardWillShow', (event) => this.keyboardHeight$.next(event.keyboardHeight));
-        Keyboard.addListener('keyboardWillHide',() => this.keyboardHeight$.next(0));
+        Keyboard.addListener('keyboardWillShow', (event) => {
+            this.keyboardHeight$.next(event.keyboardHeight);
+            const logo = document.getElementById("logo-with-text-auth");
+            if (logo) {
+                logo.style.display = "none";
+            }
+        });
+        Keyboard.addListener('keyboardWillHide',() => {
+            this.keyboardHeight$.next(0);
+        });
+        Keyboard.addListener('keyboardDidHide',() => {
+            setTimeout(() => {
+                const logo = document.getElementById("logo-with-text-auth");
+                if (logo) {
+                    logo.style.display = "block";
+                }
+            }, 150);
+        });
         this.keyboardHeight$.subscribe((height) => {
             (appWindow as any).el.style = `height: calc(100vh - ${height}px)`;
             if (!this.routesWithCoveredKeyboard.includes(this.router.url)) {

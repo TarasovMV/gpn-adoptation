@@ -4,6 +4,7 @@ import {UserService} from "../../core/services/data/user.service";
 import {BehaviorSubject} from "rxjs";
 import {StatusBarService} from "../../core/services/platform/status-bar.service";
 import {NavigationStart, Router} from "@angular/router";
+import {KeyboardService} from "../../core/services/platform/keyboard.service";
 
 @Component({
     selector: 'app-auth',
@@ -17,7 +18,7 @@ export class AuthPage implements OnInit {
         new FormControl('', [Validators.required, Validators.minLength(5)]);
     public readonly isSwingAnimation$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-    constructor(private userService: UserService) {}
+    constructor(private userService: UserService, private keyboardService: KeyboardService) {}
 
     public ngOnInit(): void {
         this.codeControl.valueChanges.subscribe(x => {
@@ -26,6 +27,7 @@ export class AuthPage implements OnInit {
             }
             this.auth(x).then();
         });
+
     }
 
     private async auth(code: string): Promise<void> {

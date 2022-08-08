@@ -14,17 +14,38 @@ ion-slides {
   ::ng-deep {
     .swiper-pagination {
       position: absolute;
-      bottom: 150px !important;
-      left: 0;
+      top: sizeHeight(92) !important;
+      left: sizeHeight(32);
       width: 100%;
-
+      text-align: left;
+      vertical-align: center !important;
+      display: flex;
+      height: sizeHeight(10);
+      align-items: center;
+      z-index: 99999;
     }
 
     .swiper-pagination-bullet {
-      background: var(--border-icons) !important;
+      border: 1px solid #FFFFFF;
+      background: transparent;
+      opacity: 1;
+      margin-right: sizeWidth(9) !important;
+      margin-left: sizeWidth(0) !important;
+      min-height: sizeHeight(6);
+      min-width: sizeHeight(6);
+      max-height: sizeHeight(6);
+      max-width: sizeHeight(6);
+      padding: 0;
+
     }
     .swiper-pagination-bullet-active {
-      background: var(--blue) !important;
+      border: 1px solid #FFFFFF;
+      opacity: 1;
+      min-height: sizeHeight(12);
+      min-width: sizeHeight(12);
+      max-height: sizeHeight(12);
+      max-width: sizeHeight(12);
+      background: #FFFFFF !important;
     }
   }
 }
@@ -32,11 +53,8 @@ ion-slides {
 .container {
   height: 100%;
   width: 100%;
-
-  display: flex;
-  flex-direction: column;
-  background-color: var(--bg-menu);
-  position: relative;
+  padding: sizeHeight(92) sizeHeight(32);
+  z-index: 9999999;
 
   .image {
     height: 100%;
@@ -68,28 +86,27 @@ ion-slides {
     }
   }
 
-  &__text {
-    width: 100%;
-    flex-grow: 1;
-    padding: 0 sizeWidth(18);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  .title {
+    width: 95%;
 
-    .title {
-      width: 100%;
-      font-size: sizeHeight(24);
-      margin-bottom: sizeHeight(23);
-      color: var(--text-normal);
-    }
+    text-align: left;
+    margin-top: sizeHeight(41);
+    font-family: "SegoeUI_Bold";
+    font-weight: bold;
+    font-size: sizeHeight(32);
+    line-height: sizeHeight(46);
+    margin-bottom: sizeHeight(23);
+    color: white;
+    text-transform: uppercase;
+  }
 
-    .description {
-      width: 100%;
-      font-size: sizeHeight(17);
-      text-align: center;
-      color: var(--text-contrast);
-    }
+  .description {
+    text-align: left;
+    font-family: "SegoeUI";
+    line-height: sizeHeight(25);
+    width: 95%;
+    font-size: sizeHeight(18);
+    color: white;
   }
 
   &__buttons {
@@ -115,4 +132,18 @@ ion-slides {
       align-items: center;
     }
   }
+}
+
+.button {
+  z-index: 999999999999;
+  cursor: pointer;
+  position: absolute;
+  left: sizeHeight(32);
+  bottom: sizeHeight(82);
+  font-family: "SegoeUI";
+  font-size: sizeHeight(18);
+  width: calc(100vw - 7.9vh);
+  padding: sizeHeight(16) sizeHeight(50);
+  border: sizeHeight(2) solid #FFFFFF;
+  border-radius: sizeHeight(20);
 }

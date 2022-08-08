@@ -4,14 +4,14 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "io.gpn.adoptation",
+  "applicationId": "io.avsv.adaptation",
   "variantName": "release",
   "elements": [
     {
       "type": "SINGLE",
       "filters": [],
-      "versionCode": 26,
-      "versionName": "1.24.1",
+      "versionCode": 1,
+      "versionName": "1.0",
       "outputFile": "app-release.apk"
     }
   ]
