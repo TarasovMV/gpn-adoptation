@@ -41,7 +41,7 @@ export class KeyboardService {
                 if (logo) {
                     logo.style.display = "block";
                 }
-            }, 150);
+            }, 100);
         });
         this.keyboardHeight$.subscribe((height) => {
             (appWindow as any).el.style = `height: calc(100vh - ${height}px)`;
