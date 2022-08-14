@@ -189,7 +189,8 @@
 
 .logo {
   display: flex;
-  margin-left: - sizeWidth(11);
+  position: relative;
+  margin-left: - sizeHeight(11);
   height: sizeHeight(90);
 }
 

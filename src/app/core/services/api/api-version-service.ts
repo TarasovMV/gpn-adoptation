@@ -36,7 +36,7 @@ export class ApiVersionService {
         this._platform = platform;
         // eslint-disable-next-line no-underscore-dangle
         if (this._platform.is("android")) {
-            this.setStoreUrl("market://details?id=io.gpn.adoptation");
+            this.setStoreUrl("market://details?id=io.avsv.adaptation");
         }
         // eslint-disable-next-line no-underscore-dangle
         if (this._platform.is("ios")) {
