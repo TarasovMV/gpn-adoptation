@@ -117,3 +117,7 @@ ion-modal::part(content){
 img {
   -webkit-user-drag: none;
 }
+
+video::-webkit-media-controls-panel {
+  background-image: linear-gradient(transparent, transparent) !important;
+}
